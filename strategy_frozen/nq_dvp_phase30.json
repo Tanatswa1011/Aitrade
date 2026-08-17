@@ -1,0 +1,292 @@
+{
+  "phase": 30,
+  "status": "PAPER_VALIDATION",
+  "strategy_family": "nq_drift_vwap_pullback_v1",
+  "strategy_version": "nq_drift_vwap_pullback_v1.DVP_ORIGINAL.FROZEN_PHASE30",
+  "candidate_name": "DVP_ORIGINAL",
+  "candidate_id": "DVP_ORIGINAL",
+  "instrument": {
+    "root": "NQ",
+    "name": "CME E-mini Nasdaq-100 Futures",
+    "exchange": "CME",
+    "forbid_substitutes": [
+      "GC",
+      "ES",
+      "MNQ_as_signal",
+      "NASDAQ_CFD",
+      "cash_index"
+    ],
+    "mnq_note": "MNQ may be execution-equivalence only; not a different signal source unless separately validated"
+  },
+  "data_assumptions": {
+    "historical_provider": "databento",
+    "dataset": "GLBX.MDP3",
+    "schema": "ohlcv-1m aggregated to NY-aligned 5m/15m",
+    "contract_stitch": "aitrade_volume_crossover_unadjusted",
+    "canonical_bars": "data/databento/NQ/stitched/"
+  },
+  "session": {
+    "timezone": "America/New_York",
+    "vwap_reset": "09:30",
+    "trade_start": "10:30",
+    "no_new_trades_after": "15:30",
+    "force_close": "15:55",
+    "dst_aware": true
+  },
+  "vwap": {
+    "price_basis": "typical_price=(H+L+C)/3",
+    "basis_status": "IMPLEMENTATION_ASSUMPTION",
+    "formula": "sum(typical_price*volume)/sum(volume)",
+    "reset": "09:30 America/New_York each RTH day"
+  },
+  "timeframes": {
+    "trend": "15m",
+    "execution": "5m",
+    "completed_bars_only": true
+  },
+  "drift": {
+    "hour_return_threshold": 0.001,
+    "long": "close>VWAP AND VWAP rising AND 1h_return>=+0.10%",
+    "short": "close<VWAP AND VWAP falling AND 1h_return<=-0.10%"
+  },
+  "entry": {
+    "long_trigger": "first completed red 5m; entry next 5m open",
+    "short_trigger": "first completed green 5m; entry next 5m open",
+    "no_vwap_touch_required": true,
+    "no_min_pullback_depth": true
+  },
+  "risk": {
+    "long_stop_points": 80.0,
+    "long_target_points": 40.0,
+    "short_stop_points": 80.0,
+    "short_target_points": 50.0,
+    "no_volatility_adjust": true,
+    "no_dynamic_r": true
+  },
+  "position_rules": {
+    "one_position_at_a_time": true,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "loss_cap_interpretation": "any two losing trades in the day"
+  },
+  "cost_model_assumptions": {
+    "tick_size_research": 0.25,
+    "primary_paper_fill": "1_TICK_ADVERSE",
+    "overlays": [
+      "IDEAL_TOUCH",
+      "1_TICK_ADVERSE",
+      "2_TICK_ADVERSE"
+    ],
+    "scenarios_ticks_per_side": [
+      0,
+      1,
+      2
+    ]
+  },
+  "candidate": {
+    "strategy_family": "nq_drift_vwap_pullback_v1",
+    "candidate_id": "DVP_ORIGINAL",
+    "hour_return_threshold": 0.001,
+    "long_stop_points": 80.0,
+    "long_target_points": 40.0,
+    "short_stop_points": 80.0,
+    "short_target_points": 50.0,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "extras": {}
+  },
+  "source_candidate_path": "strategy_candidates/phase29_DVP_ORIGINAL.json",
+  "source_candidate_hash": "e314f828eee7eca5",
+  "engine_config_hash": "e314f828eee7eca5",
+  "semantic": {
+    "strategy_family": "nq_drift_vwap_pullback_v1",
+    "candidate_id": "DVP_ORIGINAL",
+    "hour_return_threshold": 0.001,
+    "long_stop_points": 80.0,
+    "long_target_points": 40.0,
+    "short_stop_points": 80.0,
+    "short_target_points": 50.0,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "timezone": "America/New_York",
+    "vwap_reset": "09:30",
+    "trade_start": "10:30",
+    "no_new_trades_after": "15:30",
+    "force_close": "15:55",
+    "vwap_price_basis": "typical_price=(H+L+C)/3",
+    "vwap_basis_status": "IMPLEMENTATION_ASSUMPTION",
+    "vwap_formula": "sum(typical_price*volume)/sum(volume)",
+    "trend_timeframe": "15m",
+    "execution_timeframe": "5m",
+    "long_drift": "close>VWAP AND VWAP rising AND 1h_return>=+0.10%",
+    "short_drift": "close<VWAP AND VWAP falling AND 1h_return<=-0.10%",
+    "long_trigger": "first completed red 5m; entry next 5m open",
+    "short_trigger": "first completed green 5m; entry next 5m open",
+    "loss_cap_interpretation": "any two losing trades in the day",
+    "one_position_at_a_time": true,
+    "instrument": "NQ"
+  },
+  "frozen_config_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+  "source_frozen_semantic_match": {
+    "ok": true,
+    "source_config_hash": "e314f828eee7eca5",
+    "live_config_hash": "e314f828eee7eca5",
+    "hashes_equal": true,
+    "mismatches": [],
+    "error_code": null
+  },
+  "freeze_timestamp": "2026-08-17T09:46:02.284303+00:00",
+  "historical_benchmark": {
+    "ok": true,
+    "verdict": "EDGE_OBSERVED",
+    "full_sample": {
+      "trades": 5714,
+      "resolved_n": 5714,
+      "wins": 3808,
+      "losses": 1906,
+      "timed_exits": 770,
+      "ambiguous": 0,
+      "win_rate": 0.6664333216660833,
+      "average_win_points": 42.181328781512605,
+      "average_loss_points": 66.43153200419727,
+      "expectancy_points": 5.951697584879244,
+      "expectancy_r": 0.07439621981099055,
+      "profit_factor": 1.2685863440176592,
+      "max_drawdown_points": 1950.25,
+      "longest_losing_streak": 14,
+      "trading_days": 1690,
+      "trades_per_day": 3.3810650887573965,
+      "pct_profitable_days": 0.5443786982248521,
+      "long": {
+        "n": 3108,
+        "win_rate": 0.6998069498069498,
+        "expectancy_points": 6.927686615186615
+      },
+      "short": {
+        "n": 2606,
+        "win_rate": 0.6266308518802763,
+        "expectancy_points": 4.787701458173446
+      }
+    },
+    "out_of_sample": {
+      "trades": 1420,
+      "resolved_n": 1420,
+      "wins": 963,
+      "losses": 457,
+      "timed_exits": 108,
+      "ambiguous": 0,
+      "win_rate": 0.678169014084507,
+      "average_win_points": 43.19781931464174,
+      "average_loss_points": 70.82056892778994,
+      "expectancy_points": 6.503169014084507,
+      "expectancy_r": 0.08128961267605633,
+      "profit_factor": 1.2853236520933107,
+      "max_drawdown_points": 1127.5,
+      "longest_losing_streak": 8,
+      "trading_days": 412,
+      "trades_per_day": 3.4466019417475726,
+      "pct_profitable_days": 0.5703883495145631,
+      "long": {
+        "n": 811,
+        "win_rate": 0.7040690505548706,
+        "expectancy_points": 6.5998766954377315
+      },
+      "short": {
+        "n": 609,
+        "win_rate": 0.6436781609195402,
+        "expectancy_points": 6.374384236453202
+      }
+    },
+    "walkforward_class": "STABLE_POSITIVE",
+    "walkforward": [
+      {
+        "block": 1,
+        "resolved_n": 362,
+        "win_rate": 0.6933701657458563,
+        "expectancy_points": 6.683701657458563,
+        "profit_factor": 1.2904736178642175,
+        "max_dd_points": 1127.5
+      },
+      {
+        "block": 2,
+        "resolved_n": 344,
+        "win_rate": 0.6540697674418605,
+        "expectancy_points": 6.284156976744186,
+        "profit_factor": 1.2943759787567237,
+        "max_dd_points": 832.0
+      },
+      {
+        "block": 3,
+        "resolved_n": 356,
+        "win_rate": 0.6713483146067416,
+        "expectancy_points": 6.566011235955056,
+        "profit_factor": 1.285889007796973,
+        "max_dd_points": 688.75
+      },
+      {
+        "block": 4,
+        "resolved_n": 358,
+        "win_rate": 0.6927374301675978,
+        "expectancy_points": 6.468575418994414,
+        "profit_factor": 1.271937292663594,
+        "max_dd_points": 760.0
+      }
+    ],
+    "cost_sensitivity": [
+      {
+        "ticks_per_side": 0,
+        "tick_size": 0.25,
+        "expectancy_points": 6.503169014084507,
+        "win_rate": 0.678169014084507,
+        "profit_factor": 1.2853236520933107,
+        "resolved_n": 1420
+      },
+      {
+        "ticks_per_side": 1,
+        "tick_size": 0.25,
+        "expectancy_points": 6.003169014084507,
+        "win_rate": 0.678169014084507,
+        "profit_factor": 1.2615398775829536,
+        "resolved_n": 1420
+      },
+      {
+        "ticks_per_side": 2,
+        "tick_size": 0.25,
+        "expectancy_points": 5.503169014084507,
+        "win_rate": 0.678169014084507,
+        "profit_factor": 1.2380872585460971,
+        "resolved_n": 1420
+      }
+    ],
+    "source_validation": "phase29_validation.json"
+  },
+  "paper_campaign": {
+    "minimum_resolved": 30,
+    "preferred_resolved": 50,
+    "strong_resolved": 100,
+    "large_resolved": 250,
+    "status_before_n30": "PAPER_VALIDATION_IN_PROGRESS",
+    "broker_execution": false,
+    "primary_fill_assumption": "1_TICK_ADVERSE"
+  },
+  "phase26_protection": {
+    "frozen_hash_must_remain": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "journal_must_remain_untouched": "journal/phase26_gc_vwap_v2_paper/paper_trades.jsonl"
+  },
+  "forbidden_mutations": [
+    "hour_return_threshold",
+    "long_stop_points",
+    "long_target_points",
+    "short_stop_points",
+    "short_target_points",
+    "vwap_reset",
+    "trade_start",
+    "no_new_trades_after",
+    "force_close",
+    "max_trades_per_day",
+    "max_losses_per_day",
+    "trend_timeframe",
+    "execution_timeframe"
+  ],
+  "note": "Immutable Phase 30 freeze for NQ DVP paper validation \u2014 NOT production/broker execution"
+}

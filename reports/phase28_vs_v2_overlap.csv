@@ -1,0 +1,2 @@
+both_days,both_loss_rate,both_win_rate,diversifies_v2,focus_candidate,mom_loss_v2_loss,mom_loss_v2_win,mom_win_v2_loss,mom_win_v2_win,momentum_only_days,neither_days,pearson_r_day_mean,v2_only_days
+56,0.14634146341463414,0.2926829268292683,True,C4_P3_BREAKOUT_RETEST,6,13,10,12,13,99,-0.3295833890862788,157

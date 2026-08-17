@@ -1,0 +1,18 @@
+{"ts": "2026-08-16T18:59:28.671619-04:00", "event": "STATE", "trading_date": "2026-08-14", "state": "SESSION_CLOSED", "drift": null, "vwap": 30135.214054811044, "hour_return": 0.00031514870042625986, "blocked": null, "intended": null, "mode": "DRY_RUN"}
+{"ts": "2026-08-16T19:01:29.680707-04:00", "event": "STATE", "trading_date": "2026-08-14", "state": "SESSION_CLOSED", "drift": null, "vwap": 30135.214054811044, "hour_return": 0.00031514870042625986, "blocked": null, "intended": null, "mode": "DRY_RUN"}
+{"ts": "2026-08-17T05:40:48.190800-04:00", "event": "HALT_ON", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:40:48.205195-04:00", "event": "HALT_OFF", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:41:18.877076-04:00", "event": "STATE", "trading_date": "2026-08-14", "state": "SESSION_CLOSED", "drift": null, "vwap": 30135.214054811044, "hour_return": 0.00031514870042625986, "blocked": null, "intended": null, "mode": "DRY_RUN"}
+{"ts": "2026-08-17T05:41:56.730064-04:00", "event": "STATE", "trading_date": "2026-08-14", "state": "SESSION_CLOSED", "drift": null, "vwap": 30135.214054811044, "hour_return": 0.00031514870042625986, "blocked": null, "intended": null, "mode": "DRY_RUN"}
+{"ts": "2026-08-17T05:42:10.083607-04:00", "event": "HALT_ON", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:42:10.100495-04:00", "event": "HALT_OFF", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:42:39.428304-04:00", "event": "STATE", "trading_date": "2026-08-14", "state": "SESSION_CLOSED", "drift": null, "vwap": 30135.214054811044, "hour_return": 0.00031514870042625986, "blocked": null, "intended": null, "mode": "DRY_RUN"}
+{"ts": "2026-08-17T05:42:39.920612-04:00", "event": "HALT_ON", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:43:28.225466-04:00", "event": "HALT_ON", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:43:28.243676-04:00", "event": "HALT_OFF", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:43:56.870052-04:00", "event": "STATE", "trading_date": "2026-08-14", "state": "SESSION_CLOSED", "drift": null, "vwap": 30135.214054811044, "hour_return": 0.00031514870042625986, "blocked": null, "intended": null, "mode": "DRY_RUN"}
+{"ts": "2026-08-17T05:43:57.455202-04:00", "event": "HALT_ON", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:46:30.460559-04:00", "event": "HALT_ON", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:46:30.467448-04:00", "event": "HALT_OFF", "state": "ERROR_SAFE_HALT"}
+{"ts": "2026-08-17T05:46:57.734840-04:00", "event": "STATE", "trading_date": "2026-08-14", "state": "SESSION_CLOSED", "drift": null, "vwap": 30135.214054811044, "hour_return": 0.00031514870042625986, "blocked": null, "intended": null, "mode": "DRY_RUN"}
+{"ts": "2026-08-17T05:46:58.218610-04:00", "event": "HALT_ON", "state": "ERROR_SAFE_HALT"}

@@ -1,0 +1,1336 @@
+{
+  "bullColor": 4286683400,
+  "bearColor": 4283585279,
+  "accentColor": 4287003512,
+  "labelMatrix": {
+    "CHoCH": {
+      "('ldn', 'bullish', 4286683400)": 9,
+      "('lup', 'bearish', 4283585279)": 8
+    },
+    "BOS": {
+      "('lup', 'bearish', 4283585279)": 16,
+      "('ldn', 'bullish', 4286683400)": 18
+    },
+    "IDM": {
+      "('ldn', 'other:None', None)": 1,
+      "('ldn', 'accent/idm-sweep', 4287003512)": 24,
+      "('lup', 'accent/idm-sweep', 4287003512)": 26
+    },
+    "x": {
+      "('ldn', 'accent/idm-sweep', 4287003512)": 49,
+      "('lup', 'accent/idm-sweep', 4287003512)": 38
+    }
+  },
+  "labelLinePairStats": {
+    "('x', 'dot', 'accent/idm-sweep', 4287003512)": 87,
+    "('IDM', 'dot', 'accent/idm-sweep', 4287003512)": 52,
+    "('BOS', 'sol', 'bullish', 4286683400)": 18,
+    "('BOS', 'sol', 'bearish', 4283585279)": 16,
+    "('CHoCH', 'dsh', 'bullish', 4286683400)": 9,
+    "('CHoCH', 'dsh', 'bearish', 4283585279)": 8
+  },
+  "mapStats": {
+    "CHoCH": {
+      "count": 17,
+      "withPrice": 17,
+      "withBarIndex": 1,
+      "placeholderBar": 16,
+      "withMatchedLine": 17,
+      "directionCounts": {
+        "bullish": 9,
+        "bearish": 8
+      },
+      "styleCounts": {
+        "ldn": 9,
+        "lup": 8
+      }
+    },
+    "BOS": {
+      "count": 34,
+      "withPrice": 34,
+      "withBarIndex": 2,
+      "placeholderBar": 32,
+      "withMatchedLine": 34,
+      "directionCounts": {
+        "bullish": 18,
+        "bearish": 16
+      },
+      "styleCounts": {
+        "ldn": 18,
+        "lup": 16
+      }
+    },
+    "IDM": {
+      "count": 51,
+      "withPrice": 50,
+      "withBarIndex": 2,
+      "placeholderBar": 49,
+      "withMatchedLine": 50,
+      "directionCounts": {
+        "other:None": 1,
+        "accent/idm-sweep": 50
+      },
+      "styleCounts": {
+        "ldn": 25,
+        "lup": 26
+      }
+    },
+    "x": {
+      "count": 87,
+      "withPrice": 87,
+      "withBarIndex": 3,
+      "placeholderBar": 84,
+      "withMatchedLine": 87,
+      "directionCounts": {
+        "accent/idm-sweep": 87
+      },
+      "styleCounts": {
+        "ldn": 49,
+        "lup": 38
+      }
+    }
+  },
+  "chochStyleDirection": {
+    "('ldn', 'bullish')": 9,
+    "('lup', 'bearish')": 8
+  },
+  "bosStyleDirection": {
+    "('ldn', 'bullish')": 18,
+    "('lup', 'bearish')": 16
+  },
+  "latest": {
+    "CHoCH_any": {
+      "type": "CHoCH",
+      "price": 4397.06,
+      "drawX": 475,
+      "barIndex": 299,
+      "labelStyle": "ldn",
+      "textColor": 4286683400,
+      "direction": "bullish",
+      "line": {
+        "id": 1,
+        "x1": 474,
+        "x2": 475,
+        "style": "dsh",
+        "color": 4286683400,
+        "lineDirection": "bullish",
+        "bar1": 211,
+        "bar2": 299
+      }
+    },
+    "CHoCH_bullish": {
+      "type": "CHoCH",
+      "price": 4397.06,
+      "drawX": 475,
+      "barIndex": 299,
+      "labelStyle": "ldn",
+      "textColor": 4286683400,
+      "direction": "bullish",
+      "line": {
+        "id": 1,
+        "x1": 474,
+        "x2": 475,
+        "style": "dsh",
+        "color": 4286683400,
+        "lineDirection": "bullish",
+        "bar1": 211,
+        "bar2": 299
+      }
+    },
+    "CHoCH_bearish": {
+      "type": "CHoCH",
+      "price": 4396.575,
+      "drawX": 428,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 347,
+        "x1": 426,
+        "x2": 433,
+        "style": "dsh",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    "BOS_any": {
+      "type": "BOS",
+      "price": 4311.04,
+      "drawX": 475,
+      "barIndex": 299,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 2,
+        "x1": 473,
+        "x2": 475,
+        "style": "sol",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": 114,
+        "bar2": 299
+      }
+    },
+    "BOS_bullish": {
+      "type": "BOS",
+      "price": 4441.315,
+      "drawX": 427,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4286683400,
+      "direction": "bullish",
+      "line": {
+        "id": 343,
+        "x1": 425,
+        "x2": 429,
+        "style": "sol",
+        "color": 4286683400,
+        "lineDirection": "bullish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    "BOS_bearish": {
+      "type": "BOS",
+      "price": 4311.04,
+      "drawX": 475,
+      "barIndex": 299,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 2,
+        "x1": 473,
+        "x2": 475,
+        "style": "sol",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": 114,
+        "bar2": 299
+      }
+    },
+    "IDM_any": {
+      "type": "IDM",
+      "price": 4322.635,
+      "drawX": 470,
+      "barIndex": 82,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 375,
+        "x1": 469,
+        "x2": 471,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": 79,
+        "bar2": 85
+      }
+    },
+    "sweep_x_any": {
+      "type": "x",
+      "price": 4311.27,
+      "drawX": 472,
+      "barIndex": 94,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 377,
+        "x1": 468,
+        "x2": 473,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": 74,
+        "bar2": 114
+      }
+    }
+  },
+  "recent40": [
+    {
+      "type": "x",
+      "price": 4359.935,
+      "drawX": 378,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 303,
+        "x1": 377,
+        "x2": 379,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4360.1,
+      "drawX": 380,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 305,
+        "x1": 379,
+        "x2": 381,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4352.105,
+      "drawX": 383,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 307,
+        "x1": 382,
+        "x2": 384,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4362.06,
+      "drawX": 385,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 309,
+        "x1": 381,
+        "x2": 386,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4364.1,
+      "drawX": 387,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 311,
+        "x1": 386,
+        "x2": 388,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4364.8,
+      "drawX": 389,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 313,
+        "x1": 388,
+        "x2": 390,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4365.315,
+      "drawX": 391,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4286683400,
+      "direction": "bullish",
+      "line": {
+        "id": 315,
+        "x1": 390,
+        "x2": 392,
+        "style": "sol",
+        "color": 4286683400,
+        "lineDirection": "bullish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4383.05,
+      "drawX": 394,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 317,
+        "x1": 393,
+        "x2": 395,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4394.115,
+      "drawX": 397,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 319,
+        "x1": 396,
+        "x2": 398,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4395.385,
+      "drawX": 400,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 321,
+        "x1": 399,
+        "x2": 401,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4416.36,
+      "drawX": 403,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 323,
+        "x1": 402,
+        "x2": 405,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4407.615,
+      "drawX": 406,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 325,
+        "x1": 404,
+        "x2": 407,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4419.335,
+      "drawX": 407,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 327,
+        "x1": 405,
+        "x2": 408,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4420.38,
+      "drawX": 410,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 329,
+        "x1": 409,
+        "x2": 411,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4421.51,
+      "drawX": 412,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 331,
+        "x1": 411,
+        "x2": 413,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4422.365,
+      "drawX": 413,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4286683400,
+      "direction": "bullish",
+      "line": {
+        "id": 333,
+        "x1": 413,
+        "x2": 414,
+        "style": "sol",
+        "color": 4286683400,
+        "lineDirection": "bullish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4434.265,
+      "drawX": 416,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 335,
+        "x1": 415,
+        "x2": 417,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4414.225,
+      "drawX": 420,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 337,
+        "x1": 419,
+        "x2": 421,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4435.245,
+      "drawX": 422,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 339,
+        "x1": 418,
+        "x2": 423,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4438.305,
+      "drawX": 424,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 341,
+        "x1": 423,
+        "x2": 425,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4441.315,
+      "drawX": 427,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4286683400,
+      "direction": "bullish",
+      "line": {
+        "id": 343,
+        "x1": 425,
+        "x2": 429,
+        "style": "sol",
+        "color": 4286683400,
+        "lineDirection": "bullish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "CHoCH",
+      "price": 4396.575,
+      "drawX": 428,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 347,
+        "x1": 426,
+        "x2": 433,
+        "style": "dsh",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4422.835,
+      "drawX": 431,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 345,
+        "x1": 430,
+        "x2": 432,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4399.59,
+      "drawX": 436,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 349,
+        "x1": 435,
+        "x2": 438,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4391.615,
+      "drawX": 437,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 351,
+        "x1": 434,
+        "x2": 439,
+        "style": "sol",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4375.1,
+      "drawX": 441,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 353,
+        "x1": 440,
+        "x2": 442,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4365.63,
+      "drawX": 444,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 355,
+        "x1": 443,
+        "x2": 445,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4379.355,
+      "drawX": 447,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 357,
+        "x1": 446,
+        "x2": 448,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "x",
+      "price": 4364.17,
+      "drawX": 449,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 359,
+        "x1": 445,
+        "x2": 450,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4357.395,
+      "drawX": 451,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 361,
+        "x1": 450,
+        "x2": 453,
+        "style": "sol",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4371.625,
+      "drawX": 454,
+      "barIndex": -2000000,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 363,
+        "x1": 452,
+        "x2": 455,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": -2000000,
+        "bar2": -2000000
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4351.355,
+      "drawX": 456,
+      "barIndex": -2000000,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 365,
+        "x1": 454,
+        "x2": 457,
+        "style": "sol",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": -2000000,
+        "bar2": 2
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4352.28,
+      "drawX": 460,
+      "barIndex": 20,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 367,
+        "x1": 459,
+        "x2": 461,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": 17,
+        "bar2": 24
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4343.65,
+      "drawX": 462,
+      "barIndex": 28,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 369,
+        "x1": 458,
+        "x2": 463,
+        "style": "sol",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": 3,
+        "bar2": 53
+      }
+    },
+    {
+      "type": "x",
+      "price": 4313,
+      "drawX": 465,
+      "barIndex": 68,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 371,
+        "x1": 464,
+        "x2": 466,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": 67,
+        "bar2": 70
+      }
+    },
+    {
+      "type": "x",
+      "price": 4312.22,
+      "drawX": 467,
+      "barIndex": 72,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 373,
+        "x1": 466,
+        "x2": 468,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": 70,
+        "bar2": 74
+      }
+    },
+    {
+      "type": "IDM",
+      "price": 4322.635,
+      "drawX": 470,
+      "barIndex": 82,
+      "labelStyle": "ldn",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 375,
+        "x1": 469,
+        "x2": 471,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": 79,
+        "bar2": 85
+      }
+    },
+    {
+      "type": "x",
+      "price": 4311.27,
+      "drawX": 472,
+      "barIndex": 94,
+      "labelStyle": "lup",
+      "textColor": 4287003512,
+      "direction": "accent/idm-sweep",
+      "line": {
+        "id": 377,
+        "x1": 468,
+        "x2": 473,
+        "style": "dot",
+        "color": 4287003512,
+        "lineDirection": "accent/idm-sweep",
+        "bar1": 74,
+        "bar2": 114
+      }
+    },
+    {
+      "type": "CHoCH",
+      "price": 4397.06,
+      "drawX": 475,
+      "barIndex": 299,
+      "labelStyle": "ldn",
+      "textColor": 4286683400,
+      "direction": "bullish",
+      "line": {
+        "id": 1,
+        "x1": 474,
+        "x2": 475,
+        "style": "dsh",
+        "color": 4286683400,
+        "lineDirection": "bullish",
+        "bar1": 211,
+        "bar2": 299
+      }
+    },
+    {
+      "type": "BOS",
+      "price": 4311.04,
+      "drawX": 475,
+      "barIndex": 299,
+      "labelStyle": "lup",
+      "textColor": 4283585279,
+      "direction": "bearish",
+      "line": {
+        "id": 2,
+        "x1": 473,
+        "x2": 475,
+        "style": "sol",
+        "color": 4283585279,
+        "lineDirection": "bearish",
+        "bar1": 114,
+        "bar2": 299
+      }
+    }
+  ],
+  "plotInfo": {
+    "size": 400,
+    "nonNull": 300,
+    "samples": [
+      {
+        "i": 0,
+        "unpacked": {
+          "ctor": "Array",
+          "proto": [
+            "length",
+            "constructor",
+            "at",
+            "concat",
+            "copyWithin",
+            "fill",
+            "find",
+            "findIndex",
+            "findLast",
+            "findLastIndex",
+            "lastIndexOf",
+            "pop",
+            "push",
+            "reverse",
+            "shift",
+            "unshift",
+            "slice",
+            "sort",
+            "splice",
+            "includes",
+            "indexOf",
+            "join",
+            "keys",
+            "entries",
+            "values",
+            "forEach",
+            "filter",
+            "flat",
+            "flatMap",
+            "map",
+            "every",
+            "some",
+            "reduce",
+            "reduceRight",
+            "toReversed",
+            "toSorted",
+            "toSpliced",
+            "with",
+            "toLocaleString",
+            "toString"
+          ],
+          "values": "Iterator"
+        }
+      },
+      {
+        "i": 1,
+        "unpacked": {
+          "ctor": "Array",
+          "proto": [
+            "length",
+            "constructor",
+            "at",
+            "concat",
+            "copyWithin",
+            "fill",
+            "find",
+            "findIndex",
+            "findLast",
+            "findLastIndex",
+            "lastIndexOf",
+            "pop",
+            "push",
+            "reverse",
+            "shift",
+            "unshift",
+            "slice",
+            "sort",
+            "splice",
+            "includes",
+            "indexOf",
+            "join",
+            "keys",
+            "entries",
+            "values",
+            "forEach",
+            "filter",
+            "flat",
+            "flatMap",
+            "map",
+            "every",
+            "some",
+            "reduce",
+            "reduceRight",
+            "toReversed",
+            "toSorted",
+            "toSpliced",
+            "with",
+            "toLocaleString",
+            "toString"
+          ],
+          "values": "Iterator"
+        }
+      },
+      {
+        "i": 2,
+        "unpacked": {
+          "ctor": "Array",
+          "proto": [
+            "length",
+            "constructor",
+            "at",
+            "concat",
+            "copyWithin",
+            "fill",
+            "find",
+            "findIndex",
+            "findLast",
+            "findLastIndex",
+            "lastIndexOf",
+            "pop",
+            "push",
+            "reverse",
+            "shift",
+            "unshift",
+            "slice",
+            "sort",
+            "splice",
+            "includes",
+            "indexOf",
+            "join",
+            "keys",
+            "entries",
+            "values",
+            "forEach",
+            "filter",
+            "flat",
+            "flatMap",
+            "map",
+            "every",
+            "some",
+            "reduce",
+            "reduceRight",
+            "toReversed",
+            "toSorted",
+            "toSpliced",
+            "with",
+            "toLocaleString",
+            "toString"
+          ],
+          "values": "Iterator"
+        }
+      },
+      {
+        "i": 3,
+        "unpacked": {
+          "ctor": "Array",
+          "proto": [
+            "length",
+            "constructor",
+            "at",
+            "concat",
+            "copyWithin",
+            "fill",
+            "find",
+            "findIndex",
+            "findLast",
+            "findLastIndex",
+            "lastIndexOf",
+            "pop",
+            "push",
+            "reverse",
+            "shift",
+            "unshift",
+            "slice",
+            "sort",
+            "splice",
+            "includes",
+            "indexOf",
+            "join",
+            "keys",
+            "entries",
+            "values",
+            "forEach",
+            "filter",
+            "flat",
+            "flatMap",
+            "map",
+            "every",
+            "some",
+            "reduce",
+            "reduceRight",
+            "toReversed",
+            "toSorted",
+            "toSpliced",
+            "with",
+            "toLocaleString",
+            "toString"
+          ],
+          "values": "Iterator"
+        }
+      },
+      {
+        "i": 4,
+        "unpacked": {
+          "ctor": "Array",
+          "proto": [
+            "length",
+            "constructor",
+            "at",
+            "concat",
+            "copyWithin",
+            "fill",
+            "find",
+            "findIndex",
+            "findLast",
+            "findLastIndex",
+            "lastIndexOf",
+            "pop",
+            "push",
+            "reverse",
+            "shift",
+            "unshift",
+            "slice",
+            "sort",
+            "splice",
+            "includes",
+            "indexOf",
+            "join",
+            "keys",
+            "entries",
+            "values",
+            "forEach",
+            "filter",
+            "flat",
+            "flatMap",
+            "map",
+            "every",
+            "some",
+            "reduce",
+            "reduceRight",
+            "toReversed",
+            "toSorted",
+            "toSpliced",
+            "with",
+            "toLocaleString",
+            "toString"
+          ],
+          "values": "Iterator"
+        }
+      }
+    ],
+    "first": {
+      "ctor": "Object",
+      "proto": [
+        "constructor",
+        "__defineGetter__",
+        "__defineSetter__",
+        "hasOwnProperty",
+        "__lookupGetter__",
+        "__lookupSetter__",
+        "isPrototypeOf",
+        "propertyIsEnumerable",
+        "toString",
+        "valueOf",
+        "__proto__",
+        "toLocaleString"
+      ]
+    },
+    "last": {
+      "ctor": "Object",
+      "proto": [
+        "constructor",
+        "__defineGetter__",
+        "__defineSetter__",
+        "hasOwnProperty",
+        "__lookupGetter__",
+        "__lookupSetter__",
+        "isPrototypeOf",
+        "propertyIsEnumerable",
+        "toString",
+        "valueOf",
+        "__proto__",
+        "toLocaleString"
+      ]
+    },
+    "metaPlots": [
+      {
+        "id": "plot_0",
+        "type": "line"
+      },
+      {
+        "id": "plot_1",
+        "type": "colorer"
+      },
+      {
+        "id": "plot_2",
+        "type": "line"
+      },
+      {
+        "id": "plot_3",
+        "type": "colorer"
+      }
+    ],
+    "metaStyles": [
+      {
+        "key": "plot_0",
+        "title": "Swing High"
+      },
+      {
+        "key": "plot_2",
+        "title": "Swing Low"
+      }
+    ]
+  },
+  "frequency": {
+    "CHoCH": 17,
+    "BOS": 34,
+    "IDM": 51,
+    "x": 87
+  }
+}

@@ -1,0 +1,1406 @@
+{
+  "ok": true,
+  "phase": 13,
+  "offline_trading_day": {
+    "default_config": {
+      "reference_timezone": "America/New_York",
+      "day_roll_time": "17:00",
+      "weekend_policy": "skip_fabricate",
+      "source": "fx_session_hypothesis_pending_native_confirm",
+      "algorithm_version": "ny_trading_day_v1",
+      "extras": {
+        "note": "Default 17:00 America/New_York matches typical FX/CFD Daily rolls. Prefer infer_trading_day_config_from_native_bars() when native 1D opens exist."
+      }
+    },
+    "inferred_from_synthetic_native": {
+      "reference_timezone": "America/New_York",
+      "day_roll_time": "17:00",
+      "weekend_policy": "skip_fabricate",
+      "source": "native_tv_daily_opens",
+      "algorithm_version": "ny_trading_day_v1",
+      "extras": {
+        "sample_count": 5,
+        "mode_count": 5,
+        "hhmm_histogram": {
+          "17:00": 5
+        },
+        "distinct_utc_offsets_at_mode": [
+          -18000.0
+        ],
+        "dst_aware_local_roll": false,
+        "samples_head": [
+          {
+            "time": 1767650400,
+            "local": "2026-01-05T17:00:00-05:00",
+            "hhmm": "17:00",
+            "utc_offset": -18000.0
+          },
+          {
+            "time": 1767736800,
+            "local": "2026-01-06T17:00:00-05:00",
+            "hhmm": "17:00",
+            "utc_offset": -18000.0
+          },
+          {
+            "time": 1767823200,
+            "local": "2026-01-07T17:00:00-05:00",
+            "hhmm": "17:00",
+            "utc_offset": -18000.0
+          }
+        ],
+        "samples_tail": [
+          {
+            "time": 1767823200,
+            "local": "2026-01-07T17:00:00-05:00",
+            "hhmm": "17:00",
+            "utc_offset": -18000.0
+          },
+          {
+            "time": 1767909600,
+            "local": "2026-01-08T17:00:00-05:00",
+            "hhmm": "17:00",
+            "utc_offset": -18000.0
+          },
+          {
+            "time": 1767996000,
+            "local": "2026-01-09T17:00:00-05:00",
+            "hhmm": "17:00",
+            "utc_offset": -18000.0
+          }
+        ]
+      }
+    },
+    "dst_spring_duration_sec": 82800,
+    "dst_fall_duration_sec": 90000,
+    "closed_bar_rule": "canonical_close <= sweep_ts (NY roll or next native open)",
+    "boundaries": {
+      "config": {
+        "reference_timezone": "America/New_York",
+        "day_roll_time": "17:00",
+        "weekend_policy": "skip_fabricate",
+        "source": "fx_session_hypothesis_pending_native_confirm",
+        "algorithm_version": "ny_trading_day_v1",
+        "extras": {
+          "note": "Default 17:00 America/New_York matches typical FX/CFD Daily rolls. Prefer infer_trading_day_config_from_native_bars() when native 1D opens exist."
+        }
+      },
+      "bar_count": 5,
+      "rows": [
+        {
+          "open_ts": 1767650400,
+          "open_local": "2026-01-05T17:00:00-05:00",
+          "close_native_next_open": 1767736800,
+          "close_cfg_next_roll": 1767736800,
+          "duration_sec_native": 86400,
+          "weekday": "Monday"
+        },
+        {
+          "open_ts": 1767736800,
+          "open_local": "2026-01-06T17:00:00-05:00",
+          "close_native_next_open": 1767823200,
+          "close_cfg_next_roll": 1767823200,
+          "duration_sec_native": 86400,
+          "weekday": "Tuesday"
+        },
+        {
+          "open_ts": 1767823200,
+          "open_local": "2026-01-07T17:00:00-05:00",
+          "close_native_next_open": 1767909600,
+          "close_cfg_next_roll": 1767909600,
+          "duration_sec_native": 86400,
+          "weekday": "Wednesday"
+        },
+        {
+          "open_ts": 1767909600,
+          "open_local": "2026-01-08T17:00:00-05:00",
+          "close_native_next_open": 1767996000,
+          "close_cfg_next_roll": 1767996000,
+          "duration_sec_native": 86400,
+          "weekday": "Thursday"
+        },
+        {
+          "open_ts": 1767996000,
+          "open_local": "2026-01-09T17:00:00-05:00",
+          "close_native_next_open": null,
+          "close_cfg_next_roll": 1768082400,
+          "duration_sec_native": null,
+          "weekday": "Friday"
+        }
+      ],
+      "weekend_bars": []
+    }
+  },
+  "offline_mtf_journal": {
+    "bars_available": {
+      "5m": 817,
+      "15m": "resampled_from_5m",
+      "4H_structure": 15,
+      "1D_structure": 15,
+      "4H_resampled_from_5m": 23,
+      "1D_resampled_from_5m": 6,
+      "1D_resampled_source": "resampled"
+    },
+    "replay": {
+      "total_sessions": 22,
+      "total_sweeps": 12,
+      "total_setups": 20,
+      "warnings": [
+        "15m bars resampled from 5m (source=resampled)",
+        "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+        "Historical CHoCH uses internal_structure (internal_choch_v1); equivalence_status=unvalidated_against_luxalgo \u2014 not claimed equal to LuxAlgo."
+      ],
+      "metadata": {
+        "execution_timeframes": [
+          "5m",
+          "15m"
+        ],
+        "replay_5m": {
+          "total_setups": 10,
+          "total_sweeps": 6,
+          "config_hash": "34f55ad63aa7c004"
+        },
+        "replay_15m": {
+          "total_setups": 10,
+          "total_sweeps": 6,
+          "config_hash": "94c6fefcbfb3e0fa"
+        }
+      }
+    },
+    "journal_path": "journal\\phase13_mtf\\setups.jsonl",
+    "journal_size": 20
+  },
+  "mtf_report_summary": {
+    "journal_size": 20,
+    "htf_alignment_distribution": {
+      "aligned_both": 0,
+      "aligned_daily_only": 2,
+      "aligned_h4_only": 10,
+      "opposed_both": 0,
+      "mixed": 0,
+      "neutral_or_unknown": 8
+    },
+    "paired_5m_15m_n": 9,
+    "metrics_by_execution_timeframe": {
+      "15m": {
+        "setup_count": 10,
+        "sample_warning": "INSUFFICIENT_SAMPLE"
+      },
+      "5m": {
+        "setup_count": 10,
+        "sample_warning": "INSUFFICIENT_SAMPLE"
+      }
+    },
+    "daily_vs_h4": {
+      "setup_aligns_d_and_h4": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE"
+      },
+      "setup_aligns_d_only": {
+        "n": 2,
+        "sample_warning": "INSUFFICIENT_SAMPLE"
+      },
+      "setup_aligns_h4_only": {
+        "n": 10,
+        "sample_warning": "INSUFFICIENT_SAMPLE"
+      },
+      "setup_aligns_neither": {
+        "n": 8,
+        "sample_warning": "INSUFFICIENT_SAMPLE"
+      }
+    }
+  },
+  "mtf_report_full": {
+    "journal_size": 20,
+    "htf_alignment_distribution": {
+      "aligned_both": 0,
+      "aligned_daily_only": 2,
+      "aligned_h4_only": 10,
+      "opposed_both": 0,
+      "mixed": 0,
+      "neutral_or_unknown": 8
+    },
+    "canonical_htf_alignment_counts": {
+      "mixed": 20
+    },
+    "funnel_by_htf_bucket": {
+      "aligned_both": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      },
+      "aligned_daily_only": {
+        "n": 2,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 2,
+        "choch_confirmations": 1,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      },
+      "aligned_h4_only": {
+        "n": 10,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 10,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      },
+      "opposed_both": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      },
+      "mixed": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      },
+      "neutral_or_unknown": {
+        "n": 8,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      }
+    },
+    "outcomes_by_alignment": {
+      "aligned_bullish": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "aligned_bearish": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "mixed": {
+        "n": 20,
+        "sample_warning": null,
+        "count": 20,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "partial": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "opposed": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "unknown": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      }
+    },
+    "metrics_by_execution_timeframe": {
+      "15m": {
+        "n": 10,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "setup_count": 10,
+        "confirmation_rate": {
+          "n": 0,
+          "denominator_sweeps": 6,
+          "rate": 0.0
+        },
+        "fvg_rate": {
+          "n": 0,
+          "denominator_confirmations": 0,
+          "rate": null
+        },
+        "entry_trigger_rate": {
+          "n": 0,
+          "denominator_fvgs": 0,
+          "rate": null
+        },
+        "valid_risk_count": 0,
+        "stop_rate": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "median_sec_sweep_to_confirmation": null,
+        "median_sec_confirmation_to_fvg": null,
+        "median_sec_fvg_to_entry": null,
+        "raw_totals": {
+          "setups": 10,
+          "liquidity_sweeps": 6,
+          "confirmations": 0,
+          "fvgs": 0
+        }
+      },
+      "5m": {
+        "n": 10,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "setup_count": 10,
+        "confirmation_rate": {
+          "n": 1,
+          "denominator_sweeps": 6,
+          "rate": 0.16666666666666666
+        },
+        "fvg_rate": {
+          "n": 0,
+          "denominator_confirmations": 1,
+          "rate": 0.0
+        },
+        "entry_trigger_rate": {
+          "n": 0,
+          "denominator_fvgs": 0,
+          "rate": null
+        },
+        "valid_risk_count": 0,
+        "stop_rate": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "median_sec_sweep_to_confirmation": 11700.0,
+        "median_sec_confirmation_to_fvg": null,
+        "median_sec_fvg_to_entry": null,
+        "raw_totals": {
+          "setups": 10,
+          "liquidity_sweeps": 6,
+          "confirmations": 1,
+          "fvgs": 0
+        }
+      }
+    },
+    "paired_5m_15m": {
+      "n": 9,
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "paired_event_count": 9,
+      "pairs": [
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-13|none|none",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|none|none|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|none|none|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-14|none|none",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-14|none|none|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-14|none|none|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-15|none|none",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-15|none|none|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-15|none|none|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-16|none|none",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-16|none|none|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|Asia|2026-08-16|none|none|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-12|high|1786599000",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-12|high|1786599000|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-12|high|1786599000|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-13|high|1786685400",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-13|high|1786685400|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-13|high|1786685400|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-14|high|1786771800",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786771800|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786771800|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-15|high|1786858200",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-15|high|1786858200|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-15|high|1786858200|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        },
+        {
+          "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-16|high|1786944600",
+          "5m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-16|high|1786944600|exec:5m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "15m": {
+            "setup_id": "OANDA:XAUUSD|London|2026-08-16|high|1786944600|exec:15m",
+            "status": "EXPIRED",
+            "confirmation_timestamp": null,
+            "fvg_created_timestamp": null,
+            "triggered": false,
+            "entry_prices": [],
+            "risk_distances": [],
+            "rr_to_opposite": [],
+            "outcomes": []
+          },
+          "which_confirmed_first": null,
+          "which_fvg_first": null,
+          "same_htf_context": true
+        }
+      ]
+    },
+    "daily_vs_h4_contribution": {
+      "setup_aligns_d_and_h4": {
+        "n": 0,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0,
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "setup_aligns_d_only": {
+        "n": 2,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 2,
+        "choch_confirmations": 1,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0,
+        "count": 2,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "setup_aligns_h4_only": {
+        "n": 10,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 10,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0,
+        "count": 10,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "setup_aligns_neither": {
+        "n": 8,
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0,
+        "count": 8,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      }
+    },
+    "insufficient_sample_threshold": 20
+  },
+  "live": {
+    "ok": false,
+    "live_tested": false,
+    "cdp_status": "CDP_DOWN",
+    "health": {
+      "cdp_connected": false,
+      "tradingview_found": false,
+      "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?",
+      "code": "CDP_UNAVAILABLE"
+    },
+    "note": "Live validation blocked \u2014 offline tests used"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "ok": true,
+  "phase": 26,
+  "status": "PAPER_VALIDATION_IN_PROGRESS",
+  "strategy_family": "gc_vwap_mean_reversion_v1",
+  "strategy_version": "gc_vwap_mean_reversion_v1.V2.FROZEN_PHASE26",
+  "candidate_name": "V2_BAND_RECLAIM_2SIG_RETEST",
+  "frozen_config_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+  "engine_config_hash": "da630a519397ec84",
+  "source_candidate_path": "strategy_candidates/phase25_V2_BAND_RECLAIM_2SIG_RETEST.json",
+  "source_frozen_semantic_match": {
+    "ok": true,
+    "source_config_hash": "da630a519397ec84",
+    "live_config_hash": "da630a519397ec84",
+    "hashes_equal": true,
+    "mismatches": []
+  },
+  "freeze_files": {
+    "json": "strategy_frozen/gc_vwap_v2_phase26.json",
+    "md": "strategy_frozen/gc_vwap_v2_phase26.md"
+  },
+  "journal": {
+    "dir": "journal/phase26_gc_vwap_v2_paper",
+    "paper_trades": "journal/phase26_gc_vwap_v2_paper/paper_trades.jsonl"
+  },
+  "historical_benchmark": {
+    "train_n": 184,
+    "train_e2r": 0.11413043478260865,
+    "holdout_n": 87,
+    "holdout_stop_rate": 0.5977011494252874,
+    "holdout_1r": 0.6551724137931034,
+    "holdout_1_5r": 0.5517241379310345,
+    "holdout_2r": 0.47126436781609193,
+    "holdout_3r": 0.367816091954023,
+    "holdout_e1r": 0.05747126436781602,
+    "holdout_e1_5r": 0.2298850574712643,
+    "holdout_e2r": 0.34482758620689646,
+    "holdout_e3r": 0.5057471264367815,
+    "holdout_median_mfe_r": 1.77240441363276,
+    "holdout_median_mae_r": 1.123458532238931,
+    "walkforward_all_blocks_e2r_positive": true,
+    "walkforward_blocks": 4,
+    "cost_survives_1_2_ticks": true,
+    "structural_p_vwap_touch": 0.6862123613312203,
+    "structural_median_minutes": 20
+  },
+  "paper_campaign": {
+    "minimum_resolved": 30,
+    "preferred_resolved": 50,
+    "strong_resolved": 100,
+    "current_resolved_n": 0,
+    "sample_label": "VERY_EARLY",
+    "status": "PAPER_VALIDATION_IN_PROGRESS",
+    "primary_fill_assumption": "1_TICK_ADVERSE",
+    "broker_execution": false
+  },
+  "paper_metrics": {
+    "paper_trades": 0,
+    "triggered": 0,
+    "resolved": 0,
+    "ambiguous": 0,
+    "expired": 0,
+    "invalid": 0,
+    "stop_rate": null,
+    "r1_rate": null,
+    "r15_rate": null,
+    "r2_rate": null,
+    "r3_rate": null,
+    "vwap_hit_rate": null,
+    "e1r": null,
+    "e15r": null,
+    "e2r": null,
+    "e3r": null,
+    "median_mfe_r": null,
+    "median_mae_r": null,
+    "mean_mfe_r": null,
+    "mean_mae_r": null,
+    "sample_label": "VERY_EARLY",
+    "campaign_status": "PAPER_VALIDATION_IN_PROGRESS"
+  },
+  "mcp_tools": [
+    "tv_analyze_gc_vwap_reversion",
+    "tv_gc_vwap_v2_paper_state"
+  ],
+  "forbidden": [
+    "retune",
+    "tod_filter",
+    "direction_filter",
+    "broker_orders",
+    "rename_as_production"
+  ],
+  "generated_at": "2026-08-15T23:33:17.872344+00:00",
+  "write_info": {
+    "ok": true,
+    "frozen_json": "strategy_frozen/gc_vwap_v2_phase26.json",
+    "frozen_md": "strategy_frozen/gc_vwap_v2_phase26.md",
+    "frozen_config_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "engine_config_hash": "da630a519397ec84",
+    "source_match": {
+      "ok": true,
+      "source_config_hash": "da630a519397ec84",
+      "live_config_hash": "da630a519397ec84",
+      "hashes_equal": true,
+      "mismatches": []
+    }
+  },
+  "note": "Phase 26 initialization complete. Forward paper observation campaign starts with N=0."
+}

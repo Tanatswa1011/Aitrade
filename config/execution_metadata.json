@@ -1,0 +1,40 @@
+{
+  "_note": "Execution contract metadata only — not strategy semantics. Strategies remain frozen on NQ/GC signal instruments.",
+  "MNQ": {
+    "symbol_root": "MNQ",
+    "description": "Micro E-mini Nasdaq-100",
+    "tick_size_points": 0.25,
+    "tick_value_usd": 0.5,
+    "point_value_usd": 2.0,
+    "source": "CME micro E-mini Nasdaq-100 contract specification",
+    "dvp_frozen_brackets_points": {
+      "long": {"stop": 80, "target": 40},
+      "short": {"stop": 80, "target": 50}
+    },
+    "dvp_one_mnq_dollar_risk_at_frozen_stop": {
+      "stop_points": 80,
+      "dollar_risk_usd": 160.0,
+      "formula": "stop_points * point_value_usd * quantity"
+    },
+    "dvp_one_mnq_target_dollars": {
+      "long_tp_points": 40,
+      "long_tp_usd": 80.0,
+      "short_tp_points": 50,
+      "short_tp_usd": 100.0
+    }
+  },
+  "MGC": {
+    "symbol_root": "MGC",
+    "description": "Micro Gold",
+    "tick_size": 0.1,
+    "tick_value_usd": 1.0,
+    "point_value_usd": 10.0,
+    "source": "COMEX micro gold contract specification",
+    "gc_v2_note": "GC V2 uses dynamic stop distance from band structure — no fixed stop in strategy.",
+    "sizing_examples_representative_stop_distance_usd": [
+      {"stop_distance_usd": 5.0, "max_risk_usd": 100, "permitted_qty": 2, "actual_risk_usd": 100.0},
+      {"stop_distance_usd": 8.0, "max_risk_usd": 100, "permitted_qty": 1, "actual_risk_usd": 80.0},
+      {"stop_distance_usd": 12.0, "max_risk_usd": 100, "permitted_qty": 0, "rejected": true, "reason": "minimum_contract_exceeds_max_risk"}
+    ]
+  }
+}

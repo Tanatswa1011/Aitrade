@@ -1,0 +1,964 @@
+[
+  {
+    "id": "wy7VYI",
+    "name": "AMD Liquidity Sweep with Alerts",
+    "visible": false,
+    "extracted": {
+      "dwglines": {
+        "size": 1,
+        "items": [
+          {
+            "groupKey": "lines",
+            "value": {
+              "false": {
+                "_primitivesDataById": {
+                  "__size": 0
+                },
+                "_primitiveById": {
+                  "__size": 0
+                },
+                "_changed": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_cleared": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_materializePrimitive": "[Function]",
+                "_isRematerializationRequiredWithNewIndexes": true,
+                "__ctor": "Ye",
+                "__keyCount": 6
+              },
+              "__size": 1
+            }
+          }
+        ]
+      },
+      "dwglabels": {
+        "size": 1,
+        "items": [
+          {
+            "groupKey": "labels",
+            "value": {
+              "false": {
+                "_primitivesDataById": {
+                  "__size": 0
+                },
+                "_primitiveById": {
+                  "__size": 0
+                },
+                "_changed": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_cleared": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_materializePrimitive": "[Function]",
+                "_isRematerializationRequiredWithNewIndexes": true,
+                "__ctor": "Ye",
+                "__keyCount": 6
+              },
+              "__size": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "h6mnwz",
+    "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)",
+    "visible": true,
+    "extracted": {
+      "dwglines": {
+        "size": 1,
+        "items": [
+          {
+            "groupKey": "lines",
+            "value": {
+              "false": {
+                "_primitivesDataById": {
+                  "231": {
+                    "id": 231,
+                    "x1": 77,
+                    "y1": 4323.67,
+                    "x2": 82,
+                    "y2": 4323.67,
+                    "ex": "n",
+                    "st": "dot",
+                    "ci": 4283516483,
+                    "w": 1,
+                    "__ctor": "Object",
+                    "__keyCount": 9
+                  },
+                  "237": {
+                    "id": 237,
+                    "x1": 79,
+                    "y1": 4379.87,
+                    "x2": 82,
+                    "y2": 4379.87,
+                    "ex": "n",
+                    "st": "dot",
+                    "ci": 4283516483,
+                    "w": 1,
+                    "__ctor": "Object",
+                    "__keyCount": 9
+                  },
+                  "239": {
+                    "id": 239,
+                    "x1": 79,
+                    "y1": 4367.754999999999,
+                    "x2": 79,
+                    "y2": 4396.570000000001,
+                    "ex": "b",
+                    "st": "dot",
+                    "ci": 2152810051,
+                    "w": 1,
+                    "__ctor": "Object",
+                    "__keyCount": 9
+                  },
+                  "240": {
+                    "id": 240,
+                    "x1": 80,
+                    "y1": 4375.995,
+                    "x2": 80,
+                    "y2": 4399.5,
+                    "ex": "b",
+                    "st": "dot",
+                    "ci": 2152810051,
+                    "w": 1,
+                    "__ctor": "Object",
+                    "__keyCount": 9
+                  },
+                  "__size": 4
+                },
+                "_primitiveById": {
+                  "231": {
+                    "id": 231,
+                    "x1": 96,
+                    "y1": 4323.67,
+                    "x2": 309,
+                    "y2": 4323.67,
+                    "style": "dot",
+                    "extend": "n",
+                    "width": 1,
+                    "colorIndex": 4283516483,
+                    "__ctor": "Object",
+                    "__keyCount": 10
+                  },
+                  "237": {
+                    "id": 237,
+                    "x1": 198,
+                    "y1": 4379.87,
+                    "x2": 309,
+                    "y2": 4379.87,
+                    "style": "dot",
+                    "extend": "n",
+                    "width": 1,
+                    "colorIndex": 4283516483,
+                    "__ctor": "Object",
+                    "__keyCount": 10
+                  },
+                  "239": {
+                    "id": 239,
+                    "x1": 198,
+                    "y1": 4367.754999999999,
+                    "x2": 198,
+                    "y2": 4396.570000000001,
+                    "style": "dot",
+                    "extend": "b",
+                    "width": 1,
+                    "colorIndex": 2152810051,
+                    "__ctor": "Object",
+                    "__keyCount": 10
+                  },
+                  "240": {
+                    "id": 240,
+                    "x1": 210,
+                    "y1": 4375.995,
+                    "x2": 210,
+                    "y2": 4399.5,
+                    "style": "dot",
+                    "extend": "b",
+                    "width": 1,
+                    "colorIndex": 2152810051,
+                    "__ctor": "Object",
+                    "__keyCount": 10
+                  },
+                  "__size": 4
+                },
+                "_changed": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_cleared": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_materializePrimitive": "[Function]",
+                "_isRematerializationRequiredWithNewIndexes": true,
+                "__ctor": "Ye",
+                "__keyCount": 6
+              },
+              "__size": 1
+            }
+          }
+        ]
+      },
+      "dwgboxes": {
+        "size": 1,
+        "items": [
+          {
+            "groupKey": "boxes",
+            "value": {
+              "false": {
+                "_primitivesDataById": {
+                  "1": {
+                    "id": 1,
+                    "x1": 0,
+                    "x2": 1,
+                    "y1": 4028.94,
+                    "y2": 3982.63,
+                    "c": 14077127,
+                    "bc": 1071041735,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "5": {
+                    "id": 5,
+                    "x1": 1,
+                    "x2": 2,
+                    "y1": 4040.815,
+                    "y2": 4002.185,
+                    "c": 14921615,
+                    "bc": 1289990031,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "7": {
+                    "id": 7,
+                    "x1": 2,
+                    "x2": 3,
+                    "y1": 4019.63,
+                    "y2": 3998.33,
+                    "c": 12764327,
+                    "bc": 818070695,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "13": {
+                    "id": 13,
+                    "x1": 4,
+                    "x2": 5,
+                    "y1": 4084.305,
+                    "y2": 4003.565,
+                    "c": 14077127,
+                    "bc": 1071041735,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "17": {
+                    "id": 17,
+                    "x1": 5,
+                    "x2": 6,
+                    "y1": 4080.285,
+                    "y2": 4054.52,
+                    "c": 14921615,
+                    "bc": 1289990031,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "19": {
+                    "id": 19,
+                    "x1": 6,
+                    "x2": 7,
+                    "y1": 4087.135,
+                    "y2": 4044.725,
+                    "c": 12764327,
+                    "bc": 818070695,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "25": {
+                    "id": 25,
+                    "x1": 8,
+                    "x2": 9,
+                    "y1": 4141.715,
+                    "y2": 4076.755,
+                    "c": 14077127,
+                    "bc": 1071041735,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "29": {
+                    "id": 29,
+                    "x1": 9,
+                    "x2": 10,
+                    "y1": 4133.17,
+                    "y2": 4109.395,
+                    "c": 14921615,
+                    "bc": 1289990031,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "31": {
+                    "id": 31,
+                    "x1": 10,
+                    "x2": 11,
+                    "y1": 4166.13,
+                    "y2": 4106.72,
+                    "c": 12764327,
+                    "bc": 818070695,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "37": {
+                    "id": 37,
+                    "x1": 12,
+                    "x2": 13,
+                    "y1": 4141.275,
+                    "y2": 4112.315,
+                    "c": 14077127,
+                    "bc": 1071041735,
+                    "ex": "n",
+                    "st": "sol",
+                    "w": 0,
+                    "t": "",
+                    "ts": "auto",
+                    "tc": 4294967295,
+                    "tva": "center",
+                    "tha": "center",
+                    "tw": "none",
+                    "__ctor": "Object",
+                    "__keyCount": 16
+                  },
+                  "__size": 60
+                },
+                "_primitiveById": {
+                  "1": {
+                    "left": null,
+                    "right": null,
+                    "top": 4028.94,
+                    "bottom": 3982.63,
+                    "borderColorIndex": 14077127,
+                    "backgroundColorIndex": 1071041735,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "5": {
+                    "left": null,
+                    "right": null,
+                    "top": 4040.815,
+                    "bottom": 4002.185,
+                    "borderColorIndex": 14921615,
+                    "backgroundColorIndex": 1289990031,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "7": {
+                    "left": null,
+                    "right": null,
+                    "top": 4019.63,
+                    "bottom": 3998.33,
+                    "borderColorIndex": 12764327,
+                    "backgroundColorIndex": 818070695,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "13": {
+                    "left": null,
+                    "right": null,
+                    "top": 4084.305,
+                    "bottom": 4003.565,
+                    "borderColorIndex": 14077127,
+                    "backgroundColorIndex": 1071041735,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "17": {
+                    "left": null,
+                    "right": null,
+                    "top": 4080.285,
+                    "bottom": 4054.52,
+                    "borderColorIndex": 14921615,
+                    "backgroundColorIndex": 1289990031,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "19": {
+                    "left": null,
+                    "right": null,
+                    "top": 4087.135,
+                    "bottom": 4044.725,
+                    "borderColorIndex": 12764327,
+                    "backgroundColorIndex": 818070695,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "25": {
+                    "left": null,
+                    "right": null,
+                    "top": 4141.715,
+                    "bottom": 4076.755,
+                    "borderColorIndex": 14077127,
+                    "backgroundColorIndex": 1071041735,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "29": {
+                    "left": null,
+                    "right": null,
+                    "top": 4133.17,
+                    "bottom": 4109.395,
+                    "borderColorIndex": 14921615,
+                    "backgroundColorIndex": 1289990031,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "31": {
+                    "left": null,
+                    "right": null,
+                    "top": 4166.13,
+                    "bottom": 4106.72,
+                    "borderColorIndex": 12764327,
+                    "backgroundColorIndex": 818070695,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "37": {
+                    "left": null,
+                    "right": null,
+                    "top": 4141.275,
+                    "bottom": 4112.315,
+                    "borderColorIndex": 14077127,
+                    "backgroundColorIndex": 1071041735,
+                    "extend": "n",
+                    "borderStyle": "sol",
+                    "borderWidth": 0,
+                    "text": "",
+                    "textFormatting": 0,
+                    "wordWrap": "none",
+                    "horizontalTextAlignment": "center",
+                    "verticalTextAlignment": "center",
+                    "fontSize": "auto",
+                    "textColorIndex": 4294967295,
+                    "fontType": null,
+                    "__ctor": "Object",
+                    "__keyCount": 18
+                  },
+                  "__size": 60
+                },
+                "_changed": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_cleared": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_materializePrimitive": "[Function]",
+                "_isRematerializationRequiredWithNewIndexes": true,
+                "__ctor": "Ye",
+                "__keyCount": 6
+              },
+              "__size": 1
+            }
+          }
+        ]
+      },
+      "dwglabels": {
+        "size": 1,
+        "items": [
+          {
+            "groupKey": "labels",
+            "value": {
+              "false": {
+                "_primitivesDataById": {
+                  "2": {
+                    "id": 2,
+                    "x": 0,
+                    "y": 4028.94,
+                    "yl": "pr",
+                    "t": "Asia\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "6": {
+                    "id": 6,
+                    "x": 1,
+                    "y": 4040.815,
+                    "yl": "pr",
+                    "t": "London\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "8": {
+                    "id": 8,
+                    "x": 2,
+                    "y": 4019.63,
+                    "yl": "pr",
+                    "t": "New York\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "14": {
+                    "id": 14,
+                    "x": 4,
+                    "y": 4084.305,
+                    "yl": "pr",
+                    "t": "Asia\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "18": {
+                    "id": 18,
+                    "x": 5,
+                    "y": 4080.285,
+                    "yl": "pr",
+                    "t": "London\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "20": {
+                    "id": 20,
+                    "x": 6,
+                    "y": 4087.135,
+                    "yl": "pr",
+                    "t": "New York\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "26": {
+                    "id": 26,
+                    "x": 8,
+                    "y": 4141.715,
+                    "yl": "pr",
+                    "t": "Asia\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "30": {
+                    "id": 30,
+                    "x": 9,
+                    "y": 4133.17,
+                    "yl": "pr",
+                    "t": "London\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "32": {
+                    "id": 32,
+                    "x": 10,
+                    "y": 4166.13,
+                    "yl": "pr",
+                    "t": "New York\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "38": {
+                    "id": 38,
+                    "x": 12,
+                    "y": 4141.275,
+                    "yl": "pr",
+                    "t": "Asia\n",
+                    "st": "n",
+                    "ci": 4294926889,
+                    "tci": 4281216558,
+                    "sz": "normal",
+                    "ta": "center",
+                    "tt": "",
+                    "__ctor": "Object",
+                    "__keyCount": 11
+                  },
+                  "__size": 62
+                },
+                "_primitiveById": {
+                  "230": {
+                    "x": 48,
+                    "y": 4362.045,
+                    "yloc": "pr",
+                    "text": "Asia\n",
+                    "style": "n",
+                    "size": "normal",
+                    "colorIndex": 4294926889,
+                    "textColorIndex": 4281216558,
+                    "textAlign": "center",
+                    "tooltip": "",
+                    "fontType": null,
+                    "textFormatting": 0,
+                    "__ctor": "Object",
+                    "__keyCount": 13
+                  },
+                  "232": {
+                    "x": 309,
+                    "y": 4323.67,
+                    "yloc": "pr",
+                    "text": "NYO",
+                    "style": "n",
+                    "size": "small",
+                    "colorIndex": 4294926889,
+                    "textColorIndex": 4283516483,
+                    "textAlign": "left",
+                    "tooltip": "",
+                    "fontType": null,
+                    "textFormatting": 0,
+                    "__ctor": "Object",
+                    "__keyCount": 13
+                  },
+                  "234": {
+                    "x": 132,
+                    "y": 4380.745,
+                    "yloc": "pr",
+                    "text": "London\n",
+                    "style": "n",
+                    "size": "normal",
+                    "colorIndex": 4294926889,
+                    "textColorIndex": 4281216558,
+                    "textAlign": "center",
+                    "tooltip": "",
+                    "fontType": null,
+                    "textFormatting": 0,
+                    "__ctor": "Object",
+                    "__keyCount": 13
+                  },
+                  "236": {
+                    "x": 198,
+                    "y": 4397.06,
+                    "yloc": "pr",
+                    "text": "New York\n",
+                    "style": "n",
+                    "size": "normal",
+                    "colorIndex": 4294926889,
+                    "textColorIndex": 4281216558,
+                    "textAlign": "center",
+                    "tooltip": "",
+                    "fontType": null,
+                    "textFormatting": 0,
+                    "__ctor": "Object",
+                    "__keyCount": 13
+                  },
+                  "238": {
+                    "x": 309,
+                    "y": 4379.87,
+                    "yloc": "pr",
+                    "text": "8.30",
+                    "style": "n",
+                    "size": "small",
+                    "colorIndex": 4294926889,
+                    "textColorIndex": 4283516483,
+                    "textAlign": "left",
+                    "tooltip": "",
+                    "fontType": null,
+                    "textFormatting": 0,
+                    "__ctor": "Object",
+                    "__keyCount": 13
+                  },
+                  "__size": 5
+                },
+                "_changed": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_cleared": {
+                  "fire": "[Function]",
+                  "_listeners": [],
+                  "__ctor": "s",
+                  "__keyCount": 2
+                },
+                "_materializePrimitive": "[Function]",
+                "_isRematerializationRequiredWithNewIndexes": true,
+                "__ctor": "Ye",
+                "__keyCount": 6
+              },
+              "__size": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "ZdJin1",
+    "name": "FXN - Asian Session Range",
+    "visible": false,
+    "extracted": {
+      "dwglines": {
+        "size": 1,
+        "items": [
+          {
+            "groupKey": "lines",
+            "value": {
+              "__size": 0
+            }
+          }
+        ]
+      },
+      "dwglabels": {
+        "size": 1,
+        "items": [
+          {
+            "groupKey": "labels",
+            "value": {
+              "__size": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+]

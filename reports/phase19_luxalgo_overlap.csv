@@ -1,0 +1,3 @@
+timeframe,luxalgo_reliable,internal,full_matches,luxalgo_only,internal_only,equivalence_status
+5m,1,11,0,1,11,unvalidated_against_luxalgo
+15m,2,19,0,2,19,unvalidated_against_luxalgo

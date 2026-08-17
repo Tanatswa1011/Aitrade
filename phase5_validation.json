@@ -1,0 +1,221 @@
+{
+  "ok": true,
+  "phase": 5,
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "example": {
+    "mode": "offline_fixture",
+    "note": "Deterministic fixture (not live CDP). Shows first_touch/boundary triggering while CE still waiting on partial bars, then CE triggers later.",
+    "session": "Asia",
+    "sweep": {
+      "side": "low",
+      "level": 4311.04,
+      "time": "1970-01-01T00:16:40+00:00"
+    },
+    "choch": {
+      "direction": "bullish",
+      "level": 4320.0,
+      "time": "1970-01-01T00:33:20+00:00"
+    },
+    "fvg": {
+      "direction": "bullish",
+      "low": 4325.0,
+      "high": 4330.0,
+      "ce": 4327.5,
+      "created": "1970-01-01T01:23:20+00:00",
+      "setup_reference": {
+        "sequence": "sweep\u2192CHoCH\u2192FVG",
+        "session": "Asia",
+        "sweep_side": "low",
+        "sweep_level": 4311.04,
+        "sweep_timestamp": 1000,
+        "confirmation_kind": "CHoCH",
+        "confirmation_direction": "bullish",
+        "confirmation_level": 4320.0,
+        "confirmation_timestamp": 2000,
+        "confirmation_raw_id": "fixture",
+        "confirmation_source": "luxalgo",
+        "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+      }
+    },
+    "entry_candidates_after_partial_retrace": {
+      "first_touch": {
+        "price": 4328.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.4,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "boundary": {
+        "price": 4330.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.0,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "ce": {
+        "price": 4327.5,
+        "triggered": false,
+        "status": "waiting",
+        "time": null,
+        "bars_after_fvg": null,
+        "entry_depth": 0.5,
+        "max_retrace_depth": null,
+        "fully_filled_before_or_at_entry": false
+      }
+    },
+    "entry_candidates_after_ce_reach": {
+      "first_touch": {
+        "price": 4328.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.4,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "boundary": {
+        "price": 4330.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.0,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "ce": {
+        "price": 4327.5,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:56:40+00:00",
+        "bars_after_fvg": 2,
+        "entry_depth": 0.5,
+        "max_retrace_depth": 0.8,
+        "fully_filled_before_or_at_entry": false
+      }
+    },
+    "default_entry_config": {
+      "mode": "first_touch",
+      "allow_full_fill": true,
+      "max_bars_after_fvg": null,
+      "extras": {}
+    },
+    "live_status": {
+      "mode": "live_unavailable",
+      "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?"
+    }
+  },
+  "offline_fixture": {
+    "mode": "offline_fixture",
+    "note": "Deterministic fixture (not live CDP). Shows first_touch/boundary triggering while CE still waiting on partial bars, then CE triggers later.",
+    "session": "Asia",
+    "sweep": {
+      "side": "low",
+      "level": 4311.04,
+      "time": "1970-01-01T00:16:40+00:00"
+    },
+    "choch": {
+      "direction": "bullish",
+      "level": 4320.0,
+      "time": "1970-01-01T00:33:20+00:00"
+    },
+    "fvg": {
+      "direction": "bullish",
+      "low": 4325.0,
+      "high": 4330.0,
+      "ce": 4327.5,
+      "created": "1970-01-01T01:23:20+00:00",
+      "setup_reference": {
+        "sequence": "sweep\u2192CHoCH\u2192FVG",
+        "session": "Asia",
+        "sweep_side": "low",
+        "sweep_level": 4311.04,
+        "sweep_timestamp": 1000,
+        "confirmation_kind": "CHoCH",
+        "confirmation_direction": "bullish",
+        "confirmation_level": 4320.0,
+        "confirmation_timestamp": 2000,
+        "confirmation_raw_id": "fixture",
+        "confirmation_source": "luxalgo",
+        "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+      }
+    },
+    "entry_candidates_after_partial_retrace": {
+      "first_touch": {
+        "price": 4328.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.4,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "boundary": {
+        "price": 4330.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.0,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "ce": {
+        "price": 4327.5,
+        "triggered": false,
+        "status": "waiting",
+        "time": null,
+        "bars_after_fvg": null,
+        "entry_depth": 0.5,
+        "max_retrace_depth": null,
+        "fully_filled_before_or_at_entry": false
+      }
+    },
+    "entry_candidates_after_ce_reach": {
+      "first_touch": {
+        "price": 4328.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.4,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "boundary": {
+        "price": 4330.0,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:40:00+00:00",
+        "bars_after_fvg": 1,
+        "entry_depth": 0.0,
+        "max_retrace_depth": 0.4,
+        "fully_filled_before_or_at_entry": false
+      },
+      "ce": {
+        "price": 4327.5,
+        "triggered": true,
+        "status": "triggered",
+        "time": "1970-01-01T01:56:40+00:00",
+        "bars_after_fvg": 2,
+        "entry_depth": 0.5,
+        "max_retrace_depth": 0.8,
+        "fully_filled_before_or_at_entry": false
+      }
+    },
+    "default_entry_config": {
+      "mode": "first_touch",
+      "allow_full_fill": true,
+      "max_bars_after_fvg": null,
+      "extras": {}
+    }
+  }
+}

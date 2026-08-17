@@ -1,0 +1,5 @@
+credential_key,credentials_required,note,provider,route,spot_or_futures,supports_15m,supports_1m,supports_5m,xauusd_accepted
+tiingo_token,True,,tiingo,obb.currency.price.historical,spot_candidate,True,True,True,False
+,False,,yfinance,obb.currency.price.historical,spot_candidate,True,True,True,False
+fmp_api_key,True,,fmp,obb.currency.price.historical,spot_candidate,unknown,unknown,unknown,False
+,False,COMEX gold futures — research comparator only; not OANDA:XAUUSD,yfinance,obb.derivatives.futures.historical,futures,True,True,True,False

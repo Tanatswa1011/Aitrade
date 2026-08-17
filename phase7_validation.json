@@ -1,0 +1,757 @@
+{
+  "ok": true,
+  "phase": 7,
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "offline_complete_setup": {
+    "mode": "offline_fixture",
+    "status": "ENTRY_READY",
+    "setup_id": "OANDA:XAUUSD|Asia|2026-08-14|low|1000",
+    "explanation": "OANDA:XAUUSD Bullish Session Setup\nStatus: ENTRY_READY\nSetup ID: OANDA:XAUUSD|Asia|2026-08-14|low|1000\n\nSession:\n  Asia\n  Trading date: 2026-08-14\n  Timeframe: 15\n  High: 4360.00\n  Low: 4311.04\n  Complete: True\n  Coverage: full\n  Source: ict_sessions\n\nLiquidity event:\n  Asia low swept @ 4311.04\n  Sweep time: 1970-01-01 00:16 UTC\n  Sweep extreme: 4310.00\n\nStructure:\n  Bullish CHoCH @ 4320.00\n  Time: 1970-01-01 00:33 UTC\n  Timing confidence: exact\n  Source: luxalgo\n\nFVG:\n  4325.00 \u2013 4330.00\n  CE: 4327.50\n  Created: 1970-01-01 01:23 UTC\n\nEntry candidates:\n  first_touch\n    Triggered: True (triggered)\n    Entry: 4328.00\n    Entry depth: 0.4000\n    Max retrace depth: 0.4000\n    Stop mode: beyond_sweep\n    Stop: 4310.00\n    Risk: 18.00\n    Risk valid: True\n    1.0R: 4346.00\n    2.0R: 4364.00\n    3.0R: 4382.00\n    Asia High: 4360.00\n    RR to opposite: 1.7778 (valid=True)\n  boundary\n    Triggered: True (triggered)\n    Entry: 4330.00\n    Entry depth: 0.0000\n    Max retrace depth: 0.4000\n    Stop mode: beyond_sweep\n    Stop: 4310.00\n    Risk: 20.00\n    Risk valid: True\n    1.0R: 4350.00\n    2.0R: 4370.00\n    3.0R: 4390.00\n    Asia High: 4360.00\n    RR to opposite: 1.5000 (valid=True)\n  ce\n    Triggered: True (triggered)\n    Entry: 4327.50\n    Entry depth: 0.5000\n    Max retrace depth: 0.8000\n    Stop mode: beyond_sweep\n    Stop: 4310.00\n    Risk: 17.50\n    Risk valid: True\n    1.0R: 4345.00\n    2.0R: 4362.50\n    3.0R: 4380.00\n    Asia High: 4360.00\n    RR to opposite: 1.8571 (valid=True)\n\nReliability:\n  Session source: ict_sessions\n  Session confidence: high\n  Coverage: full\n  CHoCH timing confidence: exact\n\nDocumented ambiguity:\n  Pre-entry invalidation uses bars with FVG_creation < timestamp < entry_trigger. The trigger bar itself is not treated as pre-entry invalidation. A bar that both fills entry and trades through the stop cannot be classified as 'entry then stopped' vs 'invalid before fill' from OHLC alone (TRIGGER_BAR_STOP_AMBIGUITY).",
+    "setup": {
+      "id": "OANDA:XAUUSD|Asia|2026-08-14|low|1000",
+      "symbol": "OANDA:XAUUSD",
+      "timeframe": "15",
+      "trading_date": "2026-08-14",
+      "session": "Asia",
+      "direction": "bullish",
+      "session_range": {
+        "name": "Asia",
+        "timezone": "America/New_York",
+        "start": 0,
+        "end": 900,
+        "high": 4360.0,
+        "low": 4311.04,
+        "high_timestamp": null,
+        "low_timestamp": null,
+        "complete": true,
+        "source": "ict_sessions",
+        "coverage_status": "full",
+        "identity": "Asia:fixture",
+        "extras": {
+          "resolved_window": {
+            "trading_date": "2026-08-14"
+          }
+        }
+      },
+      "sweep": {
+        "session": "Asia",
+        "side": "low",
+        "level": 4311.04,
+        "sweep_timestamp": 1000,
+        "sweep_price": 4310.0,
+        "maximum_excursion": 1.0399999999999636,
+        "reclaim_status": true,
+        "rule": "wick_only",
+        "sweep_candle": {
+          "time": 1000,
+          "open": 4312,
+          "high": 4313,
+          "low": 4310,
+          "close": 4312,
+          "volume": null
+        },
+        "session_range": {
+          "name": "Asia",
+          "timezone": "America/New_York",
+          "start": 0,
+          "end": 900,
+          "high": 4360.0,
+          "low": 4311.04,
+          "high_timestamp": null,
+          "low_timestamp": null,
+          "complete": true,
+          "source": "ict_sessions",
+          "coverage_status": "full",
+          "identity": "Asia:fixture",
+          "extras": {
+            "resolved_window": {
+              "trading_date": "2026-08-14"
+            }
+          }
+        }
+      },
+      "confirmation": {
+        "kind": "CHoCH",
+        "direction": "bullish",
+        "level": 4320.0,
+        "event_timestamp": 2000,
+        "event_bar_index": null,
+        "source": "luxalgo",
+        "study_id": "smUEv2",
+        "raw_id": "fixture",
+        "timing_confidence": "exact",
+        "extras": {}
+      },
+      "fvg": {
+        "direction": "bullish",
+        "low": 4325.0,
+        "high": 4330.0,
+        "midpoint": 4327.5,
+        "created_timestamp": 5000,
+        "candle1_timestamp": 3000,
+        "candle2_timestamp": 4000,
+        "candle3_timestamp": 5000,
+        "gap_size": 5.0,
+        "gap_points": 5.0,
+        "mitigated": true,
+        "first_mitigation_timestamp": 6000,
+        "fully_filled": false,
+        "first_full_fill_timestamp": null,
+        "bars_after_sweep": 4,
+        "bars_after_confirmation": 3,
+        "setup_reference": {
+          "sequence": "sweep\u2192CHoCH\u2192FVG",
+          "session": "Asia",
+          "sweep_side": "low",
+          "sweep_level": 4311.04,
+          "sweep_timestamp": 1000,
+          "confirmation_kind": "CHoCH",
+          "confirmation_direction": "bullish",
+          "confirmation_level": 4320.0,
+          "confirmation_timestamp": 2000,
+          "confirmation_raw_id": "fixture",
+          "confirmation_source": "luxalgo",
+          "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+        },
+        "source": "internal_ohlc",
+        "extras": {
+          "candle1": {
+            "time": 3000,
+            "open": 4321,
+            "high": 4325,
+            "low": 4320,
+            "close": 4324,
+            "volume": null
+          },
+          "candle2": {
+            "time": 4000,
+            "open": 4324,
+            "high": 4340,
+            "low": 4323,
+            "close": 4338,
+            "volume": null
+          },
+          "candle3": {
+            "time": 5000,
+            "open": 4338,
+            "high": 4345,
+            "low": 4330,
+            "close": 4342,
+            "volume": null
+          },
+          "post_conf_triplet_start": 0
+        }
+      },
+      "entries": [
+        {
+          "entry": {
+            "mode": "first_touch",
+            "direction": "bullish",
+            "price": 4328.0,
+            "triggered": true,
+            "trigger_timestamp": 6000,
+            "trigger_bar_index": 5,
+            "fvg_reference": {
+              "direction": "bullish",
+              "low": 4325.0,
+              "high": 4330.0,
+              "midpoint": 4327.5,
+              "created_timestamp": 5000,
+              "gap_size": 5.0,
+              "candle1_timestamp": 3000,
+              "candle2_timestamp": 4000,
+              "candle3_timestamp": 5000
+            },
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+            },
+            "entry_depth": 0.4,
+            "max_retrace_depth": 0.4,
+            "bars_after_fvg": 1,
+            "status": "triggered",
+            "extras": {
+              "fully_filled_before_or_at_entry": false,
+              "first_full_fill_timestamp": null,
+              "fill_on_trigger_bar": false,
+              "config": {
+                "mode": "first_touch",
+                "allow_full_fill": true,
+                "max_bars_after_fvg": null,
+                "extras": {}
+              }
+            }
+          },
+          "risk": {
+            "direction": "bullish",
+            "stop_mode": "beyond_sweep",
+            "entry_price": 4328.0,
+            "stop_price": 4310.0,
+            "risk_distance": 18.0,
+            "risk_points": 18.0,
+            "buffer": 0.0,
+            "valid": true,
+            "invalidation_reason": null,
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG",
+              "entry_mode": "first_touch",
+              "entry_price": 4328.0,
+              "entry_trigger_timestamp": 6000,
+              "fvg_fully_filled_meta": false
+            },
+            "extras": {
+              "config": {
+                "stop_mode": "beyond_sweep",
+                "stop_buffer_price": 0.0,
+                "stop_buffer_points": 0.0,
+                "point_size": 1.0,
+                "invalidate_before_entry": true,
+                "extras": {}
+              },
+              "sweep_extreme": 4310.0,
+              "fvg_low": 4325.0,
+              "fvg_high": 4330.0,
+              "entry_mode": "first_touch",
+              "entry_depth": 0.4,
+              "max_retrace_depth": 0.4,
+              "fully_filled_before_or_at_entry": false
+            }
+          },
+          "target": {
+            "fixed_rr_targets": [
+              {
+                "rr": 1.0,
+                "price": 4346.0,
+                "distance": 18.0
+              },
+              {
+                "rr": 2.0,
+                "price": 4364.0,
+                "distance": 36.0
+              },
+              {
+                "rr": 3.0,
+                "price": 4382.0,
+                "distance": 54.0
+              }
+            ],
+            "opposite_liquidity": true,
+            "opposite_liquidity_label": "Asia High",
+            "opposite_liquidity_price": 4360.0,
+            "rr_to_opposite": 1.7777777777777777,
+            "opposite_target_valid": true,
+            "valid": true,
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG",
+              "entry_mode": "first_touch",
+              "entry_price": 4328.0,
+              "entry_trigger_timestamp": 6000,
+              "fvg_fully_filled_meta": false
+            },
+            "extras": {
+              "config": {
+                "fixed_rr": [
+                  1.0,
+                  2.0,
+                  3.0
+                ],
+                "use_opposite_liquidity": true,
+                "opposite_liquidity_mode": "same_session",
+                "extras": {}
+              },
+              "entry_mode": "first_touch",
+              "risk_distance": 18.0,
+              "reward_to_opposite": 32.0
+            }
+          }
+        },
+        {
+          "entry": {
+            "mode": "boundary",
+            "direction": "bullish",
+            "price": 4330.0,
+            "triggered": true,
+            "trigger_timestamp": 6000,
+            "trigger_bar_index": 5,
+            "fvg_reference": {
+              "direction": "bullish",
+              "low": 4325.0,
+              "high": 4330.0,
+              "midpoint": 4327.5,
+              "created_timestamp": 5000,
+              "gap_size": 5.0,
+              "candle1_timestamp": 3000,
+              "candle2_timestamp": 4000,
+              "candle3_timestamp": 5000
+            },
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+            },
+            "entry_depth": 0.0,
+            "max_retrace_depth": 0.4,
+            "bars_after_fvg": 1,
+            "status": "triggered",
+            "extras": {
+              "fully_filled_before_or_at_entry": false,
+              "first_full_fill_timestamp": null,
+              "fill_on_trigger_bar": false,
+              "config": {
+                "mode": "boundary",
+                "allow_full_fill": true,
+                "max_bars_after_fvg": null,
+                "extras": {}
+              }
+            }
+          },
+          "risk": {
+            "direction": "bullish",
+            "stop_mode": "beyond_sweep",
+            "entry_price": 4330.0,
+            "stop_price": 4310.0,
+            "risk_distance": 20.0,
+            "risk_points": 20.0,
+            "buffer": 0.0,
+            "valid": true,
+            "invalidation_reason": null,
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG",
+              "entry_mode": "boundary",
+              "entry_price": 4330.0,
+              "entry_trigger_timestamp": 6000,
+              "fvg_fully_filled_meta": false
+            },
+            "extras": {
+              "config": {
+                "stop_mode": "beyond_sweep",
+                "stop_buffer_price": 0.0,
+                "stop_buffer_points": 0.0,
+                "point_size": 1.0,
+                "invalidate_before_entry": true,
+                "extras": {}
+              },
+              "sweep_extreme": 4310.0,
+              "fvg_low": 4325.0,
+              "fvg_high": 4330.0,
+              "entry_mode": "boundary",
+              "entry_depth": 0.0,
+              "max_retrace_depth": 0.4,
+              "fully_filled_before_or_at_entry": false
+            }
+          },
+          "target": {
+            "fixed_rr_targets": [
+              {
+                "rr": 1.0,
+                "price": 4350.0,
+                "distance": 20.0
+              },
+              {
+                "rr": 2.0,
+                "price": 4370.0,
+                "distance": 40.0
+              },
+              {
+                "rr": 3.0,
+                "price": 4390.0,
+                "distance": 60.0
+              }
+            ],
+            "opposite_liquidity": true,
+            "opposite_liquidity_label": "Asia High",
+            "opposite_liquidity_price": 4360.0,
+            "rr_to_opposite": 1.5,
+            "opposite_target_valid": true,
+            "valid": true,
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG",
+              "entry_mode": "boundary",
+              "entry_price": 4330.0,
+              "entry_trigger_timestamp": 6000,
+              "fvg_fully_filled_meta": false
+            },
+            "extras": {
+              "config": {
+                "fixed_rr": [
+                  1.0,
+                  2.0,
+                  3.0
+                ],
+                "use_opposite_liquidity": true,
+                "opposite_liquidity_mode": "same_session",
+                "extras": {}
+              },
+              "entry_mode": "boundary",
+              "risk_distance": 20.0,
+              "reward_to_opposite": 30.0
+            }
+          }
+        },
+        {
+          "entry": {
+            "mode": "ce",
+            "direction": "bullish",
+            "price": 4327.5,
+            "triggered": true,
+            "trigger_timestamp": 7000,
+            "trigger_bar_index": 6,
+            "fvg_reference": {
+              "direction": "bullish",
+              "low": 4325.0,
+              "high": 4330.0,
+              "midpoint": 4327.5,
+              "created_timestamp": 5000,
+              "gap_size": 5.0,
+              "candle1_timestamp": 3000,
+              "candle2_timestamp": 4000,
+              "candle3_timestamp": 5000
+            },
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+            },
+            "entry_depth": 0.5,
+            "max_retrace_depth": 0.8,
+            "bars_after_fvg": 2,
+            "status": "triggered",
+            "extras": {
+              "fully_filled_before_or_at_entry": false,
+              "first_full_fill_timestamp": null,
+              "fill_on_trigger_bar": false,
+              "config": {
+                "mode": "ce",
+                "allow_full_fill": true,
+                "max_bars_after_fvg": null,
+                "extras": {}
+              }
+            }
+          },
+          "risk": {
+            "direction": "bullish",
+            "stop_mode": "beyond_sweep",
+            "entry_price": 4327.5,
+            "stop_price": 4310.0,
+            "risk_distance": 17.5,
+            "risk_points": 17.5,
+            "buffer": 0.0,
+            "valid": true,
+            "invalidation_reason": null,
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG",
+              "entry_mode": "ce",
+              "entry_price": 4327.5,
+              "entry_trigger_timestamp": 7000,
+              "fvg_fully_filled_meta": false
+            },
+            "extras": {
+              "config": {
+                "stop_mode": "beyond_sweep",
+                "stop_buffer_price": 0.0,
+                "stop_buffer_points": 0.0,
+                "point_size": 1.0,
+                "invalidate_before_entry": true,
+                "extras": {}
+              },
+              "sweep_extreme": 4310.0,
+              "fvg_low": 4325.0,
+              "fvg_high": 4330.0,
+              "entry_mode": "ce",
+              "entry_depth": 0.5,
+              "max_retrace_depth": 0.8,
+              "fully_filled_before_or_at_entry": false
+            }
+          },
+          "target": {
+            "fixed_rr_targets": [
+              {
+                "rr": 1.0,
+                "price": 4345.0,
+                "distance": 17.5
+              },
+              {
+                "rr": 2.0,
+                "price": 4362.5,
+                "distance": 35.0
+              },
+              {
+                "rr": 3.0,
+                "price": 4380.0,
+                "distance": 52.5
+              }
+            ],
+            "opposite_liquidity": true,
+            "opposite_liquidity_label": "Asia High",
+            "opposite_liquidity_price": 4360.0,
+            "rr_to_opposite": 1.8571428571428572,
+            "opposite_target_valid": true,
+            "valid": true,
+            "setup_reference": {
+              "sequence": "sweep\u2192CHoCH\u2192FVG",
+              "session": "Asia",
+              "sweep_side": "low",
+              "sweep_level": 4311.04,
+              "sweep_timestamp": 1000,
+              "confirmation_kind": "CHoCH",
+              "confirmation_direction": "bullish",
+              "confirmation_level": 4320.0,
+              "confirmation_timestamp": 2000,
+              "confirmation_raw_id": "fixture",
+              "confirmation_source": "luxalgo",
+              "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG",
+              "entry_mode": "ce",
+              "entry_price": 4327.5,
+              "entry_trigger_timestamp": 7000,
+              "fvg_fully_filled_meta": false
+            },
+            "extras": {
+              "config": {
+                "fixed_rr": [
+                  1.0,
+                  2.0,
+                  3.0
+                ],
+                "use_opposite_liquidity": true,
+                "opposite_liquidity_mode": "same_session",
+                "extras": {}
+              },
+              "entry_mode": "ce",
+              "risk_distance": 17.5,
+              "reward_to_opposite": 32.5
+            }
+          }
+        }
+      ],
+      "status": "ENTRY_READY",
+      "setup_quality": {
+        "entry_mode_comparison": [
+          {
+            "mode": "first_touch",
+            "triggered": true,
+            "entry_price": 4328.0,
+            "entry_depth": 0.4,
+            "max_retrace_depth": 0.4,
+            "risk_valid": true,
+            "risk_distance": 18.0,
+            "stop_price": 4310.0,
+            "1R": 4346.0,
+            "2R": 4364.0,
+            "3R": 4382.0,
+            "opposite_liquidity": "Asia High",
+            "opposite_price": 4360.0,
+            "rr_to_opposite": 1.7777777777777777
+          },
+          {
+            "mode": "boundary",
+            "triggered": true,
+            "entry_price": 4330.0,
+            "entry_depth": 0.0,
+            "max_retrace_depth": 0.4,
+            "risk_valid": true,
+            "risk_distance": 20.0,
+            "stop_price": 4310.0,
+            "1R": 4350.0,
+            "2R": 4370.0,
+            "3R": 4390.0,
+            "opposite_liquidity": "Asia High",
+            "opposite_price": 4360.0,
+            "rr_to_opposite": 1.5
+          },
+          {
+            "mode": "ce",
+            "triggered": true,
+            "entry_price": 4327.5,
+            "entry_depth": 0.5,
+            "max_retrace_depth": 0.8,
+            "risk_valid": true,
+            "risk_distance": 17.5,
+            "stop_price": 4310.0,
+            "1R": 4345.0,
+            "2R": 4362.5,
+            "3R": 4380.0,
+            "opposite_liquidity": "Asia High",
+            "opposite_price": 4360.0,
+            "rr_to_opposite": 1.8571428571428572
+          }
+        ],
+        "note": "Comparison only; no preferred mode selected."
+      },
+      "created_at": "2026-08-15T18:23:00.495764+00:00",
+      "updated_at": "2026-08-15T18:23:00.495764+00:00",
+      "expiry_reason": null,
+      "invalidation_reason": null,
+      "source_metadata": {
+        "session_source": "ict_sessions",
+        "coverage_status": "full",
+        "session_complete_flag": true,
+        "bar_count": 7,
+        "confirmation_timing_confidence": "exact",
+        "sweep_extreme": 4310.0,
+        "partial_invalid_entry_modes": [],
+        "dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+        "session_confidence": "high",
+        "trigger_bar_stop_ambiguity": "Pre-entry invalidation uses bars with FVG_creation < timestamp < entry_trigger. The trigger bar itself is not treated as pre-entry invalidation. A bar that both fills entry and trades through the stop cannot be classified as 'entry then stopped' vs 'invalid before fill' from OHLC alone (TRIGGER_BAR_STOP_AMBIGUITY).",
+        "strategy_config": {
+          "sweep_rule": "wick_only",
+          "entry_modes": [
+            "first_touch",
+            "boundary",
+            "ce"
+          ],
+          "fvg": {
+            "first_only": true,
+            "max_bars_after_confirmation": null,
+            "min_gap": 0.0,
+            "min_gap_points": 0.0,
+            "point_size": 1.0,
+            "require_displacement": false,
+            "displacement_min_body_ratio": 0.5,
+            "displacement_body_lookback": 0,
+            "displacement_body_vs_avg_mult": 1.0
+          },
+          "entry": {
+            "mode": "first_touch",
+            "allow_full_fill": true,
+            "max_bars_after_fvg": null,
+            "extras": {}
+          },
+          "risk": {
+            "stop_mode": "beyond_sweep",
+            "stop_buffer_price": 0.0,
+            "stop_buffer_points": 0.0,
+            "point_size": 1.0,
+            "invalidate_before_entry": true,
+            "extras": {}
+          },
+          "target": {
+            "fixed_rr": [
+              1.0,
+              2.0,
+              3.0
+            ],
+            "use_opposite_liquidity": true,
+            "opposite_liquidity_mode": "same_session",
+            "extras": {}
+          },
+          "prefer_completed_sessions_only": true,
+          "session_confidence": {
+            "Asia": "high",
+            "London": "high"
+          },
+          "dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+          "session_definitions": {
+            "Asia": {
+              "name": "Asia",
+              "reference_timezone": "America/New_York",
+              "local_start": "20:00",
+              "local_end": "03:00",
+              "source": "ict_empirical+classic_ict",
+              "notes": "Reproduces ICT Asia High/Low. Equals UTC 00:00-07:00 only while US is on EDT; shifts with America/New_York DST.",
+              "crosses_midnight": true
+            },
+            "London": {
+              "name": "London",
+              "reference_timezone": "America/New_York",
+              "local_start": "03:00",
+              "local_end": "08:30",
+              "source": "ict_empirical+classic_ict",
+              "notes": "Reproduces ICT London High/Low. Equals UTC 07:00-12:30 on US DST dates (not labeled GMT 08:00-13:30). Shifts with America/New_York DST.",
+              "crosses_midnight": false
+            }
+          },
+          "extras": {}
+        }
+      },
+      "explanation": "OANDA:XAUUSD Bullish Session Setup\nStatus: ENTRY_READY\nSetup ID: OANDA:XAUUSD|Asia|2026-08-14|low|1000\n\nSession:\n  Asia\n  Trading date: 2026-08-14\n  Timeframe: 15\n  High: 4360.00\n  Low: 4311.04\n  Complete: True\n  Coverage: full\n  Source: ict_sessions\n\nLiquidity event:\n  Asia low swept @ 4311.04\n  Sweep time: 1970-01-01 00:16 UTC\n  Sweep extreme: 4310.00\n\nStructure:\n  Bullish CHoCH @ 4320.00\n  Time: 1970-01-01 00:33 UTC\n  Timing confidence: exact\n  Source: luxalgo\n\nFVG:\n  4325.00 \u2013 4330.00\n  CE: 4327.50\n  Created: 1970-01-01 01:23 UTC\n\nEntry candidates:\n  first_touch\n    Triggered: True (triggered)\n    Entry: 4328.00\n    Entry depth: 0.4000\n    Max retrace depth: 0.4000\n    Stop mode: beyond_sweep\n    Stop: 4310.00\n    Risk: 18.00\n    Risk valid: True\n    1.0R: 4346.00\n    2.0R: 4364.00\n    3.0R: 4382.00\n    Asia High: 4360.00\n    RR to opposite: 1.7778 (valid=True)\n  boundary\n    Triggered: True (triggered)\n    Entry: 4330.00\n    Entry depth: 0.0000\n    Max retrace depth: 0.4000\n    Stop mode: beyond_sweep\n    Stop: 4310.00\n    Risk: 20.00\n    Risk valid: True\n    1.0R: 4350.00\n    2.0R: 4370.00\n    3.0R: 4390.00\n    Asia High: 4360.00\n    RR to opposite: 1.5000 (valid=True)\n  ce\n    Triggered: True (triggered)\n    Entry: 4327.50\n    Entry depth: 0.5000\n    Max retrace depth: 0.8000\n    Stop mode: beyond_sweep\n    Stop: 4310.00\n    Risk: 17.50\n    Risk valid: True\n    1.0R: 4345.00\n    2.0R: 4362.50\n    3.0R: 4380.00\n    Asia High: 4360.00\n    RR to opposite: 1.8571 (valid=True)\n\nReliability:\n  Session source: ict_sessions\n  Session confidence: high\n  Coverage: full\n  CHoCH timing confidence: exact\n\nDocumented ambiguity:\n  Pre-entry invalidation uses bars with FVG_creation < timestamp < entry_trigger. The trigger bar itself is not treated as pre-entry invalidation. A bar that both fills entry and trades through the stop cannot be classified as 'entry then stopped' vs 'invalid before fill' from OHLC alone (TRIGGER_BAR_STOP_AMBIGUITY)."
+    }
+  },
+  "live_analysis": {
+    "ok": false,
+    "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?",
+    "code": "CDP_UNAVAILABLE"
+  }
+}

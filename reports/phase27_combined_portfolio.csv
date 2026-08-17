@@ -1,0 +1,5 @@
+best_day,e2r_holdout_ref,longest_losing_streak,max_dd_r,mean_daily_r,n_days,portfolio,prop_250,total_r,worst_day
+4.0,,4,9.0,0.6430375601936169,171,NY_V2_only,,109.95942279310849,-3.0
+6.0,0.04477611940298498,5,7.0,0.6648101276930237,152,London_only,,101.0511394093396,-5.0
+8.0,,4,12.0,0.9420114384037861,224,NY_plus_London,,211.01056220244809,-5.0
+,,,,,,,"{""ok"": true, ""risk_per_trade"": 250.0, ""n_trades"": 502, ""avg_trades_per_week"": 11.205357142857144, ""avg_trades_per_month"": 38.61538461538461, ""mean_monthly_pnl"": 4057.8954269701558, ""median_monthly_pnl"": 4741.6483995655035, ""worst_historical_month"": -148.12395653776912, ""max_historical_drawdown_pnl"": 3000.0, ""max_same_day_loss"": -1250.0, ""skipped"": false}",,

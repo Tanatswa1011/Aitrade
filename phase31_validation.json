@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "phase": 31,
+  "status": "INTEGRATION_READY_DRY_RUN",
+  "frozen": {
+    "path": "strategy_frozen/nq_dvp_phase30.json",
+    "version": "nq_drift_vwap_pullback_v1.DVP_ORIGINAL.FROZEN_PHASE30",
+    "hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+    "semantic_mutation": false,
+    "expected_version": "nq_drift_vwap_pullback_v1.DVP_ORIGINAL.FROZEN_PHASE30"
+  },
+  "execution": {
+    "account": "Sim101",
+    "signal": "NQ",
+    "execution_instrument": "MNQ SEP26",
+    "quantity": 1,
+    "default_mode": "DRY_RUN",
+    "bridge": "OIF_FILL_THEN_OCO_CHILDREN",
+    "enable_flag": "--enable-sim-execution"
+  },
+  "equivalence": {
+    "ok": true,
+    "verdict": "LIVE_EQUIVALENCE_OK",
+    "days": [
+      "2026-08-10",
+      "2026-08-11",
+      "2026-08-12",
+      "2026-08-13",
+      "2026-08-14"
+    ],
+    "compared": 15,
+    "matched": 15,
+    "mismatches": [],
+    "mismatch_count": 0
+  },
+  "nq_mnq": {
+    "ok": false,
+    "verdict": "MNQ_OVERLAP_UNAVAILABLE",
+    "nq_signal": "Databento NQ stitched available",
+    "mnq_data": "No MNQ stitched dataset in repo",
+    "note": "Phase 31 executes MNQ from NQ signal prices/fill. Stop/target use index points on MNQ fill. Material NQ\u2194MNQ bar mismatch not yet measured \u2014 execution QA pending MNQ overlap sample.",
+    "forward_validation_counts": false
+  },
+  "phase26_untouched": true,
+  "phase30_untouched": true,
+  "ready_for_nq_dvp_sim_execution": true,
+  "forward_validation_trades_count": false,
+  "remaining_prerequisite": "Live/real-time NQ completed 5m/15m feed (not NT Simulated Data Feed alone; not Databento historical-only) before FORWARD_STRATEGY_VALIDATION counts.",
+  "generated_at": "2026-08-16T22:58:58.555006+00:00"
+}

@@ -1,0 +1,10 @@
+delta_paper_minus_oos,historical_oos,metric,note,paper
+,0.678169014084507,win_rate,N=0 — no forward conclusion,
+,6.503169014084507,expectancy_points,N=0 — no forward conclusion,
+,1.2853236520933107,profit_factor,N=0 — no forward conclusion,
+,43.19781931464174,average_win_points,N=0 — no forward conclusion,
+,70.82056892778994,average_loss_points,N=0 — no forward conclusion,
+,1127.5,max_drawdown_points,N=0 — no forward conclusion,
+,8,longest_losing_streak,N=0 — no forward conclusion,
+,0.7040690505548706,long_win_rate,N=0 — no forward conclusion,
+,0.6436781609195402,short_win_rate,N=0 — no forward conclusion,

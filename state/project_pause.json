@@ -1,0 +1,33 @@
+{
+  "paused": true,
+  "execution_status": "PAUSED",
+  "reason": "Phase 32 deployment-prep pause — no live capital, no prop evaluation, no market data purchase",
+  "timestamp": "2026-08-17T09:37:00+00:00",
+  "phase": 32,
+  "gc_frozen_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+  "nq_frozen_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+  "allowed_modes": [
+    "DRY_RUN",
+    "SIM_ONLY"
+  ],
+  "blocked_modes": [
+    "FUNDED",
+    "LIVE_PERSONAL",
+    "PROP_EVALUATION"
+  ],
+  "default_runner_mode": "DRY_RUN",
+  "resume_gate": [
+    "prop firm chosen",
+    "exact prop rules stored",
+    "automation explicitly permitted",
+    "NinjaTrader connection confirmed",
+    "real-time feed available",
+    "NQ feed equivalence passes",
+    "GC feed equivalence passes",
+    "strategy hashes pass",
+    "DRY_RUN passes",
+    "Sim101 execution passes",
+    "risk limits configured",
+    "explicit approval to enable prop-evaluation execution"
+  ]
+}

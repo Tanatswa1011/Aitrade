@@ -1,0 +1,11 @@
+{
+  "phase": "phase27",
+  "status": "candidate_for_separate_paper_validation",
+  "not_frozen": true,
+  "not_phase26": true,
+  "strategy_family": "gc_vwap_london_mean_reversion_v1",
+  "candidate_id": "L2_BAND_RECLAIM_2SIG_RETEST",
+  "verdict": "WEAK_EDGE_OBSERVED",
+  "holdout_e2r": 0.04477611940298498,
+  "holdout_n": 67
+}

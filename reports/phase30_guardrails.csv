@@ -1,0 +1,5 @@
+historical,metric,note,paper
+,days_hit_four_trade_cap,track during campaign; do not change guardrails,0
+,days_hit_two_loss_cap,any two losses; not consecutive-only,0
+,setups_suppressed_after_trade_cap,,0
+,setups_suppressed_after_loss_cap,,0

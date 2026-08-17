@@ -1,0 +1,167 @@
+{
+  "symbol": "openbb_tiingo_XAUUSD",
+  "timeframe": "5m",
+  "source": "openbb:tiingo",
+  "capture_time": "2026-08-15T20:55:46.363321+00:00",
+  "earliest_bar": 1755212700,
+  "latest_bar": 1786748700,
+  "bar_count": 70108,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "openbb_tiingo_XAUUSD",
+      "timeframe": "5m",
+      "bar_count": 70108,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 1702,
+      "gaps_head": [
+        {
+          "from": 1755291300,
+          "to": 1755468000,
+          "delta_sec": 176700,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1755550500,
+          "to": 1755554400,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1755636900,
+          "to": 1755640800,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1755723300,
+          "to": 1755727200,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1755809700,
+          "to": 1755813600,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1755896100,
+          "to": 1756072800,
+          "delta_sec": 176700,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756155300,
+          "to": 1756159200,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756241700,
+          "to": 1756245600,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756328100,
+          "to": 1756332000,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756414500,
+          "to": 1756418400,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756500900,
+          "to": 1756677600,
+          "delta_sec": 176700,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756751100,
+          "to": 1756764600,
+          "delta_sec": 13500,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756846500,
+          "to": 1756850400,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1756932900,
+          "to": 1756936800,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1757019300,
+          "to": 1757023200,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1757105700,
+          "to": 1757282400,
+          "delta_sec": 176700,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1757364900,
+          "to": 1757368800,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1757451300,
+          "to": 1757455200,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1757537700,
+          "to": 1757541600,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1757624100,
+          "to": 1757628000,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        }
+      ],
+      "earliest": 1755212700,
+      "latest": 1786748700,
+      "utc_normalized": true
+    },
+    "path": "data\\openbb\\tiingo\\openbb_tiingo_XAUUSD_5m.jsonl"
+  },
+  "aitrade_data_provider": "openbb",
+  "integration_layer": "openbb",
+  "underlying_provider": "tiingo",
+  "requested_symbol": "XAUUSD",
+  "provider_symbol": "XAUUSD",
+  "instrument_type": "spot_fx_metals",
+  "requested_timeframe": "5m",
+  "actual_timeframe": "5m",
+  "requested_start": 1755212700,
+  "requested_end": 1778571000,
+  "actual_start": 1755212700,
+  "actual_end": 1776985500,
+  "openbb_version": "4.7.2",
+  "download_timestamp": "2026-08-15T20:55:46.369382+00:00",
+  "warnings": [],
+  "errors": [
+    "OpenBBError:\n[Error] -> ['XAUUSD: Error: You have run over your hourly request allocation. Please upgrade at https://api.tiingo.com/pricing to have your limits increased.']"
+  ]
+}

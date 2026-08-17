@@ -1,0 +1,4278 @@
+{
+  "ok": true,
+  "phase": 15,
+  "strategy_version": "v1.phase15",
+  "generated_at": "2026-08-15T19:55:05.705510+00:00",
+  "history_source_audit": {
+    "generated_at": "2026-08-15T19:55:05.533088+00:00",
+    "priority_order": [
+      "tradingview_authenticated_session",
+      "oanda_compatible_approved",
+      "explicitly_approved_external"
+    ],
+    "investigated": [
+      {
+        "provider": "TradingViewDesktopProvider",
+        "result": "usable ~300 bars via series.data(); ceiling confirmed Phase 14/15",
+        "selected_for_deep_history": false
+      },
+      {
+        "provider": "TradingViewHistoryProvider",
+        "result": "requestMoreData / loadDataTo / setVisibleRange / setInitialRequestOptions({count:5000}) did not expand usable history",
+        "selected_for_deep_history": false
+      },
+      {
+        "provider": "LocalJsonlProvider",
+        "result": "loads Phase 14 OANDA:XAUUSD native captures from data/",
+        "selected_for_deep_history": false,
+        "selected_for_phase15_pipeline": true
+      },
+      {
+        "provider": "OANDA API / local export",
+        "result": "no credentials or approved export present in project",
+        "selected_for_deep_history": false
+      }
+    ],
+    "external_options_pending_approval": [
+      {
+        "id": "yahoo_gc_f",
+        "name": "Yahoo Finance GC=F (COMEX gold futures)",
+        "status": "not_integrated_pending_approval",
+        "approx_5m_coverage": "~60d / ~17k bars (public chart API)",
+        "symbol": "GC=F",
+        "feed": "CMX futures \u2014 NOT OANDA:XAUUSD spot",
+        "licensing": "Yahoo public chart endpoints; ToS / redistribution constraints apply",
+        "symbol_differences": "Futures vs OANDA CFD/spot; contract rolls; different session hours; prices not interchangeable with OANDA:XAUUSD",
+        "daily_roll": "Exchange session \u2014 not confirmed 17:00 America/New_York FX roll",
+        "spread_quote": "Futures last/settlement semantics differ from OANDA bid/ask mid"
+      },
+      {
+        "id": "dukascopy_bi5",
+        "name": "Dukascopy historical ticks/bi5 (XAUUSD)",
+        "status": "not_integrated_pending_approval",
+        "approx_coverage": "multi-year tick/bi5 when accessible",
+        "symbol": "XAUUSD (Dukascopy)",
+        "feed": "Dukascopy \u2014 NOT OANDA",
+        "licensing": "Dukascopy data terms; freeserv chart JSON probed 403 in Phase 15",
+        "symbol_differences": "Different liquidity provider; spreads/quotes differ from OANDA",
+        "daily_roll": "Must be validated separately vs OANDA 17:00 NY",
+        "spread_quote": "Provider-specific"
+      },
+      {
+        "id": "oanda_api",
+        "name": "OANDA REST candle history (instrument XAU_USD)",
+        "status": "not_integrated_no_credentials",
+        "approx_coverage": "API-dependent (practice/live account)",
+        "symbol": "XAU_USD",
+        "feed": "OANDA \u2014 preferred exact feed if credentials/approved project mechanism exist",
+        "licensing": "Requires OANDA account API token; not invented/bypassed",
+        "symbol_differences": "Closest match to TradingView OANDA:XAUUSD if same account type",
+        "daily_roll": "Should be validated against confirmed 17:00 NY evidence",
+        "note": "No OANDA credentials or approved export present in project"
+      }
+    ],
+    "selected_deep_provider": null,
+    "selected_pipeline_provider": "TradingViewDesktopProvider+LocalJsonlProvider",
+    "blocking_note": "Phase 15 does not integrate Yahoo GC=F, Dukascopy, or other non-OANDA feeds without explicit approval. Exact OANDA history preferred.",
+    "session_objective": {
+      "target_complete_sessions": 100,
+      "preferred": 250,
+      "better": 500,
+      "met": false,
+      "reason": "no approved deeper OANDA-compatible history source integrated"
+    }
+  },
+  "selected_deep_provider": null,
+  "pipeline_provider": {
+    "desktop": "tradingview_desktop",
+    "history": "tradingview_history",
+    "local": "local_jsonl"
+  },
+  "symbol": "OANDA:XAUUSD",
+  "symbol_feed_equivalence": {
+    "strategy_symbol": "OANDA:XAUUSD",
+    "data_source_symbol": "OANDA:XAUUSD",
+    "feed": "TradingView OANDA:XAUUSD native (Phase 14 capture)",
+    "note": "No alternate XAUUSD feed integrated. External options differ in broker/feed, session, daily roll, and quotes \u2014 see audit."
+  },
+  "bar_counts": {
+    "5m": 300,
+    "15m": 300,
+    "4H": 300,
+    "1D": 300
+  },
+  "date_span": {
+    "5m": {
+      "earliest": 1786647600,
+      "latest": 1786740900,
+      "provider": "tradingview_history",
+      "source": "tradingview_native_expanded",
+      "source_symbol": "OANDA:XAUUSD"
+    },
+    "15m": {
+      "earliest": 1786460400,
+      "latest": 1786740300,
+      "provider": "tradingview_history",
+      "source": "tradingview_native_expanded",
+      "source_symbol": "OANDA:XAUUSD"
+    },
+    "4H": {
+      "earliest": 1780664400,
+      "latest": 1786726800,
+      "provider": "tradingview_history",
+      "source": "tradingview_native_expanded",
+      "source_symbol": "OANDA:XAUUSD"
+    },
+    "1D": {
+      "earliest": 1750194000,
+      "latest": 1786654800,
+      "provider": "tradingview_history",
+      "source": "tradingview_native_expanded",
+      "source_symbol": "OANDA:XAUUSD"
+    }
+  },
+  "data_integrity": {
+    "5m": {
+      "ok": true,
+      "symbol": "OANDA:XAUUSD",
+      "timeframe": "5m",
+      "bar_count": 300,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 1,
+      "gaps_head": [
+        {
+          "from": 1786654500,
+          "to": 1786658400,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        }
+      ],
+      "earliest": 1786647600,
+      "latest": 1786740900,
+      "utc_normalized": true,
+      "provider": "tradingview_history",
+      "source_symbol": "OANDA:XAUUSD",
+      "gap_classification": {
+        "gap_count": 1,
+        "by_category": {
+          "known_daily_maintenance_break": 1
+        },
+        "unexpected_count": 0,
+        "quality_ok": true,
+        "gaps": [
+          {
+            "from": 1786654500,
+            "to": 1786658400,
+            "delta_sec": 3900,
+            "expected_period_sec": 300,
+            "missing_intervals": 12,
+            "category": "known_daily_maintenance_break",
+            "quality_failure": false,
+            "local_from": "2026-08-13T16:55:00-04:00",
+            "local_to": "2026-08-13T18:00:00-04:00"
+          }
+        ],
+        "unexpected_head": []
+      },
+      "integrity_ok": true
+    },
+    "15m": {
+      "ok": true,
+      "symbol": "OANDA:XAUUSD",
+      "timeframe": "15m",
+      "bar_count": 300,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 3,
+      "gaps_head": [
+        {
+          "from": 1786481100,
+          "to": 1786485600,
+          "delta_sec": 4500,
+          "expected_period_sec": 900
+        },
+        {
+          "from": 1786567500,
+          "to": 1786572000,
+          "delta_sec": 4500,
+          "expected_period_sec": 900
+        },
+        {
+          "from": 1786653900,
+          "to": 1786658400,
+          "delta_sec": 4500,
+          "expected_period_sec": 900
+        }
+      ],
+      "earliest": 1786460400,
+      "latest": 1786740300,
+      "utc_normalized": true,
+      "provider": "tradingview_history",
+      "source_symbol": "OANDA:XAUUSD",
+      "gap_classification": {
+        "gap_count": 3,
+        "by_category": {
+          "known_daily_maintenance_break": 3
+        },
+        "unexpected_count": 0,
+        "quality_ok": true,
+        "gaps": [
+          {
+            "from": 1786481100,
+            "to": 1786485600,
+            "delta_sec": 4500,
+            "expected_period_sec": 900,
+            "missing_intervals": 4,
+            "category": "known_daily_maintenance_break",
+            "quality_failure": false,
+            "local_from": "2026-08-11T16:45:00-04:00",
+            "local_to": "2026-08-11T18:00:00-04:00"
+          },
+          {
+            "from": 1786567500,
+            "to": 1786572000,
+            "delta_sec": 4500,
+            "expected_period_sec": 900,
+            "missing_intervals": 4,
+            "category": "known_daily_maintenance_break",
+            "quality_failure": false,
+            "local_from": "2026-08-12T16:45:00-04:00",
+            "local_to": "2026-08-12T18:00:00-04:00"
+          },
+          {
+            "from": 1786653900,
+            "to": 1786658400,
+            "delta_sec": 4500,
+            "expected_period_sec": 900,
+            "missing_intervals": 4,
+            "category": "known_daily_maintenance_break",
+            "quality_failure": false,
+            "local_from": "2026-08-13T16:45:00-04:00",
+            "local_to": "2026-08-13T18:00:00-04:00"
+          }
+        ],
+        "unexpected_head": []
+      },
+      "integrity_ok": true
+    },
+    "4H": {
+      "ok": true,
+      "symbol": "OANDA:XAUUSD",
+      "timeframe": "4H",
+      "bar_count": 300,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 10,
+      "gaps_head": [
+        {
+          "from": 1780678800,
+          "to": 1780866000,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1781283600,
+          "to": 1781470800,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1781874000,
+          "to": 1782075600,
+          "delta_sec": 201600,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1782493200,
+          "to": 1782680400,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1783083600,
+          "to": 1783285200,
+          "delta_sec": 201600,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1783702800,
+          "to": 1783890000,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1784307600,
+          "to": 1784494800,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1784912400,
+          "to": 1785099600,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1785517200,
+          "to": 1785704400,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        },
+        {
+          "from": 1786122000,
+          "to": 1786309200,
+          "delta_sec": 187200,
+          "expected_period_sec": 14400
+        }
+      ],
+      "earliest": 1780664400,
+      "latest": 1786726800,
+      "utc_normalized": true,
+      "provider": "tradingview_history",
+      "source_symbol": "OANDA:XAUUSD",
+      "gap_classification": {
+        "gap_count": 10,
+        "by_category": {
+          "expected_weekend_or_market_closure": 10
+        },
+        "unexpected_count": 0,
+        "quality_ok": true,
+        "gaps": [
+          {
+            "from": 1780678800,
+            "to": 1780866000,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-05T13:00:00-04:00",
+            "local_to": "2026-06-07T17:00:00-04:00"
+          },
+          {
+            "from": 1781283600,
+            "to": 1781470800,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-12T13:00:00-04:00",
+            "local_to": "2026-06-14T17:00:00-04:00"
+          },
+          {
+            "from": 1781874000,
+            "to": 1782075600,
+            "delta_sec": 201600,
+            "expected_period_sec": 14400,
+            "missing_intervals": 13,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-19T09:00:00-04:00",
+            "local_to": "2026-06-21T17:00:00-04:00"
+          },
+          {
+            "from": 1782493200,
+            "to": 1782680400,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-26T13:00:00-04:00",
+            "local_to": "2026-06-28T17:00:00-04:00"
+          },
+          {
+            "from": 1783083600,
+            "to": 1783285200,
+            "delta_sec": 201600,
+            "expected_period_sec": 14400,
+            "missing_intervals": 13,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-03T09:00:00-04:00",
+            "local_to": "2026-07-05T17:00:00-04:00"
+          },
+          {
+            "from": 1783702800,
+            "to": 1783890000,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-10T13:00:00-04:00",
+            "local_to": "2026-07-12T17:00:00-04:00"
+          },
+          {
+            "from": 1784307600,
+            "to": 1784494800,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-17T13:00:00-04:00",
+            "local_to": "2026-07-19T17:00:00-04:00"
+          },
+          {
+            "from": 1784912400,
+            "to": 1785099600,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-24T13:00:00-04:00",
+            "local_to": "2026-07-26T17:00:00-04:00"
+          },
+          {
+            "from": 1785517200,
+            "to": 1785704400,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-31T13:00:00-04:00",
+            "local_to": "2026-08-02T17:00:00-04:00"
+          },
+          {
+            "from": 1786122000,
+            "to": 1786309200,
+            "delta_sec": 187200,
+            "expected_period_sec": 14400,
+            "missing_intervals": 12,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-08-07T13:00:00-04:00",
+            "local_to": "2026-08-09T17:00:00-04:00"
+          }
+        ],
+        "unexpected_head": []
+      },
+      "integrity_ok": true
+    },
+    "1D": {
+      "ok": true,
+      "symbol": "OANDA:XAUUSD",
+      "timeframe": "1D",
+      "bar_count": 300,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 62,
+      "gaps_head": [
+        {
+          "from": 1750366800,
+          "to": 1750626000,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1750971600,
+          "to": 1751230800,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1751576400,
+          "to": 1751835600,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1752181200,
+          "to": 1752440400,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1752786000,
+          "to": 1753045200,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1753390800,
+          "to": 1753650000,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1753995600,
+          "to": 1754254800,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1754600400,
+          "to": 1754859600,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1755205200,
+          "to": 1755464400,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1755810000,
+          "to": 1756069200,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1756414800,
+          "to": 1756674000,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1757019600,
+          "to": 1757278800,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1757624400,
+          "to": 1757883600,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1758229200,
+          "to": 1758488400,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1758834000,
+          "to": 1759093200,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1759438800,
+          "to": 1759698000,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1760043600,
+          "to": 1760302800,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1760648400,
+          "to": 1760907600,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1761253200,
+          "to": 1761512400,
+          "delta_sec": 259200,
+          "expected_period_sec": 86400
+        },
+        {
+          "from": 1761858000,
+          "to": 1762120800,
+          "delta_sec": 262800,
+          "expected_period_sec": 86400
+        }
+      ],
+      "earliest": 1750194000,
+      "latest": 1786654800,
+      "utc_normalized": true,
+      "provider": "tradingview_history",
+      "source_symbol": "OANDA:XAUUSD",
+      "gap_classification": {
+        "gap_count": 62,
+        "by_category": {
+          "expected_weekend_or_market_closure": 60,
+          "unexpected_missing_interval": 2
+        },
+        "unexpected_count": 2,
+        "quality_ok": false,
+        "gaps": [
+          {
+            "from": 1750366800,
+            "to": 1750626000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-06-19T17:00:00-04:00",
+            "local_to": "2025-06-22T17:00:00-04:00"
+          },
+          {
+            "from": 1750971600,
+            "to": 1751230800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-06-26T17:00:00-04:00",
+            "local_to": "2025-06-29T17:00:00-04:00"
+          },
+          {
+            "from": 1751576400,
+            "to": 1751835600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-07-03T17:00:00-04:00",
+            "local_to": "2025-07-06T17:00:00-04:00"
+          },
+          {
+            "from": 1752181200,
+            "to": 1752440400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-07-10T17:00:00-04:00",
+            "local_to": "2025-07-13T17:00:00-04:00"
+          },
+          {
+            "from": 1752786000,
+            "to": 1753045200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-07-17T17:00:00-04:00",
+            "local_to": "2025-07-20T17:00:00-04:00"
+          },
+          {
+            "from": 1753390800,
+            "to": 1753650000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-07-24T17:00:00-04:00",
+            "local_to": "2025-07-27T17:00:00-04:00"
+          },
+          {
+            "from": 1753995600,
+            "to": 1754254800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-07-31T17:00:00-04:00",
+            "local_to": "2025-08-03T17:00:00-04:00"
+          },
+          {
+            "from": 1754600400,
+            "to": 1754859600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-08-07T17:00:00-04:00",
+            "local_to": "2025-08-10T17:00:00-04:00"
+          },
+          {
+            "from": 1755205200,
+            "to": 1755464400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-08-14T17:00:00-04:00",
+            "local_to": "2025-08-17T17:00:00-04:00"
+          },
+          {
+            "from": 1755810000,
+            "to": 1756069200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-08-21T17:00:00-04:00",
+            "local_to": "2025-08-24T17:00:00-04:00"
+          },
+          {
+            "from": 1756414800,
+            "to": 1756674000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-08-28T17:00:00-04:00",
+            "local_to": "2025-08-31T17:00:00-04:00"
+          },
+          {
+            "from": 1757019600,
+            "to": 1757278800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-09-04T17:00:00-04:00",
+            "local_to": "2025-09-07T17:00:00-04:00"
+          },
+          {
+            "from": 1757624400,
+            "to": 1757883600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-09-11T17:00:00-04:00",
+            "local_to": "2025-09-14T17:00:00-04:00"
+          },
+          {
+            "from": 1758229200,
+            "to": 1758488400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-09-18T17:00:00-04:00",
+            "local_to": "2025-09-21T17:00:00-04:00"
+          },
+          {
+            "from": 1758834000,
+            "to": 1759093200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-09-25T17:00:00-04:00",
+            "local_to": "2025-09-28T17:00:00-04:00"
+          },
+          {
+            "from": 1759438800,
+            "to": 1759698000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-10-02T17:00:00-04:00",
+            "local_to": "2025-10-05T17:00:00-04:00"
+          },
+          {
+            "from": 1760043600,
+            "to": 1760302800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-10-09T17:00:00-04:00",
+            "local_to": "2025-10-12T17:00:00-04:00"
+          },
+          {
+            "from": 1760648400,
+            "to": 1760907600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-10-16T17:00:00-04:00",
+            "local_to": "2025-10-19T17:00:00-04:00"
+          },
+          {
+            "from": 1761253200,
+            "to": 1761512400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-10-23T17:00:00-04:00",
+            "local_to": "2025-10-26T17:00:00-04:00"
+          },
+          {
+            "from": 1761858000,
+            "to": 1762120800,
+            "delta_sec": 262800,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-10-30T17:00:00-04:00",
+            "local_to": "2025-11-02T17:00:00-05:00"
+          },
+          {
+            "from": 1762466400,
+            "to": 1762725600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-11-06T17:00:00-05:00",
+            "local_to": "2025-11-09T17:00:00-05:00"
+          },
+          {
+            "from": 1763071200,
+            "to": 1763330400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-11-13T17:00:00-05:00",
+            "local_to": "2025-11-16T17:00:00-05:00"
+          },
+          {
+            "from": 1763676000,
+            "to": 1763935200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-11-20T17:00:00-05:00",
+            "local_to": "2025-11-23T17:00:00-05:00"
+          },
+          {
+            "from": 1764280800,
+            "to": 1764540000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-11-27T17:00:00-05:00",
+            "local_to": "2025-11-30T17:00:00-05:00"
+          },
+          {
+            "from": 1764885600,
+            "to": 1765144800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-12-04T17:00:00-05:00",
+            "local_to": "2025-12-07T17:00:00-05:00"
+          },
+          {
+            "from": 1765490400,
+            "to": 1765749600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-12-11T17:00:00-05:00",
+            "local_to": "2025-12-14T17:00:00-05:00"
+          },
+          {
+            "from": 1766095200,
+            "to": 1766354400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-12-18T17:00:00-05:00",
+            "local_to": "2025-12-21T17:00:00-05:00"
+          },
+          {
+            "from": 1766527200,
+            "to": 1766700000,
+            "delta_sec": 172800,
+            "expected_period_sec": 86400,
+            "missing_intervals": 1,
+            "category": "unexpected_missing_interval",
+            "quality_failure": true,
+            "local_from": "2025-12-23T17:00:00-05:00",
+            "local_to": "2025-12-25T17:00:00-05:00"
+          },
+          {
+            "from": 1766700000,
+            "to": 1766959200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2025-12-25T17:00:00-05:00",
+            "local_to": "2025-12-28T17:00:00-05:00"
+          },
+          {
+            "from": 1767132000,
+            "to": 1767304800,
+            "delta_sec": 172800,
+            "expected_period_sec": 86400,
+            "missing_intervals": 1,
+            "category": "unexpected_missing_interval",
+            "quality_failure": true,
+            "local_from": "2025-12-30T17:00:00-05:00",
+            "local_to": "2026-01-01T17:00:00-05:00"
+          },
+          {
+            "from": 1767304800,
+            "to": 1767564000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-01-01T17:00:00-05:00",
+            "local_to": "2026-01-04T17:00:00-05:00"
+          },
+          {
+            "from": 1767909600,
+            "to": 1768168800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-01-08T17:00:00-05:00",
+            "local_to": "2026-01-11T17:00:00-05:00"
+          },
+          {
+            "from": 1768514400,
+            "to": 1768773600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-01-15T17:00:00-05:00",
+            "local_to": "2026-01-18T17:00:00-05:00"
+          },
+          {
+            "from": 1769119200,
+            "to": 1769378400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-01-22T17:00:00-05:00",
+            "local_to": "2026-01-25T17:00:00-05:00"
+          },
+          {
+            "from": 1769724000,
+            "to": 1769983200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-01-29T17:00:00-05:00",
+            "local_to": "2026-02-01T17:00:00-05:00"
+          },
+          {
+            "from": 1770328800,
+            "to": 1770588000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-02-05T17:00:00-05:00",
+            "local_to": "2026-02-08T17:00:00-05:00"
+          },
+          {
+            "from": 1770933600,
+            "to": 1771192800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-02-12T17:00:00-05:00",
+            "local_to": "2026-02-15T17:00:00-05:00"
+          },
+          {
+            "from": 1771538400,
+            "to": 1771797600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-02-19T17:00:00-05:00",
+            "local_to": "2026-02-22T17:00:00-05:00"
+          },
+          {
+            "from": 1772143200,
+            "to": 1772402400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-02-26T17:00:00-05:00",
+            "local_to": "2026-03-01T17:00:00-05:00"
+          },
+          {
+            "from": 1772748000,
+            "to": 1773003600,
+            "delta_sec": 255600,
+            "expected_period_sec": 86400,
+            "missing_intervals": 1,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-03-05T17:00:00-05:00",
+            "local_to": "2026-03-08T17:00:00-04:00"
+          },
+          {
+            "from": 1773349200,
+            "to": 1773608400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-03-12T17:00:00-04:00",
+            "local_to": "2026-03-15T17:00:00-04:00"
+          },
+          {
+            "from": 1773954000,
+            "to": 1774213200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-03-19T17:00:00-04:00",
+            "local_to": "2026-03-22T17:00:00-04:00"
+          },
+          {
+            "from": 1774558800,
+            "to": 1774818000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-03-26T17:00:00-04:00",
+            "local_to": "2026-03-29T17:00:00-04:00"
+          },
+          {
+            "from": 1775077200,
+            "to": 1775422800,
+            "delta_sec": 345600,
+            "expected_period_sec": 86400,
+            "missing_intervals": 3,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-04-01T17:00:00-04:00",
+            "local_to": "2026-04-05T17:00:00-04:00"
+          },
+          {
+            "from": 1775768400,
+            "to": 1776027600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-04-09T17:00:00-04:00",
+            "local_to": "2026-04-12T17:00:00-04:00"
+          },
+          {
+            "from": 1776373200,
+            "to": 1776632400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-04-16T17:00:00-04:00",
+            "local_to": "2026-04-19T17:00:00-04:00"
+          },
+          {
+            "from": 1776978000,
+            "to": 1777237200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-04-23T17:00:00-04:00",
+            "local_to": "2026-04-26T17:00:00-04:00"
+          },
+          {
+            "from": 1777582800,
+            "to": 1777842000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-04-30T17:00:00-04:00",
+            "local_to": "2026-05-03T17:00:00-04:00"
+          },
+          {
+            "from": 1778187600,
+            "to": 1778446800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-05-07T17:00:00-04:00",
+            "local_to": "2026-05-10T17:00:00-04:00"
+          },
+          {
+            "from": 1778792400,
+            "to": 1779051600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-05-14T17:00:00-04:00",
+            "local_to": "2026-05-17T17:00:00-04:00"
+          },
+          {
+            "from": 1779397200,
+            "to": 1779656400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-05-21T17:00:00-04:00",
+            "local_to": "2026-05-24T17:00:00-04:00"
+          },
+          {
+            "from": 1780002000,
+            "to": 1780261200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-05-28T17:00:00-04:00",
+            "local_to": "2026-05-31T17:00:00-04:00"
+          },
+          {
+            "from": 1780606800,
+            "to": 1780866000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-04T17:00:00-04:00",
+            "local_to": "2026-06-07T17:00:00-04:00"
+          },
+          {
+            "from": 1781211600,
+            "to": 1781470800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-11T17:00:00-04:00",
+            "local_to": "2026-06-14T17:00:00-04:00"
+          },
+          {
+            "from": 1781816400,
+            "to": 1782075600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-18T17:00:00-04:00",
+            "local_to": "2026-06-21T17:00:00-04:00"
+          },
+          {
+            "from": 1782421200,
+            "to": 1782680400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-06-25T17:00:00-04:00",
+            "local_to": "2026-06-28T17:00:00-04:00"
+          },
+          {
+            "from": 1783026000,
+            "to": 1783285200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-02T17:00:00-04:00",
+            "local_to": "2026-07-05T17:00:00-04:00"
+          },
+          {
+            "from": 1783630800,
+            "to": 1783890000,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-09T17:00:00-04:00",
+            "local_to": "2026-07-12T17:00:00-04:00"
+          },
+          {
+            "from": 1784235600,
+            "to": 1784494800,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-16T17:00:00-04:00",
+            "local_to": "2026-07-19T17:00:00-04:00"
+          },
+          {
+            "from": 1784840400,
+            "to": 1785099600,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-23T17:00:00-04:00",
+            "local_to": "2026-07-26T17:00:00-04:00"
+          },
+          {
+            "from": 1785445200,
+            "to": 1785704400,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-07-30T17:00:00-04:00",
+            "local_to": "2026-08-02T17:00:00-04:00"
+          },
+          {
+            "from": 1786050000,
+            "to": 1786309200,
+            "delta_sec": 259200,
+            "expected_period_sec": 86400,
+            "missing_intervals": 2,
+            "category": "expected_weekend_or_market_closure",
+            "quality_failure": false,
+            "local_from": "2026-08-06T17:00:00-04:00",
+            "local_to": "2026-08-09T17:00:00-04:00"
+          }
+        ],
+        "unexpected_head": [
+          {
+            "from": 1766527200,
+            "to": 1766700000,
+            "delta_sec": 172800,
+            "expected_period_sec": 86400,
+            "missing_intervals": 1,
+            "category": "unexpected_missing_interval",
+            "quality_failure": true,
+            "local_from": "2025-12-23T17:00:00-05:00",
+            "local_to": "2025-12-25T17:00:00-05:00"
+          },
+          {
+            "from": 1767132000,
+            "to": 1767304800,
+            "delta_sec": 172800,
+            "expected_period_sec": 86400,
+            "missing_intervals": 1,
+            "category": "unexpected_missing_interval",
+            "quality_failure": true,
+            "local_from": "2025-12-30T17:00:00-05:00",
+            "local_to": "2026-01-01T17:00:00-05:00"
+          }
+        ]
+      },
+      "integrity_ok": false
+    }
+  },
+  "native_vs_resampled_overlap": {
+    "deep_source_status": "not_integrated",
+    "comparison_mode": "native_vs_resampled_from_5m",
+    "note": "No approved deeper dataset; comparing Phase 14 native 15m/4H/1D against resampled-from-5m on the overlapping window.",
+    "h4_anchor": {
+      "mode": "ny_trading_day_open",
+      "reference_timezone": "America/New_York",
+      "day_roll_time": "17:00",
+      "note": "4H buckets align to trading-day open (default 17:00 America/New_York) then step +4H; not calendar midnight."
+    },
+    "daily_boundary": "ny_trading_day",
+    "sources": {
+      "resampled_15m": "resampled",
+      "resampled_4H": "resampled",
+      "resampled_1D": "resampled"
+    },
+    "ohlc": {
+      "5m": {
+        "left": "native_5m",
+        "right": "native_5m",
+        "bar_count_compared": 300,
+        "exact_timestamp_matches": 300,
+        "ohlc_exact_matches": 300,
+        "ohlc_within_tolerance": 300,
+        "price_tolerance": 0.0,
+        "max_open_delta": 0.0,
+        "max_high_delta": 0.0,
+        "max_low_delta": 0.0,
+        "max_close_delta": 0.0,
+        "missing_on_left": 0,
+        "missing_on_right": 0,
+        "missing_left_timestamps_head": [],
+        "missing_right_timestamps_head": []
+      },
+      "15m": {
+        "left": "native_15m",
+        "right": "resampled_15m",
+        "bar_count_compared": 100,
+        "exact_timestamp_matches": 100,
+        "ohlc_exact_matches": 100,
+        "ohlc_within_tolerance": 100,
+        "price_tolerance": 0.0,
+        "max_open_delta": 0.0,
+        "max_high_delta": 0.0,
+        "max_low_delta": 0.0,
+        "max_close_delta": 0.0,
+        "missing_on_left": 0,
+        "missing_on_right": 200,
+        "missing_left_timestamps_head": [],
+        "missing_right_timestamps_head": [
+          1786460400,
+          1786461300,
+          1786462200,
+          1786463100,
+          1786464000,
+          1786464900,
+          1786465800,
+          1786466700,
+          1786467600,
+          1786468500,
+          1786469400,
+          1786470300,
+          1786471200,
+          1786472100,
+          1786473000,
+          1786473900,
+          1786474800,
+          1786475700,
+          1786476600,
+          1786477500
+        ]
+      },
+      "4H": {
+        "left": "native_4H",
+        "right": "resampled_4H_ny_anchor",
+        "bar_count_compared": 7,
+        "exact_timestamp_matches": 7,
+        "ohlc_exact_matches": 6,
+        "ohlc_within_tolerance": 6,
+        "price_tolerance": 0.0,
+        "max_open_delta": 9.930000000000291,
+        "max_high_delta": 14.465000000000146,
+        "max_low_delta": 0.0,
+        "max_close_delta": 0.0,
+        "missing_on_left": 0,
+        "missing_on_right": 293,
+        "missing_left_timestamps_head": [],
+        "missing_right_timestamps_head": [
+          1780664400,
+          1780678800,
+          1780866000,
+          1780880400,
+          1780894800,
+          1780909200,
+          1780923600,
+          1780938000,
+          1780952400,
+          1780966800,
+          1780981200,
+          1780995600,
+          1781010000,
+          1781024400,
+          1781038800,
+          1781053200,
+          1781067600,
+          1781082000,
+          1781096400,
+          1781110800
+        ]
+      },
+      "1D": {
+        "left": "native_1D",
+        "right": "resampled_1D_ny_roll",
+        "bar_count_compared": 2,
+        "exact_timestamp_matches": 2,
+        "ohlc_exact_matches": 1,
+        "ohlc_within_tolerance": 1,
+        "price_tolerance": 0.0,
+        "max_open_delta": 48.659999999999854,
+        "max_high_delta": 90.85999999999967,
+        "max_low_delta": 0.0,
+        "max_close_delta": 0.0,
+        "missing_on_left": 0,
+        "missing_on_right": 298,
+        "missing_left_timestamps_head": [],
+        "missing_right_timestamps_head": [
+          1750194000,
+          1750280400,
+          1750366800,
+          1750626000,
+          1750712400,
+          1750798800,
+          1750885200,
+          1750971600,
+          1751230800,
+          1751317200,
+          1751403600,
+          1751490000,
+          1751576400,
+          1751835600,
+          1751922000,
+          1752008400,
+          1752094800,
+          1752181200,
+          1752440400,
+          1752526800
+        ]
+      }
+    },
+    "session_hl": {
+      "left": "native_5m",
+      "right": "native_5m",
+      "sessions_compared": 2,
+      "session_hl_exact_matches": 2,
+      "session_hl_within_tolerance": 2,
+      "session_hl_match_rate": 1.0,
+      "price_tolerance": 0.0,
+      "sweep_events_compared": 2,
+      "sweep_events_exact_side_level": 2,
+      "sweep_match_rate": 1.0,
+      "rows_head": [
+        {
+          "session": "Asia",
+          "trading_date": "2026-08-13",
+          "left_high": 4362.045,
+          "right_high": 4362.045,
+          "left_low": 4311.04,
+          "right_low": 4311.04,
+          "high_delta": 0.0,
+          "low_delta": 0.0,
+          "exact": true
+        },
+        {
+          "session": "London",
+          "trading_date": "2026-08-14",
+          "left_high": 4380.745,
+          "right_high": 4380.745,
+          "left_low": 4329.81,
+          "right_low": 4329.81,
+          "high_delta": 0.0,
+          "low_delta": 0.0,
+          "exact": true
+        }
+      ],
+      "sweep_rows_head": [
+        {
+          "session": "Asia",
+          "trading_date": "2026-08-13",
+          "left_sweeps": [
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707300
+            },
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707900
+            }
+          ],
+          "right_sweeps": [
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707300
+            },
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707900
+            }
+          ],
+          "sides_equal": true
+        },
+        {
+          "session": "London",
+          "trading_date": "2026-08-14",
+          "left_sweeps": [
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786710900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786713000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786718700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728300
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786730700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786731000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786732800
+            }
+          ],
+          "right_sweeps": [
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786710900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786713000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786718700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728300
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786730700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786731000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786732800
+            }
+          ],
+          "sides_equal": true
+        }
+      ]
+    },
+    "session_hl_native5_vs_self": {
+      "left": "native_5m",
+      "right": "native_5m",
+      "sessions_compared": 2,
+      "session_hl_exact_matches": 2,
+      "session_hl_within_tolerance": 2,
+      "session_hl_match_rate": 1.0,
+      "price_tolerance": 0.0,
+      "sweep_events_compared": 2,
+      "sweep_events_exact_side_level": 2,
+      "sweep_match_rate": 1.0,
+      "rows_head": [
+        {
+          "session": "Asia",
+          "trading_date": "2026-08-13",
+          "left_high": 4362.045,
+          "right_high": 4362.045,
+          "left_low": 4311.04,
+          "right_low": 4311.04,
+          "high_delta": 0.0,
+          "low_delta": 0.0,
+          "exact": true
+        },
+        {
+          "session": "London",
+          "trading_date": "2026-08-14",
+          "left_high": 4380.745,
+          "right_high": 4380.745,
+          "left_low": 4329.81,
+          "right_low": 4329.81,
+          "high_delta": 0.0,
+          "low_delta": 0.0,
+          "exact": true
+        }
+      ],
+      "sweep_rows_head": [
+        {
+          "session": "Asia",
+          "trading_date": "2026-08-13",
+          "left_sweeps": [
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707300
+            },
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707900
+            }
+          ],
+          "right_sweeps": [
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707300
+            },
+            {
+              "side": "high",
+              "level": 4362.045,
+              "ts": 1786707900
+            }
+          ],
+          "sides_equal": true
+        },
+        {
+          "session": "London",
+          "trading_date": "2026-08-14",
+          "left_sweeps": [
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786710900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786713000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786718700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728300
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786730700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786731000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786732800
+            }
+          ],
+          "right_sweeps": [
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786710900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786713000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786718700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728300
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786728900
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786730700
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786731000
+            },
+            {
+              "side": "high",
+              "level": 4380.745,
+              "ts": 1786732800
+            }
+          ],
+          "sides_equal": true
+        }
+      ]
+    },
+    "htf_bias": {
+      "left": "native_htf",
+      "right": "resampled_htf",
+      "timestamps_compared": 1,
+      "daily_bias_agree": 0,
+      "h4_bias_agree": 0,
+      "daily_agree_rate": 0.0,
+      "h4_agree_rate": 0.0,
+      "disagreements_head": [
+        {
+          "ts": 1786676400,
+          "left_daily": "bullish",
+          "right_daily": "unknown",
+          "left_h4": "bearish",
+          "right_h4": "unknown"
+        }
+      ],
+      "note": "If data-source differences change HTF bias, disagreements are listed; strategy rules are not altered."
+    },
+    "deep_vs_native_ohlc": {
+      "status": "skipped",
+      "reason": "no_approved_deeper_provider"
+    }
+  },
+  "complete_sessions": 6,
+  "complete_sessions_sample_quality": "INSUFFICIENT_SAMPLE",
+  "journal_size": 8,
+  "journal_path": "journal\\phase15_mtf\\setups.jsonl",
+  "journal_dedupe_keys": "liquidity_event_id|execution_timeframe|config_hash",
+  "funnel": {
+    "overall": {
+      "n": 8,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "liquidity_sweeps": 7,
+      "choch_confirmations": 7,
+      "fvg_formations": 7,
+      "retracements": 7,
+      "triggered_entries": 7,
+      "valid_risk_plans": 5,
+      "resolved_outcomes": 3,
+      "completed_sessions": 8,
+      "invalidated": 2,
+      "expired": 5,
+      "ambiguous": 0
+    },
+    "Asia": {
+      "n": 4,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "liquidity_sweeps": 3,
+      "choch_confirmations": 3,
+      "fvg_formations": 3,
+      "retracements": 3,
+      "triggered_entries": 3,
+      "valid_risk_plans": 2,
+      "resolved_outcomes": 2,
+      "completed_sessions": 4,
+      "invalidated": 1,
+      "expired": 3,
+      "ambiguous": 0
+    },
+    "London": {
+      "n": 4,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "liquidity_sweeps": 4,
+      "choch_confirmations": 4,
+      "fvg_formations": 4,
+      "retracements": 4,
+      "triggered_entries": 4,
+      "valid_risk_plans": 3,
+      "resolved_outcomes": 1,
+      "completed_sessions": 4,
+      "invalidated": 1,
+      "expired": 2,
+      "ambiguous": 0
+    },
+    "Asia High": {
+      "n": 2,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "liquidity_sweeps": 2,
+      "choch_confirmations": 2,
+      "fvg_formations": 2,
+      "retracements": 2,
+      "triggered_entries": 2,
+      "valid_risk_plans": 1,
+      "resolved_outcomes": 1,
+      "completed_sessions": 2,
+      "invalidated": 1,
+      "expired": 1,
+      "ambiguous": 0
+    },
+    "Asia Low": {
+      "n": 1,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "liquidity_sweeps": 1,
+      "choch_confirmations": 1,
+      "fvg_formations": 1,
+      "retracements": 1,
+      "triggered_entries": 1,
+      "valid_risk_plans": 1,
+      "resolved_outcomes": 1,
+      "completed_sessions": 1,
+      "invalidated": 0,
+      "expired": 1,
+      "ambiguous": 0
+    },
+    "London High": {
+      "n": 3,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "liquidity_sweeps": 3,
+      "choch_confirmations": 3,
+      "fvg_formations": 3,
+      "retracements": 3,
+      "triggered_entries": 3,
+      "valid_risk_plans": 2,
+      "resolved_outcomes": 0,
+      "completed_sessions": 3,
+      "invalidated": 1,
+      "expired": 1,
+      "ambiguous": 0
+    },
+    "London Low": {
+      "n": 1,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "liquidity_sweeps": 1,
+      "choch_confirmations": 1,
+      "fvg_formations": 1,
+      "retracements": 1,
+      "triggered_entries": 1,
+      "valid_risk_plans": 1,
+      "resolved_outcomes": 1,
+      "completed_sessions": 1,
+      "invalidated": 0,
+      "expired": 1,
+      "ambiguous": 0
+    }
+  },
+  "mtf_report": {
+    "journal_size": 8,
+    "htf_alignment_distribution": {
+      "aligned_both": 2,
+      "aligned_daily_only": 0,
+      "aligned_h4_only": 3,
+      "opposed_both": 2,
+      "mixed": 0,
+      "neutral_or_unknown": 1
+    },
+    "canonical_htf_alignment_counts": {
+      "mixed": 4,
+      "aligned_bullish": 4
+    },
+    "funnel_by_htf_bucket": {
+      "aligned_both": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 2,
+        "choch_confirmations": 2,
+        "fvg_formations": 2,
+        "retracements": 2,
+        "triggered_entries": 2,
+        "valid_risk_plans": 2,
+        "resolved_outcomes": 2
+      },
+      "aligned_daily_only": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      },
+      "aligned_h4_only": {
+        "n": 3,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 3,
+        "choch_confirmations": 3,
+        "fvg_formations": 3,
+        "retracements": 3,
+        "triggered_entries": 3,
+        "valid_risk_plans": 1,
+        "resolved_outcomes": 0
+      },
+      "opposed_both": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 2,
+        "choch_confirmations": 2,
+        "fvg_formations": 2,
+        "retracements": 2,
+        "triggered_entries": 2,
+        "valid_risk_plans": 2,
+        "resolved_outcomes": 1
+      },
+      "mixed": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      },
+      "neutral_or_unknown": {
+        "n": 1,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0
+      }
+    },
+    "outcomes_by_alignment": {
+      "aligned_bullish": {
+        "n": 4,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "count": 4,
+        "1R_hit": {
+          "count": 3,
+          "denominator_resolved": 9,
+          "rate": 0.3333333333333333
+        },
+        "2R_hit": {
+          "count": 1,
+          "denominator_resolved": 9,
+          "rate": 0.1111111111111111
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 9,
+          "rate": 0.0
+        },
+        "stop_hit": {
+          "count": 9,
+          "rate": 1.0,
+          "denominator_resolved": 9
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": 0.0,
+          "denominator_resolved": 9
+        },
+        "average_mfe_r": 0.8551616191925431,
+        "median_mfe_r": 0.6083855629997703,
+        "average_mae_r": 1.5545887494190938,
+        "ambiguity_rate": 0.0,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 3,
+            "denominator_resolved_triggered": 9,
+            "rate": 0.3333333333333333,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 1,
+            "denominator_resolved_triggered": 9,
+            "rate": 0.1111111111111111,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 9,
+            "rate": 0.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 9,
+            "rate": 0.0
+          },
+          "stop": {
+            "count": 9,
+            "denominator_resolved_triggered": 9,
+            "rate": 1.0
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 12,
+            "rate": 0.0
+          }
+        }
+      },
+      "aligned_bearish": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "mixed": {
+        "n": 4,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "count": 4,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": 0.5602791585949192,
+        "median_mfe_r": 0.5602622289460728,
+        "average_mae_r": 0.29651279048481255,
+        "ambiguity_rate": 0.0,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 9,
+            "rate": 0.0
+          }
+        }
+      },
+      "partial": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "opposed": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "count": 2,
+        "1R_hit": {
+          "count": 3,
+          "denominator_resolved": 3,
+          "rate": 1.0
+        },
+        "2R_hit": {
+          "count": 1,
+          "denominator_resolved": 3,
+          "rate": 0.3333333333333333
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 3,
+          "rate": 0.0
+        },
+        "stop_hit": {
+          "count": 3,
+          "rate": 1.0,
+          "denominator_resolved": 3
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": 0.0,
+          "denominator_resolved": 3
+        },
+        "average_mfe_r": 1.5877806544336306,
+        "median_mfe_r": 1.164144353899864,
+        "average_mae_r": 2.252871128336083,
+        "ambiguity_rate": 0.0,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 3,
+            "denominator_resolved_triggered": 3,
+            "rate": 1.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 1,
+            "denominator_resolved_triggered": 3,
+            "rate": 0.3333333333333333,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 3,
+            "rate": 0.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 3,
+            "rate": 0.0
+          },
+          "stop": {
+            "count": 3,
+            "denominator_resolved_triggered": 3,
+            "rate": 1.0
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 6,
+            "rate": 0.0
+          }
+        }
+      },
+      "unknown": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      }
+    },
+    "metrics_by_execution_timeframe": {
+      "15m": {
+        "n": 6,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "setup_count": 6,
+        "confirmation_rate": {
+          "n": 5,
+          "denominator_sweeps": 5,
+          "rate": 1.0
+        },
+        "fvg_rate": {
+          "n": 5,
+          "denominator_confirmations": 5,
+          "rate": 1.0
+        },
+        "entry_trigger_rate": {
+          "n": 5,
+          "denominator_fvgs": 5,
+          "rate": 1.0
+        },
+        "valid_risk_count": 5,
+        "stop_rate": {
+          "count": 9,
+          "rate": 1.0,
+          "denominator_resolved": 9
+        },
+        "1R_hit": {
+          "count": 3,
+          "denominator_resolved": 9,
+          "rate": 0.3333333333333333
+        },
+        "2R_hit": {
+          "count": 1,
+          "denominator_resolved": 9,
+          "rate": 0.1111111111111111
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 9,
+          "rate": 0.0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": 0.0,
+          "denominator_resolved": 9
+        },
+        "average_mfe_r": 0.7814410040431371,
+        "average_mae_r": 1.2400697596855235,
+        "ambiguity_rate": 0.0,
+        "median_sec_sweep_to_confirmation": 6300.0,
+        "median_sec_confirmation_to_fvg": 6300.0,
+        "median_sec_fvg_to_entry": 2700.0,
+        "raw_totals": {
+          "setups": 6,
+          "liquidity_sweeps": 5,
+          "confirmations": 5,
+          "fvgs": 5
+        }
+      },
+      "5m": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "setup_count": 2,
+        "confirmation_rate": {
+          "n": 2,
+          "denominator_sweeps": 2,
+          "rate": 1.0
+        },
+        "fvg_rate": {
+          "n": 2,
+          "denominator_confirmations": 2,
+          "rate": 1.0
+        },
+        "entry_trigger_rate": {
+          "n": 2,
+          "denominator_fvgs": 2,
+          "rate": 1.0
+        },
+        "valid_risk_count": 0,
+        "stop_rate": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": 0.0,
+        "median_sec_sweep_to_confirmation": 9600.0,
+        "median_sec_confirmation_to_fvg": 2400.0,
+        "median_sec_fvg_to_entry": 300.0,
+        "raw_totals": {
+          "setups": 2,
+          "liquidity_sweeps": 2,
+          "confirmations": 2,
+          "fvgs": 2
+        }
+      }
+    },
+    "paired_5m_15m": {
+      "n": 0,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "paired_event_count": 0,
+      "pairs": []
+    },
+    "paired_5m_15m_summary": {
+      "n": 0,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "paired_event_count": 0,
+      "both_confirmed": 0,
+      "5m_only_confirmed": 0,
+      "15m_only_confirmed": 0,
+      "neither_confirmed": 0,
+      "both_entered": 0,
+      "5m_only_entered": 0,
+      "15m_only_entered": 0,
+      "confirmation_lead_time_sec_5m_minus_15m": {
+        "count": 0,
+        "median": null,
+        "p75": null,
+        "p90": null,
+        "p95": null
+      },
+      "risk_distance_delta_5m_minus_15m": {
+        "count": 0,
+        "median": null,
+        "p75": null,
+        "p90": null,
+        "p95": null
+      },
+      "rr_to_opposite_delta_5m_minus_15m": {
+        "count": 0,
+        "median": null,
+        "p75": null,
+        "p90": null,
+        "p95": null
+      },
+      "outcome_pairing_counts": {},
+      "note": "Lead times descriptive only; faster is not better."
+    },
+    "daily_vs_h4_contribution": {
+      "setup_aligns_d_and_h4": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 2,
+        "choch_confirmations": 2,
+        "fvg_formations": 2,
+        "retracements": 2,
+        "triggered_entries": 2,
+        "valid_risk_plans": 2,
+        "resolved_outcomes": 2,
+        "count": 2,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 6,
+          "rate": 0.0
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 6,
+          "rate": 0.0
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 6,
+          "rate": 0.0
+        },
+        "stop_hit": {
+          "count": 6,
+          "rate": 1.0,
+          "denominator_resolved": 6
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": 0.0,
+          "denominator_resolved": 6
+        },
+        "average_mfe_r": 0.4888521015719993,
+        "median_mfe_r": 0.48857786259558533,
+        "average_mae_r": 1.2054475599605994,
+        "ambiguity_rate": 0.0,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 6,
+            "rate": 0.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 6,
+            "rate": 0.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 6,
+            "rate": 0.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 6,
+            "rate": 0.0
+          },
+          "stop": {
+            "count": 6,
+            "denominator_resolved_triggered": 6,
+            "rate": 1.0
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 6,
+            "rate": 0.0
+          }
+        }
+      },
+      "setup_aligns_d_only": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 0,
+        "choch_confirmations": 0,
+        "fvg_formations": 0,
+        "retracements": 0,
+        "triggered_entries": 0,
+        "valid_risk_plans": 0,
+        "resolved_outcomes": 0,
+        "count": 0,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "ambiguity_rate": null,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 0,
+            "rate": null
+          }
+        }
+      },
+      "setup_aligns_h4_only": {
+        "n": 3,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 3,
+        "choch_confirmations": 3,
+        "fvg_formations": 3,
+        "retracements": 3,
+        "triggered_entries": 3,
+        "valid_risk_plans": 1,
+        "resolved_outcomes": 0,
+        "count": 3,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "average_mfe_r": 0.5602791585949192,
+        "median_mfe_r": 0.5602622289460728,
+        "average_mae_r": 0.29651279048481255,
+        "ambiguity_rate": 0.0,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "stop": {
+            "count": 0,
+            "denominator_resolved_triggered": 0,
+            "rate": null
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 9,
+            "rate": 0.0
+          }
+        }
+      },
+      "setup_aligns_neither": {
+        "n": 3,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 2,
+        "choch_confirmations": 2,
+        "fvg_formations": 2,
+        "retracements": 2,
+        "triggered_entries": 2,
+        "valid_risk_plans": 2,
+        "resolved_outcomes": 1,
+        "count": 3,
+        "1R_hit": {
+          "count": 3,
+          "denominator_resolved": 3,
+          "rate": 1.0
+        },
+        "2R_hit": {
+          "count": 1,
+          "denominator_resolved": 3,
+          "rate": 0.3333333333333333
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 3,
+          "rate": 0.0
+        },
+        "stop_hit": {
+          "count": 3,
+          "rate": 1.0,
+          "denominator_resolved": 3
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": 0.0,
+          "denominator_resolved": 3
+        },
+        "average_mfe_r": 1.5877806544336306,
+        "median_mfe_r": 1.164144353899864,
+        "average_mae_r": 2.252871128336083,
+        "ambiguity_rate": 0.0,
+        "hit_rates_resolved_only": {
+          "1R": {
+            "count": 3,
+            "denominator_resolved_triggered": 3,
+            "rate": 1.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "2R": {
+            "count": 1,
+            "denominator_resolved_triggered": 3,
+            "rate": 0.3333333333333333,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "3R": {
+            "count": 0,
+            "denominator_resolved_triggered": 3,
+            "rate": 0.0,
+            "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+          },
+          "opposite_liquidity": {
+            "count": 0,
+            "denominator_resolved_triggered": 3,
+            "rate": 0.0
+          },
+          "stop": {
+            "count": 3,
+            "denominator_resolved_triggered": 3,
+            "rate": 1.0
+          },
+          "ambiguous_share_of_triggered": {
+            "count": 0,
+            "denominator_triggered": 6,
+            "rate": 0.0
+          }
+        }
+      }
+    },
+    "context_group_stats": {
+      "aligned_both": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "N": 2,
+        "sweep_count": 2,
+        "confirmation_count": 2,
+        "fvg_count": 2,
+        "entry_count": 2,
+        "valid_risk_count": 2,
+        "STOP_HIT": {
+          "count": 6,
+          "rate": 1.0,
+          "denominator_resolved": 6
+        },
+        "1R": {
+          "count": 0,
+          "denominator_resolved": 6,
+          "rate": 0.0
+        },
+        "2R": {
+          "count": 0,
+          "denominator_resolved": 6,
+          "rate": 0.0
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved": 6,
+          "rate": 0.0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": 0.0,
+          "denominator_resolved": 6
+        },
+        "AMBIGUOUS_INTRABAR": {
+          "count": 0
+        },
+        "average_mfe_r": 0.4888521015719993,
+        "median_mfe_r": 0.48857786259558533,
+        "average_mae_r": 1.2054475599605994,
+        "median_mae_r": 1.2059751373401455
+      },
+      "aligned_daily_only": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "N": 0,
+        "sweep_count": 0,
+        "confirmation_count": 0,
+        "fvg_count": 0,
+        "entry_count": 0,
+        "valid_risk_count": 0,
+        "STOP_HIT": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "1R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "AMBIGUOUS_INTRABAR": {
+          "count": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "median_mae_r": null
+      },
+      "aligned_h4_only": {
+        "n": 3,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "N": 3,
+        "sweep_count": 3,
+        "confirmation_count": 3,
+        "fvg_count": 3,
+        "entry_count": 3,
+        "valid_risk_count": 1,
+        "STOP_HIT": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "1R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "AMBIGUOUS_INTRABAR": {
+          "count": 0
+        },
+        "average_mfe_r": 0.5602791585949192,
+        "median_mfe_r": 0.5602622289460728,
+        "average_mae_r": 0.29651279048481255,
+        "median_mae_r": 0.29652042360056585
+      },
+      "opposed_both": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "N": 2,
+        "sweep_count": 2,
+        "confirmation_count": 2,
+        "fvg_count": 2,
+        "entry_count": 2,
+        "valid_risk_count": 2,
+        "STOP_HIT": {
+          "count": 3,
+          "rate": 1.0,
+          "denominator_resolved": 3
+        },
+        "1R": {
+          "count": 3,
+          "denominator_resolved": 3,
+          "rate": 1.0
+        },
+        "2R": {
+          "count": 1,
+          "denominator_resolved": 3,
+          "rate": 0.3333333333333333
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved": 3,
+          "rate": 0.0
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": 0.0,
+          "denominator_resolved": 3
+        },
+        "AMBIGUOUS_INTRABAR": {
+          "count": 0
+        },
+        "average_mfe_r": 1.5877806544336306,
+        "median_mfe_r": 1.164144353899864,
+        "average_mae_r": 2.252871128336083,
+        "median_mae_r": 2.0155219247186507
+      },
+      "mixed": {
+        "n": 0,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "N": 0,
+        "sweep_count": 0,
+        "confirmation_count": 0,
+        "fvg_count": 0,
+        "entry_count": 0,
+        "valid_risk_count": 0,
+        "STOP_HIT": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "1R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "AMBIGUOUS_INTRABAR": {
+          "count": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "median_mae_r": null
+      },
+      "neutral_or_unknown": {
+        "n": 1,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "N": 1,
+        "sweep_count": 0,
+        "confirmation_count": 0,
+        "fvg_count": 0,
+        "entry_count": 0,
+        "valid_risk_count": 0,
+        "STOP_HIT": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "1R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "opposite_liquidity_hit": {
+          "count": 0,
+          "rate": null,
+          "denominator_resolved": 0
+        },
+        "AMBIGUOUS_INTRABAR": {
+          "count": 0
+        },
+        "average_mfe_r": null,
+        "median_mfe_r": null,
+        "average_mae_r": null,
+        "median_mae_r": null
+      }
+    },
+    "session_funnel": {
+      "overall": {
+        "n": 8,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 7,
+        "choch_confirmations": 7,
+        "fvg_formations": 7,
+        "retracements": 7,
+        "triggered_entries": 7,
+        "valid_risk_plans": 5,
+        "resolved_outcomes": 3,
+        "completed_sessions": 8,
+        "invalidated": 2,
+        "expired": 5,
+        "ambiguous": 0
+      },
+      "Asia": {
+        "n": 4,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 3,
+        "choch_confirmations": 3,
+        "fvg_formations": 3,
+        "retracements": 3,
+        "triggered_entries": 3,
+        "valid_risk_plans": 2,
+        "resolved_outcomes": 2,
+        "completed_sessions": 4,
+        "invalidated": 1,
+        "expired": 3,
+        "ambiguous": 0
+      },
+      "London": {
+        "n": 4,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 4,
+        "choch_confirmations": 4,
+        "fvg_formations": 4,
+        "retracements": 4,
+        "triggered_entries": 4,
+        "valid_risk_plans": 3,
+        "resolved_outcomes": 1,
+        "completed_sessions": 4,
+        "invalidated": 1,
+        "expired": 2,
+        "ambiguous": 0
+      },
+      "Asia High": {
+        "n": 2,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 2,
+        "choch_confirmations": 2,
+        "fvg_formations": 2,
+        "retracements": 2,
+        "triggered_entries": 2,
+        "valid_risk_plans": 1,
+        "resolved_outcomes": 1,
+        "completed_sessions": 2,
+        "invalidated": 1,
+        "expired": 1,
+        "ambiguous": 0
+      },
+      "Asia Low": {
+        "n": 1,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 1,
+        "choch_confirmations": 1,
+        "fvg_formations": 1,
+        "retracements": 1,
+        "triggered_entries": 1,
+        "valid_risk_plans": 1,
+        "resolved_outcomes": 1,
+        "completed_sessions": 1,
+        "invalidated": 0,
+        "expired": 1,
+        "ambiguous": 0
+      },
+      "London High": {
+        "n": 3,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 3,
+        "choch_confirmations": 3,
+        "fvg_formations": 3,
+        "retracements": 3,
+        "triggered_entries": 3,
+        "valid_risk_plans": 2,
+        "resolved_outcomes": 0,
+        "completed_sessions": 3,
+        "invalidated": 1,
+        "expired": 1,
+        "ambiguous": 0
+      },
+      "London Low": {
+        "n": 1,
+        "sample_quality": "INSUFFICIENT_SAMPLE",
+        "sample_warning": "INSUFFICIENT_SAMPLE",
+        "n_ge_30": false,
+        "n_ge_50": false,
+        "n_ge_100": false,
+        "liquidity_sweeps": 1,
+        "choch_confirmations": 1,
+        "fvg_formations": 1,
+        "retracements": 1,
+        "triggered_entries": 1,
+        "valid_risk_plans": 1,
+        "resolved_outcomes": 1,
+        "completed_sessions": 1,
+        "invalidated": 0,
+        "expired": 1,
+        "ambiguous": 0
+      }
+    },
+    "invalidation_breakdown": {
+      "by_category": {
+        "invalid_directional_stop": 6
+      },
+      "by_execution_timeframe": {
+        "5m": {
+          "invalid_directional_stop": 6
+        }
+      },
+      "by_entry_mode": {
+        "first_touch": {
+          "invalid_directional_stop": 2
+        },
+        "boundary": {
+          "invalid_directional_stop": 2
+        },
+        "ce": {
+          "invalid_directional_stop": 2
+        }
+      },
+      "by_session": {
+        "Asia": {
+          "invalid_directional_stop": 3
+        },
+        "London": {
+          "invalid_directional_stop": 3
+        }
+      },
+      "invalidated_setup_count": 2,
+      "no_risk_plan_entry_count": 6
+    },
+    "trigger_bar_ambiguity": {
+      "count": 21,
+      "denominator_triggered_candidates": 21,
+      "rate": 1.0,
+      "by_execution_timeframe": {
+        "5m": 6,
+        "15m": 15
+      },
+      "by_entry_mode": {
+        "first_touch": 7,
+        "boundary": 7,
+        "ce": 7
+      },
+      "phase15_candidate": true
+    },
+    "intrabar_ambiguity": {
+      "count": 0,
+      "denominator_triggered": 21,
+      "rate": 0.0,
+      "note": "OHLC path unknown; AMBIGUOUS_INTRABAR is fail-closed labeling only"
+    },
+    "timing_distributions": {
+      "15m": {
+        "sweep_to_choch": {
+          "count": 5,
+          "median": 6300.0,
+          "p75": 17100.0,
+          "p90": 19800.0,
+          "p95": 20700.0
+        },
+        "choch_to_fvg": {
+          "count": 5,
+          "median": 6300.0,
+          "p75": 17100.0,
+          "p90": 19260.0,
+          "p95": 19980.0
+        },
+        "fvg_to_entry": {
+          "count": 5,
+          "median": 2700.0,
+          "p75": 9900.0,
+          "p90": 48780.00000000001,
+          "p95": 61739.999999999985
+        }
+      },
+      "5m": {
+        "sweep_to_choch": {
+          "count": 2,
+          "median": 9600.0,
+          "p75": 10500.0,
+          "p90": 11040.0,
+          "p95": 11220.0
+        },
+        "choch_to_fvg": {
+          "count": 2,
+          "median": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "p95": 2400.0
+        },
+        "fvg_to_entry": {
+          "count": 2,
+          "median": 300.0,
+          "p75": 300.0,
+          "p90": 300.0,
+          "p95": 300.0
+        }
+      }
+    },
+    "insufficient_sample_threshold": 20
+  },
+  "htf_alignment_stats": {
+    "aligned_both": 2,
+    "aligned_daily_only": 0,
+    "aligned_h4_only": 3,
+    "opposed_both": 2,
+    "mixed": 0,
+    "neutral_or_unknown": 1
+  },
+  "metrics_by_execution_timeframe": {
+    "15m": {
+      "n": 6,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "setup_count": 6,
+      "confirmation_rate": {
+        "n": 5,
+        "denominator_sweeps": 5,
+        "rate": 1.0
+      },
+      "fvg_rate": {
+        "n": 5,
+        "denominator_confirmations": 5,
+        "rate": 1.0
+      },
+      "entry_trigger_rate": {
+        "n": 5,
+        "denominator_fvgs": 5,
+        "rate": 1.0
+      },
+      "valid_risk_count": 5,
+      "stop_rate": {
+        "count": 9,
+        "rate": 1.0,
+        "denominator_resolved": 9
+      },
+      "1R_hit": {
+        "count": 3,
+        "denominator_resolved": 9,
+        "rate": 0.3333333333333333
+      },
+      "2R_hit": {
+        "count": 1,
+        "denominator_resolved": 9,
+        "rate": 0.1111111111111111
+      },
+      "3R_hit": {
+        "count": 0,
+        "denominator_resolved": 9,
+        "rate": 0.0
+      },
+      "opposite_liquidity_hit": {
+        "count": 0,
+        "rate": 0.0,
+        "denominator_resolved": 9
+      },
+      "average_mfe_r": 0.7814410040431371,
+      "average_mae_r": 1.2400697596855235,
+      "ambiguity_rate": 0.0,
+      "median_sec_sweep_to_confirmation": 6300.0,
+      "median_sec_confirmation_to_fvg": 6300.0,
+      "median_sec_fvg_to_entry": 2700.0,
+      "raw_totals": {
+        "setups": 6,
+        "liquidity_sweeps": 5,
+        "confirmations": 5,
+        "fvgs": 5
+      }
+    },
+    "5m": {
+      "n": 2,
+      "sample_quality": "INSUFFICIENT_SAMPLE",
+      "sample_warning": "INSUFFICIENT_SAMPLE",
+      "n_ge_30": false,
+      "n_ge_50": false,
+      "n_ge_100": false,
+      "setup_count": 2,
+      "confirmation_rate": {
+        "n": 2,
+        "denominator_sweeps": 2,
+        "rate": 1.0
+      },
+      "fvg_rate": {
+        "n": 2,
+        "denominator_confirmations": 2,
+        "rate": 1.0
+      },
+      "entry_trigger_rate": {
+        "n": 2,
+        "denominator_fvgs": 2,
+        "rate": 1.0
+      },
+      "valid_risk_count": 0,
+      "stop_rate": {
+        "count": 0,
+        "rate": null,
+        "denominator_resolved": 0
+      },
+      "1R_hit": {
+        "count": 0,
+        "denominator_resolved": 0,
+        "rate": null
+      },
+      "2R_hit": {
+        "count": 0,
+        "denominator_resolved": 0,
+        "rate": null
+      },
+      "3R_hit": {
+        "count": 0,
+        "denominator_resolved": 0,
+        "rate": null
+      },
+      "opposite_liquidity_hit": {
+        "count": 0,
+        "rate": null,
+        "denominator_resolved": 0
+      },
+      "average_mfe_r": null,
+      "average_mae_r": null,
+      "ambiguity_rate": 0.0,
+      "median_sec_sweep_to_confirmation": 9600.0,
+      "median_sec_confirmation_to_fvg": 2400.0,
+      "median_sec_fvg_to_entry": 300.0,
+      "raw_totals": {
+        "setups": 2,
+        "liquidity_sweeps": 2,
+        "confirmations": 2,
+        "fvgs": 2
+      }
+    }
+  },
+  "invalid_directional_stop": {
+    "case_count": 6,
+    "by_category": {
+      "entry_already_beyond_sweep_extreme": 6
+    },
+    "by_session": {
+      "Asia": {
+        "entry_already_beyond_sweep_extreme": 3
+      },
+      "London": {
+        "entry_already_beyond_sweep_extreme": 3
+      }
+    },
+    "by_execution_timeframe": {
+      "5m": {
+        "entry_already_beyond_sweep_extreme": 6
+      }
+    },
+    "by_entry_mode": {
+      "first_touch": {
+        "entry_already_beyond_sweep_extreme": 2
+      },
+      "boundary": {
+        "entry_already_beyond_sweep_extreme": 2
+      },
+      "ce": {
+        "entry_already_beyond_sweep_extreme": 2
+      }
+    },
+    "cases": [
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300|exec:5m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300",
+        "session": "Asia",
+        "direction": "bearish",
+        "execution_timeframe": "5m",
+        "entry_mode": "first_touch",
+        "stop_mode": "beyond_sweep",
+        "entry_price": 4386.095,
+        "fvg_low": 4385.17,
+        "fvg_high": 4386.095,
+        "sweep_level": 4362.045,
+        "sweep_extreme": 4363.46,
+        "planned_stop_price": 4363.46,
+        "reason_directional_validation_failed": "stop_not_directional",
+        "category": "entry_already_beyond_sweep_extreme",
+        "bars_involved": {
+          "sweep_timestamp": 1786707300,
+          "confirmation_timestamp": 1786718700,
+          "fvg_created_timestamp": 1786721100,
+          "entry_timestamp": 1786721400
+        },
+        "timestamps": {
+          "sweep": 1786707300,
+          "choch": 1786718700,
+          "fvg": 1786721100,
+          "entry": 1786721400
+        },
+        "invalidation_reason_raw": "first_touch:stop_not_directional;boundary:stop_not_directional;ce:stop_not_directional"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300|exec:5m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300",
+        "session": "Asia",
+        "direction": "bearish",
+        "execution_timeframe": "5m",
+        "entry_mode": "boundary",
+        "stop_mode": "beyond_sweep",
+        "entry_price": 4385.17,
+        "fvg_low": 4385.17,
+        "fvg_high": 4386.095,
+        "sweep_level": 4362.045,
+        "sweep_extreme": 4363.46,
+        "planned_stop_price": 4363.46,
+        "reason_directional_validation_failed": "stop_not_directional",
+        "category": "entry_already_beyond_sweep_extreme",
+        "bars_involved": {
+          "sweep_timestamp": 1786707300,
+          "confirmation_timestamp": 1786718700,
+          "fvg_created_timestamp": 1786721100,
+          "entry_timestamp": 1786721400
+        },
+        "timestamps": {
+          "sweep": 1786707300,
+          "choch": 1786718700,
+          "fvg": 1786721100,
+          "entry": 1786721400
+        },
+        "invalidation_reason_raw": "first_touch:stop_not_directional;boundary:stop_not_directional;ce:stop_not_directional"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300|exec:5m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300",
+        "session": "Asia",
+        "direction": "bearish",
+        "execution_timeframe": "5m",
+        "entry_mode": "ce",
+        "stop_mode": "beyond_sweep",
+        "entry_price": 4385.6325,
+        "fvg_low": 4385.17,
+        "fvg_high": 4386.095,
+        "sweep_level": 4362.045,
+        "sweep_extreme": 4363.46,
+        "planned_stop_price": 4363.46,
+        "reason_directional_validation_failed": "stop_not_directional",
+        "category": "entry_already_beyond_sweep_extreme",
+        "bars_involved": {
+          "sweep_timestamp": 1786707300,
+          "confirmation_timestamp": 1786718700,
+          "fvg_created_timestamp": 1786721100,
+          "entry_timestamp": 1786721400
+        },
+        "timestamps": {
+          "sweep": 1786707300,
+          "choch": 1786718700,
+          "fvg": 1786721100,
+          "entry": 1786721400
+        },
+        "invalidation_reason_raw": "first_touch:stop_not_directional;boundary:stop_not_directional;ce:stop_not_directional"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900|exec:5m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+        "session": "London",
+        "direction": "bearish",
+        "execution_timeframe": "5m",
+        "entry_mode": "first_touch",
+        "stop_mode": "beyond_sweep",
+        "entry_price": 4386.095,
+        "fvg_low": 4385.17,
+        "fvg_high": 4386.095,
+        "sweep_level": 4380.745,
+        "sweep_extreme": 4381.87,
+        "planned_stop_price": 4381.87,
+        "reason_directional_validation_failed": "stop_not_directional",
+        "category": "entry_already_beyond_sweep_extreme",
+        "bars_involved": {
+          "sweep_timestamp": 1786710900,
+          "confirmation_timestamp": 1786718700,
+          "fvg_created_timestamp": 1786721100,
+          "entry_timestamp": 1786721400
+        },
+        "timestamps": {
+          "sweep": 1786710900,
+          "choch": 1786718700,
+          "fvg": 1786721100,
+          "entry": 1786721400
+        },
+        "invalidation_reason_raw": "first_touch:stop_not_directional;boundary:stop_not_directional;ce:stop_not_directional"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900|exec:5m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+        "session": "London",
+        "direction": "bearish",
+        "execution_timeframe": "5m",
+        "entry_mode": "boundary",
+        "stop_mode": "beyond_sweep",
+        "entry_price": 4385.17,
+        "fvg_low": 4385.17,
+        "fvg_high": 4386.095,
+        "sweep_level": 4380.745,
+        "sweep_extreme": 4381.87,
+        "planned_stop_price": 4381.87,
+        "reason_directional_validation_failed": "stop_not_directional",
+        "category": "entry_already_beyond_sweep_extreme",
+        "bars_involved": {
+          "sweep_timestamp": 1786710900,
+          "confirmation_timestamp": 1786718700,
+          "fvg_created_timestamp": 1786721100,
+          "entry_timestamp": 1786721400
+        },
+        "timestamps": {
+          "sweep": 1786710900,
+          "choch": 1786718700,
+          "fvg": 1786721100,
+          "entry": 1786721400
+        },
+        "invalidation_reason_raw": "first_touch:stop_not_directional;boundary:stop_not_directional;ce:stop_not_directional"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900|exec:5m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+        "session": "London",
+        "direction": "bearish",
+        "execution_timeframe": "5m",
+        "entry_mode": "ce",
+        "stop_mode": "beyond_sweep",
+        "entry_price": 4385.6325,
+        "fvg_low": 4385.17,
+        "fvg_high": 4386.095,
+        "sweep_level": 4380.745,
+        "sweep_extreme": 4381.87,
+        "planned_stop_price": 4381.87,
+        "reason_directional_validation_failed": "stop_not_directional",
+        "category": "entry_already_beyond_sweep_extreme",
+        "bars_involved": {
+          "sweep_timestamp": 1786710900,
+          "confirmation_timestamp": 1786718700,
+          "fvg_created_timestamp": 1786721100,
+          "entry_timestamp": 1786721400
+        },
+        "timestamps": {
+          "sweep": 1786710900,
+          "choch": 1786718700,
+          "fvg": 1786721100,
+          "entry": 1786721400
+        },
+        "invalidation_reason_raw": "first_touch:stop_not_directional;boundary:stop_not_directional;ce:stop_not_directional"
+      }
+    ],
+    "implementation_bug_suspected": false,
+    "note": "Categories are descriptive. Strategy stop rules unchanged unless a confirmed coding defect is proven."
+  },
+  "implementation_bug_fixes": [],
+  "trigger_bar_ambiguity": {
+    "count": 21,
+    "denominator_triggered_candidates": 21,
+    "rate": 1.0,
+    "by_execution_timeframe": {
+      "5m": 6,
+      "15m": 15
+    },
+    "by_entry_mode": {
+      "first_touch": 7,
+      "boundary": 7,
+      "ce": 7
+    },
+    "phase15_candidate": true,
+    "by_entry_mode_detail": {
+      "first_touch": {
+        "triggered": 7,
+        "ambiguous": 7,
+        "percentage": 100.0
+      },
+      "boundary": {
+        "triggered": 7,
+        "ambiguous": 7,
+        "percentage": 100.0
+      },
+      "CE": {
+        "triggered": 0,
+        "ambiguous": 0,
+        "percentage": null
+      }
+    },
+    "by_stop_mode": {
+      "beyond_sweep": {
+        "triggered_candidates": 21,
+        "trigger_bar_stop_ambiguities": 21,
+        "percentage": 100.0
+      },
+      "beyond_fvg": {
+        "triggered_candidates": 0,
+        "trigger_bar_stop_ambiguities": 0,
+        "percentage": null,
+        "note": "not_replayed_this_phase_config"
+      }
+    },
+    "by_execution_timeframe_and_entry_mode": {
+      "5m|first_touch": {
+        "triggered_candidates": 2,
+        "trigger_bar_stop_ambiguities": 2,
+        "percentage": 100.0
+      },
+      "5m|boundary": {
+        "triggered_candidates": 2,
+        "trigger_bar_stop_ambiguities": 2,
+        "percentage": 100.0
+      },
+      "5m|CE": {
+        "triggered_candidates": 0,
+        "trigger_bar_stop_ambiguities": 0,
+        "percentage": null
+      },
+      "15m|first_touch": {
+        "triggered_candidates": 5,
+        "trigger_bar_stop_ambiguities": 5,
+        "percentage": 100.0
+      },
+      "15m|boundary": {
+        "triggered_candidates": 5,
+        "trigger_bar_stop_ambiguities": 5,
+        "percentage": 100.0
+      },
+      "15m|CE": {
+        "triggered_candidates": 0,
+        "trigger_bar_stop_ambiguities": 0,
+        "percentage": null
+      }
+    }
+  },
+  "intrabar_15m_resolved_by_5m": {
+    "resolved_count": 15,
+    "by_result": {
+      "INSUFFICIENT_DATA": 9,
+      "RESOLVED_NO_STOP": 6
+    },
+    "rows": [
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-11|high|1786526100|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-11|high|1786526100",
+        "entry_mode": "first_touch",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786555800,
+        "entry_price": 4411.575,
+        "stop_price": 4424.46,
+        "direction": "bearish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-11|high|1786526100|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-11|high|1786526100",
+        "entry_mode": "boundary",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786555800,
+        "entry_price": 4411.43,
+        "stop_price": 4424.46,
+        "direction": "bearish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-11|high|1786526100|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-11|high|1786526100",
+        "entry_mode": "ce",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786560300,
+        "entry_price": 4416.9349999999995,
+        "stop_price": 4424.46,
+        "direction": "bearish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-12|low|1786537800|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-12|low|1786537800",
+        "entry_mode": "first_touch",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786586400,
+        "entry_price": 4405.56,
+        "stop_price": 4382.485,
+        "direction": "bullish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-12|low|1786537800|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-12|low|1786537800",
+        "entry_mode": "boundary",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786586400,
+        "entry_price": 4405.705,
+        "stop_price": 4382.485,
+        "direction": "bullish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-12|low|1786537800|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-12|low|1786537800",
+        "entry_mode": "ce",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786588200,
+        "entry_price": 4404.42,
+        "stop_price": 4382.485,
+        "direction": "bullish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-12|low|1786608900|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-12|low|1786608900",
+        "entry_mode": "first_touch",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786619700,
+        "entry_price": 4388.14,
+        "stop_price": 4365.005,
+        "direction": "bullish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-12|low|1786608900|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-12|low|1786608900",
+        "entry_mode": "boundary",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786619700,
+        "entry_price": 4388.25,
+        "stop_price": 4365.005,
+        "direction": "bullish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-12|low|1786608900|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|Asia|2026-08-12|low|1786608900",
+        "entry_mode": "ce",
+        "execution_timeframe": "15m",
+        "result": "INSUFFICIENT_DATA",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786620600,
+        "entry_price": 4387.96,
+        "stop_price": 4365.005,
+        "direction": "bullish",
+        "child_bars_used": 0,
+        "entry_first_ts": null,
+        "stop_first_ts": null,
+        "note": "expected_up_to_3_child_bars"
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-13|high|1786624200|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-13|high|1786624200",
+        "entry_mode": "first_touch",
+        "execution_timeframe": "15m",
+        "result": "RESOLVED_NO_STOP",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786708800,
+        "entry_price": 4376.83,
+        "stop_price": 4401.47,
+        "direction": "bearish",
+        "child_bars_used": 3,
+        "entry_first_ts": 1786709100,
+        "stop_first_ts": null,
+        "note": ""
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-13|high|1786624200|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-13|high|1786624200",
+        "entry_mode": "boundary",
+        "execution_timeframe": "15m",
+        "result": "RESOLVED_NO_STOP",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786708800,
+        "entry_price": 4374.135,
+        "stop_price": 4401.47,
+        "direction": "bearish",
+        "child_bars_used": 3,
+        "entry_first_ts": 1786708800,
+        "stop_first_ts": null,
+        "note": ""
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-13|high|1786624200|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-13|high|1786624200",
+        "entry_mode": "ce",
+        "execution_timeframe": "15m",
+        "result": "RESOLVED_NO_STOP",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786709700,
+        "entry_price": 4377.62,
+        "stop_price": 4401.47,
+        "direction": "bearish",
+        "child_bars_used": 3,
+        "entry_first_ts": 1786710000,
+        "stop_first_ts": null,
+        "note": ""
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710600|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710600",
+        "entry_mode": "first_touch",
+        "execution_timeframe": "15m",
+        "result": "RESOLVED_NO_STOP",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786734000,
+        "entry_price": 4377.09,
+        "stop_price": 4386.965,
+        "direction": "bearish",
+        "child_bars_used": 3,
+        "entry_first_ts": 1786734600,
+        "stop_first_ts": null,
+        "note": ""
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710600|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710600",
+        "entry_mode": "boundary",
+        "execution_timeframe": "15m",
+        "result": "RESOLVED_NO_STOP",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786734000,
+        "entry_price": 4377.01,
+        "stop_price": 4386.965,
+        "direction": "bearish",
+        "child_bars_used": 3,
+        "entry_first_ts": 1786734600,
+        "stop_first_ts": null,
+        "note": ""
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710600|exec:15m",
+        "liquidity_event_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710600",
+        "entry_mode": "ce",
+        "execution_timeframe": "15m",
+        "result": "RESOLVED_NO_STOP",
+        "parent_timeframe": "15m",
+        "child_timeframe": "5m",
+        "parent_bar_time": 1786734000,
+        "entry_price": 4377.05,
+        "stop_price": 4386.965,
+        "direction": "bearish",
+        "child_bars_used": 3,
+        "entry_first_ts": 1786734600,
+        "stop_first_ts": null,
+        "note": ""
+      }
+    ],
+    "five_m_ambiguity_note": "Ambiguous 5m events require a future 1m dataset to resolve ordering; 1m is not fetched or invented in Phase 15."
+  },
+  "remaining_5m_ambiguities": {
+    "count": 6,
+    "requires_1m_dataset": true,
+    "rows_head": [
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300|exec:5m",
+        "entry_mode": "first_touch",
+        "entry_timestamp": 1786721400,
+        "requires_1m_dataset": true
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300|exec:5m",
+        "entry_mode": "boundary",
+        "entry_timestamp": 1786721400,
+        "requires_1m_dataset": true
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300|exec:5m",
+        "entry_mode": "ce",
+        "entry_timestamp": 1786721400,
+        "requires_1m_dataset": true
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900|exec:5m",
+        "entry_mode": "first_touch",
+        "entry_timestamp": 1786721400,
+        "requires_1m_dataset": true
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900|exec:5m",
+        "entry_mode": "boundary",
+        "entry_timestamp": 1786721400,
+        "requires_1m_dataset": true
+      },
+      {
+        "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900|exec:5m",
+        "entry_mode": "ce",
+        "entry_timestamp": 1786721400,
+        "requires_1m_dataset": true
+      }
+    ]
+  },
+  "luxalgo": {
+    "by_timeframe": {
+      "5m": {
+        "reliable_luxalgo_events": 1,
+        "internal_events": 11,
+        "matched_count": 0,
+        "equivalence_status": "unvalidated_against_luxalgo"
+      },
+      "15m": {
+        "reliable_luxalgo_events": 2,
+        "internal_events": 19,
+        "matched_count": 0,
+        "equivalence_status": "unvalidated_against_luxalgo"
+      }
+    },
+    "equivalence_status": "unvalidated_against_luxalgo",
+    "note": "Conservative; no jump to validated."
+  },
+  "csv_reports": {
+    "setup_summary": "reports\\phase15_setup_summary.csv",
+    "paired": "reports\\phase15_paired_5m_15m.csv",
+    "invalid_stops": "reports\\phase15_invalid_stop_diagnostics.csv",
+    "ambiguities": "reports\\phase15_ambiguities.csv"
+  },
+  "limitations": [
+    "TradingView Desktop history ceiling ~300 bars remains",
+    "No approved deeper OANDA-compatible history integrated",
+    "Session objective 100+ complete Asia/London observations not met",
+    "5m same-bar ambiguities cannot be ordered without 1m data",
+    "Native vs deep-source OHLC overlap skipped pending approved deep source"
+  ],
+  "recommended_phase16_scope": [
+    "Approve and integrate exact OANDA (or validated equivalent) deep history",
+    "Re-run Phase 15 overlap + large-sample replay once depth available",
+    "Optionally add 1m only if same approved feed covers it",
+    "Keep stop rules unchanged until invalid-stop categories stabilize on large N",
+    "Do not hard-filter HTF or optimize strategy yet"
+  ]
+}

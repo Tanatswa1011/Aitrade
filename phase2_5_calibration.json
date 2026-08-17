@@ -1,0 +1,1564 @@
+{
+  "symbol": "OANDA:XAUUSD",
+  "resolution": 15,
+  "bar_count": 300,
+  "bar_span": {
+    "first": "2026-08-11T15:00:00+00:00",
+    "last": "2026-08-14T20:45:00+00:00"
+  },
+  "ict_indicator": {
+    "timezone_input": "GMT",
+    "study_id": "h6mnwz",
+    "asia_count": 51,
+    "london_count": 51,
+    "session_strings": {
+      "Asia": "0000-0700",
+      "London": "0800-1330",
+      "New York": "1330-2100"
+    },
+    "timezone_options_are_fixed_offsets": true
+  },
+  "candidate_ranking": [
+    {
+      "candidate": "ny_ict_classic",
+      "rate_full": 1.0,
+      "matched_full": 6,
+      "compared_full": 6,
+      "by_session": {
+        "Asia": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        },
+        "London": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "candidate": "gmt_london_shifted",
+      "rate_full": 1.0,
+      "matched_full": 6,
+      "compared_full": 6,
+      "by_session": {
+        "Asia": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        },
+        "London": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "candidate": "hybrid_asia_utc_london_eu",
+      "rate_full": 1.0,
+      "matched_full": 6,
+      "compared_full": 6,
+      "by_session": {
+        "Asia": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        },
+        "London": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "candidate": "gmt_labeled",
+      "rate_full": 0.5,
+      "matched_full": 3,
+      "compared_full": 6,
+      "by_session": {
+        "Asia": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        },
+        "London": {
+          "compared": 3,
+          "matched": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "candidate": "europe_london_local",
+      "rate_full": 0.5,
+      "matched_full": 3,
+      "compared_full": 6,
+      "by_session": {
+        "Asia": {
+          "compared": 3,
+          "matched": 0,
+          "rate": 0.0
+        },
+        "London": {
+          "compared": 3,
+          "matched": 3,
+          "rate": 1.0
+        }
+      }
+    }
+  ],
+  "best_candidate": "ny_ict_classic",
+  "locked_config_validation": {
+    "rate_full": 1.0,
+    "by_session": {
+      "Asia": {
+        "compared": 3,
+        "matched": 3,
+        "rate": 1.0
+      },
+      "London": {
+        "compared": 3,
+        "matched": 3,
+        "rate": 1.0
+      }
+    },
+    "mismatches": [],
+    "sample_rows": [
+      {
+        "date": "2026-08-11",
+        "session": "Asia",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-11T20:00:00-04:00",
+        "local_end": "2026-08-12T03:00:00-04:00",
+        "utc_start": "2026-08-12T00:00:00+00:00",
+        "utc_end": "2026-08-12T07:00:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4416.25,
+        "ICT_Low": 4366.54,
+        "Internal_High": 4416.25,
+        "Internal_Low": 4366.54,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-12",
+        "session": "Asia",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-12T20:00:00-04:00",
+        "local_end": "2026-08-13T03:00:00-04:00",
+        "utc_start": "2026-08-13T00:00:00+00:00",
+        "utc_end": "2026-08-13T07:00:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4449.83,
+        "ICT_Low": 4369.035,
+        "Internal_High": 4449.83,
+        "Internal_Low": 4369.035,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-13",
+        "session": "Asia",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-13T20:00:00-04:00",
+        "local_end": "2026-08-14T03:00:00-04:00",
+        "utc_start": "2026-08-14T00:00:00+00:00",
+        "utc_end": "2026-08-14T07:00:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4362.045,
+        "ICT_Low": 4311.04,
+        "Internal_High": 4362.045,
+        "Internal_Low": 4311.04,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-12",
+        "session": "London",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-12T03:00:00-04:00",
+        "local_end": "2026-08-12T08:30:00-04:00",
+        "utc_start": "2026-08-12T07:00:00+00:00",
+        "utc_end": "2026-08-12T12:30:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4427.625,
+        "ICT_Low": 4398.345,
+        "Internal_High": 4427.625,
+        "Internal_Low": 4398.345,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-13",
+        "session": "London",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-13T03:00:00-04:00",
+        "local_end": "2026-08-13T08:30:00-04:00",
+        "utc_start": "2026-08-13T07:00:00+00:00",
+        "utc_end": "2026-08-13T12:30:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4396.715,
+        "ICT_Low": 4364.17,
+        "Internal_High": 4396.715,
+        "Internal_Low": 4364.17,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-14",
+        "session": "London",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-14T03:00:00-04:00",
+        "local_end": "2026-08-14T08:30:00-04:00",
+        "utc_start": "2026-08-14T07:00:00+00:00",
+        "utc_end": "2026-08-14T12:30:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4380.745,
+        "ICT_Low": 4329.81,
+        "Internal_High": 4380.745,
+        "Internal_Low": 4329.81,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      }
+    ]
+  },
+  "dst_transition_conversions": [
+    {
+      "trading_date": "2026-03-06",
+      "session": "Asia",
+      "local_start": "2026-03-06T20:00:00-05:00",
+      "local_end": "2026-03-07T03:00:00-05:00",
+      "utc_start": "2026-03-07T01:00:00+00:00",
+      "utc_end": "2026-03-07T08:00:00+00:00",
+      "utc_offset_start": "-05:00",
+      "utc_offset_end": "-05:00",
+      "dst_active": false
+    },
+    {
+      "trading_date": "2026-03-06",
+      "session": "London",
+      "local_start": "2026-03-06T03:00:00-05:00",
+      "local_end": "2026-03-06T08:30:00-05:00",
+      "utc_start": "2026-03-06T08:00:00+00:00",
+      "utc_end": "2026-03-06T13:30:00+00:00",
+      "utc_offset_start": "-05:00",
+      "utc_offset_end": "-05:00",
+      "dst_active": false
+    },
+    {
+      "trading_date": "2026-03-09",
+      "session": "Asia",
+      "local_start": "2026-03-09T20:00:00-04:00",
+      "local_end": "2026-03-10T03:00:00-04:00",
+      "utc_start": "2026-03-10T00:00:00+00:00",
+      "utc_end": "2026-03-10T07:00:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-03-09",
+      "session": "London",
+      "local_start": "2026-03-09T03:00:00-04:00",
+      "local_end": "2026-03-09T08:30:00-04:00",
+      "utc_start": "2026-03-09T07:00:00+00:00",
+      "utc_end": "2026-03-09T12:30:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-03-28",
+      "session": "Asia",
+      "local_start": "2026-03-28T20:00:00-04:00",
+      "local_end": "2026-03-29T03:00:00-04:00",
+      "utc_start": "2026-03-29T00:00:00+00:00",
+      "utc_end": "2026-03-29T07:00:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-03-28",
+      "session": "London",
+      "local_start": "2026-03-28T03:00:00-04:00",
+      "local_end": "2026-03-28T08:30:00-04:00",
+      "utc_start": "2026-03-28T07:00:00+00:00",
+      "utc_end": "2026-03-28T12:30:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-03-30",
+      "session": "Asia",
+      "local_start": "2026-03-30T20:00:00-04:00",
+      "local_end": "2026-03-31T03:00:00-04:00",
+      "utc_start": "2026-03-31T00:00:00+00:00",
+      "utc_end": "2026-03-31T07:00:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-03-30",
+      "session": "London",
+      "local_start": "2026-03-30T03:00:00-04:00",
+      "local_end": "2026-03-30T08:30:00-04:00",
+      "utc_start": "2026-03-30T07:00:00+00:00",
+      "utc_end": "2026-03-30T12:30:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-10-24",
+      "session": "Asia",
+      "local_start": "2026-10-24T20:00:00-04:00",
+      "local_end": "2026-10-25T03:00:00-04:00",
+      "utc_start": "2026-10-25T00:00:00+00:00",
+      "utc_end": "2026-10-25T07:00:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-10-24",
+      "session": "London",
+      "local_start": "2026-10-24T03:00:00-04:00",
+      "local_end": "2026-10-24T08:30:00-04:00",
+      "utc_start": "2026-10-24T07:00:00+00:00",
+      "utc_end": "2026-10-24T12:30:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-10-26",
+      "session": "Asia",
+      "local_start": "2026-10-26T20:00:00-04:00",
+      "local_end": "2026-10-27T03:00:00-04:00",
+      "utc_start": "2026-10-27T00:00:00+00:00",
+      "utc_end": "2026-10-27T07:00:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-10-26",
+      "session": "London",
+      "local_start": "2026-10-26T03:00:00-04:00",
+      "local_end": "2026-10-26T08:30:00-04:00",
+      "utc_start": "2026-10-26T07:00:00+00:00",
+      "utc_end": "2026-10-26T12:30:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-11-02",
+      "session": "Asia",
+      "local_start": "2026-11-02T20:00:00-05:00",
+      "local_end": "2026-11-03T03:00:00-05:00",
+      "utc_start": "2026-11-03T01:00:00+00:00",
+      "utc_end": "2026-11-03T08:00:00+00:00",
+      "utc_offset_start": "-05:00",
+      "utc_offset_end": "-05:00",
+      "dst_active": false
+    },
+    {
+      "trading_date": "2026-11-02",
+      "session": "London",
+      "local_start": "2026-11-02T03:00:00-05:00",
+      "local_end": "2026-11-02T08:30:00-05:00",
+      "utc_start": "2026-11-02T08:00:00+00:00",
+      "utc_end": "2026-11-02T13:30:00+00:00",
+      "utc_offset_start": "-05:00",
+      "utc_offset_end": "-05:00",
+      "dst_active": false
+    },
+    {
+      "trading_date": "2026-08-14",
+      "session": "Asia",
+      "local_start": "2026-08-14T20:00:00-04:00",
+      "local_end": "2026-08-15T03:00:00-04:00",
+      "utc_start": "2026-08-15T00:00:00+00:00",
+      "utc_end": "2026-08-15T07:00:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    },
+    {
+      "trading_date": "2026-08-14",
+      "session": "London",
+      "local_start": "2026-08-14T03:00:00-04:00",
+      "local_end": "2026-08-14T08:30:00-04:00",
+      "utc_start": "2026-08-14T07:00:00+00:00",
+      "utc_end": "2026-08-14T12:30:00+00:00",
+      "utc_offset_start": "-04:00",
+      "utc_offset_end": "-04:00",
+      "dst_active": true
+    }
+  ],
+  "note": "Loaded chart history may not span US/EU DST transition weeks; dst_transition_conversions still prove ZoneInfo shifts UTC bounds by calendar date without frozen offsets.",
+  "best_candidate_detail": {
+    "candidate": "ny_ict_classic",
+    "definitions": {
+      "Asia": {
+        "name": "Asia",
+        "reference_timezone": "America/New_York",
+        "local_start": "20:00",
+        "local_end": "03:00",
+        "source": "candidate",
+        "notes": "",
+        "crosses_midnight": true
+      },
+      "London": {
+        "name": "London",
+        "reference_timezone": "America/New_York",
+        "local_start": "03:00",
+        "local_end": "08:30",
+        "source": "candidate",
+        "notes": "",
+        "crosses_midnight": false
+      }
+    },
+    "compared_full": 6,
+    "matched_full": 6,
+    "rate_full": 1.0,
+    "by_session": {
+      "Asia": {
+        "compared": 3,
+        "matched": 3,
+        "rate": 1.0
+      },
+      "London": {
+        "compared": 3,
+        "matched": 3,
+        "rate": 1.0
+      }
+    },
+    "rows": [
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:16",
+        "ict_start": null,
+        "ict_high": 4470.045,
+        "ict_low": 4428.72,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:20",
+        "ict_start": null,
+        "ict_high": 4353.45,
+        "ict_low": 4268.48,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:24",
+        "ict_start": null,
+        "ict_high": 4351.56,
+        "ict_low": 4315.125,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:28",
+        "ict_start": null,
+        "ict_high": 4228.5,
+        "ict_low": 4172.565,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:32",
+        "ict_start": null,
+        "ict_high": 4118.395,
+        "ict_low": 4036.03,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:36",
+        "ict_start": null,
+        "ict_high": 4230.53,
+        "ict_low": 4171.005,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:40",
+        "ict_start": null,
+        "ict_high": 4335.57,
+        "ict_low": 4285.32,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:44",
+        "ict_start": null,
+        "ict_high": 4333.375,
+        "ict_low": 4306.985,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:48",
+        "ict_start": null,
+        "ict_high": 4349.605,
+        "ict_low": 4317.665,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:52",
+        "ict_start": null,
+        "ict_high": 4329.865,
+        "ict_low": 4276.625,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:56",
+        "ict_start": null,
+        "ict_high": 4198.245,
+        "ict_low": 4121.955,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:60",
+        "ict_start": null,
+        "ict_high": 4221.37,
+        "ict_low": 4140.095,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:64",
+        "ict_start": null,
+        "ict_high": 4198.605,
+        "ict_low": 4110.335,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:68",
+        "ict_start": null,
+        "ict_high": 4112.135,
+        "ict_low": 4050.47,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:72",
+        "ict_start": null,
+        "ict_high": 4016.42,
+        "ict_low": 3962.475,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:76",
+        "ict_start": null,
+        "ict_high": 4033.185,
+        "ict_low": 3982.95,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:80",
+        "ict_start": null,
+        "ict_high": 4076.015,
+        "ict_low": 4039.325,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:84",
+        "ict_start": null,
+        "ict_high": 4034.325,
+        "ict_low": 3942.1,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:88",
+        "ict_start": null,
+        "ict_high": 4009.915,
+        "ict_low": 3963.34,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:92",
+        "ict_start": null,
+        "ict_high": 4079.92,
+        "ict_low": 4030.895,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:96",
+        "ict_start": null,
+        "ict_high": 4195.51,
+        "ict_low": 4122.775,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:100",
+        "ict_start": null,
+        "ict_high": 4202.705,
+        "ict_low": 4144.83,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:104",
+        "ict_start": null,
+        "ict_high": 4162.75,
+        "ict_low": 4116.7,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:108",
+        "ict_start": null,
+        "ict_high": 4133.99,
+        "ict_low": 4096.56,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:112",
+        "ict_start": null,
+        "ict_high": 4108.185,
+        "ict_low": 4054.4,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:116",
+        "ict_start": null,
+        "ict_high": 4134.92,
+        "ict_low": 4108.39,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:120",
+        "ict_start": null,
+        "ict_high": 4091.295,
+        "ict_low": 4044.06,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:124",
+        "ict_start": null,
+        "ict_high": 4034.25,
+        "ict_low": 3983.545,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:128",
+        "ict_start": null,
+        "ict_high": 4062.125,
+        "ict_low": 4021.465,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:132",
+        "ict_start": null,
+        "ict_high": 4061.21,
+        "ict_low": 4023.21,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:136",
+        "ict_start": null,
+        "ict_high": 4008.795,
+        "ict_low": 3970.74,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:140",
+        "ict_start": null,
+        "ict_high": 4028.94,
+        "ict_low": 3982.63,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:144",
+        "ict_start": null,
+        "ict_high": 4084.305,
+        "ict_low": 4003.565,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:148",
+        "ict_start": null,
+        "ict_high": 4141.715,
+        "ict_low": 4076.755,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:152",
+        "ict_start": null,
+        "ict_high": 4141.275,
+        "ict_low": 4112.315,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:156",
+        "ict_start": null,
+        "ict_high": 4051.01,
+        "ict_low": 4022.06,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:160",
+        "ict_start": null,
+        "ict_high": 4116.185,
+        "ict_low": 4084.49,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:164",
+        "ict_start": null,
+        "ict_high": 4074.26,
+        "ict_low": 4034.795,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:168",
+        "ict_start": null,
+        "ict_high": 4044.845,
+        "ict_low": 4010.41,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:172",
+        "ict_start": null,
+        "ict_high": 4092.955,
+        "ict_low": 4028.69,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:176",
+        "ict_start": null,
+        "ict_high": 4107.225,
+        "ict_low": 4072.145,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:180",
+        "ict_start": null,
+        "ict_high": 4079.185,
+        "ict_low": 4047.345,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:184",
+        "ict_start": null,
+        "ict_high": 4069.465,
+        "ict_low": 4042.72,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:188",
+        "ict_start": null,
+        "ict_high": 4178.565,
+        "ict_low": 4070.505,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:192",
+        "ict_start": null,
+        "ict_high": 4304.31,
+        "ict_low": 4247.24,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:196",
+        "ict_start": null,
+        "ict_high": 4298.945,
+        "ict_low": 4229.875,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:200",
+        "ict_start": null,
+        "ict_high": 4359.935,
+        "ict_low": 4313.43,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "Asia",
+        "ict_identity": "Asia:drawX:204",
+        "ict_start": null,
+        "ict_high": 4435.245,
+        "ict_low": 4359.675,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "date": "2026-08-11",
+        "session": "Asia",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-11T20:00:00-04:00",
+        "local_end": "2026-08-12T03:00:00-04:00",
+        "utc_start": "2026-08-12T00:00:00+00:00",
+        "utc_end": "2026-08-12T07:00:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4416.25,
+        "ICT_Low": 4366.54,
+        "Internal_High": 4416.25,
+        "Internal_Low": 4366.54,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-12",
+        "session": "Asia",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-12T20:00:00-04:00",
+        "local_end": "2026-08-13T03:00:00-04:00",
+        "utc_start": "2026-08-13T00:00:00+00:00",
+        "utc_end": "2026-08-13T07:00:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4449.83,
+        "ICT_Low": 4369.035,
+        "Internal_High": 4449.83,
+        "Internal_Low": 4369.035,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-13",
+        "session": "Asia",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-13T20:00:00-04:00",
+        "local_end": "2026-08-14T03:00:00-04:00",
+        "utc_start": "2026-08-14T00:00:00+00:00",
+        "utc_end": "2026-08-14T07:00:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4362.045,
+        "ICT_Low": 4311.04,
+        "Internal_High": 4362.045,
+        "Internal_Low": 4311.04,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:17",
+        "ict_start": null,
+        "ict_high": 4475.885,
+        "ict_low": 4451.99,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:21",
+        "ict_start": null,
+        "ict_high": 4334.935,
+        "ict_low": 4273.165,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:25",
+        "ict_start": null,
+        "ict_high": 4344.09,
+        "ict_low": 4321.32,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:29",
+        "ict_start": null,
+        "ict_high": 4208.14,
+        "ict_low": 4130.62,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:33",
+        "ict_start": null,
+        "ict_high": 4112.725,
+        "ict_low": 4061.45,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:37",
+        "ict_start": null,
+        "ict_high": 4228.07,
+        "ict_low": 4170.29,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:41",
+        "ict_start": null,
+        "ict_high": 4347.575,
+        "ict_low": 4305.41,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:45",
+        "ict_start": null,
+        "ict_high": 4349.655,
+        "ict_low": 4322.665,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:49",
+        "ict_start": null,
+        "ict_high": 4335.81,
+        "ict_low": 4317.19,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:53",
+        "ict_start": null,
+        "ict_high": 4309.375,
+        "ict_low": 4240.07,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:57",
+        "ict_start": null,
+        "ict_high": 4178.525,
+        "ict_low": 4142.035,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:61",
+        "ict_start": null,
+        "ict_high": 4215.255,
+        "ict_low": 4188.645,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:65",
+        "ict_start": null,
+        "ict_high": 4133.48,
+        "ict_low": 4091.03,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:69",
+        "ict_start": null,
+        "ict_high": 4090.845,
+        "ict_low": 4006.515,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:73",
+        "ict_start": null,
+        "ict_high": 4002.11,
+        "ict_low": 3971.695,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:77",
+        "ict_start": null,
+        "ict_high": 4055.76,
+        "ict_low": 4025.86,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:81",
+        "ict_start": null,
+        "ict_high": 4068.83,
+        "ict_low": 4024.44,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:85",
+        "ict_start": null,
+        "ict_high": 4037.665,
+        "ict_low": 4012.47,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:89",
+        "ict_start": null,
+        "ict_high": 4035.595,
+        "ict_low": 3960.275,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:93",
+        "ict_start": null,
+        "ict_high": 4080.12,
+        "ict_low": 4057.44,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:97",
+        "ict_start": null,
+        "ict_high": 4186.655,
+        "ict_low": 4168.57,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:101",
+        "ict_start": null,
+        "ict_high": 4166.52,
+        "ict_low": 4136.555,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:105",
+        "ict_start": null,
+        "ict_high": 4175.085,
+        "ict_low": 4119.81,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:109",
+        "ict_start": null,
+        "ict_high": 4127.27,
+        "ict_low": 4040.575,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:113",
+        "ict_start": null,
+        "ict_high": 4120.165,
+        "ict_low": 4093.855,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:117",
+        "ict_start": null,
+        "ict_high": 4117.585,
+        "ict_low": 4094.535,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:121",
+        "ict_start": null,
+        "ict_high": 4080.845,
+        "ict_low": 4046.43,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:125",
+        "ict_start": null,
+        "ict_high": 4035.99,
+        "ict_low": 4013.925,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:129",
+        "ict_start": null,
+        "ict_high": 4042.725,
+        "ict_low": 4017.475,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:133",
+        "ict_start": null,
+        "ict_high": 4043.36,
+        "ict_low": 4012.915,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:137",
+        "ict_start": null,
+        "ict_high": 4002.76,
+        "ict_low": 3984.45,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:141",
+        "ict_start": null,
+        "ict_high": 4040.815,
+        "ict_low": 4002.185,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:145",
+        "ict_start": null,
+        "ict_high": 4080.285,
+        "ict_low": 4054.52,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:149",
+        "ict_start": null,
+        "ict_high": 4133.17,
+        "ict_low": 4109.395,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:153",
+        "ict_start": null,
+        "ict_high": 4119.525,
+        "ict_low": 4070.395,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:157",
+        "ict_start": null,
+        "ict_high": 4064.025,
+        "ict_low": 4035.245,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:161",
+        "ict_start": null,
+        "ict_high": 4106.24,
+        "ict_low": 4081.835,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:165",
+        "ict_start": null,
+        "ict_high": 4055.21,
+        "ict_low": 4017.115,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:169",
+        "ict_start": null,
+        "ict_high": 4047.88,
+        "ict_low": 4012.7,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:173",
+        "ict_start": null,
+        "ict_high": 4083.23,
+        "ict_low": 4035.41,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:177",
+        "ict_start": null,
+        "ict_high": 4079.315,
+        "ict_low": 4047.16,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:181",
+        "ict_start": null,
+        "ict_high": 4065.305,
+        "ict_low": 4045.57,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:185",
+        "ict_start": null,
+        "ict_high": 4084.345,
+        "ict_low": 4045.62,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:189",
+        "ict_start": null,
+        "ict_high": 4213.54,
+        "ict_low": 4150.28,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:193",
+        "ict_start": null,
+        "ict_high": 4284.885,
+        "ict_low": 4252.6,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:197",
+        "ict_start": null,
+        "ict_high": 4327.745,
+        "ict_low": 4282.99,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:201",
+        "ict_start": null,
+        "ict_high": 4362.06,
+        "ict_low": 4324.125,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "session": "London",
+        "ict_identity": "London:drawX:205",
+        "ict_start": null,
+        "ict_high": 4399.8,
+        "ict_low": 4356.7,
+        "match": false,
+        "comparable_full_coverage": false,
+        "reason": "no_internal_range"
+      },
+      {
+        "date": "2026-08-12",
+        "session": "London",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-12T03:00:00-04:00",
+        "local_end": "2026-08-12T08:30:00-04:00",
+        "utc_start": "2026-08-12T07:00:00+00:00",
+        "utc_end": "2026-08-12T12:30:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4427.625,
+        "ICT_Low": 4398.345,
+        "Internal_High": 4427.625,
+        "Internal_Low": 4398.345,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-13",
+        "session": "London",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-13T03:00:00-04:00",
+        "local_end": "2026-08-13T08:30:00-04:00",
+        "utc_start": "2026-08-13T07:00:00+00:00",
+        "utc_end": "2026-08-13T12:30:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4396.715,
+        "ICT_Low": 4364.17,
+        "Internal_High": 4396.715,
+        "Internal_Low": 4364.17,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      },
+      {
+        "date": "2026-08-14",
+        "session": "London",
+        "reference_timezone": "America/New_York",
+        "local_start": "2026-08-14T03:00:00-04:00",
+        "local_end": "2026-08-14T08:30:00-04:00",
+        "utc_start": "2026-08-14T07:00:00+00:00",
+        "utc_end": "2026-08-14T12:30:00+00:00",
+        "dst_active": true,
+        "utc_offset_start": "-04:00",
+        "ICT_High": 4380.745,
+        "ICT_Low": 4329.81,
+        "Internal_High": 4380.745,
+        "Internal_Low": 4329.81,
+        "match": true,
+        "comparable_full_coverage": true,
+        "coverage": "full",
+        "match_method": "start_identity",
+        "high_diff": 0.0,
+        "low_diff": 0.0
+      }
+    ],
+    "mismatches": []
+  }
+}

@@ -1,0 +1,2 @@
+credential_present,databento_package_available,databento_version,dataset_intended,error_code,historical_client_available,ok,provider,schema_intended,volume_status
+True,True,0.83.0,GLBX.MDP3,,True,True,databento,ohlcv-1m→5m,PROVIDER_DOCUMENTED_TRADE_VOLUME

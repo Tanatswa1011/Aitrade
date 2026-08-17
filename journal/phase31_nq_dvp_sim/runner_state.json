@@ -1,0 +1,19 @@
+{
+  "mode": "DRY_RUN",
+  "state": "SESSION_CLOSED",
+  "seen_triggers": [],
+  "daily": {
+    "2026-08-14": {
+      "trades": 0,
+      "losses": 0
+    }
+  },
+  "open_trade": null,
+  "last_event": {
+    "ts": "2026-08-17T05:46:57.734832-04:00",
+    "state": "SESSION_CLOSED",
+    "drift": null,
+    "intended": null
+  },
+  "halted": false
+}

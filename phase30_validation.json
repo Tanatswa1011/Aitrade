@@ -1,0 +1,122 @@
+{
+  "ok": true,
+  "phase": 30,
+  "status": "PAPER_VALIDATION_IN_PROGRESS",
+  "strategy_family": "nq_drift_vwap_pullback_v1",
+  "strategy_version": "nq_drift_vwap_pullback_v1.DVP_ORIGINAL.FROZEN_PHASE30",
+  "candidate_name": "DVP_ORIGINAL",
+  "frozen_config_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+  "engine_config_hash": "e314f828eee7eca5",
+  "source_candidate_path": "strategy_candidates/phase29_DVP_ORIGINAL.json",
+  "source_frozen_semantic_match": {
+    "ok": true,
+    "source_config_hash": "e314f828eee7eca5",
+    "live_config_hash": "e314f828eee7eca5",
+    "hashes_equal": true,
+    "mismatches": [],
+    "error_code": null
+  },
+  "freeze_files": {
+    "json": "strategy_frozen/nq_dvp_phase30.json",
+    "md": "strategy_frozen/nq_dvp_phase30.md"
+  },
+  "journal": {
+    "dir": "journal/phase30_nq_dvp_paper",
+    "paper_trades": "journal/phase30_nq_dvp_paper/paper_trades.jsonl"
+  },
+  "historical_benchmark": {
+    "full_n": 5714,
+    "full_wr": 0.6664333216660833,
+    "full_expectancy": 5.951697584879244,
+    "full_pf": 1.2685863440176592,
+    "full_max_dd": 1950.25,
+    "full_losing_streak": 14,
+    "oos_n": 1420,
+    "oos_wr": 0.678169014084507,
+    "oos_expectancy": 6.503169014084507,
+    "oos_pf": 1.2853236520933107,
+    "oos_max_dd": 1127.5,
+    "oos_long_wr": 0.7040690505548706,
+    "oos_short_wr": 0.6436781609195402,
+    "walkforward_class": "STABLE_POSITIVE",
+    "walkforward_blocks": 4,
+    "walkforward_all_positive": true,
+    "cost_0_tick_expectancy": 6.503169014084507,
+    "cost_1_tick_expectancy": 6.003169014084507,
+    "cost_2_tick_expectancy": 5.503169014084507,
+    "source_validation": "phase29_validation.json"
+  },
+  "paper_campaign": {
+    "minimum_resolved": 30,
+    "preferred_resolved": 50,
+    "strong_resolved": 100,
+    "large_resolved": 250,
+    "current_resolved_n": 0,
+    "sample_label": "VERY_EARLY",
+    "status": "PAPER_VALIDATION_IN_PROGRESS",
+    "primary_fill_assumption": "1_TICK_ADVERSE",
+    "broker_execution": false
+  },
+  "paper_metrics": {
+    "paper_trades": 0,
+    "resolved": 0,
+    "wins": 0,
+    "losses": 0,
+    "timed_exits": 0,
+    "ambiguous": 0,
+    "win_rate": null,
+    "average_win_points": null,
+    "average_loss_points": null,
+    "expectancy_points": null,
+    "profit_factor": null,
+    "max_drawdown_points": null,
+    "longest_losing_streak": null,
+    "long": {
+      "n": 0,
+      "win_rate": null,
+      "expectancy_points": null
+    },
+    "short": {
+      "n": 0,
+      "win_rate": null,
+      "expectancy_points": null
+    },
+    "sample_label": "VERY_EARLY",
+    "campaign_status": "PAPER_VALIDATION_IN_PROGRESS"
+  },
+  "mcp_tools": [
+    "tv_nq_dvp_paper_state"
+  ],
+  "phase26_untouched": {
+    "ok": true,
+    "reasons": [],
+    "expected_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "paper_journal_exists": true
+  },
+  "phase26_paper_unchanged": true,
+  "forbidden": [
+    "retune",
+    "change_thresholds",
+    "change_stops_targets",
+    "broker_orders",
+    "direction_disable",
+    "rename_as_production"
+  ],
+  "generated_at": "2026-08-16T09:46:39.138639+00:00",
+  "write_info": {
+    "ok": true,
+    "frozen_json": "strategy_frozen/nq_dvp_phase30.json",
+    "frozen_md": "strategy_frozen/nq_dvp_phase30.md",
+    "frozen_config_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+    "engine_config_hash": "e314f828eee7eca5",
+    "source_match": {
+      "ok": true,
+      "source_config_hash": "e314f828eee7eca5",
+      "live_config_hash": "e314f828eee7eca5",
+      "hashes_equal": true,
+      "mismatches": [],
+      "error_code": null
+    }
+  },
+  "note": "Phase 30 initialization complete. Forward paper observation campaign starts with N=0."
+}

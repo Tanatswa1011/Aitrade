@@ -1,0 +1,2 @@
+broker_execution,candidate_name,confirmation,engine_config_hash,entry,frozen_config_hash,max_entry_bars,session,sigma_threshold,source_candidate_path,source_hash_match,status,stop,strategy_version,targets
+False,V2_BAND_RECLAIM_2SIG_RETEST,BAND_RECLAIM,da630a519397ec84,FROZEN_2SIG_RETEST,0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43,6,08:20-13:30 America/New_York,2.0,strategy_candidates/phase25_V2_BAND_RECLAIM_2SIG_RETEST.json,True,paper_validation,extension_sequence_extreme,gc_vwap_mean_reversion_v1.V2.FROZEN_PHASE26,"1R,1.5R,2R,3R,VWAP_diagnostic"

@@ -1,0 +1,2 @@
+max_abs_close_delta,mean_abs_close_delta,median_abs_close_delta,note,ok,overlap_bars,volume_pairs
+163.59980468750018,19.038376572552846,14.199951171875,Diagnostic only; Yahoo GC=F continuous vs Databento contracts may differ,True,10064,10064

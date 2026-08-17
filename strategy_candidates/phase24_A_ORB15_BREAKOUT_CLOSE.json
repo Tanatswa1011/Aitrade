@@ -1,0 +1,52 @@
+{
+  "phase": "phase24",
+  "strategy_family": "gc_orb15_retest_fvg_v1",
+  "strategy_version": "v1.phase24",
+  "instrument": "GC",
+  "provider": "databento:GLBX.MDP3",
+  "candidate": {
+    "strategy_family": "gc_orb15_retest_fvg_v1",
+    "candidate_id": "A_ORB15_BREAKOUT_CLOSE",
+    "or_minutes": 15,
+    "entry_mode": "BREAKOUT_CLOSE",
+    "stop_mode": "OR_MIDPOINT",
+    "max_retest_bars": 12,
+    "max_fvg_creation_bars": 6,
+    "max_fvg_retrace_bars": 12,
+    "volume_filter": false,
+    "displacement_filter": false,
+    "execution_timeframe": "5m",
+    "extras": {}
+  },
+  "config_hash": "d61bb7e402712b06",
+  "predeclared": {
+    "or_anchor": "08:20 America/New_York",
+    "or_minutes": 15,
+    "max_retest_bars": 12,
+    "max_fvg_creation_bars": 6,
+    "max_fvg_retrace_bars": 12,
+    "volume_filter": false,
+    "displacement_filter": false
+  },
+  "selection_split": {
+    "train_start": "2025-08-01",
+    "train_end": "2026-04-27",
+    "holdout_start": "2026-04-28",
+    "holdout_end": "2026-08-14",
+    "train_dates": 185,
+    "holdout_dates": 79,
+    "train_fraction": 0.7,
+    "method": "chronological_trading_date_70_30_databento_phase24"
+  },
+  "train_snapshot": {
+    "resolved_n": 143,
+    "theoretical_2r_expectancy": -0.1748251748251748,
+    "theoretical_3r_expectancy": -0.22377622377622375
+  },
+  "holdout_snapshot": {
+    "resolved_n": 63,
+    "theoretical_2r_expectancy": -0.31746031746031744,
+    "theoretical_3r_expectancy": -0.5396825396825397
+  },
+  "note": "NOT production default \u2014 Phase 24 research only"
+}

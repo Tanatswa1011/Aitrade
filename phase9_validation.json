@@ -1,0 +1,144 @@
+{
+  "ok": true,
+  "phase": 9,
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "offline_expiry": {
+    "mode": "offline_expiry_fixture",
+    "before_status": "WAITING_FOR_CONFIRMATION",
+    "after_status": "EXPIRED",
+    "expiry_reason": "NEW_SESSION_STARTED",
+    "setup_id_before": "OANDA:XAUUSD|Asia|2026-08-14|low|1786777260",
+    "setup_id_after": "OANDA:XAUUSD|Asia|2026-08-14|low|1786777260",
+    "id_stable": true,
+    "expected_reason": "NEW_SESSION_STARTED",
+    "annotation_status_label": "AITRADE \u00b7 EXPIRED \u00b7 NEW_SESSION_STARTED"
+  },
+  "live": {
+    "ok": true,
+    "live_tested": true,
+    "annotated": true,
+    "analysis_summary": {
+      "symbol": "OANDA:XAUUSD",
+      "timeframe": "5",
+      "session_selected": "London",
+      "session_date": "2026-08-14",
+      "session_complete": true,
+      "session_source": "ict_sessions",
+      "session_high": 4380.745,
+      "session_low": 4329.81,
+      "setup_status": "WAITING_FOR_CONFIRMATION",
+      "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+      "expiry_reason": null,
+      "invalidation_reason": null,
+      "reliability_flags": {
+        "session_confidence": "high",
+        "coverage_status": "partial",
+        "confirmation_timing_confidence": null,
+        "dst_uncertainty": true,
+        "trigger_bar_stop_ambiguity": true,
+        "expiry_evaluated": {
+          "expired": false,
+          "reason": null,
+          "detail": null
+        },
+        "session_context": {
+          "setup_session_name": "London",
+          "setup_trading_date": "2026-08-14",
+          "setup_window": {
+            "session": "London",
+            "trading_date": "2026-08-14",
+            "reference_timezone": "America/New_York",
+            "local_start_datetime": "2026-08-14T03:00:00-04:00",
+            "local_end_datetime": "2026-08-14T08:30:00-04:00",
+            "utc_start": 1786690800,
+            "utc_end": 1786710600,
+            "utc_offset_start": "-04:00",
+            "utc_offset_end": "-04:00",
+            "dst_active": true
+          },
+          "active_session_name": "London",
+          "active_trading_date": "2026-08-14",
+          "active_window": {
+            "session": "London",
+            "trading_date": "2026-08-14",
+            "reference_timezone": "America/New_York",
+            "local_start_datetime": "2026-08-14T03:00:00-04:00",
+            "local_end_datetime": "2026-08-14T08:30:00-04:00",
+            "utc_start": 1786690800,
+            "utc_end": 1786710600,
+            "utc_offset_start": "-04:00",
+            "utc_offset_end": "-04:00",
+            "dst_active": true
+          },
+          "now_ts": 1786740900,
+          "opposite_session_sweep_count": 0,
+          "extras": {}
+        }
+      },
+      "sweep": {
+        "side": "high",
+        "level": 4380.745,
+        "extreme": 4381.87,
+        "timestamp": 1786710900,
+        "rule": "wick_only"
+      },
+      "CHoCH": {
+        "found": false
+      }
+    },
+    "asia_expiry_check": {
+      "checked": true,
+      "setup_id": "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300",
+      "status": "EXPIRED",
+      "expiry_reason": "NEW_SESSION_STARTED",
+      "status_before_expiry": "WAITING_FOR_CONFIRMATION",
+      "active_context": "London"
+    },
+    "annotation": {
+      "setup_id": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+      "status": "WAITING_FOR_CONFIRMATION",
+      "annotations_created": 4,
+      "annotations_skipped_plan": [],
+      "annotations_skipped_render": [],
+      "screenshot_path": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\screenshots\\tv_20260815_203448.png"
+    },
+    "idempotency": {
+      "first_created": 4,
+      "second_created": 4,
+      "count_after_first": 4,
+      "count_after_second": 4,
+      "no_duplicate_stack": true,
+      "cleared_previous_on_second": true
+    },
+    "clear_ownership": {
+      "cleared": {
+        "ok": true,
+        "removed": [
+          {
+            "setupId": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+            "id": "7zZsU7"
+          },
+          {
+            "setupId": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+            "id": "hufK4K"
+          },
+          {
+            "setupId": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+            "id": "ThbqNL"
+          },
+          {
+            "setupId": "OANDA:XAUUSD|London|2026-08-14|high|1786710900",
+            "id": "FS1kLZ"
+          }
+        ],
+        "failed": [],
+        "removed_count": 4
+      },
+      "count_before_clear": 4,
+      "count_after_clear": 0,
+      "count_after_reannotate": 4,
+      "note": "Cleared only __aitradeSetupAnnotations for setup_id; personal/indicator drawings not targeted."
+    },
+    "explanation": "OANDA:XAUUSD Bearish Session Setup\nStatus: WAITING_FOR_CONFIRMATION\nSetup ID: OANDA:XAUUSD|London|2026-08-14|high|1786710900\n\nSession:\n  London\n  Trading date: 2026-08-14\n  Timeframe: 5\n  High: 4380.74\n  Low: 4329.81\n  Complete: True\n  Coverage: partial\n  Source: ict_sessions\n\nProgress note:\n  London high was swept, but no reliable bearish LuxAlgo CHoCH has occurred afterward (no_reliable_ordering).\n\nLiquidity event:\n  London high swept @ 4380.74\n  Sweep time: 2026-08-14 12:35 UTC\n  Sweep extreme: 4381.87\n\nReliability:\n  Session source: ict_sessions\n  Session confidence: high\n  Coverage: partial\n\nDocumented ambiguity:\n  Pre-entry invalidation uses bars with FVG_creation < timestamp < entry_trigger. The trigger bar itself is not treated as pre-entry invalidation. A bar that both fills entry and trades through the stop cannot be classified as 'entry then stopped' vs 'invalid before fill' from OHLC alone (TRIGGER_BAR_STOP_AMBIGUITY)."
+  }
+}

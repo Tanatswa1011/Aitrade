@@ -1,0 +1,6 @@
+mcp
+requests
+websockets
+openbb>=4.7.2
+databento==0.83.0
+python-dotenv>=1.0.0

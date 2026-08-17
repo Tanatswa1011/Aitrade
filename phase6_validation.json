@@ -1,0 +1,177 @@
+{
+  "ok": true,
+  "phase": 6,
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "example": {
+    "mode": "offline_fixture",
+    "note": "Deterministic fixture (not live CDP). Compares boundary vs CE risk/RR.",
+    "session": "Asia",
+    "sweep": {
+      "side": "low",
+      "level": 4311.04,
+      "sweep_extreme": 4310.0,
+      "time": 1000
+    },
+    "choch": {
+      "direction": "bullish",
+      "level": 4320.0
+    },
+    "fvg": {
+      "low": 4325.0,
+      "high": 4330.0,
+      "ce": 4327.5
+    },
+    "primary_example_ce": {
+      "entry": {
+        "mode": "ce",
+        "price": 4327.5,
+        "triggered": true,
+        "entry_depth": 0.5,
+        "max_retrace_depth": 0.8
+      },
+      "risk": {
+        "valid": true,
+        "stop_mode": "beyond_sweep",
+        "entry_price": 4327.5,
+        "stop_price": 4310.0,
+        "risk_distance": 17.5,
+        "risk_points": 17.5,
+        "invalidation_reason": null,
+        "sweep_extreme": 4310.0,
+        "entry_depth": 0.5
+      },
+      "targets": {
+        "valid": true,
+        "fixed_rr": [
+          {
+            "rr": 1.0,
+            "price": 4345.0,
+            "distance": 17.5
+          },
+          {
+            "rr": 2.0,
+            "price": 4362.5,
+            "distance": 35.0
+          },
+          {
+            "rr": 3.0,
+            "price": 4380.0,
+            "distance": 52.5
+          }
+        ],
+        "opposite_liquidity_label": "Asia High",
+        "opposite_liquidity_price": 4360.0,
+        "rr_to_opposite": 1.8571428571428572,
+        "opposite_target_valid": true
+      }
+    },
+    "boundary_vs_ce": {
+      "boundary": {
+        "entry": {
+          "mode": "boundary",
+          "price": 4330.0,
+          "triggered": true,
+          "entry_depth": 0.0,
+          "max_retrace_depth": 0.4
+        },
+        "risk": {
+          "valid": true,
+          "stop_mode": "beyond_sweep",
+          "entry_price": 4330.0,
+          "stop_price": 4310.0,
+          "risk_distance": 20.0,
+          "risk_points": 20.0,
+          "invalidation_reason": null,
+          "sweep_extreme": 4310.0,
+          "entry_depth": 0.0
+        },
+        "targets": {
+          "valid": true,
+          "fixed_rr": [
+            {
+              "rr": 1.0,
+              "price": 4350.0,
+              "distance": 20.0
+            },
+            {
+              "rr": 2.0,
+              "price": 4370.0,
+              "distance": 40.0
+            },
+            {
+              "rr": 3.0,
+              "price": 4390.0,
+              "distance": 60.0
+            }
+          ],
+          "opposite_liquidity_label": "Asia High",
+          "opposite_liquidity_price": 4360.0,
+          "rr_to_opposite": 1.5,
+          "opposite_target_valid": true
+        }
+      },
+      "ce": {
+        "entry": {
+          "mode": "ce",
+          "price": 4327.5,
+          "triggered": true,
+          "entry_depth": 0.5,
+          "max_retrace_depth": 0.8
+        },
+        "risk": {
+          "valid": true,
+          "stop_mode": "beyond_sweep",
+          "entry_price": 4327.5,
+          "stop_price": 4310.0,
+          "risk_distance": 17.5,
+          "risk_points": 17.5,
+          "invalidation_reason": null,
+          "sweep_extreme": 4310.0,
+          "entry_depth": 0.5
+        },
+        "targets": {
+          "valid": true,
+          "fixed_rr": [
+            {
+              "rr": 1.0,
+              "price": 4345.0,
+              "distance": 17.5
+            },
+            {
+              "rr": 2.0,
+              "price": 4362.5,
+              "distance": 35.0
+            },
+            {
+              "rr": 3.0,
+              "price": 4380.0,
+              "distance": 52.5
+            }
+          ],
+          "opposite_liquidity_label": "Asia High",
+          "opposite_liquidity_price": 4360.0,
+          "rr_to_opposite": 1.8571428571428572,
+          "opposite_target_valid": true
+        }
+      }
+    },
+    "risk_config": {
+      "stop_mode": "beyond_sweep",
+      "stop_buffer_price": 0.0,
+      "stop_buffer_points": 0.0,
+      "point_size": 1.0,
+      "invalidate_before_entry": true,
+      "extras": {}
+    },
+    "target_config": {
+      "fixed_rr": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "use_opposite_liquidity": true,
+      "opposite_liquidity_mode": "same_session",
+      "extras": {}
+    }
+  }
+}

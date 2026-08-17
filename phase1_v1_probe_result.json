@@ -1,0 +1,990 @@
+{
+  "ok": true,
+  "symbol": "OANDA:XAUUSD",
+  "resolution": "5",
+  "studies": [
+    {
+      "id": "wy7VYI",
+      "name": "AMD Liquidity Sweep with Alerts"
+    },
+    {
+      "id": "h6mnwz",
+      "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)"
+    },
+    {
+      "id": "ZdJin1",
+      "name": "FXN - Asian Session Range"
+    }
+  ],
+  "results": [
+    {
+      "id": "wy7VYI",
+      "name": "AMD Liquidity Sweep with Alerts",
+      "visible": false,
+      "dataLength": 0,
+      "hasGraphics": true,
+      "indexesLen": 0,
+      "indexesTail": [],
+      "primitiveKinds": {
+        "horizlines": [],
+        "vertlines": [],
+        "lines": [],
+        "hlines": [],
+        "textmarks": [],
+        "shapemarks": [],
+        "backgrounds": [],
+        "polygons": [],
+        "trendchannels": [],
+        "hhists": [],
+        "ovp": [],
+        "dwgtablecells": [],
+        "dwglinefills": [],
+        "tpos": [],
+        "logs": [],
+        "performance": [
+          {
+            "group": "performance",
+            "size": 0,
+            "sampleKeys": []
+          }
+        ],
+        "footprints": [],
+        "footprintLevels": [],
+        "dwglines": [
+          {
+            "group": "lines",
+            "size": 1,
+            "sampleKeys": [
+              "false"
+            ]
+          }
+        ],
+        "dwgboxes": [],
+        "dwglabels": [
+          {
+            "group": "labels",
+            "size": 1,
+            "sampleKeys": [
+              "false"
+            ]
+          }
+        ],
+        "dwgpolylines": [],
+        "dwgtables": [],
+        "tpoBlockSets": [],
+        "tpoLevels": [],
+        "tpoVolumeRows": [],
+        "tpoSummaryInfo": []
+      },
+      "boxCount": 0,
+      "labelCount": 0,
+      "lineCount": 0,
+      "shapeCount": 0,
+      "labelTexts": [],
+      "sessionsLatest": {},
+      "sessionsCounts": {},
+      "boxesSample": [],
+      "labelsSample": [],
+      "linesSample": [],
+      "shapesSample": [],
+      "interestingEvents": [],
+      "allEventTexts": [],
+      "keyInputs": [
+        {
+          "id": "in_0",
+          "name": "Highlight Intermediate Swing Highs and Lows",
+          "value": true
+        },
+        {
+          "id": "in_1",
+          "name": "Intermediate Swing Label Size",
+          "value": "Normal"
+        },
+        {
+          "id": "in_2",
+          "name": "Show Short Term Swings",
+          "value": false
+        },
+        {
+          "id": "in_3",
+          "name": "# Candles on Left/Right To Form A Swing Pivot",
+          "value": 1
+        },
+        {
+          "id": "in_4",
+          "name": "Asia Session Start Hour (0-23)",
+          "value": 0
+        },
+        {
+          "id": "in_5",
+          "name": "Asia Session End Hour (0-23)",
+          "value": 6
+        }
+      ],
+      "inputsCount": 10,
+      "styleTitles": [],
+      "plotMeta": [
+        {
+          "id": "plot_0",
+          "type": "line"
+        },
+        {
+          "id": "plot_1",
+          "type": "line"
+        },
+        {
+          "id": "plot_2",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_3",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_4",
+          "type": "alertcondition"
+        },
+        {
+          "id": "plot_5",
+          "type": "alertcondition"
+        },
+        {
+          "styleKey": "plot_0",
+          "title": "Closest High"
+        },
+        {
+          "styleKey": "plot_1",
+          "title": "Closest Low"
+        },
+        {
+          "styleKey": "plot_2",
+          "title": "Cross Above High Alert (Real-Time)"
+        },
+        {
+          "styleKey": "plot_3",
+          "title": "Cross Below Low Alert (Real-Time)"
+        },
+        {
+          "styleKey": "plot_4",
+          "title": "Buyside Liquidity"
+        },
+        {
+          "styleKey": "plot_5",
+          "title": "Sellside Liquidity"
+        }
+      ],
+      "pineId": "PUB;e68f8f8a91aa462689cccb6965ad0193",
+      "pineVersion": "8.0"
+    },
+    {
+      "id": "h6mnwz",
+      "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)",
+      "visible": true,
+      "dataLength": 400,
+      "hasGraphics": true,
+      "indexesLen": 83,
+      "indexesTail": [
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        -2000000,
+        12,
+        48,
+        96,
+        132,
+        198,
+        210,
+        288,
+        309
+      ],
+      "primitiveKinds": {
+        "horizlines": [],
+        "vertlines": [],
+        "lines": [],
+        "hlines": [],
+        "textmarks": [],
+        "shapemarks": [],
+        "backgrounds": [],
+        "polygons": [],
+        "trendchannels": [],
+        "hhists": [],
+        "ovp": [],
+        "dwgtablecells": [],
+        "dwglinefills": [],
+        "tpos": [],
+        "logs": [],
+        "performance": [
+          {
+            "group": "performance",
+            "size": 0,
+            "sampleKeys": []
+          }
+        ],
+        "footprints": [],
+        "footprintLevels": [],
+        "dwglines": [
+          {
+            "group": "lines",
+            "size": 1,
+            "sampleKeys": [
+              "false"
+            ]
+          }
+        ],
+        "dwgboxes": [
+          {
+            "group": "boxes",
+            "size": 1,
+            "sampleKeys": [
+              "false"
+            ]
+          }
+        ],
+        "dwglabels": [
+          {
+            "group": "labels",
+            "size": 1,
+            "sampleKeys": [
+              "false"
+            ]
+          }
+        ],
+        "dwgpolylines": [],
+        "dwgtables": [],
+        "tpoBlockSets": [],
+        "tpoLevels": [],
+        "tpoVolumeRows": [],
+        "tpoSummaryInfo": []
+      },
+      "boxCount": 0,
+      "labelCount": 0,
+      "lineCount": 0,
+      "shapeCount": 0,
+      "labelTexts": [],
+      "sessionsLatest": {},
+      "sessionsCounts": {},
+      "boxesSample": [],
+      "labelsSample": [],
+      "linesSample": [],
+      "shapesSample": [],
+      "interestingEvents": [],
+      "allEventTexts": [],
+      "keyInputs": [
+        {
+          "id": "in_0",
+          "name": "Show history for Sessions or Killzones on chart",
+          "value": true
+        },
+        {
+          "id": "in_1",
+          "name": "Show Labels for Sessions or Killzones",
+          "value": true
+        },
+        {
+          "id": "in_2",
+          "name": "Hide all Sessions",
+          "value": false
+        },
+        {
+          "id": "in_3",
+          "name": "Session Line Width",
+          "value": 1
+        },
+        {
+          "id": "in_4",
+          "name": "Display Session as",
+          "value": "Background color"
+        },
+        {
+          "id": "in_6",
+          "name": "Show Session Middle Line",
+          "value": false
+        },
+        {
+          "id": "in_7",
+          "name": "Session Middle Line Style",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_8",
+          "name": "Hide sessions if timeframe is above (in minutes)",
+          "value": "60"
+        },
+        {
+          "id": "in_9",
+          "name": "Hide session labels if timeframe is above (in minutes)",
+          "value": "45"
+        },
+        {
+          "id": "in_10",
+          "name": "Include Weekends for Sessions?",
+          "value": true
+        },
+        {
+          "id": "in_11",
+          "name": "Hide all Killzones",
+          "value": true
+        },
+        {
+          "id": "in_12",
+          "name": "Display Session Open/Close at",
+          "value": "Boxes"
+        },
+        {
+          "id": "in_13",
+          "name": "Killzone Line Width",
+          "value": 1
+        },
+        {
+          "id": "in_15",
+          "name": "Show Killzone Middle Line",
+          "value": false
+        },
+        {
+          "id": "in_16",
+          "name": "Killzone Middle Line Style",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_17",
+          "name": "Hide killzones if timeframe is greater than (in minutes)",
+          "value": "45"
+        },
+        {
+          "id": "in_18",
+          "name": "Hide session open labels if timeframe is above (in minutes)",
+          "value": "45"
+        },
+        {
+          "id": "in_19",
+          "name": "Include Weekends for Killzones?",
+          "value": false
+        },
+        {
+          "id": "in_21",
+          "name": null,
+          "value": "London"
+        },
+        {
+          "id": "in_34",
+          "name": null,
+          "value": "New York"
+        },
+        {
+          "id": "in_44",
+          "name": null,
+          "value": "Asia"
+        },
+        {
+          "id": "in_47",
+          "name": null,
+          "value": "Asia KZ"
+        },
+        {
+          "id": "in_71",
+          "name": "Hide price levels above (in minutes)",
+          "value": "59"
+        },
+        {
+          "id": "in_82",
+          "name": "PM Session Algo start (13.30)",
+          "value": false
+        },
+        {
+          "id": "in_93",
+          "name": "Hide labels if timeframe is above (in minutes)",
+          "value": "5"
+        },
+        {
+          "id": "in_94",
+          "name": "Timezone",
+          "value": "GMT"
+        }
+      ],
+      "inputsCount": 105,
+      "styleTitles": [],
+      "plotMeta": [
+        {
+          "id": "plot_0",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_1",
+          "type": "colorer"
+        },
+        {
+          "id": "plot_2",
+          "type": "chars"
+        },
+        {
+          "id": "plot_3",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_4",
+          "type": "chars"
+        },
+        {
+          "id": "plot_5",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_6",
+          "type": "chars"
+        },
+        {
+          "id": "plot_7",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_8",
+          "type": "chars"
+        },
+        {
+          "id": "plot_9",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_10",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_11",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_12",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_13",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_14",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_15",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_16",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_17",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_18",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_19",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_20",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_21",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_22",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_23",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_24",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_25",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_26",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_27",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_28",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_29",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_30",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_31",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_32",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_33",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_34",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_35",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_36",
+          "type": "shapes"
+        },
+        {
+          "id": "plot_37",
+          "type": "text_colorer"
+        },
+        {
+          "id": "plot_38",
+          "type": "bg_colorer"
+        },
+        {
+          "styleKey": "plot_0",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_10",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_12",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_14",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_16",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_18",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_2",
+          "title": "Chars"
+        },
+        {
+          "styleKey": "plot_20",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_22",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_24",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_26",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_28",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_30",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_32",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_34",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_36",
+          "title": "Shapes"
+        },
+        {
+          "styleKey": "plot_38",
+          "title": "Background Color"
+        },
+        {
+          "styleKey": "plot_4",
+          "title": "Chars"
+        },
+        {
+          "styleKey": "plot_6",
+          "title": "Chars"
+        },
+        {
+          "styleKey": "plot_8",
+          "title": "Chars"
+        }
+      ],
+      "pineId": "PUB;18d5e96b268640c9ba9bc68d8bf298b1",
+      "pineVersion": "37.0"
+    },
+    {
+      "id": "ZdJin1",
+      "name": "FXN - Asian Session Range",
+      "visible": false,
+      "dataLength": 0,
+      "hasGraphics": true,
+      "indexesLen": 0,
+      "indexesTail": [],
+      "primitiveKinds": {
+        "horizlines": [],
+        "vertlines": [],
+        "lines": [],
+        "hlines": [],
+        "textmarks": [],
+        "shapemarks": [],
+        "backgrounds": [],
+        "polygons": [],
+        "trendchannels": [],
+        "hhists": [],
+        "ovp": [],
+        "dwgtablecells": [],
+        "dwglinefills": [],
+        "tpos": [],
+        "logs": [],
+        "performance": [
+          {
+            "group": "performance",
+            "size": 0,
+            "sampleKeys": []
+          }
+        ],
+        "footprints": [],
+        "footprintLevels": [],
+        "dwglines": [
+          {
+            "group": "lines",
+            "size": 0,
+            "sampleKeys": []
+          }
+        ],
+        "dwgboxes": [],
+        "dwglabels": [
+          {
+            "group": "labels",
+            "size": 0,
+            "sampleKeys": []
+          }
+        ],
+        "dwgpolylines": [],
+        "dwgtables": [],
+        "tpoBlockSets": [],
+        "tpoLevels": [],
+        "tpoVolumeRows": [],
+        "tpoSummaryInfo": []
+      },
+      "boxCount": 0,
+      "labelCount": 0,
+      "lineCount": 0,
+      "shapeCount": 0,
+      "labelTexts": [],
+      "sessionsLatest": {},
+      "sessionsCounts": {},
+      "boxesSample": [],
+      "labelsSample": [],
+      "linesSample": [],
+      "shapesSample": [],
+      "interestingEvents": [],
+      "allEventTexts": [],
+      "keyInputs": [
+        {
+          "id": "in_0",
+          "name": "Start Session Hour (EST)",
+          "value": "20"
+        },
+        {
+          "id": "in_1",
+          "name": "Start Session Minute (EST)",
+          "value": "00"
+        },
+        {
+          "id": "in_2",
+          "name": "End Session Hour (EST)",
+          "value": "02"
+        },
+        {
+          "id": "in_3",
+          "name": "End Session Minute (EST)",
+          "value": "00"
+        },
+        {
+          "id": "in_4",
+          "name": "Extend Session Lines Until Hour (EST)",
+          "value": "11"
+        },
+        {
+          "id": "in_5",
+          "name": "Extend Session Lines Until Minute (EST)",
+          "value": "30"
+        },
+        {
+          "id": "in_6",
+          "name": "Asian Range Border Color",
+          "value": "blue"
+        },
+        {
+          "id": "in_7",
+          "name": "Asian Box Line Width",
+          "value": 1
+        },
+        {
+          "id": "in_8",
+          "name": "Asian Box Line Style",
+          "value": "solid"
+        },
+        {
+          "id": "in_9",
+          "name": "Session High / Low / Mid Line Width",
+          "value": 2
+        },
+        {
+          "id": "in_10",
+          "name": "Session High / Low Line Style",
+          "value": "dotted"
+        },
+        {
+          "id": "in_15",
+          "name": "Show London Session Box",
+          "value": true
+        },
+        {
+          "id": "in_16",
+          "name": "Show London Session Range Pips",
+          "value": true
+        },
+        {
+          "id": "in_17",
+          "name": "London Start Hour (EST)",
+          "value": "03"
+        },
+        {
+          "id": "in_18",
+          "name": "London Start Minute (EST)",
+          "value": "00"
+        },
+        {
+          "id": "in_19",
+          "name": "London End Hour (EST)",
+          "value": "07"
+        },
+        {
+          "id": "in_20",
+          "name": "London End Minute (EST)",
+          "value": "00"
+        },
+        {
+          "id": "in_21",
+          "name": "London Range Border Color",
+          "value": "teal"
+        },
+        {
+          "id": "in_22",
+          "name": "London Box Line Width",
+          "value": 1
+        },
+        {
+          "id": "in_23",
+          "name": "London Box Line Style",
+          "value": "solid"
+        },
+        {
+          "id": "in_24",
+          "name": "Session High / Low / Mid Line Width",
+          "value": 2
+        },
+        {
+          "id": "in_25",
+          "name": "Session High / Low Line Style",
+          "value": "dotted"
+        },
+        {
+          "id": "in_30",
+          "name": "Show New York Session Box",
+          "value": true
+        },
+        {
+          "id": "in_31",
+          "name": "Show New York Session Range Pips",
+          "value": true
+        },
+        {
+          "id": "in_32",
+          "name": "New York Start Hour (EST)",
+          "value": "08"
+        },
+        {
+          "id": "in_33",
+          "name": "New York Start Minute (EST)",
+          "value": "00"
+        },
+        {
+          "id": "in_34",
+          "name": "New York End Hour (EST)",
+          "value": "12"
+        },
+        {
+          "id": "in_35",
+          "name": "New York End Minute (EST)",
+          "value": "00"
+        },
+        {
+          "id": "in_36",
+          "name": "New York Range Border Color",
+          "value": "silver"
+        },
+        {
+          "id": "in_37",
+          "name": "New York Box Line Width",
+          "value": 1
+        },
+        {
+          "id": "in_38",
+          "name": "New York Box Line Style",
+          "value": "solid"
+        },
+        {
+          "id": "in_39",
+          "name": "Session High / Low / Mid Line Width",
+          "value": 2
+        },
+        {
+          "id": "in_40",
+          "name": "Session High / Low Line Style",
+          "value": "dotted"
+        }
+      ],
+      "inputsCount": 66,
+      "styleTitles": [],
+      "plotMeta": [
+        {
+          "id": "plot_0",
+          "type": "line"
+        },
+        {
+          "id": "plot_1",
+          "type": "line"
+        },
+        {
+          "id": "plot_2",
+          "type": "bg_colorer"
+        },
+        {
+          "id": "plot_3",
+          "type": "colorer"
+        },
+        {
+          "id": "plot_4",
+          "type": "line"
+        },
+        {
+          "id": "plot_5",
+          "type": "line"
+        },
+        {
+          "id": "plot_6",
+          "type": "bg_colorer"
+        },
+        {
+          "id": "plot_7",
+          "type": "colorer"
+        },
+        {
+          "id": "plot_8",
+          "type": "line"
+        },
+        {
+          "id": "plot_9",
+          "type": "line"
+        },
+        {
+          "id": "plot_10",
+          "type": "bg_colorer"
+        },
+        {
+          "id": "plot_11",
+          "type": "colorer"
+        },
+        {
+          "id": "plot_12",
+          "type": "alertcondition"
+        },
+        {
+          "styleKey": "plot_0",
+          "title": "Plot"
+        },
+        {
+          "styleKey": "plot_1",
+          "title": "Plot"
+        },
+        {
+          "styleKey": "plot_10",
+          "title": "New York Session Background Color"
+        },
+        {
+          "styleKey": "plot_12",
+          "title": "Asian Range Break"
+        },
+        {
+          "styleKey": "plot_2",
+          "title": "Asian Session Background Color"
+        },
+        {
+          "styleKey": "plot_4",
+          "title": "Plot"
+        },
+        {
+          "styleKey": "plot_5",
+          "title": "Plot"
+        },
+        {
+          "styleKey": "plot_6",
+          "title": "London Session Background Color"
+        },
+        {
+          "styleKey": "plot_8",
+          "title": "Plot"
+        },
+        {
+          "styleKey": "plot_9",
+          "title": "Plot"
+        }
+      ],
+      "pineId": "PUB;jNLZBfpYDOA3zFHJXTusK3CD7dbsi4sk",
+      "pineVersion": "13.0"
+    }
+  ]
+}

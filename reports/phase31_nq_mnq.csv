@@ -1,0 +1,2 @@
+forward_validation_counts,note,verdict
+False,Phase 31 executes MNQ from NQ signal prices/fill. Stop/target use index points on MNQ fill. Material NQ↔MNQ bar mismatch not yet measured — execution QA pending MNQ overlap sample.,MNQ_OVERLAP_UNAVAILABLE

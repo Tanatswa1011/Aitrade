@@ -1,0 +1,31 @@
+{
+  "symbol": "databento_NQ_stitched",
+  "timeframe": "15m",
+  "source": "databento:GLBX.MDP3:agg_ny_15m_from_stitched_1m",
+  "capture_time": "2026-08-16T09:25:31.110958+00:00",
+  "earliest_bar": 1577919600,
+  "latest_bar": 1786740300,
+  "bar_count": 156042,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "databento_NQ_stitched",
+      "timeframe": "15m",
+      "bar_count": 156042,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 0,
+      "gaps_head": [],
+      "earliest": 1577919600,
+      "latest": 1786740300,
+      "utc_normalized": true
+    },
+    "path": "data\\databento\\NQ\\stitched\\databento_NQ_stitched_15m.jsonl"
+  },
+  "aggregated_from": "1m",
+  "alignment": "America/New_York",
+  "tick_size": 0.25
+}

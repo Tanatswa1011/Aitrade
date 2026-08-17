@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-08-15T19:55:05.533088+00:00",
+  "priority_order": [
+    "tradingview_authenticated_session",
+    "oanda_compatible_approved",
+    "explicitly_approved_external"
+  ],
+  "investigated": [
+    {
+      "provider": "TradingViewDesktopProvider",
+      "result": "usable ~300 bars via series.data(); ceiling confirmed Phase 14/15",
+      "selected_for_deep_history": false
+    },
+    {
+      "provider": "TradingViewHistoryProvider",
+      "result": "requestMoreData / loadDataTo / setVisibleRange / setInitialRequestOptions({count:5000}) did not expand usable history",
+      "selected_for_deep_history": false
+    },
+    {
+      "provider": "LocalJsonlProvider",
+      "result": "loads Phase 14 OANDA:XAUUSD native captures from data/",
+      "selected_for_deep_history": false,
+      "selected_for_phase15_pipeline": true
+    },
+    {
+      "provider": "OANDA API / local export",
+      "result": "no credentials or approved export present in project",
+      "selected_for_deep_history": false
+    }
+  ],
+  "external_options_pending_approval": [
+    {
+      "id": "yahoo_gc_f",
+      "name": "Yahoo Finance GC=F (COMEX gold futures)",
+      "status": "not_integrated_pending_approval",
+      "approx_5m_coverage": "~60d / ~17k bars (public chart API)",
+      "symbol": "GC=F",
+      "feed": "CMX futures \u2014 NOT OANDA:XAUUSD spot",
+      "licensing": "Yahoo public chart endpoints; ToS / redistribution constraints apply",
+      "symbol_differences": "Futures vs OANDA CFD/spot; contract rolls; different session hours; prices not interchangeable with OANDA:XAUUSD",
+      "daily_roll": "Exchange session \u2014 not confirmed 17:00 America/New_York FX roll",
+      "spread_quote": "Futures last/settlement semantics differ from OANDA bid/ask mid"
+    },
+    {
+      "id": "dukascopy_bi5",
+      "name": "Dukascopy historical ticks/bi5 (XAUUSD)",
+      "status": "not_integrated_pending_approval",
+      "approx_coverage": "multi-year tick/bi5 when accessible",
+      "symbol": "XAUUSD (Dukascopy)",
+      "feed": "Dukascopy \u2014 NOT OANDA",
+      "licensing": "Dukascopy data terms; freeserv chart JSON probed 403 in Phase 15",
+      "symbol_differences": "Different liquidity provider; spreads/quotes differ from OANDA",
+      "daily_roll": "Must be validated separately vs OANDA 17:00 NY",
+      "spread_quote": "Provider-specific"
+    },
+    {
+      "id": "oanda_api",
+      "name": "OANDA REST candle history (instrument XAU_USD)",
+      "status": "not_integrated_no_credentials",
+      "approx_coverage": "API-dependent (practice/live account)",
+      "symbol": "XAU_USD",
+      "feed": "OANDA \u2014 preferred exact feed if credentials/approved project mechanism exist",
+      "licensing": "Requires OANDA account API token; not invented/bypassed",
+      "symbol_differences": "Closest match to TradingView OANDA:XAUUSD if same account type",
+      "daily_roll": "Should be validated against confirmed 17:00 NY evidence",
+      "note": "No OANDA credentials or approved export present in project"
+    }
+  ],
+  "selected_deep_provider": null,
+  "selected_pipeline_provider": "TradingViewDesktopProvider+LocalJsonlProvider",
+  "blocking_note": "Phase 15 does not integrate Yahoo GC=F, Dukascopy, or other non-OANDA feeds without explicit approval. Exact OANDA history preferred.",
+  "session_objective": {
+    "target_complete_sessions": 100,
+    "preferred": 250,
+    "better": 500,
+    "met": false,
+    "reason": "no approved deeper OANDA-compatible history source integrated"
+  }
+}

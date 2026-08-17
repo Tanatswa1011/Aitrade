@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "phase": 11,
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "offline": {
+    "example_a": {
+      "status": "ENTRY_READY",
+      "execution_timeframe": "5m",
+      "htf_alignment": "aligned_bullish",
+      "setup_vs_daily": "aligned",
+      "setup_vs_h4": "aligned"
+    },
+    "example_b": {
+      "status": "ENTRY_READY",
+      "execution_timeframe": "15m",
+      "htf_alignment": "mixed",
+      "setup_vs_daily": "opposed",
+      "setup_vs_h4": "aligned",
+      "direction": "bearish",
+      "rejected_for_mixed": false
+    },
+    "alignment_helpers": {
+      "bull_bull": "aligned_bullish",
+      "bull_bear": "mixed"
+    }
+  },
+  "live": {
+    "live_tested": true,
+    "runs": {
+      "5m": {
+        "ok": false,
+        "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?"
+      },
+      "15m": {
+        "ok": false,
+        "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?"
+      }
+    },
+    "ok": false
+  }
+}

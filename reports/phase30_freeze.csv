@@ -1,0 +1,2 @@
+broker_execution,candidate_name,engine_config_hash,exchange,execution_tf,force_close,frozen_config_hash,instrument,long_sl_tp,max_losses_day,max_trades_day,short_sl_tp,source_candidate_path,source_hash_match,status,strategy_version,trade_window,trend_tf,vwap_reset
+False,DVP_ORIGINAL,e314f828eee7eca5,CME,5m,15:55,935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a,NQ,80/40,2,4,80/50,strategy_candidates/phase29_DVP_ORIGINAL.json,True,PAPER_VALIDATION,nq_drift_vwap_pullback_v1.DVP_ORIGINAL.FROZEN_PHASE30,10:30-15:30,15m,09:30 America/New_York

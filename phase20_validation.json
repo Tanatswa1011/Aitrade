@@ -1,0 +1,520 @@
+{
+  "ok": true,
+  "phase": 20,
+  "strategy_version": "v1.phase20",
+  "generated_at": "2026-08-15T21:31:40.939792+00:00",
+  "phase19_verdict_preserved": "NO_EDGE_OBSERVED",
+  "objective": "Does internal historical CHoCH represent LuxAlgo CHoCH used live?",
+  "live_capture_attempt": null,
+  "capture_store": {
+    "path": "data\\luxalgo_captures\\choch_events.jsonl",
+    "total_rows": 34,
+    "reliable_total": 2,
+    "by_timeframe": {
+      "5m": {
+        "total_rows": 17,
+        "reliable": 1,
+        "bullish": 1,
+        "bearish": 0,
+        "timing_confidence": {
+          "exact": 1,
+          "unavailable": 16
+        },
+        "date_coverage_unix": {
+          "min": 1786740900,
+          "max": 1786740900
+        }
+      },
+      "15m": {
+        "total_rows": 17,
+        "reliable": 1,
+        "bullish": 1,
+        "bearish": 0,
+        "timing_confidence": {
+          "exact": 1,
+          "unavailable": 16
+        },
+        "date_coverage_unix": {
+          "min": 1786740900,
+          "max": 1786740900
+        }
+      }
+    }
+  },
+  "reliable_luxalgo_total": 5,
+  "by_timeframe": {
+    "5m": {
+      "timeframe": "5m",
+      "tv_bar_count": 300,
+      "window_bar_count": 51,
+      "luxalgo_rows": 17,
+      "luxalgo_reliable": 1,
+      "luxalgo_reliable_mapped": 1,
+      "bullish": 1,
+      "bearish": 0,
+      "date_coverage_unix": {
+        "min": 1786740900,
+        "max": 1786740900
+      },
+      "mapping_confidence_distribution": {
+        "exact_timestamp": 1,
+        "unresolved": 16
+      },
+      "internal_event_count": 4,
+      "overlap": {
+        "timeframe": "5m",
+        "tolerances": {
+          "level_tolerance": 5.0,
+          "max_bar_distance": 2,
+          "period_sec": 300
+        },
+        "luxalgo_total": 1,
+        "luxalgo_reliable": 1,
+        "luxalgo_timing_unresolved": 0,
+        "internal_count": 4,
+        "by_category": {
+          "LUXALGO_ONLY": 1
+        },
+        "exact_matches": 0,
+        "within_1_bar_matches": 0,
+        "within_2_bar_matches": 0,
+        "direction_only_matches": 0,
+        "level_only_matches": 0,
+        "luxalgo_only": 1,
+        "timing_unresolved": 0,
+        "internal_only_count": 0,
+        "luxalgo_coverage": 0.0,
+        "internal_precision": null,
+        "level_delta": {
+          "n": 0,
+          "median": null,
+          "mean": null,
+          "max": null
+        },
+        "direction_mismatches_nearby": 0,
+        "divergence": {
+          "by_cause": {
+            "UNKNOWN": 1
+          },
+          "dominant_cause": "UNKNOWN",
+          "dominant_count": 1,
+          "rows": [
+            {
+              "category": "LUXALGO_ONLY",
+              "luxalgo": {
+                "direction": "bullish",
+                "level": 4397.06,
+                "event_timestamp": 1786740900,
+                "event_bar_index": 299,
+                "timing_confidence": "exact",
+                "source": "luxalgo",
+                "raw_id": "4",
+                "extras": {
+                  "draw_x": 475,
+                  "label_style": "ldn",
+                  "text_color": 4286683400,
+                  "line_id": 1,
+                  "line_style": "dsh",
+                  "line_x1": 474,
+                  "line_x2": 475,
+                  "placeholder_bar": false,
+                  "mapping_method": "exact_timestamp",
+                  "mapping_status": "mapped"
+                }
+              },
+              "matched_internal": null,
+              "divergence": {
+                "cause": "UNKNOWN",
+                "note": "no_same_direction_internal_within_tolerance"
+              }
+            }
+          ]
+        },
+        "classifications_n": 1,
+        "classifications_sample": [
+          {
+            "category": "LUXALGO_ONLY",
+            "luxalgo": {
+              "direction": "bullish",
+              "level": 4397.06,
+              "event_timestamp": 1786740900,
+              "event_bar_index": 299,
+              "timing_confidence": "exact",
+              "source": "luxalgo",
+              "raw_id": "4",
+              "extras": {
+                "draw_x": 475,
+                "label_style": "ldn",
+                "text_color": 4286683400,
+                "line_id": 1,
+                "line_style": "dsh",
+                "line_x1": 474,
+                "line_x2": 475,
+                "placeholder_bar": false,
+                "mapping_method": "exact_timestamp",
+                "mapping_status": "mapped"
+              }
+            },
+            "matched_internal": null,
+            "divergence": {
+              "cause": "UNKNOWN",
+              "note": "no_same_direction_internal_within_tolerance"
+            }
+          }
+        ]
+      },
+      "equivalence_status": "UNVALIDATED",
+      "equivalence_confidence": "reliable_n=1 < 20; sample too small for equivalence claim",
+      "level_tolerance": 5.0,
+      "bar_provider": "TradingView/OANDA local dataset (not Tiingo)"
+    },
+    "15m": {
+      "timeframe": "15m",
+      "tv_bar_count": 300,
+      "window_bar_count": 271,
+      "luxalgo_rows": 20,
+      "luxalgo_reliable": 4,
+      "luxalgo_reliable_mapped": 4,
+      "bullish": 3,
+      "bearish": 1,
+      "date_coverage_unix": {
+        "min": 1786535100,
+        "max": 1786740900
+      },
+      "mapping_confidence_distribution": {
+        "positional_bar_index": 1,
+        "unresolved": 16,
+        "exact_timestamp": 3
+      },
+      "internal_event_count": 15,
+      "overlap": {
+        "timeframe": "15m",
+        "tolerances": {
+          "level_tolerance": 5.0,
+          "max_bar_distance": 2,
+          "period_sec": 900
+        },
+        "luxalgo_total": 4,
+        "luxalgo_reliable": 4,
+        "luxalgo_timing_unresolved": 0,
+        "internal_count": 15,
+        "by_category": {
+          "LUXALGO_ONLY": 4
+        },
+        "exact_matches": 0,
+        "within_1_bar_matches": 0,
+        "within_2_bar_matches": 0,
+        "direction_only_matches": 0,
+        "level_only_matches": 0,
+        "luxalgo_only": 4,
+        "timing_unresolved": 0,
+        "internal_only_count": 12,
+        "luxalgo_coverage": 0.0,
+        "internal_precision": 0.0,
+        "level_delta": {
+          "n": 0,
+          "median": null,
+          "mean": null,
+          "max": null
+        },
+        "direction_mismatches_nearby": 1,
+        "divergence": {
+          "by_cause": {
+            "UNKNOWN": 3,
+            "STRUCTURE_STATE_DIFFERENCE": 1
+          },
+          "dominant_cause": "UNKNOWN",
+          "dominant_count": 3,
+          "rows": [
+            {
+              "category": "LUXALGO_ONLY",
+              "luxalgo": {
+                "direction": "bullish",
+                "level": 4397.06,
+                "event_timestamp": 1786740300,
+                "event_bar_index": 299,
+                "timing_confidence": "exact",
+                "source": "luxalgo",
+                "raw_id": "4",
+                "extras": {
+                  "draw_x": 475,
+                  "label_style": "ldn",
+                  "text_color": 4286683400,
+                  "line_id": 1,
+                  "line_style": "dsh",
+                  "line_x1": 474,
+                  "line_x2": 475,
+                  "placeholder_bar": false,
+                  "mapping_method": "positional_bar_index",
+                  "mapping_status": "mapped"
+                }
+              },
+              "matched_internal": null,
+              "divergence": {
+                "cause": "UNKNOWN",
+                "note": "no_same_direction_internal_within_tolerance"
+              }
+            },
+            {
+              "category": "LUXALGO_ONLY",
+              "note": "nearby_opposite_direction_internal_exists",
+              "luxalgo": {
+                "direction": "bearish",
+                "level": 4356.7,
+                "event_timestamp": 1786535100,
+                "event_bar_index": 79,
+                "timing_confidence": "exact",
+                "source": "luxalgo",
+                "raw_id": "264",
+                "extras": {
+                  "mapping_method": "exact_timestamp",
+                  "mapping_status": "mapped"
+                }
+              },
+              "matched_internal": null,
+              "opposite_nearby": [
+                {
+                  "direction": "bullish",
+                  "level": 4416.805,
+                  "event_timestamp": 1786536900,
+                  "event_bar_index": 52,
+                  "timing_confidence": "exact",
+                  "source": "internal_structure",
+                  "raw_id": "internal_bull_1786536900",
+                  "extras": {
+                    "algorithm_version": "internal_choch_v1",
+                    "equivalence_status": "unvalidated_against_luxalgo",
+                    "swing_index": 48,
+                    "parameters": {
+                      "swing_left": 2,
+                      "swing_right": 2,
+                      "break_mode": "close",
+                      "require_close_break": true,
+                      "minimum_break": 0.0,
+                      "algorithm_version": "internal_choch_v1",
+                      "equivalence_status": "unvalidated_against_luxalgo",
+                      "extras": {}
+                    }
+                  }
+                }
+              ],
+              "divergence": {
+                "cause": "STRUCTURE_STATE_DIFFERENCE",
+                "note": "internal_has_opposite_direction_nearby"
+              }
+            },
+            {
+              "category": "LUXALGO_ONLY",
+              "luxalgo": {
+                "direction": "bullish",
+                "level": 4449.83,
+                "event_timestamp": 1786740300,
+                "event_bar_index": 299,
+                "timing_confidence": "exact",
+                "source": "luxalgo",
+                "raw_id": "4",
+                "extras": {
+                  "mapping_method": "exact_timestamp",
+                  "mapping_status": "mapped"
+                }
+              },
+              "matched_internal": null,
+              "divergence": {
+                "cause": "UNKNOWN",
+                "note": "no_same_direction_internal_within_tolerance"
+              }
+            },
+            {
+              "category": "LUXALGO_ONLY",
+              "luxalgo": {
+                "direction": "bullish",
+                "level": 4397.06,
+                "event_timestamp": 1786740300,
+                "event_bar_index": 299,
+                "timing_confidence": "exact",
+                "source": "luxalgo",
+                "raw_id": "4",
+                "extras": {
+                  "mapping_method": "exact_timestamp",
+                  "mapping_status": "mapped"
+                }
+              },
+              "matched_internal": null,
+              "divergence": {
+                "cause": "UNKNOWN",
+                "note": "no_same_direction_internal_within_tolerance"
+              }
+            }
+          ]
+        },
+        "classifications_n": 4,
+        "classifications_sample": [
+          {
+            "category": "LUXALGO_ONLY",
+            "luxalgo": {
+              "direction": "bullish",
+              "level": 4397.06,
+              "event_timestamp": 1786740300,
+              "event_bar_index": 299,
+              "timing_confidence": "exact",
+              "source": "luxalgo",
+              "raw_id": "4",
+              "extras": {
+                "draw_x": 475,
+                "label_style": "ldn",
+                "text_color": 4286683400,
+                "line_id": 1,
+                "line_style": "dsh",
+                "line_x1": 474,
+                "line_x2": 475,
+                "placeholder_bar": false,
+                "mapping_method": "positional_bar_index",
+                "mapping_status": "mapped"
+              }
+            },
+            "matched_internal": null,
+            "divergence": {
+              "cause": "UNKNOWN",
+              "note": "no_same_direction_internal_within_tolerance"
+            }
+          },
+          {
+            "category": "LUXALGO_ONLY",
+            "note": "nearby_opposite_direction_internal_exists",
+            "luxalgo": {
+              "direction": "bearish",
+              "level": 4356.7,
+              "event_timestamp": 1786535100,
+              "event_bar_index": 79,
+              "timing_confidence": "exact",
+              "source": "luxalgo",
+              "raw_id": "264",
+              "extras": {
+                "mapping_method": "exact_timestamp",
+                "mapping_status": "mapped"
+              }
+            },
+            "matched_internal": null,
+            "opposite_nearby": [
+              {
+                "direction": "bullish",
+                "level": 4416.805,
+                "event_timestamp": 1786536900,
+                "event_bar_index": 52,
+                "timing_confidence": "exact",
+                "source": "internal_structure",
+                "raw_id": "internal_bull_1786536900",
+                "extras": {
+                  "algorithm_version": "internal_choch_v1",
+                  "equivalence_status": "unvalidated_against_luxalgo",
+                  "swing_index": 48,
+                  "parameters": {
+                    "swing_left": 2,
+                    "swing_right": 2,
+                    "break_mode": "close",
+                    "require_close_break": true,
+                    "minimum_break": 0.0,
+                    "algorithm_version": "internal_choch_v1",
+                    "equivalence_status": "unvalidated_against_luxalgo",
+                    "extras": {}
+                  }
+                }
+              }
+            ],
+            "divergence": {
+              "cause": "STRUCTURE_STATE_DIFFERENCE",
+              "note": "internal_has_opposite_direction_nearby"
+            }
+          },
+          {
+            "category": "LUXALGO_ONLY",
+            "luxalgo": {
+              "direction": "bullish",
+              "level": 4449.83,
+              "event_timestamp": 1786740300,
+              "event_bar_index": 299,
+              "timing_confidence": "exact",
+              "source": "luxalgo",
+              "raw_id": "4",
+              "extras": {
+                "mapping_method": "exact_timestamp",
+                "mapping_status": "mapped"
+              }
+            },
+            "matched_internal": null,
+            "divergence": {
+              "cause": "UNKNOWN",
+              "note": "no_same_direction_internal_within_tolerance"
+            }
+          },
+          {
+            "category": "LUXALGO_ONLY",
+            "luxalgo": {
+              "direction": "bullish",
+              "level": 4397.06,
+              "event_timestamp": 1786740300,
+              "event_bar_index": 299,
+              "timing_confidence": "exact",
+              "source": "luxalgo",
+              "raw_id": "4",
+              "extras": {
+                "mapping_method": "exact_timestamp",
+                "mapping_status": "mapped"
+              }
+            },
+            "matched_internal": null,
+            "divergence": {
+              "cause": "UNKNOWN",
+              "note": "no_same_direction_internal_within_tolerance"
+            }
+          }
+        ]
+      },
+      "equivalence_status": "UNVALIDATED",
+      "equivalence_confidence": "reliable_n=4 < 20; sample too small for equivalence claim",
+      "level_tolerance": 5.0,
+      "bar_provider": "TradingView/OANDA local dataset (not Tiingo)"
+    }
+  },
+  "overall_equivalence_status": "UNVALIDATED",
+  "historical_model": {
+    "v2_required": false,
+    "v2_implemented": false,
+    "v2_replaced_v1_for_replay": false,
+    "note": "No PnL-guided CHoCH fitting. v2 only from LuxAlgo behavioral evidence."
+  },
+  "replay": {
+    "required": false,
+    "executed": false,
+    "note": "Replay deferred until LuxAlgo-equivalent confirmation candidate exists with adequate N"
+  },
+  "decision": {
+    "decision": "NEED_MORE_LUXALGO_EVENTS",
+    "continue_strategy": "deferred_until_luxalgo_sample",
+    "paper_validation_justified": false,
+    "v2_required": false,
+    "v2_replaced_v1": false,
+    "replay_required": false,
+    "phase19_verdict_preserved": "NO_EDGE_OBSERVED",
+    "phase19_representative": "unknown_insufficient_luxalgo_n",
+    "rationale": "reliable LuxAlgo CHoCH N=5 < 50; cannot claim internal~LuxAlgo nor HISTORICAL_MODEL_MISMATCH"
+  },
+  "artifacts": {
+    "validation_json": "phase20_validation.json",
+    "luxalgo_events": "reports\\phase20_luxalgo_events.csv",
+    "internal_events": "reports\\phase20_internal_events.csv",
+    "overlap_5m": "reports\\phase20_overlap_5m.csv",
+    "overlap_15m": "reports\\phase20_overlap_15m.csv",
+    "divergence": "reports\\phase20_divergence.csv",
+    "equivalence": "reports\\phase20_equivalence.csv",
+    "capture_store": "data\\luxalgo_captures\\choch_events.jsonl"
+  },
+  "limitations": [
+    "LuxAlgo historical drawings often use placeholder bar indexes (-2000000); exact timing unavailable",
+    "Reliable events require live-first capture as labels appear",
+    "Target \u226550 reliable events not met \u2192 no equivalence claim",
+    "Primary equivalence uses TradingView/OANDA bars when present",
+    "Phase 19 NO_EDGE_OBSERVED unchanged pending equivalence evidence"
+  ],
+  "recommended_next_action": "Continue live LuxAlgo CHoCH capture on 5m and 15m until \u226550 reliable timed events, then re-run phase20_validate without changing strategy rules."
+}

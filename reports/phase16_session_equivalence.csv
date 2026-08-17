@@ -1,0 +1,3 @@
+candidate,exact,high_delta,left_high,left_low,low_delta,right_high,right_low,session,trading_date
+yfinance_futures:GC,False,53.05509765624993,4362.045,4311.04,54.560097656250036,4415.10009765625,4365.60009765625,Asia,2026-08-13
+yfinance_futures:GC,False,73.85509765625011,4380.745,4329.81,74.8901953124996,4454.60009765625,4404.7001953125,London,2026-08-14

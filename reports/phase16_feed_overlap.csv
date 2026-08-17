@@ -1,0 +1,6 @@
+candidate,classification,deep_replay_allowed,exact_ohlc_match_pct,fetch_errors,instrument_type,overlap_bars
+tiingo:XAUUSD,,False,,"[""missing_credential:tiingo_token"", ""Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.""]",,
+tiingo:XAU/USD,,False,,"[""missing_credential:tiingo_token"", ""Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.""]",,
+yfinance_currency:XAUUSD,,False,,"[""EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters.""]",,
+yfinance_currency:XAU/USD,,False,,"[""EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters.""]",,
+yfinance_futures:GC,RESEARCH_ONLY,False,0.0,[],futures,253

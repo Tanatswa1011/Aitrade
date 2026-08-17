@@ -1,0 +1,28 @@
+{
+  "symbol": "OANDA:XAUUSD",
+  "timeframe": "1D",
+  "source": "tradingview_native_expanded",
+  "capture_time": "2026-08-15T19:38:46.479295+00:00",
+  "earliest_bar": 1750194000,
+  "latest_bar": 1786654800,
+  "bar_count": 300,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "OANDA:XAUUSD",
+      "timeframe": "1D",
+      "bar_count": 300,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 0,
+      "gaps_head": [],
+      "earliest": 1750194000,
+      "latest": 1786654800,
+      "utc_normalized": true
+    },
+    "path": "data\\OANDA_XAUUSD_1D.jsonl"
+  }
+}

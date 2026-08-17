@@ -1,0 +1,28 @@
+{
+  "phase": "phase25",
+  "status": "READY_FOR_PAPER_VALIDATION",
+  "strategy_family": "gc_vwap_mean_reversion_v1",
+  "strategy_version": "v1.phase25",
+  "instrument": "GC",
+  "provider": "databento:GLBX.MDP3",
+  "candidate_id": "V2_BAND_RECLAIM_2SIG_RETEST",
+  "candidate": {
+    "strategy_family": "gc_vwap_mean_reversion_v1",
+    "candidate_id": "V2_BAND_RECLAIM_2SIG_RETEST",
+    "confirmation_mode": "BAND_RECLAIM",
+    "entry_mode": "FROZEN_2SIG_RETEST",
+    "sigma_threshold": 2.0,
+    "max_entry_bars": 6,
+    "min_vwap_bars": 6,
+    "volume_filter": false,
+    "execution_timeframe": "5m",
+    "extras": {}
+  },
+  "predeclared": {
+    "session": "08:20-13:30 America/New_York",
+    "no_new_setup_after": "12:30 America/New_York",
+    "stop": "extension_extreme",
+    "targets": "1R/1.5R/2R/3R fixed + dynamic VWAP diagnostic"
+  },
+  "note": "NOT production default — paper validation only; no broker connection"
+}

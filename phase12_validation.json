@@ -1,0 +1,109 @@
+{
+  "ok": true,
+  "phase": 12,
+  "offline": {
+    "daily": {
+      "timeframe": "1D",
+      "direction": "bullish",
+      "timestamp": 2296000,
+      "source": "structure_bias",
+      "method": "structure_break_v1",
+      "confidence": "high",
+      "evidence": {
+        "closed_bars": 15,
+        "as_of_ts": 2296000,
+        "swing_left": 2,
+        "swing_right": 2,
+        "require_close_break": true,
+        "algorithm_version": "structure_break_v1",
+        "swing_high_count": 1,
+        "swing_low_count": 1,
+        "last_confirmed_swing_high": 100.5,
+        "last_confirmed_swing_high_time": 1432000,
+        "last_confirmed_swing_low": 91.0,
+        "last_confirmed_swing_low_time": 1777600,
+        "previous_day_levels": {
+          "previous_day_open": 102.5,
+          "previous_day_high": 103.5,
+          "previous_day_low": 102.0,
+          "previous_day_close": 103.0,
+          "previous_day_timestamp": 2209600,
+          "prior_day_open": 100.5,
+          "prior_day_high": 101.5,
+          "prior_day_low": 100.0,
+          "prior_day_close": 101.0,
+          "prior_day_timestamp": 2123200
+        },
+        "recent_daily_swing_high": 100.5,
+        "recent_daily_swing_low": 91.0,
+        "reason": "closed above confirmed 1D swing high 100.5",
+        "last_break_direction": "bullish",
+        "last_break_level": 100.5,
+        "last_break_timestamp": 2123200,
+        "last_break_bar_index": 13,
+        "bars_since_break": 1,
+        "structure_break_count": 1,
+        "latest_closed_bar_time": 2209600,
+        "latest_closed_bar_close": 103.0
+      },
+      "valid": true,
+      "extras": {
+        "break_close_ts": 2209600
+      }
+    },
+    "h4": {
+      "timeframe": "4H",
+      "direction": "bearish",
+      "timestamp": 2296000,
+      "source": "structure_bias",
+      "method": "structure_break_v1",
+      "confidence": "high",
+      "evidence": {
+        "closed_bars": 15,
+        "as_of_ts": 2296000,
+        "swing_left": 2,
+        "swing_right": 2,
+        "require_close_break": true,
+        "algorithm_version": "structure_break_v1",
+        "swing_high_count": 1,
+        "swing_low_count": 1,
+        "last_confirmed_swing_high": 109.0,
+        "last_confirmed_swing_high_time": 2129600,
+        "last_confirmed_swing_low": 99.5,
+        "last_confirmed_swing_low_time": 2072000,
+        "recent_h4_swing_high": 109.0,
+        "recent_h4_swing_low": 99.5,
+        "reason": "closed below confirmed 4H swing low 99.5",
+        "last_break_direction": "bearish",
+        "last_break_level": 99.5,
+        "last_break_timestamp": 2187200,
+        "last_break_bar_index": 13,
+        "bars_since_break": 1,
+        "structure_break_count": 1,
+        "latest_closed_bar_time": 2201600,
+        "latest_closed_bar_close": 97.0
+      },
+      "valid": true,
+      "extras": {
+        "break_close_ts": 2201600
+      }
+    },
+    "alignment": "mixed",
+    "provider": "structure_bias",
+    "algorithm_version": "structure_break_v1"
+  },
+  "live": {
+    "live_tested": true,
+    "runs": {
+      "5m": {
+        "ok": false,
+        "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?"
+      },
+      "15m": {
+        "ok": false,
+        "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?"
+      }
+    },
+    "ok": false
+  }
+}

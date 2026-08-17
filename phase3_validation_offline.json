@@ -1,0 +1,280 @@
+{
+  "ok": true,
+  "mode": "offline_captures",
+  "note": "Live TradingView CDP (9222) was unavailable during Phase 3 validation. This report uses the last saved LuxAlgo deep probe + Phase 2 sweep capture. It is not a forced confirmation.",
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "live_example": {
+    "session": "London",
+    "swept_side": "high",
+    "sweep_level": 4380.745,
+    "sweep_time": "2026-08-14T17:15:00+00:00",
+    "candidate_choch_events": [
+      {
+        "direction": "bullish",
+        "level": 4397.06,
+        "timestamp": null,
+        "bar_index": 299,
+        "timing_confidence": "derived"
+      },
+      {
+        "direction": "bullish",
+        "level": 4028.94,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4002.185,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bullish",
+        "level": 4019.63,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4112.315,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bullish",
+        "level": 4051.44,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4084.49,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bullish",
+        "level": 4047.88,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4042.955,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bullish",
+        "level": 4100.485,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4098.505,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bullish",
+        "level": 4069.465,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4247.24,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bullish",
+        "level": 4284.885,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4327.865,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bullish",
+        "level": 4350.41,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      },
+      {
+        "direction": "bearish",
+        "level": 4396.575,
+        "timestamp": null,
+        "bar_index": null,
+        "timing_confidence": "unavailable"
+      }
+    ],
+    "timing_summary": {
+      "derived": 1,
+      "unavailable": 16
+    },
+    "direction_summary": {
+      "bullish": 9,
+      "bearish": 8
+    },
+    "chosen_confirmation": null,
+    "status": "no_reliable_ordering",
+    "decision": {
+      "confirmed": false,
+      "confirmation": null,
+      "reason": "no_reliable_ordering",
+      "required_direction": "bearish",
+      "candidates_seen": 17,
+      "rejected": [
+        {
+          "raw_id": "4",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4397.06
+        },
+        {
+          "raw_id": "10",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4028.94
+        },
+        {
+          "raw_id": "18",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4002.185,
+          "direction": "bearish"
+        },
+        {
+          "raw_id": "22",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4019.63
+        },
+        {
+          "raw_id": "60",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4112.315,
+          "direction": "bearish"
+        },
+        {
+          "raw_id": "88",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4051.44
+        },
+        {
+          "raw_id": "116",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4084.49,
+          "direction": "bearish"
+        },
+        {
+          "raw_id": "172",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4047.88
+        },
+        {
+          "raw_id": "182",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4042.955,
+          "direction": "bearish"
+        },
+        {
+          "raw_id": "186",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4100.485
+        },
+        {
+          "raw_id": "190",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4098.505,
+          "direction": "bearish"
+        },
+        {
+          "raw_id": "218",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4069.465
+        },
+        {
+          "raw_id": "268",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4247.24,
+          "direction": "bearish"
+        },
+        {
+          "raw_id": "278",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4284.885
+        },
+        {
+          "raw_id": "294",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4327.865,
+          "direction": "bearish"
+        },
+        {
+          "raw_id": "300",
+          "reason": "wrong_direction",
+          "direction": "bullish",
+          "required": "bearish",
+          "level": 4350.41
+        },
+        {
+          "raw_id": "348",
+          "reason": "unreliable_ordering",
+          "detail": "timing_unavailable",
+          "timing_confidence": "unavailable",
+          "level": 4396.575,
+          "direction": "bearish"
+        }
+      ]
+    },
+    "interpretation": "London High was swept (wick_only). Required confirmation is bearish CHoCH after the sweep. Of 17 CHoCH labels, 8 are bearish but all have timing_confidence=unavailable (placeholder bar indexes). The only usable bar-indexed CHoCH is bullish (wrong direction for a high sweep). Fail-closed: no confirmation."
+  }
+}

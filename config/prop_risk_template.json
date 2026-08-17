@@ -1,0 +1,20 @@
+{
+  "firm_name": null,
+  "account_name": null,
+  "nominal_account_size": null,
+  "evaluation_cost": null,
+  "profit_target": null,
+  "max_drawdown": null,
+  "drawdown_type": null,
+  "daily_loss_limit": null,
+  "max_contracts": null,
+  "allowed_instruments": ["MNQ", "MGC"],
+  "forced_flatten_time": "15:55 America/New_York",
+  "consistency_rule": null,
+  "automation_allowed": null,
+  "max_strategy_risk_per_trade": null,
+  "max_combined_open_risk": null,
+  "max_daily_strategy_loss": null,
+  "max_daily_trades": null,
+  "_note": "Fill when prop firm is selected. No credentials. Load into prop_firm_simulator for historical pass/fail analysis only."
+}

@@ -1,0 +1,52 @@
+{
+  "phase": "phase27",
+  "strategy_family": "gc_vwap_london_mean_reversion_v1",
+  "strategy_version": "v1.phase27",
+  "instrument": "GC",
+  "provider": "databento:GLBX.MDP3",
+  "candidate": {
+    "strategy_family": "gc_vwap_london_mean_reversion_v1",
+    "candidate_id": "L2_BAND_RECLAIM_2SIG_RETEST",
+    "confirmation_mode": "BAND_RECLAIM",
+    "entry_mode": "FROZEN_2SIG_RETEST",
+    "sigma_threshold": 2.0,
+    "max_entry_bars": 6,
+    "min_vwap_bars": 6,
+    "volume_filter": false,
+    "execution_timeframe": "5m",
+    "extras": {
+      "role": "primary_hypothesis"
+    }
+  },
+  "config_hash": "ddf2d1167bdb9738",
+  "predeclared": {
+    "session": "08:00-12:00 Europe/London",
+    "no_new_setups_after": "11:00",
+    "sigma": 2.0,
+    "min_vwap_bars": 6,
+    "max_entry_bars": 6,
+    "volume_filter": false,
+    "session_note": "Research London VWAP window 08:00\u201312:00 Europe/London; independent falsification of Phase 25 NY VWAP 2\u03c3 reclaim/retest. Not a retune of frozen Phase 26 NY V2."
+  },
+  "selection_split": {
+    "train_start": "2025-08-01",
+    "train_end": "2026-05-01",
+    "holdout_start": "2026-05-04",
+    "holdout_end": "2026-08-14",
+    "train_dates": 155,
+    "holdout_dates": 67,
+    "train_fraction": 0.7,
+    "method": "chronological_trading_date_70_30_databento_phase27_london"
+  },
+  "train_snapshot": {
+    "resolved_n": 164,
+    "theoretical_2r_expectancy": 0.2195121951219512,
+    "vwap_hit_rate": 0.4583333333333333
+  },
+  "holdout_snapshot": {
+    "resolved_n": 67,
+    "theoretical_2r_expectancy": 0.04477611940298498,
+    "vwap_hit_rate": 0.37272727272727274
+  },
+  "note": "NOT production \u2014 Phase 27 London research only; not frozen Phase 26 NY V2"
+}

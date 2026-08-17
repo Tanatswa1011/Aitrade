@@ -1,0 +1,149 @@
+{
+  "symbol": "openbb_tiingo_XAUUSD",
+  "timeframe": "1m",
+  "source": "openbb:tiingo:sparse_1m_windows",
+  "capture_time": "2026-08-15T21:05:24.769130+00:00",
+  "earliest_bar": 1755281940,
+  "latest_bar": 1786537800,
+  "bar_count": 285,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "openbb_tiingo_XAUUSD",
+      "timeframe": "1m",
+      "bar_count": 285,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 40,
+      "gaps_head": [
+        {
+          "from": 1755282300,
+          "to": 1755283440,
+          "delta_sec": 1140,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1755283800,
+          "to": 1755787740,
+          "delta_sec": 503940,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1755787800,
+          "to": 1755788040,
+          "delta_sec": 240,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1755788400,
+          "to": 1756464240,
+          "delta_sec": 675840,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1756464600,
+          "to": 1758545040,
+          "delta_sec": 2080440,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1758545700,
+          "to": 1758886440,
+          "delta_sec": 340740,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1758886800,
+          "to": 1759343940,
+          "delta_sec": 457140,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1759344300,
+          "to": 1759491840,
+          "delta_sec": 147540,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1759492200,
+          "to": 1760594640,
+          "delta_sec": 1102440,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1760595000,
+          "to": 1760618640,
+          "delta_sec": 23640,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1760619000,
+          "to": 1761828240,
+          "delta_sec": 1209240,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1761828600,
+          "to": 1763126640,
+          "delta_sec": 1298040,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1763127000,
+          "to": 1764780840,
+          "delta_sec": 1653840,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1764781200,
+          "to": 1764875640,
+          "delta_sec": 94440,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1764876000,
+          "to": 1764876240,
+          "delta_sec": 240,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1764876600,
+          "to": 1765927140,
+          "delta_sec": 1050540,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1765927500,
+          "to": 1765928340,
+          "delta_sec": 840,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1765928700,
+          "to": 1767196140,
+          "delta_sec": 1267440,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1767196500,
+          "to": 1768846140,
+          "delta_sec": 1649640,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1768846500,
+          "to": 1770042840,
+          "delta_sec": 1196340,
+          "expected_period_sec": 60
+        }
+      ],
+      "earliest": 1755281940,
+      "latest": 1786537800,
+      "utc_normalized": true
+    },
+    "path": "data\\openbb\\tiingo\\openbb_tiingo_XAUUSD_1m.jsonl"
+  }
+}

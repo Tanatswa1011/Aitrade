@@ -1,0 +1,38 @@
+direction,event_id,event_timestamp,level,mapping_status,reliable,study_id,study_name,timeframe,timing_confidence
+bullish,0881919ba0ad6e51bd52,1786740900,4397.06,mapped,True,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,exact
+bullish,d905520011cd9ca96262,,4028.94,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,4be4b440f1a7fc10c396,,4002.185,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,79b8407a7aebb088e44b,,4019.63,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,714c0fad63b85536c6f8,,4112.315,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,d4b4155307308445fab5,,4051.44,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,7d60f250d50b60973757,,4084.49,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,fceefd3d73a92eba1054,,4047.88,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,66ab96839bc0150635a8,,4042.955,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,4a3748cd04870e746841,,4100.485,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,d1048c439df4615741cf,,4098.505,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,cfef457f52ad535ade44,,4069.465,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,a5114464dc75d13b8525,,4247.24,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,6269235329da981a6bdf,,4284.885,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,ae02877bf1bcbf1d3d26,,4327.865,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,cb1612883acbf227839b,,4350.41,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bearish,99bae96754bb0f369a2e,,4396.575,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],5m,unavailable
+bullish,f8e62d813316fc26b3c8,1786740900,4397.06,mapped,True,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,exact
+bullish,4ac5bc4a948f2e2abe6c,,4028.94,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,ca7b07fb6596cf700df3,,4002.185,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bullish,65ea72abce24ee807f4c,,4019.63,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,90bf6c0d486abd109e85,,4112.315,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bullish,4277f3cbe03639e79b2a,,4051.44,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,7b2073c706e19d375f08,,4084.49,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bullish,8e294f08bafe25d2ef31,,4047.88,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,ee4fb727f488f45bb10b,,4042.955,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bullish,33f9f94ba1087fb11830,,4100.485,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,11da10283146f8ef7e56,,4098.505,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bullish,afdcccf2ae7a457b2fc2,,4069.465,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,6de37ff6a439f6954415,,4247.24,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bullish,5ed99b2b765270d383bd,,4284.885,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,1de2a87970f3a1f3e649,,4327.865,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bullish,1abd385de56f6d8354bf,,4350.41,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,d2ae3e056ef81e3a8f99,,4396.575,unresolved,False,smUEv2,Market Structure with Inducements & Sweeps [LuxAlgo],15m,unavailable
+bearish,,1786535100,4356.7,,True,smUEv2,,15m,exact
+bullish,,1786740300,4449.83,,True,smUEv2,,15m,exact
+bullish,,1786740300,4397.06,,True,smUEv2,,15m,exact

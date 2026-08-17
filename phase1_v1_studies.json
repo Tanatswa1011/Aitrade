@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "symbol": "OANDA:XAUUSD",
+  "resolution": "5",
+  "studies": [
+    {
+      "id": "wy7VYI",
+      "name": "AMD Liquidity Sweep with Alerts"
+    },
+    {
+      "id": "h6mnwz",
+      "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)"
+    },
+    {
+      "id": "ZdJin1",
+      "name": "FXN - Asian Session Range"
+    }
+  ],
+  "hasCreateStudy": true,
+  "hasRemoveEntity": true,
+  "chartMethods": [
+    "_createStudy",
+    "_getStudyApi",
+    "_makeSubscriptionFromDelegate",
+    "addOverlayStudy",
+    "applyStudyTemplate",
+    "applyStudyTemplateByRecord",
+    "createStudy",
+    "createStudyTemplate",
+    "getStudyById",
+    "getStudyTemplateDescString",
+    "getStudyTemplateSnapshot",
+    "insertStudyWithoutCheck",
+    "replayStudyStrategyProperties",
+    "studyMetaIntoRepository",
+    "waitForStudyCreated"
+  ]
+}

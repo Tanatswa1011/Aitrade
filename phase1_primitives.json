@@ -1,0 +1,86 @@
+[
+  {
+    "id": "wy7VYI",
+    "name": "AMD Liquidity Sweep with Alerts",
+    "visible": false,
+    "kinds": {
+      "dwglines": [
+        {
+          "groupKey": "lines",
+          "dataSize": 0,
+          "primSize": 0,
+          "dataEntries": [],
+          "primEntries": []
+        }
+      ],
+      "dwglabels": [
+        {
+          "groupKey": "labels",
+          "dataSize": 0,
+          "primSize": 0,
+          "dataEntries": [],
+          "primEntries": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "h6mnwz",
+    "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)",
+    "visible": true,
+    "kinds": {
+      "dwglines": [
+        {
+          "groupKey": "lines",
+          "dataSize": 0,
+          "primSize": 0,
+          "dataEntries": [],
+          "primEntries": []
+        }
+      ],
+      "dwgboxes": [
+        {
+          "groupKey": "boxes",
+          "dataSize": 0,
+          "primSize": 0,
+          "dataEntries": [],
+          "primEntries": []
+        }
+      ],
+      "dwglabels": [
+        {
+          "groupKey": "labels",
+          "dataSize": 0,
+          "primSize": 0,
+          "dataEntries": [],
+          "primEntries": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "ZdJin1",
+    "name": "FXN - Asian Session Range",
+    "visible": false,
+    "kinds": {
+      "dwglines": [
+        {
+          "groupKey": "lines",
+          "dataSize": 0,
+          "primSize": 0,
+          "dataEntries": [],
+          "primEntries": []
+        }
+      ],
+      "dwglabels": [
+        {
+          "groupKey": "labels",
+          "dataSize": 0,
+          "primSize": 0,
+          "dataEntries": [],
+          "primEntries": []
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,2 @@
+challenge_assumptions,fail_probability,mean_days_to_pass,median_days_to_fail,median_days_to_pass,ok,pass_probability,simulations
+"{""point_value_usd"": 20, ""profit_target_usd"": 3000, ""max_loss_usd"": 2000, ""profit_target_points"": 150.0, ""max_loss_points"": -100.0, ""note"": ""Generic parameterized challenge \u2014 not a named prop firm""}",0.39445,5.011972586904467,3,4,True,0.60555,20000

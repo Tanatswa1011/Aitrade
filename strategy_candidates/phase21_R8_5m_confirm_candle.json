@@ -1,0 +1,49 @@
+{
+  "phase": "phase21",
+  "strategy_family": "liquidity_reclaim_v1",
+  "strategy_version": "v1.phase21",
+  "provenance": {
+    "data_provider": "openbb",
+    "underlying_provider": "tiingo",
+    "source_symbol": "XAUUSD",
+    "feed_equivalence_class": "CLOSE_EQUIVALENT",
+    "live_benchmark": "OANDA:XAUUSD"
+  },
+  "confirmation_note": "OHLC-only; LuxAlgo not used; no unvalidated_against_luxalgo",
+  "candidate": {
+    "strategy_family": "liquidity_reclaim_v1",
+    "confirmation_mode": "confirmation_candle",
+    "break_mode": "close_break",
+    "entry_mode": "confirmation_close",
+    "execution_timeframe": "5m",
+    "max_reclaim_bars": 3,
+    "max_confirmation_bars": 12,
+    "max_entry_bars": 12,
+    "stop_mode": "beyond_sweep",
+    "stop_buffer": 0.0,
+    "htf_policy": "no_hard_filter",
+    "candidate_id": "R8_5m_confirm_candle",
+    "extras": {}
+  },
+  "selection_split": {
+    "train_start": "2025-08-14",
+    "train_end": "2026-05-11",
+    "holdout_start": "2026-05-12",
+    "holdout_end": "2026-08-14",
+    "train_rows": 5288,
+    "holdout_rows": 2198,
+    "method": "phase19_frozen_dates",
+    "train_fraction": 0.7
+  },
+  "train_metrics_snapshot": {
+    "resolved_n": 70,
+    "theoretical_2r_expectancy": -0.27142857142857135,
+    "stop_rate": 0.6714285714285714
+  },
+  "holdout_metrics_snapshot": {
+    "resolved_n": 32,
+    "theoretical_2r_expectancy": -0.34375,
+    "stop_rate": 0.71875
+  },
+  "note": "NOT promoted to DEFAULT_STRATEGY_CONFIG \u2014 Phase 21 research only"
+}

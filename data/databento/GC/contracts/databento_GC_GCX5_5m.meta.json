@@ -1,0 +1,157 @@
+{
+  "symbol": "databento_GC_GCX5",
+  "timeframe": "5m",
+  "source": "databento:GLBX.MDP3",
+  "capture_time": "2026-08-15T22:54:15.781367+00:00",
+  "earliest_bar": 1754010300,
+  "latest_bar": 1764008700,
+  "bar_count": 6589,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "databento_GC_GCX5",
+      "timeframe": "5m",
+      "bar_count": 6589,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 2431,
+      "gaps_head": [
+        {
+          "from": 1754010300,
+          "to": 1754051400,
+          "delta_sec": 41100,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754051400,
+          "to": 1754052600,
+          "delta_sec": 1200,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754052600,
+          "to": 1754053200,
+          "delta_sec": 600,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754053800,
+          "to": 1754055300,
+          "delta_sec": 1500,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754055300,
+          "to": 1754056500,
+          "delta_sec": 1200,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754056500,
+          "to": 1754057400,
+          "delta_sec": 900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754057400,
+          "to": 1754058300,
+          "delta_sec": 900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754058300,
+          "to": 1754060400,
+          "delta_sec": 2100,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754060400,
+          "to": 1754061000,
+          "delta_sec": 600,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754061000,
+          "to": 1754061600,
+          "delta_sec": 600,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754062200,
+          "to": 1754076600,
+          "delta_sec": 14400,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754076900,
+          "to": 1754077500,
+          "delta_sec": 600,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754078100,
+          "to": 1754080500,
+          "delta_sec": 2400,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754080500,
+          "to": 1754081700,
+          "delta_sec": 1200,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754081700,
+          "to": 1754264700,
+          "delta_sec": 183000,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754265300,
+          "to": 1754276100,
+          "delta_sec": 10800,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754276100,
+          "to": 1754314800,
+          "delta_sec": 38700,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754315400,
+          "to": 1754316000,
+          "delta_sec": 600,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754316300,
+          "to": 1754319000,
+          "delta_sec": 2700,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1754319000,
+          "to": 1754401500,
+          "delta_sec": 82500,
+          "expected_period_sec": 300
+        }
+      ],
+      "earliest": 1754010300,
+      "latest": 1764008700,
+      "utc_normalized": true
+    },
+    "path": "data\\databento\\GC\\contracts\\databento_GC_GCX5_5m.jsonl"
+  },
+  "contract_symbol": "GCX5",
+  "root": "GC",
+  "exchange": "GLBX",
+  "provider": "databento",
+  "dataset": "GLBX.MDP3",
+  "first_seen": 1754010300,
+  "last_seen": 1764008700,
+  "tick_size": 0.1
+}

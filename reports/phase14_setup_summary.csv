@@ -1,0 +1,9 @@
+setup_id,liquidity_event_id,execution_timeframe,session,direction,status,daily_bias,h4_bias,htf_alignment,setup_vs_daily,setup_vs_h4,sweep_timestamp,confirmation_timestamp,fvg_created_timestamp
+OANDA:XAUUSD|Asia|2026-08-13|high|1786707300|exec:5m,OANDA:XAUUSD|Asia|2026-08-13|high|1786707300,5m,Asia,bearish,INVALIDATED,bullish,bearish,mixed,opposed,aligned,1786707300,1786718700,1786721100
+OANDA:XAUUSD|London|2026-08-14|high|1786710900|exec:5m,OANDA:XAUUSD|London|2026-08-14|high|1786710900,5m,London,bearish,INVALIDATED,bullish,bearish,mixed,opposed,aligned,1786710900,1786718700,1786721100
+OANDA:XAUUSD|Asia|2026-08-11|high|1786526100|exec:15m,OANDA:XAUUSD|Asia|2026-08-11|high|1786526100,15m,Asia,bearish,EXPIRED,bullish,bullish,aligned_bullish,opposed,opposed,1786526100,1786532400,1786553100
+OANDA:XAUUSD|London|2026-08-12|low|1786537800|exec:15m,OANDA:XAUUSD|London|2026-08-12|low|1786537800,15m,London,bullish,EXPIRED,bullish,bullish,aligned_bullish,aligned,aligned,1786537800,1786559400,1786576500
+OANDA:XAUUSD|Asia|2026-08-12|low|1786608900|exec:15m,OANDA:XAUUSD|Asia|2026-08-12|low|1786608900,15m,Asia,bullish,EXPIRED,bullish,bullish,aligned_bullish,aligned,aligned,1786608900,1786612500,1786617900
+OANDA:XAUUSD|London|2026-08-13|high|1786624200|exec:15m,OANDA:XAUUSD|London|2026-08-13|high|1786624200,15m,London,bearish,EXPIRED,bullish,bullish,aligned_bullish,opposed,opposed,1786624200,1786627800,1786634100
+OANDA:XAUUSD|Asia|2026-08-13|none|none|exec:15m,OANDA:XAUUSD|Asia|2026-08-13|none|none,15m,Asia,,EXPIRED,bullish,bearish,mixed,neutral,neutral,,,
+OANDA:XAUUSD|London|2026-08-14|high|1786710600|exec:15m,OANDA:XAUUSD|London|2026-08-14|high|1786710600,15m,London,bearish,ENTRY_READY,bullish,bearish,mixed,opposed,aligned,1786710600,1786727700,1786733100

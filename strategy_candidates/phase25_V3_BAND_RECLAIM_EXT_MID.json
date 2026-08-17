@@ -1,0 +1,49 @@
+{
+  "phase": "phase25",
+  "strategy_family": "gc_vwap_mean_reversion_v1",
+  "strategy_version": "v1.phase25",
+  "instrument": "GC",
+  "provider": "databento:GLBX.MDP3",
+  "candidate": {
+    "strategy_family": "gc_vwap_mean_reversion_v1",
+    "candidate_id": "V3_BAND_RECLAIM_EXT_MID",
+    "confirmation_mode": "BAND_RECLAIM",
+    "entry_mode": "EXTENSION_MIDPOINT",
+    "sigma_threshold": 2.0,
+    "max_entry_bars": 6,
+    "min_vwap_bars": 6,
+    "volume_filter": false,
+    "execution_timeframe": "5m",
+    "extras": {}
+  },
+  "config_hash": "d1d6b019bde1d38b",
+  "predeclared": {
+    "session": "08:20-13:30 America/New_York",
+    "sigma": 2.0,
+    "min_vwap_bars": 6,
+    "max_entry_bars": 6,
+    "volume_filter": false,
+    "session_note": "Research session 08:20\u201313:30 America/New_York for primary US gold window; not claimed as the only valid GC trading session."
+  },
+  "selection_split": {
+    "train_start": "2025-08-04",
+    "train_end": "2026-04-21",
+    "holdout_start": "2026-04-22",
+    "holdout_end": "2026-08-14",
+    "train_dates": 164,
+    "holdout_dates": 71,
+    "train_fraction": 0.7,
+    "method": "chronological_trading_date_70_30_databento_phase25"
+  },
+  "train_snapshot": {
+    "resolved_n": 242,
+    "theoretical_2r_expectancy": 0.06611570247933884,
+    "vwap_hit_rate": 0.41590214067278286
+  },
+  "holdout_snapshot": {
+    "resolved_n": 124,
+    "theoretical_2r_expectancy": 0.09677419354838712,
+    "vwap_hit_rate": 0.43478260869565216
+  },
+  "note": "NOT production default \u2014 Phase 25 research only"
+}

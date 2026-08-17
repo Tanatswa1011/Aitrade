@@ -1,0 +1,284 @@
+{
+  "ok": true,
+  "phase": 8,
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "offline": {
+    "mode": "offline_annotation_plan",
+    "setup_id": "OANDA:XAUUSD|Asia|2026-08-14|low|1000",
+    "status": "ENTRY_READY",
+    "plan": {
+      "setup_id": "OANDA:XAUUSD|Asia|2026-08-14|low|1000",
+      "status": "ENTRY_READY",
+      "direction": "bullish",
+      "session": "Asia",
+      "items": [
+        {
+          "kind": "horizontal_line",
+          "role": "status",
+          "label": "AITRADE \u00b7 ENTRY_READY",
+          "price": 4335.52,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#455A64",
+          "linewidth": 1,
+          "extras": {
+            "style": "status"
+          }
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "session_high",
+          "label": "Asia High",
+          "price": 4360.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#607D8B",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "session_low",
+          "label": "Asia Low",
+          "price": 4311.04,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#607D8B",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "sweep",
+          "label": "Asia Low \u2014 SWEPT",
+          "price": 4310.0,
+          "price_secondary": null,
+          "time": 1000,
+          "time_secondary": null,
+          "color": "#FF6F00",
+          "linewidth": 3,
+          "extras": {
+            "sweep_timestamp": 1000
+          }
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "choch",
+          "label": "Bullish CHoCH",
+          "price": 4320.0,
+          "price_secondary": null,
+          "time": 2000,
+          "time_secondary": null,
+          "color": "#2E7D32",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "rectangle",
+          "role": "fvg_zone",
+          "label": "Bullish FVG",
+          "price": 4330.0,
+          "price_secondary": 4325.0,
+          "time": 3000,
+          "time_secondary": 5000,
+          "color": "#00897B",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "fvg_ce",
+          "label": "CE",
+          "price": 4327.5,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#F9A825",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "entry:first_touch",
+          "label": "Entry \u00b7 First Touch",
+          "price": 4328.0,
+          "price_secondary": null,
+          "time": 6000,
+          "time_secondary": null,
+          "color": "#1565C0",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:first_touch:1",
+          "label": "First Touch 1R",
+          "price": 4346.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:first_touch:2",
+          "label": "First Touch 2R",
+          "price": 4364.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:first_touch:3",
+          "label": "First Touch 3R",
+          "price": 4382.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "opposite_liquidity",
+          "label": "Asia High \u00b7 Opposing Liquidity",
+          "price": 4360.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#00838F",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "entry:boundary",
+          "label": "Entry \u00b7 Boundary",
+          "price": 4330.0,
+          "price_secondary": null,
+          "time": 6000,
+          "time_secondary": null,
+          "color": "#1565C0",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:boundary:1",
+          "label": "Boundary 1R",
+          "price": 4350.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:boundary:2",
+          "label": "Boundary 2R",
+          "price": 4370.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:boundary:3",
+          "label": "Boundary 3R",
+          "price": 4390.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "entry:ce",
+          "label": "Entry \u00b7 CE",
+          "price": 4327.5,
+          "price_secondary": null,
+          "time": 7000,
+          "time_secondary": null,
+          "color": "#1565C0",
+          "linewidth": 2,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:ce:1",
+          "label": "CE 1R",
+          "price": 4345.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:ce:2",
+          "label": "CE 2R",
+          "price": 4362.5,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "target_rr:ce:3",
+          "label": "CE 3R",
+          "price": 4380.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#6A1B9A",
+          "linewidth": 1,
+          "extras": {}
+        },
+        {
+          "kind": "horizontal_line",
+          "role": "stop",
+          "label": "SL \u00b7 Boundary / CE / First Touch",
+          "price": 4310.0,
+          "price_secondary": null,
+          "time": null,
+          "time_secondary": null,
+          "color": "#AD1457",
+          "linewidth": 2,
+          "extras": {}
+        }
+      ],
+      "skipped": [],
+      "item_count": 21,
+      "skipped_count": 0
+    }
+  },
+  "live": {
+    "ok": false,
+    "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?",
+    "code": "CDP_UNAVAILABLE",
+    "live_tested": false,
+    "annotated": false
+  }
+}

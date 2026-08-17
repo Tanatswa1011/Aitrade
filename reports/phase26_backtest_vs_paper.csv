@@ -1,0 +1,12 @@
+delta_paper_minus_holdout,historical_holdout,metric,note,paper
+,0.5977011494252874,stop_rate,N=0 — no forward conclusion,
+,0.6551724137931034,r1_rate,N=0 — no forward conclusion,
+,0.5517241379310345,r15_rate,N=0 — no forward conclusion,
+,0.47126436781609193,r2_rate,N=0 — no forward conclusion,
+,0.367816091954023,r3_rate,N=0 — no forward conclusion,
+,0.05747126436781602,E1R,N=0 — no forward conclusion,
+,0.2298850574712643,E1.5R,N=0 — no forward conclusion,
+,0.34482758620689646,E2R,N=0 — no forward conclusion,
+,0.5057471264367815,E3R,N=0 — no forward conclusion,
+,1.77240441363276,median_mfe_r,N=0 — no forward conclusion,
+,1.123458532238931,median_mae_r,N=0 — no forward conclusion,

@@ -1,0 +1,2 @@
+accepted,classification,credential_present,credential_required,deep_replay_allowed,instrument_type,overlap_bars,provider,reason,route_available,symbol
+True,CLOSE_EQUIVALENT,True,True,True,spot_fx_metals,299,tiingo,,True,XAUUSD

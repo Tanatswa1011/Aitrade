@@ -1,0 +1,281 @@
+{
+  "ok": true,
+  "phase": 29,
+  "verdict": "EDGE_OBSERVED",
+  "strategy_family": "nq_drift_vwap_pullback_v1",
+  "strategy_version": "v1.phase29",
+  "candidate_id": "DVP_ORIGINAL",
+  "config_hash": "e314f828eee7eca5",
+  "phase26_untouched": {
+    "ok": true,
+    "reasons": [],
+    "expected_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43"
+  },
+  "phase26_paper_unchanged": true,
+  "fetch": {
+    "ok": true,
+    "reused": true,
+    "bars_1m": 2338684,
+    "bars_5m": 467985,
+    "bars_15m": 156042,
+    "start": "2020-01-01",
+    "end": "2026-08-16",
+    "continuous_choice": null,
+    "roll_rule": null,
+    "cost_estimate": null,
+    "qa_1m": null
+  },
+  "dataset": {
+    "provider": "databento:GLBX.MDP3",
+    "bars_1m": 2338684,
+    "bars_5m": 467985,
+    "bars_15m": 156042,
+    "trading_days": 2062,
+    "period": "2020-01-01 \u2192 2026-08-16",
+    "contracts": 0
+  },
+  "exact_strategy": {
+    "vwap_reset": "09:30",
+    "vwap_basis": "typical_price=(H+L+C)/3",
+    "vwap_basis_status": "IMPLEMENTATION_ASSUMPTION",
+    "trend_tf": "15m",
+    "execution_tf": "5m",
+    "trade_start": "10:30",
+    "no_new_after": "15:30",
+    "force_close": "15:55",
+    "long_sl_tp": [
+      80,
+      40
+    ],
+    "short_sl_tp": [
+      80,
+      50
+    ],
+    "max_trades_day": 4,
+    "max_losses_day": 2,
+    "loss_stop_interpretation": "STOP AFTER TWO LOSING TRADES IN THE DAY (any two; not consecutive-only)"
+  },
+  "full_sample": {
+    "trades": 5714,
+    "resolved_n": 5714,
+    "wins": 3808,
+    "losses": 1906,
+    "timed_exits": 770,
+    "ambiguous": 0,
+    "win_rate": 0.6664333216660833,
+    "average_win_points": 42.181328781512605,
+    "average_loss_points": 66.43153200419727,
+    "expectancy_points": 5.951697584879244,
+    "expectancy_r": 0.07439621981099055,
+    "profit_factor": 1.2685863440176592,
+    "max_drawdown_points": 1950.25,
+    "longest_losing_streak": 14,
+    "trading_days": 1690,
+    "trades_per_day": 3.3810650887573965,
+    "pct_profitable_days": 0.5443786982248521,
+    "long": {
+      "n": 3108,
+      "win_rate": 0.6998069498069498,
+      "expectancy_points": 6.927686615186615
+    },
+    "short": {
+      "n": 2606,
+      "win_rate": 0.6266308518802763,
+      "expectancy_points": 4.787701458173446
+    }
+  },
+  "split": {
+    "method": "calendar_2020_2024_dev_2025plus_oos",
+    "dev_start": "2020-01-02",
+    "dev_end": "2024-12-31",
+    "oos_start": "2025-01-02",
+    "oos_end": "2026-08-14"
+  },
+  "in_sample": {
+    "trades": 4294,
+    "resolved_n": 4294,
+    "wins": 2845,
+    "losses": 1449,
+    "timed_exits": 662,
+    "ambiguous": 0,
+    "win_rate": 0.6625523986958547,
+    "average_win_points": 41.83725834797891,
+    "average_loss_points": 65.0472739820566,
+    "expectancy_points": 5.76932929669306,
+    "expectancy_r": 0.07211661620866325,
+    "profit_factor": 1.2628390457648788,
+    "max_drawdown_points": 1950.25,
+    "longest_losing_streak": 14,
+    "trading_days": 1278,
+    "trades_per_day": 3.359937402190923,
+    "pct_profitable_days": 0.5359937402190923,
+    "long": {
+      "n": 2297,
+      "win_rate": 0.6983021332172399,
+      "expectancy_points": 7.043426208097518
+    },
+    "short": {
+      "n": 1997,
+      "win_rate": 0.6214321482223335,
+      "expectancy_points": 4.3038307461191785
+    }
+  },
+  "out_of_sample": {
+    "trades": 1420,
+    "resolved_n": 1420,
+    "wins": 963,
+    "losses": 457,
+    "timed_exits": 108,
+    "ambiguous": 0,
+    "win_rate": 0.678169014084507,
+    "average_win_points": 43.19781931464174,
+    "average_loss_points": 70.82056892778994,
+    "expectancy_points": 6.503169014084507,
+    "expectancy_r": 0.08128961267605633,
+    "profit_factor": 1.2853236520933107,
+    "max_drawdown_points": 1127.5,
+    "longest_losing_streak": 8,
+    "trading_days": 412,
+    "trades_per_day": 3.4466019417475726,
+    "pct_profitable_days": 0.5703883495145631,
+    "long": {
+      "n": 811,
+      "win_rate": 0.7040690505548706,
+      "expectancy_points": 6.5998766954377315
+    },
+    "short": {
+      "n": 609,
+      "win_rate": 0.6436781609195402,
+      "expectancy_points": 6.374384236453202
+    }
+  },
+  "walkforward": [
+    {
+      "block": 1,
+      "resolved_n": 362,
+      "win_rate": 0.6933701657458563,
+      "expectancy_points": 6.683701657458563,
+      "profit_factor": 1.2904736178642175,
+      "max_dd_points": 1127.5
+    },
+    {
+      "block": 2,
+      "resolved_n": 344,
+      "win_rate": 0.6540697674418605,
+      "expectancy_points": 6.284156976744186,
+      "profit_factor": 1.2943759787567237,
+      "max_dd_points": 832.0
+    },
+    {
+      "block": 3,
+      "resolved_n": 356,
+      "win_rate": 0.6713483146067416,
+      "expectancy_points": 6.566011235955056,
+      "profit_factor": 1.285889007796973,
+      "max_dd_points": 688.75
+    },
+    {
+      "block": 4,
+      "resolved_n": 358,
+      "win_rate": 0.6927374301675978,
+      "expectancy_points": 6.468575418994414,
+      "profit_factor": 1.271937292663594,
+      "max_dd_points": 760.0
+    }
+  ],
+  "walkforward_class": "STABLE_POSITIVE",
+  "cost_sensitivity": [
+    {
+      "ticks_per_side": 0,
+      "tick_size": 0.25,
+      "expectancy_points": 6.503169014084507,
+      "win_rate": 0.678169014084507,
+      "profit_factor": 1.2853236520933107,
+      "resolved_n": 1420
+    },
+    {
+      "ticks_per_side": 1,
+      "tick_size": 0.25,
+      "expectancy_points": 6.003169014084507,
+      "win_rate": 0.678169014084507,
+      "profit_factor": 1.2615398775829536,
+      "resolved_n": 1420
+    },
+    {
+      "ticks_per_side": 2,
+      "tick_size": 0.25,
+      "expectancy_points": 5.503169014084507,
+      "win_rate": 0.678169014084507,
+      "profit_factor": 1.2380872585460971,
+      "resolved_n": 1420
+    }
+  ],
+  "time_of_day": [
+    {
+      "bucket": "10:30-11:30",
+      "n": 3450,
+      "win_rate": 0.662608695652174,
+      "expectancy_points": 5.404492753623188
+    },
+    {
+      "bucket": "11:30-12:30",
+      "n": 1866,
+      "win_rate": 0.684887459807074,
+      "expectancy_points": 7.721195069667738
+    },
+    {
+      "bucket": "12:30-13:30",
+      "n": 318,
+      "win_rate": 0.610062893081761,
+      "expectancy_points": 1.929245283018868
+    },
+    {
+      "bucket": "13:30-14:30",
+      "n": 58,
+      "win_rate": 0.5517241379310345,
+      "expectancy_points": 0.6163793103448276
+    },
+    {
+      "bucket": "14:30-15:30",
+      "n": 22,
+      "win_rate": 0.8181818181818182,
+      "expectancy_points": 13.886363636363637
+    }
+  ],
+  "guardrails": {
+    "suppressed_setups_total": 16929,
+    "days_hit_two_loss_stop": 791,
+    "days_hit_four_trade_cap": 1051,
+    "loss_stop_interpretation": "STOP AFTER TWO LOSING TRADES IN THE DAY (any two; not consecutive-only)"
+  },
+  "source_comparison": {
+    "source_claimed_win_rate": 0.645,
+    "aitrade_win_rate": 0.6664333216660833,
+    "similar_within_5pp": true,
+    "source_claims_reproduced": true
+  },
+  "monte_carlo": {
+    "ok": true,
+    "simulations": 20000,
+    "challenge_assumptions": {
+      "point_value_usd": 20,
+      "profit_target_usd": 3000,
+      "max_loss_usd": 2000,
+      "profit_target_points": 150.0,
+      "max_loss_points": -100.0,
+      "note": "Generic parameterized challenge \u2014 not a named prop firm"
+    },
+    "pass_probability": 0.60555,
+    "fail_probability": 0.39445,
+    "median_days_to_pass": 4,
+    "mean_days_to_pass": 5.011972586904467,
+    "median_days_to_fail": 3
+  },
+  "independently_positive": true,
+  "survives_1tick": true,
+  "stable_oos": true,
+  "ready_for_paper": true,
+  "run_gc_portability_29b": true,
+  "generated_at": "2026-08-16T21:19:47.708272+00:00",
+  "note": "Independent falsification of published Drift VWAP Pullback on NQ \u2014 does not modify Phase 26"
+}

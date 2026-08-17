@@ -1,0 +1,205 @@
+{
+  "reports": [
+    {
+      "id": "wy7VYI",
+      "name": "AMD Liquidity Sweep with Alerts",
+      "visible": false,
+      "apiDataLength": 0,
+      "dataSize": 0,
+      "indexesLen": 0,
+      "maps": {
+        "dwglines": {
+          "size": 1,
+          "keys": [
+            {
+              "keyType": "string",
+              "key": "lines",
+              "valueCtor": "Map",
+              "valueKeys": [],
+              "dataSize": null,
+              "primSize": null
+            }
+          ]
+        },
+        "dwgboxes": {
+          "size": 0,
+          "keys": []
+        },
+        "dwglabels": {
+          "size": 1,
+          "keys": [
+            {
+              "keyType": "string",
+              "key": "labels",
+              "valueCtor": "Map",
+              "valueKeys": [],
+              "dataSize": null,
+              "primSize": null
+            }
+          ]
+        },
+        "horizlines": {
+          "size": 0,
+          "keys": []
+        },
+        "lines": {
+          "size": 0,
+          "keys": []
+        }
+      },
+      "meta": {
+        "plots": [],
+        "graphicsKeys": [],
+        "inputs": []
+      },
+      "lastRow": {
+        "ctor": "Function",
+        "keys": [
+          "length",
+          "name"
+        ]
+      },
+      "displayValues": [],
+      "performanceSize": 1
+    },
+    {
+      "id": "h6mnwz",
+      "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)",
+      "visible": true,
+      "apiDataLength": 400,
+      "dataSize": 400,
+      "indexesLen": 83,
+      "maps": {
+        "dwglines": {
+          "size": 1,
+          "keys": [
+            {
+              "keyType": "string",
+              "key": "lines",
+              "valueCtor": "Map",
+              "valueKeys": [],
+              "dataSize": null,
+              "primSize": null
+            }
+          ]
+        },
+        "dwgboxes": {
+          "size": 1,
+          "keys": [
+            {
+              "keyType": "string",
+              "key": "boxes",
+              "valueCtor": "Map",
+              "valueKeys": [],
+              "dataSize": null,
+              "primSize": null
+            }
+          ]
+        },
+        "dwglabels": {
+          "size": 1,
+          "keys": [
+            {
+              "keyType": "string",
+              "key": "labels",
+              "valueCtor": "Map",
+              "valueKeys": [],
+              "dataSize": null,
+              "primSize": null
+            }
+          ]
+        },
+        "horizlines": {
+          "size": 0,
+          "keys": []
+        },
+        "lines": {
+          "size": 0,
+          "keys": []
+        }
+      },
+      "meta": {
+        "plots": [],
+        "graphicsKeys": [],
+        "inputs": []
+      },
+      "lastRow": {
+        "ctor": "Function",
+        "keys": [
+          "length",
+          "name"
+        ]
+      },
+      "displayValues": [],
+      "performanceSize": 1
+    },
+    {
+      "id": "ZdJin1",
+      "name": "FXN - Asian Session Range",
+      "visible": false,
+      "apiDataLength": 0,
+      "dataSize": 0,
+      "indexesLen": 0,
+      "maps": {
+        "dwglines": {
+          "size": 1,
+          "keys": [
+            {
+              "keyType": "string",
+              "key": "lines",
+              "valueCtor": "Map",
+              "valueKeys": [],
+              "dataSize": null,
+              "primSize": null
+            }
+          ]
+        },
+        "dwgboxes": {
+          "size": 0,
+          "keys": []
+        },
+        "dwglabels": {
+          "size": 1,
+          "keys": [
+            {
+              "keyType": "string",
+              "key": "labels",
+              "valueCtor": "Map",
+              "valueKeys": [],
+              "dataSize": null,
+              "primSize": null
+            }
+          ]
+        },
+        "horizlines": {
+          "size": 0,
+          "keys": []
+        },
+        "lines": {
+          "size": 0,
+          "keys": []
+        }
+      },
+      "meta": {
+        "plots": [],
+        "graphicsKeys": [],
+        "inputs": []
+      },
+      "lastRow": {
+        "ctor": "Function",
+        "keys": [
+          "length",
+          "name"
+        ]
+      },
+      "displayValues": [],
+      "performanceSize": 1
+    }
+  ],
+  "legendSample": [
+    "X Gold Spot / U.S. Dollar 5 OANDA O 4,376.095 H 4,376.875 L 4,375.180 C 4,376.820 +0.690 (+0.02%) 4,376.080 SELL 148.0 4,377.560 BUY",
+    "Asian Session Range 20 00 02 00 11 30 blue 1 solid 2 dotted orange dotted blue normal 03 00 07 00 teal 1 solid 2 dotted teal dotted teal normal 08 00 12 00 silver 1 solid 2 dotted silver dotted silver",
+    "AMD Liquidity Sweep with Alerts Normal 1 0 6",
+    "2026 2025 2024"
+  ]
+}

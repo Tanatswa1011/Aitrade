@@ -1,0 +1,18 @@
+{
+  "ok": false,
+  "error": "LuxAlgo not loaded on chart",
+  "available": [
+    {
+      "id": "wy7VYI",
+      "name": "AMD Liquidity Sweep with Alerts"
+    },
+    {
+      "id": "h6mnwz",
+      "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)"
+    },
+    {
+      "id": "ZdJin1",
+      "name": "FXN - Asian Session Range"
+    }
+  ]
+}

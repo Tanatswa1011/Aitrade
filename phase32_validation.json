@@ -1,0 +1,114 @@
+{
+  "ok": true,
+  "phase": 32,
+  "timestamp": "2026-08-17T09:47:01.099769+00:00",
+  "project_status": "PAUSED_DEPLOYMENT_PREP",
+  "execution_status": "PAUSED",
+  "frozen": {
+    "gc": {
+      "hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+      "expected": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+      "unchanged": true,
+      "version": "gc_vwap_mean_reversion_v1.V2.FROZEN_PHASE26"
+    },
+    "nq": {
+      "hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+      "expected": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+      "unchanged": true,
+      "version": "nq_drift_vwap_pullback_v1.DVP_ORIGINAL.FROZEN_PHASE30"
+    },
+    "ok": true
+  },
+  "pause": {
+    "ok": true,
+    "document": {
+      "paused": true,
+      "execution_status": "PAUSED",
+      "reason": "Phase 32 deployment-prep pause \u2014 no live capital, no prop evaluation, no market data purchase",
+      "timestamp": "2026-08-17T09:37:00+00:00",
+      "phase": 32,
+      "gc_frozen_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+      "nq_frozen_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+      "allowed_modes": [
+        "DRY_RUN",
+        "SIM_ONLY"
+      ],
+      "blocked_modes": [
+        "FUNDED",
+        "LIVE_PERSONAL",
+        "PROP_EVALUATION"
+      ],
+      "default_runner_mode": "DRY_RUN",
+      "resume_gate": [
+        "prop firm chosen",
+        "exact prop rules stored",
+        "automation explicitly permitted",
+        "NinjaTrader connection confirmed",
+        "real-time feed available",
+        "NQ feed equivalence passes",
+        "GC feed equivalence passes",
+        "strategy hashes pass",
+        "DRY_RUN passes",
+        "Sim101 execution passes",
+        "risk limits configured",
+        "explicit approval to enable prop-evaluation execution"
+      ]
+    }
+  },
+  "journals": {
+    "journal\\phase26_gc_vwap_v2_paper": {
+      "files": {
+        "journal\\phase26_gc_vwap_v2_paper\\paper_trades.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "file_count": 1
+    },
+    "journal\\phase30_nq_dvp_paper": {
+      "files": {
+        "journal\\phase30_nq_dvp_paper\\daily_state.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "journal\\phase30_nq_dvp_paper\\paper_trades.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "file_count": 2
+    },
+    "journal\\phase31_nq_dvp_sim": {
+      "files": {
+        "journal\\phase31_nq_dvp_sim\\executions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "journal\\phase31_nq_dvp_sim\\HALT": "24379c235f00f0f8318f985b5aee70438b797871a5b36673646e4195b1076f47",
+        "journal\\phase31_nq_dvp_sim\\live_events.jsonl": "444431c1a4ea017453c010b1f7d92decbbfff74a86854d2c3d33eada870bfb42",
+        "journal\\phase31_nq_dvp_sim\\runner_state.json": "f1b96f08ddfd88bb94aa42c0cd5cb87d2692d88abc6f0e5d70b9f03825cf32a2"
+      },
+      "file_count": 4
+    }
+  },
+  "secret_scan": {
+    "ok": true,
+    "findings": [],
+    "git_history_secret": false,
+    "verdict": "CLEAN"
+  },
+  "tests": {
+    "phase_tests": {
+      "ok": true,
+      "returncode": 0,
+      "tail": "after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\nC:\\Users\\tanam\\AppData\\Roaming\\Python\\Python314\\site-packages\\openbb_intrinio\\models\\forward_eps_estimates.py:52: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\nC:\\Users\\tanam\\AppData\\Roaming\\Python\\Python314\\site-packages\\openbb_intrinio\\models\\forward_sales_estimates.py:52: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\nC:\\Users\\tanam\\AppData\\Roaming\\Python\\Python314\\site-packages\\openbb_intrinio\\models\\options_chains.py:118: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\n.....................................................................................................................................................................................................................................................................................................................................................\n----------------------------------------------------------------------\nRan 439 tests in 66.632s\n\nOK\n"
+    },
+    "nt_bridge_tests": {
+      "ok": true,
+      "returncode": 0,
+      "tail": "...................\n----------------------------------------------------------------------\nRan 19 tests in 0.014s\n\nOK\n"
+    },
+    "ok": true
+  },
+  "git": {
+    "initialized": false
+  },
+  "prop_firm_selected": false,
+  "paid_live_data": false,
+  "evaluation_purchased": false,
+  "remaining_blockers": [
+    "prop firm not selected",
+    "no paid live/prop market data",
+    "no evaluation purchased",
+    "feed equivalence pending"
+  ],
+  "verdict": "AITRADE_PAUSED_AND_BACKED_UP"
+}

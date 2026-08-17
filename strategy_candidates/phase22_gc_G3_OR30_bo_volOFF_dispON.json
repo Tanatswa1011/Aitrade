@@ -1,0 +1,46 @@
+{
+  "phase": "phase22",
+  "strategy_family": "gc_orb_volume_v1",
+  "strategy_version": "v1.phase22",
+  "instrument": "GC",
+  "provider": "openbb:yfinance",
+  "candidate": {
+    "strategy_family": "gc_orb_volume_v1",
+    "candidate_id": "G3_OR30_bo_volOFF_dispON",
+    "or_minutes": 30,
+    "volume_filter": false,
+    "displacement_filter": true,
+    "rvol_threshold": 1.5,
+    "displacement_body_or_ratio": 0.5,
+    "entry_mode": "BREAKOUT_CLOSE",
+    "stop_mode": "BREAKOUT_EXTREME",
+    "max_retest_bars": 6,
+    "rvol_lookback": 20,
+    "execution_timeframe": "5m",
+    "extras": {}
+  },
+  "predeclared": {
+    "rvol_threshold": 1.5,
+    "displacement_body_or_ratio": 0.5,
+    "or_anchor": "08:20 America/New_York"
+  },
+  "selection_split": {
+    "train_start": "2026-06-22",
+    "train_end": "2026-07-29",
+    "holdout_start": "2026-07-30",
+    "holdout_end": "2026-08-14",
+    "train_dates": 27,
+    "holdout_dates": 12,
+    "train_fraction": 0.7,
+    "method": "chronological_trading_date_70_30"
+  },
+  "train_snapshot": {
+    "resolved_n": 0,
+    "theoretical_2r_expectancy": null
+  },
+  "holdout_snapshot": {
+    "resolved_n": 0,
+    "theoretical_2r_expectancy": null
+  },
+  "note": "NOT production default \u2014 Phase 22 research only"
+}

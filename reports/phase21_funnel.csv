@@ -1,0 +1,9 @@
+ambiguous,candidate_id,confirmations,entry_opportunities,expired,invalid,reclaims,resolved,resolved_n,sweeps,triggered_entries,valid_risk
+204,R1_5m_immediate_close,665,665,677,0,665,39,39,920,665,665
+5,R2_5m_break_close,421,421,741,66,665,108,108,920,355,355
+37,R3_5m_break_retest,421,421,830,35,665,18,18,920,159,159
+20,R4_5m_break_midpoint,421,421,819,39,665,42,42,920,179,179
+221,R5_15m_immediate_close,706,706,699,0,706,42,42,962,706,706
+7,R6_15m_break_close,433,433,786,60,706,109,109,962,373,373
+35,R7_15m_break_retest,433,433,869,33,706,25,25,962,175,175
+16,R8_5m_confirm_candle,352,352,802,0,665,102,102,920,352,352

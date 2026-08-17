@@ -1,0 +1,9 @@
+ambiguous,candidate_id,canonical_rows,expired,invalid,resolved,resolved_n,roll_artifacts,rows,triggered
+16,G1_OR30_bo_volOFF_dispOFF,346,50,0,280,280,2,348,346
+14,G2_OR30_bo_volON_dispOFF,346,125,0,207,207,2,348,259
+15,G3_OR30_bo_volOFF_dispON,346,241,0,90,90,2,348,121
+13,G4_OR30_bo_volON_dispON,346,255,0,78,78,2,348,106
+199,G5_OR30_rt_volOFF_dispOFF,346,147,0,0,0,2,348,199
+135,G6_OR30_rt_volON_dispOFF,346,211,0,0,0,2,348,135
+52,G7_OR30_rt_volON_dispON,346,294,0,0,0,2,348,52
+49,G8_OR30_rb_volON_dispON,346,294,3,0,0,2,348,52

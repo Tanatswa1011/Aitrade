@@ -1,0 +1,12 @@
+metric,value,n,median,p75,p90,p95
+resolved_n,344,,,,,
+r1_hit,125,,,,,
+r2_hit,50,,,,,
+r3_hit,25,,,,,
+stop_hit,153,,,,,
+opposite_liquidity_hit,191,,,,,
+r1_but_not_2r,75,,,,,
+r2_but_not_3r,25,,,,,
+r3_plus,25,,,,,
+opposite_before_stop,191,,,,,
+mfe,,344,0.6546782071163716,1.4415638230426684,2.368132344203857,3.7358752783601386

@@ -1,0 +1,1272 @@
+{
+  "ok": true,
+  "phase": 16,
+  "strategy_version": "v1.phase16",
+  "generated_at": "2026-08-15T20:16:50.806924+00:00",
+  "openbb": {
+    "version": "4.7.2",
+    "installation": "ok",
+    "inspect": {
+      "installed": true,
+      "openbb_version": "4.7.2",
+      "python_version": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+      "extensions": [
+        "openbb-commodity",
+        "openbb-currency",
+        "openbb-derivatives",
+        "openbb-economy",
+        "openbb-federal-reserve",
+        "openbb-fmp",
+        "openbb-fred",
+        "openbb-tiingo",
+        "openbb-yfinance"
+      ],
+      "routes_relevant": [
+        ".commodity.price.spot",
+        ".commodity.petroleum_status_report",
+        ".commodity.short_term_energy_outlook",
+        ".commodity.psd_data",
+        ".commodity.psd_report",
+        ".commodity.weather_bulletins",
+        ".commodity.weather_bulletins_download",
+        ".currency.price.historical",
+        ".currency.search",
+        ".currency.snapshots",
+        ".derivatives.futures.historical",
+        ".derivatives.futures.curve",
+        ".economy.gdp.forecast",
+        ".economy.gdp.nominal",
+        ".economy.gdp.real",
+        ".economy.shipping.port_info",
+        ".economy.shipping.port_volume",
+        ".economy.shipping.chokepoint_info",
+        ".economy.shipping.chokepoint_volume",
+        ".economy.survey.bls_series",
+        ".economy.survey.bls_search",
+        ".economy.survey.sloos",
+        ".economy.survey.university_of_michigan",
+        ".economy.survey.economic_conditions_chicago",
+        ".economy.survey.manufacturing_outlook_texas",
+        ".economy.survey.manufacturing_outlook_ny",
+        ".economy.survey.nonfarm_payrolls",
+        ".economy.survey.inflation_expectations",
+        ".economy.calendar",
+        ".economy.cpi",
+        ".economy.risk_premium",
+        ".economy.balance_of_payments",
+        ".economy.fred_search",
+        ".economy.fred_series",
+        ".economy.fred_release_table",
+        ".economy.money_measures",
+        ".economy.unemployment",
+        ".economy.composite_leading_indicator",
+        ".economy.fred_regional",
+        ".economy.country_profile",
+        ".economy.available_indicators",
+        ".economy.indicators",
+        ".economy.central_bank_holdings",
+        ".economy.share_price_index",
+        ".economy.house_price_index",
+        ".economy.interest_rates",
+        ".economy.retail_prices",
+        ".economy.primary_dealer_positioning",
+        ".economy.pce",
+        ".economy.export_destinations",
+        ".economy.primary_dealer_fails",
+        ".economy.direction_of_trade",
+        ".economy.fomc_documents",
+        ".economy.total_factor_productivity",
+        ".equity.calendar.ipo",
+        ".equity.calendar.dividend",
+        ".equity.calendar.splits",
+        ".equity.calendar.events",
+        ".equity.calendar.earnings"
+      ],
+      "currency_history_providers": [
+        "fmp",
+        "tiingo",
+        "yfinance"
+      ],
+      "credential_keys": [
+        "benzinga_api_key",
+        "bls_api_key",
+        "cftc_app_token",
+        "congress_gov_api_key",
+        "econdb_api_key",
+        "eia_api_key",
+        "fmp_api_key",
+        "fred_api_key",
+        "intrinio_api_key",
+        "tiingo_token",
+        "tradingeconomics_api_key"
+      ],
+      "credentials_set": {
+        "benzinga_api_key": false,
+        "bls_api_key": false,
+        "cftc_app_token": false,
+        "congress_gov_api_key": false,
+        "econdb_api_key": false,
+        "eia_api_key": false,
+        "fmp_api_key": false,
+        "fred_api_key": false,
+        "intrinio_api_key": false,
+        "tiingo_token": false,
+        "tradingeconomics_api_key": false
+      },
+      "errors": [],
+      "extension_versions": {
+        "openbb-commodity": "1.5.2",
+        "openbb-currency": "1.6.2",
+        "openbb-derivatives": "1.6.2",
+        "openbb-economy": "1.6.2",
+        "openbb-federal-reserve": "1.6.2",
+        "openbb-fmp": "1.6.1",
+        "openbb-fred": "1.6.2",
+        "openbb-tiingo": "1.6.1",
+        "openbb-yfinance": "1.6.3"
+      },
+      "currency_historical_doc_excerpt": "Currency Historical Price. Currency historical data.\n\nCurrency historical prices refer to the past exchange rates of one currency against\nanother over a specific period.\nThis data provides insight into the fluctuations and trends in the foreign exchange market,\nhelping analysts, traders, and economists understand currency performance,\nevaluate economic health, and make predictions about future movements.\n\nParameters\n----------\nprovider : str\n    The provider to use, by default None. If None, the",
+      "macro_inventory": [
+        {
+          "label": "economic calendar",
+          "openbb_route": ".economy.calendar",
+          "available": true,
+          "typical_providers": [
+            "tradingeconomics",
+            "fmp"
+          ],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched",
+          "note": "Inspect-only; not wired to strategy"
+        },
+        {
+          "label": "CPI",
+          "openbb_route": ".economy.cpi",
+          "available": true,
+          "typical_providers": [
+            "fred",
+            "oecd"
+          ],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched",
+          "note": "Inspect-only; not wired to strategy"
+        },
+        {
+          "label": "NFP / employment proxy",
+          "openbb_route": ".economy.unemployment",
+          "available": true,
+          "typical_providers": [
+            "fred",
+            "oecd"
+          ],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched",
+          "note": "Inspect-only; not wired to strategy"
+        },
+        {
+          "label": "interest rates",
+          "openbb_route": ".economy.interest_rates",
+          "available": true,
+          "typical_providers": [
+            "fred",
+            "oecd"
+          ],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched",
+          "note": "Inspect-only; not wired to strategy"
+        },
+        {
+          "label": "Federal Reserve FOMC docs",
+          "openbb_route": ".economy.fomc_documents",
+          "available": true,
+          "typical_providers": [
+            "federal_reserve"
+          ],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched",
+          "note": "Inspect-only; not wired to strategy"
+        },
+        {
+          "label": "PCE",
+          "openbb_route": ".economy.pce",
+          "available": true,
+          "typical_providers": [
+            "fred"
+          ],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched",
+          "note": "Inspect-only; not wired to strategy"
+        },
+        {
+          "label": "SEC regulators",
+          "openbb_route": ".regulators.sec",
+          "available": false,
+          "typical_providers": [
+            "sec"
+          ],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched",
+          "note": "Inspect-only; not wired to strategy"
+        },
+        {
+          "label": "calendar",
+          "openbb_route": "obb.economy.calendar",
+          "available": true,
+          "typical_providers": [],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched"
+        },
+        {
+          "label": "cpi",
+          "openbb_route": "obb.economy.cpi",
+          "available": true,
+          "typical_providers": [],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched"
+        },
+        {
+          "label": "unemployment",
+          "openbb_route": "obb.economy.unemployment",
+          "available": true,
+          "typical_providers": [],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched"
+        },
+        {
+          "label": "interest_rates",
+          "openbb_route": "obb.economy.interest_rates",
+          "available": true,
+          "typical_providers": [],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched"
+        },
+        {
+          "label": "fomc_documents",
+          "openbb_route": "obb.economy.fomc_documents",
+          "available": true,
+          "typical_providers": [],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched"
+        },
+        {
+          "label": "pce",
+          "openbb_route": "obb.economy.pce",
+          "available": true,
+          "typical_providers": [],
+          "credentials": "provider-dependent",
+          "frequency": "unknown_until_fetched"
+        }
+      ],
+      "openbb_mcp_note": "Optional future integration only. Phase 16 uses Python OpenBB SDK for deterministic historical replay; TradingView MCP unchanged."
+    }
+  },
+  "provider_evaluation": [
+    {
+      "provider": "tiingo",
+      "openbb_route": "obb.currency.price.historical",
+      "symbol_probes": [
+        {
+          "candidate_symbol": "XAUUSD",
+          "provider": "tiingo",
+          "route": "currency",
+          "accepted": false,
+          "rejected": true,
+          "returned_instrument": "XAUUSD",
+          "instrument_type": "spot_fx_metals",
+          "bar_count": 0,
+          "errors": [
+            "missing_credential:tiingo_token",
+            "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+          ],
+          "warnings": [],
+          "credential_status": {
+            "credential_required": true,
+            "credential_key": "tiingo_token",
+            "environment_variable_names": [
+              "TIINGO_TOKEN",
+              "TIINGO_API_KEY"
+            ],
+            "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+            "present": false,
+            "present_via": null,
+            "underlying_provider": "tiingo"
+          }
+        },
+        {
+          "candidate_symbol": "XAU/USD",
+          "provider": "tiingo",
+          "route": "currency",
+          "accepted": false,
+          "rejected": true,
+          "returned_instrument": "XAU/USD",
+          "instrument_type": "spot_fx_metals",
+          "bar_count": 0,
+          "errors": [
+            "missing_credential:tiingo_token",
+            "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+          ],
+          "warnings": [],
+          "credential_status": {
+            "credential_required": true,
+            "credential_key": "tiingo_token",
+            "environment_variable_names": [
+              "TIINGO_TOKEN",
+              "TIINGO_API_KEY"
+            ],
+            "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+            "present": false,
+            "present_via": null,
+            "underlying_provider": "tiingo"
+          }
+        }
+      ],
+      "instrument_type": "spot_fx_metals_if_accepted",
+      "spot_or_futures": "spot_candidate",
+      "supports_1m": true,
+      "supports_5m": true,
+      "supports_15m": true,
+      "max_history": "unknown_without_credential",
+      "credentials_required": true,
+      "credential_key": "tiingo_token",
+      "rate_limits": "not_discoverable_here",
+      "timezone": "UTC (Tiingo FX timestamps)",
+      "xauusd_accepted": false,
+      "credential_status": {
+        "credential_required": true,
+        "credential_key": "tiingo_token",
+        "environment_variable_names": [
+          "TIINGO_TOKEN",
+          "TIINGO_API_KEY"
+        ],
+        "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+        "present": false,
+        "present_via": null,
+        "underlying_provider": "tiingo"
+      }
+    },
+    {
+      "provider": "yfinance",
+      "openbb_route": "obb.currency.price.historical",
+      "symbol_probes": [
+        {
+          "candidate_symbol": "XAUUSD",
+          "provider": "yfinance",
+          "route": "currency",
+          "accepted": false,
+          "rejected": true,
+          "returned_instrument": "XAUUSD",
+          "instrument_type": "spot_fx_metals",
+          "bar_count": 0,
+          "errors": [
+            "EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters."
+          ],
+          "warnings": [],
+          "credential_status": {
+            "credential_required": false,
+            "underlying_provider": "yfinance",
+            "note": "yfinance typically needs no API key"
+          }
+        },
+        {
+          "candidate_symbol": "XAU/USD",
+          "provider": "yfinance",
+          "route": "currency",
+          "accepted": false,
+          "rejected": true,
+          "returned_instrument": "XAU/USD",
+          "instrument_type": "spot_fx_metals",
+          "bar_count": 0,
+          "errors": [
+            "EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters."
+          ],
+          "warnings": [],
+          "credential_status": {
+            "credential_required": false,
+            "underlying_provider": "yfinance",
+            "note": "yfinance typically needs no API key"
+          }
+        }
+      ],
+      "instrument_type": "spot_fx_metals_if_accepted",
+      "spot_or_futures": "spot_candidate",
+      "supports_1m": true,
+      "supports_5m": true,
+      "supports_15m": true,
+      "max_history": "provider_window_limited_intraday",
+      "credentials_required": false,
+      "credential_key": null,
+      "rate_limits": "yahoo_undocumented",
+      "timezone": "normalized_to_UTC",
+      "xauusd_accepted": false
+    },
+    {
+      "provider": "fmp",
+      "openbb_route": "obb.currency.price.historical",
+      "symbol_probes": [
+        {
+          "candidate_symbol": "XAUUSD",
+          "provider": "fmp",
+          "route": "currency",
+          "accepted": false,
+          "rejected": true,
+          "returned_instrument": "XAUUSD",
+          "instrument_type": "spot_fx_metals",
+          "bar_count": 0,
+          "errors": [
+            "missing_credential:fmp_api_key",
+            "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+          ],
+          "warnings": [],
+          "credential_status": {
+            "credential_required": true,
+            "credential_key": "fmp_api_key",
+            "environment_variable_names": [
+              "FMP_API_KEY"
+            ],
+            "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+            "present": false,
+            "present_via": null,
+            "underlying_provider": "fmp"
+          }
+        },
+        {
+          "candidate_symbol": "XAU/USD",
+          "provider": "fmp",
+          "route": "currency",
+          "accepted": false,
+          "rejected": true,
+          "returned_instrument": "XAU/USD",
+          "instrument_type": "spot_fx_metals",
+          "bar_count": 0,
+          "errors": [
+            "missing_credential:fmp_api_key",
+            "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+          ],
+          "warnings": [],
+          "credential_status": {
+            "credential_required": true,
+            "credential_key": "fmp_api_key",
+            "environment_variable_names": [
+              "FMP_API_KEY"
+            ],
+            "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+            "present": false,
+            "present_via": null,
+            "underlying_provider": "fmp"
+          }
+        }
+      ],
+      "instrument_type": "unknown_until_accepted",
+      "spot_or_futures": "spot_candidate",
+      "supports_1m": "unknown",
+      "supports_5m": "unknown",
+      "supports_15m": "unknown",
+      "max_history": "unknown_without_credential",
+      "credentials_required": true,
+      "credential_key": "fmp_api_key",
+      "rate_limits": "not_discoverable_here",
+      "timezone": "unknown",
+      "xauusd_accepted": false,
+      "credential_status": {
+        "credential_required": true,
+        "credential_key": "fmp_api_key",
+        "environment_variable_names": [
+          "FMP_API_KEY"
+        ],
+        "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+        "present": false,
+        "present_via": null,
+        "underlying_provider": "fmp"
+      }
+    },
+    {
+      "provider": "yfinance",
+      "openbb_route": "obb.derivatives.futures.historical",
+      "symbol_probes": [
+        {
+          "candidate_symbol": "GC",
+          "provider": "yfinance",
+          "route": "futures",
+          "accepted": true,
+          "rejected": false,
+          "returned_instrument": "GC",
+          "instrument_type": "futures",
+          "bar_count": 265,
+          "errors": [],
+          "warnings": [
+            "FUTURES_NOT_OANDA_SPOT: must not pass XAUUSD feed-equivalence gate merely due to price correlation."
+          ],
+          "credential_status": {
+            "credential_required": false,
+            "underlying_provider": "yfinance",
+            "note": "yfinance typically needs no API key"
+          }
+        },
+        {
+          "candidate_symbol": "GC=F",
+          "provider": "yfinance",
+          "route": "futures",
+          "accepted": true,
+          "rejected": false,
+          "returned_instrument": "GC=F",
+          "instrument_type": "futures",
+          "bar_count": 265,
+          "errors": [],
+          "warnings": [
+            "FUTURES_NOT_OANDA_SPOT: must not pass XAUUSD feed-equivalence gate merely due to price correlation."
+          ],
+          "credential_status": {
+            "credential_required": false,
+            "underlying_provider": "yfinance",
+            "note": "yfinance typically needs no API key"
+          }
+        }
+      ],
+      "instrument_type": "futures",
+      "spot_or_futures": "futures",
+      "supports_1m": true,
+      "supports_5m": true,
+      "supports_15m": true,
+      "max_history": "~60d_intraday_typical",
+      "credentials_required": false,
+      "credential_key": null,
+      "rate_limits": "yahoo_undocumented",
+      "timezone": "normalized_to_UTC",
+      "xauusd_accepted": false,
+      "note": "COMEX gold futures \u2014 research comparator only; not OANDA:XAUUSD"
+    }
+  ],
+  "feed_validation": {
+    "ok": true,
+    "tv_window": {
+      "start": 1786647600,
+      "end": 1786740900,
+      "bars": 300
+    },
+    "evaluations": [
+      {
+        "candidate": "tiingo:XAUUSD",
+        "fetch": {
+          "bar_count": 0,
+          "provider": "openbb",
+          "underlying_provider": "tiingo",
+          "requested_symbol": "XAUUSD",
+          "source_symbol": "XAUUSD",
+          "instrument_type": "spot_fx_metals",
+          "timeframe": "5m",
+          "requested_start": 1786647600,
+          "requested_end": 1786740900,
+          "actual_start": null,
+          "actual_end": null,
+          "metadata": {
+            "integration_layer": "openbb",
+            "openbb_version": "4.7.2",
+            "route": "currency",
+            "credential_status": {
+              "credential_required": true,
+              "credential_key": "tiingo_token",
+              "environment_variable_names": [
+                "TIINGO_TOKEN",
+                "TIINGO_API_KEY"
+              ],
+              "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+              "present": false,
+              "present_via": null,
+              "underlying_provider": "tiingo"
+            }
+          },
+          "warnings": [],
+          "errors": [
+            "missing_credential:tiingo_token",
+            "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+          ]
+        },
+        "equivalence": null,
+        "gate": {
+          "deep_replay_allowed": false,
+          "reason": "fetch_failed:missing_credential:tiingo_token;Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+        }
+      },
+      {
+        "candidate": "tiingo:XAU/USD",
+        "fetch": {
+          "bar_count": 0,
+          "provider": "openbb",
+          "underlying_provider": "tiingo",
+          "requested_symbol": "XAU/USD",
+          "source_symbol": "XAU/USD",
+          "instrument_type": "spot_fx_metals",
+          "timeframe": "5m",
+          "requested_start": 1786647600,
+          "requested_end": 1786740900,
+          "actual_start": null,
+          "actual_end": null,
+          "metadata": {
+            "integration_layer": "openbb",
+            "openbb_version": "4.7.2",
+            "route": "currency",
+            "credential_status": {
+              "credential_required": true,
+              "credential_key": "tiingo_token",
+              "environment_variable_names": [
+                "TIINGO_TOKEN",
+                "TIINGO_API_KEY"
+              ],
+              "configuration_mechanism": "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets.",
+              "present": false,
+              "present_via": null,
+              "underlying_provider": "tiingo"
+            }
+          },
+          "warnings": [],
+          "errors": [
+            "missing_credential:tiingo_token",
+            "Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+          ]
+        },
+        "equivalence": null,
+        "gate": {
+          "deep_replay_allowed": false,
+          "reason": "fetch_failed:missing_credential:tiingo_token;Set env var or `obb.user.credentials.<key>` / OpenBB user settings. Never commit secrets."
+        }
+      },
+      {
+        "candidate": "yfinance_currency:XAUUSD",
+        "fetch": {
+          "bar_count": 0,
+          "provider": "openbb",
+          "underlying_provider": "yfinance",
+          "requested_symbol": "XAUUSD",
+          "source_symbol": "XAUUSD",
+          "instrument_type": "spot_fx_metals",
+          "timeframe": "5m",
+          "requested_start": 1786647600,
+          "requested_end": 1786740900,
+          "actual_start": null,
+          "actual_end": null,
+          "metadata": {
+            "integration_layer": "openbb",
+            "openbb_version": "4.7.2",
+            "route": "currency",
+            "credential_status": {
+              "credential_required": false,
+              "underlying_provider": "yfinance",
+              "note": "yfinance typically needs no API key"
+            }
+          },
+          "warnings": [],
+          "errors": [
+            "EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters."
+          ]
+        },
+        "equivalence": null,
+        "gate": {
+          "deep_replay_allowed": false,
+          "reason": "fetch_failed:EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters."
+        }
+      },
+      {
+        "candidate": "yfinance_currency:XAU/USD",
+        "fetch": {
+          "bar_count": 0,
+          "provider": "openbb",
+          "underlying_provider": "yfinance",
+          "requested_symbol": "XAU/USD",
+          "source_symbol": "XAU/USD",
+          "instrument_type": "spot_fx_metals",
+          "timeframe": "5m",
+          "requested_start": 1786647600,
+          "requested_end": 1786740900,
+          "actual_start": null,
+          "actual_end": null,
+          "metadata": {
+            "integration_layer": "openbb",
+            "openbb_version": "4.7.2",
+            "route": "currency",
+            "credential_status": {
+              "credential_required": false,
+              "underlying_provider": "yfinance",
+              "note": "yfinance typically needs no API key"
+            }
+          },
+          "warnings": [],
+          "errors": [
+            "EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters."
+          ]
+        },
+        "equivalence": null,
+        "gate": {
+          "deep_replay_allowed": false,
+          "reason": "fetch_failed:EmptyDataError:\n[Empty] -> No results found. Try adjusting the query parameters."
+        }
+      },
+      {
+        "candidate": "yfinance_futures:GC",
+        "fetch": {
+          "bar_count": 265,
+          "provider": "openbb",
+          "underlying_provider": "yfinance",
+          "requested_symbol": "GC",
+          "source_symbol": "GC",
+          "instrument_type": "futures",
+          "timeframe": "5m",
+          "requested_start": 1786647600,
+          "requested_end": 1786740900,
+          "actual_start": 1786647600,
+          "actual_end": 1786726800,
+          "metadata": {
+            "integration_layer": "openbb",
+            "openbb_version": "4.7.2",
+            "route": "futures",
+            "credential_status": {
+              "credential_required": false,
+              "underlying_provider": "yfinance",
+              "note": "yfinance typically needs no API key"
+            },
+            "openbb_response_provider": "yfinance",
+            "provider_native_timezone": "UTC_normalized",
+            "bar_extras_template": {
+              "source": "openbb",
+              "underlying_provider": "yfinance",
+              "source_symbol": "GC",
+              "instrument_type": "futures"
+            }
+          },
+          "warnings": [
+            "FUTURES_NOT_OANDA_SPOT: must not pass XAUUSD feed-equivalence gate merely due to price correlation."
+          ],
+          "errors": []
+        },
+        "equivalence": {
+          "benchmark_provider": "tradingview_oanda",
+          "candidate_provider": "openbb:yfinance_futures",
+          "benchmark_symbol": "OANDA:XAUUSD",
+          "candidate_symbol": "GC",
+          "instrument_type": "futures",
+          "overlap_bars": 253,
+          "ohlc_metrics": {
+            "bars_tv": 300,
+            "bars_candidate": 265,
+            "timestamps_overlapping": 253,
+            "timestamps_only_tv": 47,
+            "timestamps_only_candidate": 12,
+            "exact_ohlc_match_pct": 0.0,
+            "raw": {
+              "open": {
+                "n": 253,
+                "mean": 62.20239786623023,
+                "median": 67.13480468750004,
+                "p95": 92.125,
+                "max": 100.43009765624993
+              },
+              "high": {
+                "n": 253,
+                "mean": 62.1358533535079,
+                "median": 66.63980468750015,
+                "p95": 94.08500000000004,
+                "max": 100.35490234374993
+              },
+              "low": {
+                "n": 253,
+                "mean": 62.332901278409096,
+                "median": 66.90980468749967,
+                "p95": 90.74519531250007,
+                "max": 97.63980468750015
+              },
+              "close": {
+                "n": 253,
+                "mean": 62.28429942255432,
+                "median": 67.21000000000004,
+                "p95": 91.8598046875004,
+                "max": 100.21990234374971
+              },
+              "max_open_delta": 100.43009765624993,
+              "max_high_delta": 100.35490234374993,
+              "max_low_delta": 97.63980468750015,
+              "max_close_delta": 100.21990234374971
+            },
+            "rounded": {
+              "decimals": 2,
+              "ohlc_exact_matches": 0,
+              "exact_ohlc_match_pct": 0.0,
+              "max_open_delta": 100.43000000000029,
+              "max_high_delta": 100.34999999999945,
+              "max_low_delta": 97.64000000000033,
+              "max_close_delta": 100.21999999999935
+            }
+          },
+          "timestamp_alignment": {
+            "overlapping_timestamps": 253,
+            "tv_bar_count": 300,
+            "candidate_bar_count": 265,
+            "overlap_ratio_vs_min": 0.9547169811320755,
+            "shift_plus_5m_matches": 253,
+            "shift_minus_5m_matches": 252,
+            "alignment_issue": null,
+            "acceptable": true
+          },
+          "session_match_metrics": {
+            "left": "tv",
+            "right": "candidate",
+            "sessions_compared": 2,
+            "session_hl_exact_matches": 0,
+            "session_hl_within_tolerance": 0,
+            "session_hl_match_rate": 0.0,
+            "price_tolerance": 0.5,
+            "sweep_events_compared": 2,
+            "sweep_events_exact_side_level": 0,
+            "sweep_match_rate": 0.0,
+            "rows_head": [
+              {
+                "session": "Asia",
+                "trading_date": "2026-08-13",
+                "left_high": 4362.045,
+                "right_high": 4415.10009765625,
+                "left_low": 4311.04,
+                "right_low": 4365.60009765625,
+                "high_delta": 53.05509765624993,
+                "low_delta": 54.560097656250036,
+                "exact": false
+              },
+              {
+                "session": "London",
+                "trading_date": "2026-08-14",
+                "left_high": 4380.745,
+                "right_high": 4454.60009765625,
+                "left_low": 4329.81,
+                "right_low": 4404.7001953125,
+                "high_delta": 73.85509765625011,
+                "low_delta": 74.8901953124996,
+                "exact": false
+              }
+            ],
+            "sweep_rows_head": [
+              {
+                "session": "Asia",
+                "trading_date": "2026-08-13",
+                "left_sweeps": [
+                  {
+                    "side": "high",
+                    "level": 4362.045,
+                    "ts": 1786707300
+                  },
+                  {
+                    "side": "high",
+                    "level": 4362.045,
+                    "ts": 1786707900
+                  }
+                ],
+                "right_sweeps": [],
+                "sides_equal": false
+              },
+              {
+                "session": "London",
+                "trading_date": "2026-08-14",
+                "left_sweeps": [
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786710900
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786713000
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786718700
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786728300
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786728900
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786730700
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786731000
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786732800
+                  }
+                ],
+                "right_sweeps": [],
+                "sides_equal": false
+              }
+            ]
+          },
+          "sweep_match_metrics": {
+            "sessions_compared": 2,
+            "sweep_side_matches": 0,
+            "sweep_side_match_rate": 0.0,
+            "rows": [
+              {
+                "session": "Asia",
+                "date": "2026-08-13",
+                "tv_sweeps": [
+                  {
+                    "side": "high",
+                    "level": 4362.045,
+                    "ts": 1786707300,
+                    "extreme": 4363.46
+                  },
+                  {
+                    "side": "high",
+                    "level": 4362.045,
+                    "ts": 1786707900,
+                    "extreme": 4363.235
+                  }
+                ],
+                "candidate_sweeps": [],
+                "same_sides": false,
+                "signature_equal": false
+              },
+              {
+                "session": "London",
+                "date": "2026-08-14",
+                "tv_sweeps": [
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786710900,
+                    "extreme": 4381.87
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786713000,
+                    "extreme": 4381.02
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786718700,
+                    "extreme": 4384.645
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786728300,
+                    "extreme": 4382.38
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786728900,
+                    "extreme": 4382.785
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786730700,
+                    "extreme": 4381.8
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786731000,
+                    "extreme": 4380.93
+                  },
+                  {
+                    "side": "high",
+                    "level": 4380.745,
+                    "ts": 1786732800,
+                    "extreme": 4382.83
+                  }
+                ],
+                "candidate_sweeps": [],
+                "same_sides": false,
+                "signature_equal": false
+              }
+            ]
+          },
+          "fvg_match_metrics": {
+            "compared": true,
+            "overlap_bars": 253,
+            "tv_fvg_count": null,
+            "candidate_fvg_count": null,
+            "note": "Strategy FVGs require sweep\u2192CHoCH sequencing; standalone zone scan omitted. Entry/FVG sensitivity runs only after CLOSE/EXACT gate.",
+            "match_rate": null
+          },
+          "entry_sensitivity": {
+            "note": "Full entry-mode sensitivity deferred unless CLOSE/EXACT gate passes"
+          },
+          "htf_bias_match_metrics": {
+            "left": "tv_htf",
+            "right": "candidate_resampled_htf",
+            "timestamps_compared": 1,
+            "daily_bias_agree": 0,
+            "h4_bias_agree": 0,
+            "daily_agree_rate": 0.0,
+            "h4_agree_rate": 0.0,
+            "disagreements_head": [
+              {
+                "ts": 1786676400,
+                "left_daily": "bullish",
+                "right_daily": "unknown",
+                "left_h4": "bearish",
+                "right_h4": "unknown"
+              }
+            ],
+            "note": "If data-source differences change HTF bias, disagreements are listed; strategy rules are not altered.",
+            "compared": true,
+            "h4_anchor": {
+              "mode": "ny_trading_day_open",
+              "reference_timezone": "America/New_York",
+              "day_roll_time": "17:00",
+              "note": "4H buckets align to trading-day open (default 17:00 America/New_York) then step +4H; not calendar midnight."
+            },
+            "daily_boundary": "ny_trading_day"
+          },
+          "classification": "RESEARCH_ONLY",
+          "confidence": "high",
+          "warnings": [
+            "FUTURES_NOT_OANDA_SPOT: must not pass XAUUSD feed-equivalence gate merely due to price correlation.",
+            "instrument_type=futures cannot be EXACT/CLOSE vs OANDA spot"
+          ],
+          "evidence": {
+            "session_hl_match_rate": 0.0,
+            "sweep_side_match_rate": 0.0,
+            "exact_ohlc_match_pct": 0.0
+          },
+          "deep_replay_allowed": false
+        },
+        "gate": {
+          "deep_replay_allowed": false,
+          "classification": "RESEARCH_ONLY",
+          "reason": "gate_blocked:RESEARCH_ONLY (prefer EXACT_FEED or CLOSE_EQUIVALENT)"
+        },
+        "note": "research_comparator_only"
+      }
+    ],
+    "selected_for_deep": null,
+    "deep_replay_allowed": false,
+    "conclusion": "OpenBB integration works, but no currently tested OpenBB provider satisfies AITRADE's OANDA-compatible XAUUSD historical requirement."
+  },
+  "selected_provider": null,
+  "feed_equivalence_classification": {
+    "futures_research_gc": "RESEARCH_ONLY",
+    "spot_xauusd": "no_accepted_spot_provider"
+  },
+  "deep_dataset": {
+    "downloaded": false,
+    "reason": "equivalence_gate_blocked_no_oanda_compatible_provider"
+  },
+  "historical_replay": {
+    "executed": false,
+    "reason": "equivalence_gate_blocked",
+    "journal_size": 0
+  },
+  "luxalgo": {
+    "by_timeframe": {
+      "5m": {
+        "reliable_luxalgo_events": 1,
+        "internal_events": 11,
+        "matched_count": 0,
+        "direction_matches": null,
+        "time_matches": null,
+        "level_matches": null,
+        "luxalgo_only": 1,
+        "internal_only": 11,
+        "equivalence_status": "unvalidated_against_luxalgo"
+      },
+      "15m": {
+        "reliable_luxalgo_events": 2,
+        "internal_events": 19,
+        "matched_count": 0,
+        "direction_matches": null,
+        "time_matches": null,
+        "level_matches": null,
+        "luxalgo_only": 2,
+        "internal_only": 19,
+        "equivalence_status": "unvalidated_against_luxalgo"
+      }
+    },
+    "equivalence_status": "unvalidated_against_luxalgo",
+    "note": "OpenBB history does not validate LuxAlgo equivalence"
+  },
+  "macro_inventory": [
+    {
+      "label": "economic calendar",
+      "openbb_route": ".economy.calendar",
+      "available": true,
+      "typical_providers": [
+        "tradingeconomics",
+        "fmp"
+      ],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched",
+      "note": "Inspect-only; not wired to strategy"
+    },
+    {
+      "label": "CPI",
+      "openbb_route": ".economy.cpi",
+      "available": true,
+      "typical_providers": [
+        "fred",
+        "oecd"
+      ],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched",
+      "note": "Inspect-only; not wired to strategy"
+    },
+    {
+      "label": "NFP / employment proxy",
+      "openbb_route": ".economy.unemployment",
+      "available": true,
+      "typical_providers": [
+        "fred",
+        "oecd"
+      ],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched",
+      "note": "Inspect-only; not wired to strategy"
+    },
+    {
+      "label": "interest rates",
+      "openbb_route": ".economy.interest_rates",
+      "available": true,
+      "typical_providers": [
+        "fred",
+        "oecd"
+      ],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched",
+      "note": "Inspect-only; not wired to strategy"
+    },
+    {
+      "label": "Federal Reserve FOMC docs",
+      "openbb_route": ".economy.fomc_documents",
+      "available": true,
+      "typical_providers": [
+        "federal_reserve"
+      ],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched",
+      "note": "Inspect-only; not wired to strategy"
+    },
+    {
+      "label": "PCE",
+      "openbb_route": ".economy.pce",
+      "available": true,
+      "typical_providers": [
+        "fred"
+      ],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched",
+      "note": "Inspect-only; not wired to strategy"
+    },
+    {
+      "label": "SEC regulators",
+      "openbb_route": ".regulators.sec",
+      "available": false,
+      "typical_providers": [
+        "sec"
+      ],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched",
+      "note": "Inspect-only; not wired to strategy"
+    },
+    {
+      "label": "calendar",
+      "openbb_route": "obb.economy.calendar",
+      "available": true,
+      "typical_providers": [],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched"
+    },
+    {
+      "label": "cpi",
+      "openbb_route": "obb.economy.cpi",
+      "available": true,
+      "typical_providers": [],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched"
+    },
+    {
+      "label": "unemployment",
+      "openbb_route": "obb.economy.unemployment",
+      "available": true,
+      "typical_providers": [],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched"
+    },
+    {
+      "label": "interest_rates",
+      "openbb_route": "obb.economy.interest_rates",
+      "available": true,
+      "typical_providers": [],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched"
+    },
+    {
+      "label": "fomc_documents",
+      "openbb_route": "obb.economy.fomc_documents",
+      "available": true,
+      "typical_providers": [],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched"
+    },
+    {
+      "label": "pce",
+      "openbb_route": "obb.economy.pce",
+      "available": true,
+      "typical_providers": [],
+      "credentials": "provider-dependent",
+      "frequency": "unknown_until_fetched"
+    }
+  ],
+  "future_macro_context_architecture": {
+    "HigherTimeframeContext": {
+      "technical": [
+        "Daily",
+        "4H"
+      ]
+    },
+    "FutureMacroContext": {
+      "fields": [
+        "CPI",
+        "PPI",
+        "NFP",
+        "Fed",
+        "economic_calendar"
+      ],
+      "note": "Placeholder only \u2014 no macro bullish/bearish rules; does not alter Daily/4H bias"
+    }
+  },
+  "csv_reports": {
+    "providers": "reports\\phase16_openbb_providers.csv",
+    "feed_overlap": "reports\\phase16_feed_overlap.csv",
+    "session_equivalence": "reports\\phase16_session_equivalence.csv"
+  },
+  "limitations": [
+    "Tiingo requires tiingo_token \u2014 not present in environment",
+    "YFinance currency route does not return spot XAUUSD",
+    "FMP requires fmp_api_key \u2014 not present",
+    "COMEX GC futures available but NOT_EQUIVALENT / RESEARCH_ONLY vs OANDA spot",
+    "No deep OANDA-compatible history downloaded; Phase 14/15 TV files untouched",
+    "Deep strategy replay blocked by feed-equivalence gate"
+  ],
+  "recommended_next_phase": [
+    "Supply Tiingo (or other spot XAUUSD) credentials via env / OpenBB settings",
+    "Re-run --overlap-only then gate; only then --download-deep",
+    "Prefer exact OANDA history if an approved path appears",
+    "Keep TradingView for live; OpenBB for history/macro inventory",
+    "Do not optimize strategy rules until trustworthy deep history exists"
+  ],
+  "conclusion": "OpenBB integration works, but no currently tested OpenBB provider satisfies AITRADE's OANDA-compatible XAUUSD historical requirement."
+}

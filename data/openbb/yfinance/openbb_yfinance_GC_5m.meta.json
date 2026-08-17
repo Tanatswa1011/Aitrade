@@ -1,0 +1,164 @@
+{
+  "symbol": "openbb_yfinance_GC",
+  "timeframe": "5m",
+  "source": "openbb:yfinance",
+  "capture_time": "2026-08-15T22:14:02.693960+00:00",
+  "earliest_bar": 1782064800,
+  "latest_bar": 1786726800,
+  "bar_count": 10820,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "openbb_yfinance_GC",
+      "timeframe": "5m",
+      "bar_count": 10820,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 43,
+      "gaps_head": [
+        {
+          "from": 1782147300,
+          "to": 1782151200,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1782233700,
+          "to": 1782237600,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1782320100,
+          "to": 1782324000,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1782406500,
+          "to": 1782410400,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1782492900,
+          "to": 1782670200,
+          "delta_sec": 177300,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1782752100,
+          "to": 1782756000,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1782838500,
+          "to": 1782842400,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1782924900,
+          "to": 1782928800,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783011300,
+          "to": 1783015200,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783036500,
+          "to": 1783274400,
+          "delta_sec": 237900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783356900,
+          "to": 1783360800,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783443300,
+          "to": 1783447200,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783529700,
+          "to": 1783533600,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783616100,
+          "to": 1783620000,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783702500,
+          "to": 1783879800,
+          "delta_sec": 177300,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1783961700,
+          "to": 1783965600,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1784048100,
+          "to": 1784052000,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1784134500,
+          "to": 1784138400,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1784164200,
+          "to": 1784164800,
+          "delta_sec": 600,
+          "expected_period_sec": 300
+        },
+        {
+          "from": 1784220900,
+          "to": 1784224800,
+          "delta_sec": 3900,
+          "expected_period_sec": 300
+        }
+      ],
+      "earliest": 1782064800,
+      "latest": 1786726800,
+      "utc_normalized": true
+    },
+    "path": "data\\openbb\\yfinance\\openbb_yfinance_GC_5m.jsonl"
+  },
+  "phase": 22,
+  "instrument": "GC",
+  "root": "GC",
+  "provider": "openbb",
+  "underlying_provider": "yfinance",
+  "provider_symbol": "GC",
+  "yahoo_alias": "GC=F",
+  "exchange": "CMX",
+  "continuous_series": true,
+  "front_month_note": "Yahoo GC=F continuous front-month; observed underlying GCZ26.CMX (Gold Dec 26) at probe time",
+  "roll_methodology": "provider_controlled_yahoo_front_month; not AITRADE-stitched",
+  "volume_field": "yahoo_futures_volume",
+  "volume_caveat": "Yahoo-reported futures volume for continuous GC=F; not independently audited exchange tape",
+  "timezone": "UTC_normalized",
+  "native_timezone_note": "yfinance timestamps treated as UTC-normalized via OpenBB adapter"
+}

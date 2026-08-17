@@ -1,0 +1,9 @@
+ambiguous,candidate_id,canonical_rows,expired,invalid,resolved,resolved_n,roll_artifacts,rows,triggered
+5,G1_OR30_bo_volOFF_dispOFF,52,5,0,42,42,1,53,52
+5,G2_OR30_bo_volON_dispOFF,52,21,0,26,26,1,53,34
+5,G3_OR30_bo_volOFF_dispON,52,33,0,14,14,1,53,20
+5,G4_OR30_bo_volON_dispON,52,34,0,13,13,1,53,19
+24,G5_OR30_rt_volOFF_dispOFF,52,28,0,0,0,1,53,24
+15,G6_OR30_rt_volON_dispOFF,52,37,0,0,0,1,53,15
+5,G7_OR30_rt_volON_dispON,52,47,0,0,0,1,53,5
+4,G8_OR30_rb_volON_dispON,52,47,1,0,0,1,53,5

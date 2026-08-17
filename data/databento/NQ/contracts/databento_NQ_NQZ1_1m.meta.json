@@ -1,0 +1,28 @@
+{
+  "symbol": "databento_NQ_NQZ1",
+  "timeframe": "1m",
+  "source": "databento:GLBX.MDP3",
+  "capture_time": "2026-08-16T09:22:15.615130+00:00",
+  "earliest_bar": 1608287460,
+  "latest_bar": 1639751340,
+  "bar_count": 112904,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "databento_NQ_NQZ1",
+      "timeframe": "1m",
+      "bar_count": 112904,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 0,
+      "gaps_head": [],
+      "earliest": 1608287460,
+      "latest": 1639751340,
+      "utc_normalized": true
+    },
+    "path": "data\\databento\\NQ\\contracts\\databento_NQ_NQZ1_1m.jsonl"
+  }
+}

@@ -1,0 +1,2 @@
+bars,continuous,contract_note,exchange,period_end,period_start,provider,symbol,underlying,volume_completeness,volume_field,yahoo_alias
+10820,True,Yahoo GC=F continuous front-month; observed underlying GCZ26.CMX (Gold Dec 26) at probe time,CMX,1786726800,1782064800,openbb,GC,yfinance,1.0,yahoo_futures_volume,GC=F

@@ -1,0 +1,547 @@
+{
+  "mode": "live_cdp_bars",
+  "symbol": "OANDA:XAUUSD",
+  "timeframe": "5",
+  "bar_count": 300,
+  "replay": {
+    "total_sessions": 2,
+    "total_sweeps": 2,
+    "total_setups": 2,
+    "coverage": {
+      "expected_sessions": 2,
+      "complete_sessions": 2,
+      "incomplete_sessions": 0,
+      "missing_bars_sessions": 0,
+      "skipped_sessions": 0,
+      "details": [
+        {
+          "identity": "Asia:1786665600",
+          "name": "Asia",
+          "coverage": "full",
+          "complete": true,
+          "action": "analyzed"
+        },
+        {
+          "identity": "London:1786690800",
+          "name": "London",
+          "coverage": "full",
+          "complete": true,
+          "action": "analyzed"
+        }
+      ]
+    },
+    "warnings": [
+      "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+      "Historical CHoCH uses internal_structure (internal_choch_v1); equivalence_status=unvalidated_against_luxalgo \u2014 not claimed equal to LuxAlgo."
+    ],
+    "metadata": {
+      "config_hash": "51454706eb5ab618",
+      "strategy_version": "v1.phase10",
+      "structure_algorithm_version": "internal_choch_v1",
+      "equivalence_status": "unvalidated_against_luxalgo",
+      "confirmation_provider": "internal_structure",
+      "choch_event_count": 11
+    },
+    "errors": []
+  },
+  "stats": {
+    "totals": {
+      "setups": 2,
+      "liquidity_sweeps": 2,
+      "confirmations": 2,
+      "fvgs": 2
+    },
+    "rates": {
+      "confirmation_rate": {
+        "count": 2,
+        "denominator_sweeps": 2,
+        "rate": 1.0
+      },
+      "fvg_formation_rate": {
+        "count": 2,
+        "denominator_confirmations": 2,
+        "rate": 1.0
+      },
+      "entry_trigger_rate": {
+        "count": 2,
+        "denominator_fvgs": 2,
+        "note": "setups with \u22651 triggered entry mode",
+        "rate": 1.0
+      }
+    },
+    "outcome_buckets": {
+      "resolved_triggered_entries": 0,
+      "ambiguous_triggered_entries": 0,
+      "unresolved_expired_entries": 0,
+      "no_risk_plan_entries": 6
+    },
+    "hit_rates_resolved_only": {
+      "1R": {
+        "count": 0,
+        "denominator_resolved_triggered": 0,
+        "rate": null,
+        "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+      },
+      "2R": {
+        "count": 0,
+        "denominator_resolved_triggered": 0,
+        "rate": null,
+        "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+      },
+      "3R": {
+        "count": 0,
+        "denominator_resolved_triggered": 0,
+        "rate": null,
+        "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+      },
+      "opposite_liquidity": {
+        "count": 0,
+        "denominator_resolved_triggered": 0,
+        "rate": null
+      },
+      "stop": {
+        "count": 0,
+        "denominator_resolved_triggered": 0,
+        "rate": null
+      },
+      "ambiguous_share_of_triggered": {
+        "count": 0,
+        "denominator_triggered": 6,
+        "rate": 0.0
+      }
+    },
+    "mfe_mae": {
+      "avg_mfe_r": null,
+      "avg_mae_r": null,
+      "n_mfe": 0,
+      "n_mae": 0
+    },
+    "expiry_timing_distributions": {
+      "bars_sweep_to_choch": {
+        "n": 2,
+        "median": 32.0,
+        "p50": 32.0,
+        "p75": 35.0,
+        "p90": 36.8,
+        "p95": 37.4
+      },
+      "bars_choch_to_fvg": {
+        "n": 2,
+        "median": 8.0,
+        "p50": 8.0,
+        "p75": 8.0,
+        "p90": 8.0,
+        "p95": 8.0
+      },
+      "bars_fvg_to_entry": {
+        "n": 6,
+        "median": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p90": 1.0,
+        "p95": 1.0
+      }
+    },
+    "entry_mode_comparison": {
+      "first_touch": {
+        "trigger_count": 2,
+        "average_risk_distance": null,
+        "avg_rr_to_opposite": null,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_rate": null,
+        "avg_mfe_r": null,
+        "avg_mae_r": null,
+        "ambiguous_count": 0,
+        "resolved_count": 0
+      },
+      "boundary": {
+        "trigger_count": 2,
+        "average_risk_distance": null,
+        "avg_rr_to_opposite": null,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_rate": null,
+        "avg_mfe_r": null,
+        "avg_mae_r": null,
+        "ambiguous_count": 0,
+        "resolved_count": 0
+      },
+      "ce": {
+        "trigger_count": 2,
+        "average_risk_distance": null,
+        "avg_rr_to_opposite": null,
+        "1R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "2R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "3R_hit": {
+          "count": 0,
+          "denominator_resolved": 0,
+          "rate": null
+        },
+        "stop_rate": null,
+        "avg_mfe_r": null,
+        "avg_mae_r": null,
+        "ambiguous_count": 0,
+        "resolved_count": 0
+      }
+    },
+    "by_session": {
+      "Asia": 1,
+      "London": 1
+    },
+    "by_direction": {
+      "bearish": 2
+    }
+  },
+  "stop_mode_comparison": {
+    "beyond_sweep": {
+      "setups": 2,
+      "hit_rates_resolved_only": {
+        "1R": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null,
+          "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+        },
+        "2R": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null,
+          "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null,
+          "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+        },
+        "opposite_liquidity": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null
+        },
+        "stop": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null
+        },
+        "ambiguous_share_of_triggered": {
+          "count": 0,
+          "denominator_triggered": 6,
+          "rate": 0.0
+        }
+      },
+      "mfe_mae": {
+        "avg_mfe_r": null,
+        "avg_mae_r": null,
+        "n_mfe": 0,
+        "n_mae": 0
+      },
+      "entry_mode_comparison": {
+        "first_touch": {
+          "trigger_count": 2,
+          "average_risk_distance": null,
+          "avg_rr_to_opposite": null,
+          "1R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "2R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "3R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "stop_rate": null,
+          "avg_mfe_r": null,
+          "avg_mae_r": null,
+          "ambiguous_count": 0,
+          "resolved_count": 0
+        },
+        "boundary": {
+          "trigger_count": 2,
+          "average_risk_distance": null,
+          "avg_rr_to_opposite": null,
+          "1R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "2R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "3R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "stop_rate": null,
+          "avg_mfe_r": null,
+          "avg_mae_r": null,
+          "ambiguous_count": 0,
+          "resolved_count": 0
+        },
+        "ce": {
+          "trigger_count": 2,
+          "average_risk_distance": null,
+          "avg_rr_to_opposite": null,
+          "1R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "2R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "3R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "stop_rate": null,
+          "avg_mfe_r": null,
+          "avg_mae_r": null,
+          "ambiguous_count": 0,
+          "resolved_count": 0
+        }
+      }
+    },
+    "beyond_fvg": {
+      "setups": 2,
+      "hit_rates_resolved_only": {
+        "1R": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null,
+          "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+        },
+        "2R": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null,
+          "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+        },
+        "3R": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null,
+          "note": "excludes AMBIGUOUS_INTRABAR from denominator"
+        },
+        "opposite_liquidity": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null
+        },
+        "stop": {
+          "count": 0,
+          "denominator_resolved_triggered": 0,
+          "rate": null
+        },
+        "ambiguous_share_of_triggered": {
+          "count": 2,
+          "denominator_triggered": 6,
+          "rate": 0.3333333333333333
+        }
+      },
+      "mfe_mae": {
+        "avg_mfe_r": null,
+        "avg_mae_r": null,
+        "n_mfe": 0,
+        "n_mae": 0
+      },
+      "entry_mode_comparison": {
+        "first_touch": {
+          "trigger_count": 2,
+          "average_risk_distance": null,
+          "avg_rr_to_opposite": null,
+          "1R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "2R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "3R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "stop_rate": null,
+          "avg_mfe_r": null,
+          "avg_mae_r": null,
+          "ambiguous_count": 0,
+          "resolved_count": 0
+        },
+        "boundary": {
+          "trigger_count": 2,
+          "average_risk_distance": 0.9250000000001819,
+          "avg_rr_to_opposite": 69.99459459458072,
+          "1R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "2R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "3R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "stop_rate": null,
+          "avg_mfe_r": null,
+          "avg_mae_r": null,
+          "ambiguous_count": 1,
+          "resolved_count": 0
+        },
+        "ce": {
+          "trigger_count": 2,
+          "average_risk_distance": 0.4625000000005457,
+          "avg_rr_to_opposite": 140.98918918902183,
+          "1R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "2R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "3R_hit": {
+            "count": 0,
+            "denominator_resolved": 0,
+            "rate": null
+          },
+          "stop_rate": null,
+          "avg_mfe_r": null,
+          "avg_mae_r": null,
+          "ambiguous_count": 1,
+          "resolved_count": 0
+        }
+      }
+    }
+  },
+  "luxalgo_overlap": {
+    "luxalgo_reliable_count": 0,
+    "internal_count": 11,
+    "matched": [],
+    "matched_count": 0,
+    "missed_internal": [
+      {
+        "direction": "bullish",
+        "timestamp": 1786658400,
+        "level": 4352.28
+      },
+      {
+        "direction": "bearish",
+        "timestamp": 1786662000,
+        "level": 4353.015
+      },
+      {
+        "direction": "bullish",
+        "timestamp": 1786663500,
+        "level": 4362.945
+      },
+      {
+        "direction": "bearish",
+        "timestamp": 1786666800,
+        "level": 4349.315
+      },
+      {
+        "direction": "bullish",
+        "timestamp": 1786677300,
+        "level": 4322.635
+      },
+      {
+        "direction": "bearish",
+        "timestamp": 1786683900,
+        "level": 4323.48
+      },
+      {
+        "direction": "bullish",
+        "timestamp": 1786686600,
+        "level": 4325.03
+      },
+      {
+        "direction": "bearish",
+        "timestamp": 1786718700,
+        "level": 4382.99
+      },
+      {
+        "direction": "bullish",
+        "timestamp": 1786732500,
+        "level": 4381.8
+      },
+      {
+        "direction": "bearish",
+        "timestamp": 1786733100,
+        "level": 4376.47
+      },
+      {
+        "direction": "bullish",
+        "timestamp": 1786735500,
+        "level": 4377.285
+      }
+    ],
+    "missed_internal_count": 11,
+    "missed_luxalgo": [],
+    "missed_luxalgo_count": 0,
+    "equivalence_status": "unvalidated_against_luxalgo",
+    "note": "Overlap diagnostic only. Do not treat internal CHoCH as LuxAlgo-equivalent."
+  },
+  "journal_path": "journal\\setups.jsonl",
+  "sample_setup_ids": [
+    "OANDA:XAUUSD|Asia|2026-08-13|high|1786707300",
+    "OANDA:XAUUSD|London|2026-08-14|high|1786710900"
+  ]
+}

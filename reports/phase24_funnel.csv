@@ -1,0 +1,6 @@
+ambiguous,candidate_id,canonical_rows,expired,invalid,resolved,resolved_n,roll_artifacts,rows,triggered,triggered_n
+39,A_ORB15_BREAKOUT_CLOSE,185,3,0,143,143,0,185,185,185
+26,B1_ORB15_RETEST_TOUCH,185,28,0,131,131,0,185,159,159
+132,B2_ORB15_RETEST_CLOSE,185,53,0,0,0,0,185,132,132
+75,C_ORB15_FVG_TOUCH,185,67,0,43,43,0,185,118,118
+98,D_ORB15_FVG_CE,185,77,0,10,10,0,185,108,108

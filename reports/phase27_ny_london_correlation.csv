@@ -1,0 +1,2 @@
+both_loss_rate,both_win_rate,genuinely_diversifies,lon_loss_ny_loss,lon_loss_ny_win,lon_win_ny_loss,lon_win_ny_win,note,overlap_resolved_days,pearson_r_day_mean
+0.16161616161616163,0.3434343434343434,True,16,26,23,34,Descriptive day-level mean R; not claim of statistical independence,99,-0.03619664987154964

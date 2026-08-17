@@ -1,0 +1,228 @@
+{
+  "symbol": "databento_NQ_stitched",
+  "timeframe": "1m",
+  "source": "databento:GLBX.MDP3:aitrade_volume_crossover_unadjusted",
+  "capture_time": "2026-08-16T09:25:26.354214+00:00",
+  "earliest_bar": 1577919600,
+  "latest_bar": 1786741140,
+  "bar_count": 2338684,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "databento_NQ_stitched",
+      "timeframe": "1m",
+      "bar_count": 2338684,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 0,
+      "gaps_head": [],
+      "earliest": 1577919600,
+      "latest": 1786741140,
+      "utc_normalized": true
+    },
+    "path": "data\\databento\\NQ\\stitched\\databento_NQ_stitched_1m.jsonl"
+  },
+  "root": "NQ",
+  "schema": "ohlcv-1m",
+  "continuous_choice": "aitrade_volume_crossover_unadjusted",
+  "roll_activate": "18:00 America/New_York",
+  "volume_semantics": "Databento GLBX.MDP3 ohlcv-1m volume = total trade volume aggregated over the 1m interval (CME MDP 3.0 electronic session trades). Units: contract lots traded. May differ from official venue settlement volumes that include block/OTC.",
+  "volume_status": "PROVIDER_DOCUMENTED_TRADE_VOLUME",
+  "contracts": [
+    {
+      "contract_symbol": "NQH0",
+      "first_seen": 1577919600,
+      "last_seen": 1584710940,
+      "bars_1m": 74802,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQM0",
+      "first_seen": 1577919660,
+      "last_seen": 1592573340,
+      "bars_1m": 110657,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQU0",
+      "first_seen": 1577975820,
+      "last_seen": 1600435740,
+      "bars_1m": 108398,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQZ0",
+      "first_seen": 1578551160,
+      "last_seen": 1608301740,
+      "bars_1m": 111863,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQH1",
+      "first_seen": 1583518860,
+      "last_seen": 1616160540,
+      "bars_1m": 109748,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQM1",
+      "first_seen": 1599054540,
+      "last_seen": 1624022940,
+      "bars_1m": 113490,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQU1",
+      "first_seen": 1608190860,
+      "last_seen": 1631885340,
+      "bars_1m": 111816,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQZ1",
+      "first_seen": 1608287460,
+      "last_seen": 1639751340,
+      "bars_1m": 112904,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQH2",
+      "first_seen": 1621956480,
+      "last_seen": 1647610140,
+      "bars_1m": 116636,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQM2",
+      "first_seen": 1616595420,
+      "last_seen": 1655472540,
+      "bars_1m": 120185,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQU2",
+      "first_seen": 1624232280,
+      "last_seen": 1663334940,
+      "bars_1m": 116195,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQZ2",
+      "first_seen": 1633102560,
+      "last_seen": 1671200940,
+      "bars_1m": 112560,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQH3",
+      "first_seen": 1640157600,
+      "last_seen": 1679059740,
+      "bars_1m": 111961,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQM3",
+      "first_seen": 1655321640,
+      "last_seen": 1686922140,
+      "bars_1m": 111984,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQU3",
+      "first_seen": 1664212560,
+      "last_seen": 1694784540,
+      "bars_1m": 111315,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQZ3",
+      "first_seen": 1669996800,
+      "last_seen": 1702650540,
+      "bars_1m": 119538,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQH4",
+      "first_seen": 1679495280,
+      "last_seen": 1710509340,
+      "bars_1m": 112791,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQM4",
+      "first_seen": 1688566680,
+      "last_seen": 1718976540,
+      "bars_1m": 119549,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQU4",
+      "first_seen": 1695302940,
+      "last_seen": 1726838940,
+      "bars_1m": 116889,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQZ4",
+      "first_seen": 1703104260,
+      "last_seen": 1734704940,
+      "bars_1m": 122487,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQH5",
+      "first_seen": 1704210480,
+      "last_seen": 1742563740,
+      "bars_1m": 111479,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQM5",
+      "first_seen": 1718868960,
+      "last_seen": 1750426140,
+      "bars_1m": 118503,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQU5",
+      "first_seen": 1722601380,
+      "last_seen": 1758288540,
+      "bars_1m": 115917,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQZ5",
+      "first_seen": 1735318380,
+      "last_seen": 1766154540,
+      "bars_1m": 110436,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQH6",
+      "first_seen": 1741695780,
+      "last_seen": 1774013340,
+      "bars_1m": 111539,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQM6",
+      "first_seen": 1744393440,
+      "last_seen": 1781789340,
+      "bars_1m": 116157,
+      "tick_size": 0.25
+    },
+    {
+      "contract_symbol": "NQU6",
+      "first_seen": 1761581220,
+      "last_seen": 1786741140,
+      "bars_1m": 87007,
+      "tick_size": 0.25
+    }
+  ],
+  "tick_size": 0.25,
+  "phase": 29,
+  "period": "2020-01-01 \u2192 2026-08-16"
+}

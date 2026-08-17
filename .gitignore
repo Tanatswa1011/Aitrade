@@ -1,0 +1,58 @@
+# Secrets / local credentials — never commit
+.env
+.env.*
+!.env.example
+**/credentials.json
+**/openbb_user_settings.json
+**/*api_key*
+**/*secret*
+**/cookies.txt
+**/session.json
+**/*token*.json
+**/rithmic*.json
+**/ninjatrader*.credentials*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# IDE / OS
+.cursor/
+.idea/
+.vscode/
+*.swp
+*.tmp
+*~
+.DS_Store
+Thumbs.db
+
+# Runtime logs (may contain account/order context)
+logs/*.log
+logs/**/*.log
+
+# Huge downloaded raw market datasets
+data/databento/**/*.jsonl
+data/openbb/**/*.jsonl
+data/**/*.parquet
+data/**/*.csv.gz
+data/**/raw/
+
+# Local secret/config overrides
+config/local_*.json
+config/*_secrets.json
+**/local_override.json
+
+# Credential screenshots / exports
+**/*screenshot*credential*
+**/*password*.png
+**/*password*.jpg
+
+# Keep: frozen strategy JSON, validation JSON, source, tests, docs, strategy registry,
+# non-secret reports, meta sidecars, journals

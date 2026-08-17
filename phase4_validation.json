@@ -1,0 +1,105 @@
+{
+  "ok": true,
+  "phase": 4,
+  "session_dst_uncertainty": "Live ICT vs internal OHLC was validated on summer US-DST dates only (~3 Asia + 3 London with full bar coverage). Winter and US/EU DST-transition weeks were not live-confirmed against ICT drawings. The indicator timezone picker is fixed-offset GMT; the strategy uses America/New_York ZoneInfo. Re-validate ICT High/Low after loading history that spans winter and staggered US\u2194UK DST weeks before treating winter backtests as fully locked.",
+  "fvg_config": {
+    "first_only": true,
+    "max_bars_after_confirmation": null,
+    "min_gap": 0.0,
+    "min_gap_points": 0.0,
+    "point_size": 1.0,
+    "require_displacement": false,
+    "displacement_min_body_ratio": 0.5,
+    "displacement_body_lookback": 0,
+    "displacement_body_vs_avg_mult": 1.0
+  },
+  "example": {
+    "mode": "offline_fixture",
+    "note": "Deterministic fixture (not live CDP). Used when no reliable live sweep\u2192CHoCH sequence is available.",
+    "session": "Asia",
+    "sweep_side": "low",
+    "sweep_level": 4311.04,
+    "sweep_time": "1970-01-01T00:16:40+00:00",
+    "choch": {
+      "direction": "bullish",
+      "level": 4320.0,
+      "time": "1970-01-01T00:33:20+00:00"
+    },
+    "fvg": {
+      "direction": "bullish",
+      "low": 4325.0,
+      "high": 4330.0,
+      "midpoint": 4327.5,
+      "created_time": "1970-01-01T01:23:20+00:00",
+      "gap_size": 5.0,
+      "bars_after_sweep": 4,
+      "bars_after_choch": 3,
+      "mitigated": true,
+      "first_mitigation_time": "1970-01-01T01:40:00+00:00",
+      "fully_filled": true,
+      "first_full_fill_time": "1970-01-01T01:56:40+00:00",
+      "setup_reference": {
+        "sequence": "sweep\u2192CHoCH\u2192FVG",
+        "session": "Asia",
+        "sweep_side": "low",
+        "sweep_level": 4311.04,
+        "sweep_timestamp": 1000,
+        "confirmation_kind": "CHoCH",
+        "confirmation_direction": "bullish",
+        "confirmation_level": 4320.0,
+        "confirmation_timestamp": 2000,
+        "confirmation_raw_id": "fixture",
+        "confirmation_source": "luxalgo",
+        "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+      }
+    },
+    "detection_reason": "found",
+    "live_status": {
+      "mode": "live_unavailable",
+      "error": "CDP port 9222 is not reachable at http://127.0.0.1:9222. Is TradingView Desktop running with --remote-debugging-port=9222?",
+      "fallback": "offline_fixture"
+    }
+  },
+  "offline_fixture": {
+    "mode": "offline_fixture",
+    "note": "Deterministic fixture (not live CDP). Used when no reliable live sweep\u2192CHoCH sequence is available.",
+    "session": "Asia",
+    "sweep_side": "low",
+    "sweep_level": 4311.04,
+    "sweep_time": "1970-01-01T00:16:40+00:00",
+    "choch": {
+      "direction": "bullish",
+      "level": 4320.0,
+      "time": "1970-01-01T00:33:20+00:00"
+    },
+    "fvg": {
+      "direction": "bullish",
+      "low": 4325.0,
+      "high": 4330.0,
+      "midpoint": 4327.5,
+      "created_time": "1970-01-01T01:23:20+00:00",
+      "gap_size": 5.0,
+      "bars_after_sweep": 4,
+      "bars_after_choch": 3,
+      "mitigated": true,
+      "first_mitigation_time": "1970-01-01T01:40:00+00:00",
+      "fully_filled": true,
+      "first_full_fill_time": "1970-01-01T01:56:40+00:00",
+      "setup_reference": {
+        "sequence": "sweep\u2192CHoCH\u2192FVG",
+        "session": "Asia",
+        "sweep_side": "low",
+        "sweep_level": 4311.04,
+        "sweep_timestamp": 1000,
+        "confirmation_kind": "CHoCH",
+        "confirmation_direction": "bullish",
+        "confirmation_level": 4320.0,
+        "confirmation_timestamp": 2000,
+        "confirmation_raw_id": "fixture",
+        "confirmation_source": "luxalgo",
+        "narrative": "Asia low swept @ 4311.04 \u2192 bullish CHoCH @ 4320.0 \u2192 bullish FVG"
+      }
+    },
+    "detection_reason": "found"
+  }
+}

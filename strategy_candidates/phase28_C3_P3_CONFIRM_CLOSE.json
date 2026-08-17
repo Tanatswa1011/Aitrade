@@ -1,0 +1,47 @@
+{
+  "phase": "phase28",
+  "strategy_family": "gc_ny_momentum_continuation_v1",
+  "strategy_version": "v1.phase28",
+  "instrument": "GC",
+  "provider": "databento:GLBX.MDP3",
+  "candidate": {
+    "strategy_family": "gc_ny_momentum_continuation_v1",
+    "candidate_id": "C3_P3_CONFIRM_CLOSE",
+    "pullback_mode": "P3_BREAKOUT_RETEST",
+    "entry_mode": "CONFIRMATION_CLOSE",
+    "volume_filter": false,
+    "rvol_threshold": 1.5,
+    "range_multiplier": 1.5,
+    "max_entry_bars": 4,
+    "execution_timeframe": "5m",
+    "extras": {}
+  },
+  "config_hash": "3500060ea2f25f19",
+  "predeclared": {
+    "session": "08:20-13:30 America/New_York",
+    "no_new_setups_after": "12:30",
+    "range_multiplier": 1.5,
+    "rvol_threshold": 1.5,
+    "max_entry_bars": 4,
+    "session_note": "NY research window 08:20\u201313:30 America/New_York \u2014 same clock as frozen V2 for comparison; momentum/continuation falsification, not mean reversion."
+  },
+  "selection_split": {
+    "train_start": "2025-08-01",
+    "train_end": "2026-04-29",
+    "holdout_start": "2026-05-01",
+    "holdout_end": "2026-08-13",
+    "train_dates": 171,
+    "holdout_dates": 73,
+    "train_fraction": 0.7,
+    "method": "chronological_trading_date_70_30_databento_phase28"
+  },
+  "train_snapshot": {
+    "resolved_n": 123,
+    "theoretical_2r_expectancy": -0.06504065040650409
+  },
+  "holdout_snapshot": {
+    "resolved_n": 44,
+    "theoretical_2r_expectancy": -0.4318181818181819
+  },
+  "note": "NOT production \u2014 Phase 28 momentum research; does not modify Phase 26 V2"
+}

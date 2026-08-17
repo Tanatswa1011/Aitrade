@@ -1,0 +1,4 @@
+primary,role,scenario,ticks_adverse
+False,overlay,IDEAL_TOUCH,0
+True,primary_paper_assumption,1_TICK_ADVERSE,1
+False,overlay,2_TICK_ADVERSE,2

@@ -1,0 +1,2 @@
+days_both,days_lower,days_none,days_upper,lower_extensions,median_minutes_to_vwap,n_extensions,no_reversion_rate,p75_minutes,p90_minutes,p_vwap_touch_lower,p_vwap_touch_overall,p_vwap_touch_upper,upper_extensions
+100,162,90,173,303,20,631,0.3137876386687797,50,95,0.693069306930693,0.6862123613312203,0.6798780487804879,328

@@ -1,0 +1,2 @@
+classification,deep_replay_allowed,exact_ohlc_match_pct,overlap_bars,provider,session_hl_match_rate,sweep_match_rate,symbol
+CLOSE_EQUIVALENT,True,0.0,299,tiingo,1.0,1.0,XAUUSD

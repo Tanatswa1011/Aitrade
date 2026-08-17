@@ -1,0 +1,14 @@
+decision_date,new_contract,new_volume,old_contract,old_volume,roll_reason,roll_timestamp
+2025-07-31,GCU5,209.0,GCQ5,15.0,next_daily_volume_exceeds_current,1753999200
+2025-08-01,GCV5,13811.0,GCU5,3901.0,next_daily_volume_exceeds_current,1754085600
+2025-09-30,GCX5,1056.0,GCV5,131.0,next_daily_volume_exceeds_current,1759269600
+2025-10-01,GCZ5,261313.0,GCX5,794.0,next_daily_volume_exceeds_current,1759356000
+2025-11-27,GCF6,503.0,GCZ5,245.0,next_daily_volume_exceeds_current,1764284400
+2025-11-28,GCG6,57428.0,GCF6,713.0,next_daily_volume_exceeds_current,1764370800
+2026-01-29,GCH6,9920.0,GCG6,7100.0,next_daily_volume_exceeds_current,1769727600
+2026-01-30,GCJ6,377934.0,GCH6,10526.0,next_daily_volume_exceeds_current,1769814000
+2026-03-31,GCK6,2203.0,GCJ6,777.0,next_daily_volume_exceeds_current,1774994400
+2026-04-01,GCM6,169465.0,GCK6,1917.0,next_daily_volume_exceeds_current,1775080800
+2026-05-29,GCN6,977.0,GCM6,553.0,next_daily_volume_exceeds_current,1780092000
+2026-05-31,GCQ6,15160.0,GCN6,148.0,next_daily_volume_exceeds_current,1780264800
+2026-07-29,GCZ6,125265.0,GCQ6,21219.0,next_daily_volume_exceeds_current,1785362400

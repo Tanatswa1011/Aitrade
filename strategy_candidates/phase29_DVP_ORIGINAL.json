@@ -1,0 +1,41 @@
+{
+  "phase": "phase29",
+  "status": "frozen_replication",
+  "strategy_family": "nq_drift_vwap_pullback_v1",
+  "strategy_version": "v1.phase29",
+  "candidate_id": "DVP_ORIGINAL",
+  "config_hash": "e314f828eee7eca5",
+  "instrument": "NQ",
+  "provider": "databento:GLBX.MDP3",
+  "candidate": {
+    "strategy_family": "nq_drift_vwap_pullback_v1",
+    "candidate_id": "DVP_ORIGINAL",
+    "hour_return_threshold": 0.001,
+    "long_stop_points": 80.0,
+    "long_target_points": 40.0,
+    "short_stop_points": 80.0,
+    "short_target_points": 50.0,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "extras": {}
+  },
+  "rules": {
+    "vwap_reset": "09:30 America/New_York",
+    "trade_window": "10:30-15:30",
+    "force_close": "15:55",
+    "long_sl_tp": [
+      80,
+      40
+    ],
+    "short_sl_tp": [
+      80,
+      50
+    ],
+    "max_trades_day": 4,
+    "max_losses_day": 2,
+    "loss_interpretation": "any two losses in day"
+  },
+  "validation": "phase29_validation.json",
+  "verdict": "EDGE_OBSERVED",
+  "note": "Exact published Drift VWAP Pullback replication \u2014 freeze before any optimization. NOT Phase26 GC V2."
+}

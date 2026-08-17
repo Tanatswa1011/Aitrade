@@ -1,0 +1,28 @@
+{
+  "symbol": "openbb_tiingo_XAUUSD",
+  "timeframe": "4H",
+  "source": "resampled_from_openbb_5m",
+  "capture_time": "2026-08-15T20:59:03.582606+00:00",
+  "earliest_bar": 1755205200,
+  "latest_bar": 1786741200,
+  "bar_count": 1561,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "openbb_tiingo_XAUUSD",
+      "timeframe": "4H",
+      "bar_count": 1561,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 0,
+      "gaps_head": [],
+      "earliest": 1755205200,
+      "latest": 1786741200,
+      "utc_normalized": true
+    },
+    "path": "data\\openbb\\tiingo\\openbb_tiingo_XAUUSD_4H.jsonl"
+  }
+}

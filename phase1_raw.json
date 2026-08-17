@@ -1,0 +1,1843 @@
+{
+  "symbol": "OANDA:XAUUSD",
+  "resolution": "5",
+  "studies": [
+    {
+      "id": "wy7VYI",
+      "name": "AMD Liquidity Sweep with Alerts",
+      "visible": false,
+      "dataLength": 0,
+      "hasPlots": true,
+      "inputNamed": [
+        {
+          "id": "text",
+          "name": "ILScript",
+          "type": "text",
+          "value": "[long-encrypted-or-text]"
+        },
+        {
+          "id": "pineId",
+          "name": "pineId",
+          "type": "text",
+          "value": "PUB;e68f8f8a91aa462689cccb6965ad0193"
+        },
+        {
+          "id": "pineVersion",
+          "name": "pineVersion",
+          "type": "text",
+          "value": "8.0"
+        },
+        {
+          "id": "pineFeatures",
+          "name": "pineFeatures",
+          "type": "text",
+          "value": "[long-encrypted-or-text]"
+        },
+        {
+          "id": "in_0",
+          "name": "Highlight Intermediate Swing Highs and Lows",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_1",
+          "name": "Intermediate Swing Label Size",
+          "type": "text",
+          "value": "Normal"
+        },
+        {
+          "id": "in_2",
+          "name": "Show Short Term Swings",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_3",
+          "name": "# Candles on Left/Right To Form A Swing Pivot",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_4",
+          "name": "Asia Session Start Hour (0-23)",
+          "type": "integer",
+          "value": 0
+        },
+        {
+          "id": "in_5",
+          "name": "Asia Session End Hour (0-23)",
+          "type": "integer",
+          "value": 6
+        },
+        {
+          "id": "in_6",
+          "name": "Enable Price Cross Alerts",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_7",
+          "name": "Enable Real-Time Arrows (May Repaint)",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "__fast_calc",
+          "name": "Fast calculation",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "__profile",
+          "name": null,
+          "type": "bool",
+          "value": false
+        }
+      ],
+      "plotTitles": {
+        "plot_0": {
+          "title": "plot_0",
+          "plottype": 0,
+          "trackPrice": true,
+          "color": "rgba(242,54,69,0)",
+          "display": 4294967295
+        },
+        "plot_1": {
+          "title": "plot_1",
+          "plottype": 0,
+          "trackPrice": true,
+          "color": "rgba(242,54,69,0)",
+          "display": 4294967295
+        },
+        "plot_2": {
+          "title": "plot_2",
+          "plottype": "shape_triangle_up",
+          "trackPrice": false,
+          "color": "#4CAF50",
+          "display": 4294967295
+        },
+        "plot_3": {
+          "title": "plot_3",
+          "plottype": "shape_triangle_down",
+          "trackPrice": false,
+          "color": "#F23645",
+          "display": 4294967295
+        },
+        "plot_4": {
+          "title": "plot_4",
+          "plottype": "alertcondition",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_5": {
+          "title": "plot_5",
+          "plottype": "alertcondition",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        }
+      },
+      "graphicNonEmpty": {
+        "performance": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "performance",
+              "preview": {
+                "ctor": "Ye",
+                "keys": [
+                  "_primitivesDataById",
+                  "_primitiveById",
+                  "_changed",
+                  "_cleared",
+                  "_materializePrimitive",
+                  "_isRematerializationRequiredWithNewIndexes"
+                ],
+                "_primitivesDataById": {
+                  "ctor": "Map",
+                  "keys": []
+                },
+                "_primitiveById": {
+                  "ctor": "Map",
+                  "keys": []
+                },
+                "_changed": {
+                  "ctor": "s",
+                  "keys": [
+                    "fire",
+                    "_listeners"
+                  ]
+                },
+                "_cleared": {
+                  "ctor": "s",
+                  "keys": [
+                    "fire",
+                    "_listeners"
+                  ]
+                },
+                "_materializePrimitive": {
+                  "ctor": "Function",
+                  "keys": []
+                },
+                "_isRematerializationRequiredWithNewIndexes": false
+              }
+            }
+          ]
+        },
+        "dwglines": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "lines",
+              "preview": {
+                "ctor": "Map",
+                "keys": []
+              }
+            }
+          ]
+        },
+        "dwglabels": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "labels",
+              "preview": {
+                "ctor": "Map",
+                "keys": []
+              }
+            }
+          ]
+        }
+      },
+      "alert": {
+        "hasAlert": true,
+        "hasAlertConditions": true,
+        "hasAlertFunction": true,
+        "alertStatus": {
+          "_listeners": [],
+          "_value": 0
+        }
+      }
+    },
+    {
+      "id": "h6mnwz",
+      "name": "ICT Sessions & Killzones - Indices, FX, Crypto (VinceFxBT)",
+      "visible": true,
+      "dataLength": 400,
+      "hasPlots": true,
+      "inputNamed": [
+        {
+          "id": "text",
+          "name": "ILScript",
+          "type": "text",
+          "value": "[long-encrypted-or-text]"
+        },
+        {
+          "id": "pineId",
+          "name": "pineId",
+          "type": "text",
+          "value": "PUB;18d5e96b268640c9ba9bc68d8bf298b1"
+        },
+        {
+          "id": "pineVersion",
+          "name": "pineVersion",
+          "type": "text",
+          "value": "37.0"
+        },
+        {
+          "id": "pineFeatures",
+          "name": "pineFeatures",
+          "type": "text",
+          "value": "{\"indicator\":1,\"plot\":1,\"math\":1,\"line\":1,\"box\":1,\"label\":1}"
+        },
+        {
+          "id": "in_0",
+          "name": "Show history for Sessions or Killzones on chart",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_1",
+          "name": "Show Labels for Sessions or Killzones",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_2",
+          "name": "Hide all Sessions",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_3",
+          "name": "Session Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_4",
+          "name": "Display Session as",
+          "type": "text",
+          "value": "Background color"
+        },
+        {
+          "id": "in_5",
+          "name": "High & Low / Outline Style",
+          "type": "text",
+          "value": "Solid"
+        },
+        {
+          "id": "in_6",
+          "name": "Show Session Middle Line",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_7",
+          "name": "Session Middle Line Style",
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_8",
+          "name": "Hide sessions if timeframe is above (in minutes)",
+          "type": "text",
+          "value": "60"
+        },
+        {
+          "id": "in_9",
+          "name": "Hide session labels if timeframe is above (in minutes)",
+          "type": "text",
+          "value": "45"
+        },
+        {
+          "id": "in_10",
+          "name": "Include Weekends for Sessions?",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_11",
+          "name": "Hide all Killzones",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_12",
+          "name": "Display Session Open/Close at",
+          "type": "text",
+          "value": "Boxes"
+        },
+        {
+          "id": "in_13",
+          "name": "Killzone Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_14",
+          "name": "High & Low / Outline Style",
+          "type": "text",
+          "value": "Dashed"
+        },
+        {
+          "id": "in_15",
+          "name": "Show Killzone Middle Line",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_16",
+          "name": "Killzone Middle Line Style",
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_17",
+          "name": "Hide killzones if timeframe is greater than (in minutes)",
+          "type": "text",
+          "value": "45"
+        },
+        {
+          "id": "in_18",
+          "name": "Hide session open labels if timeframe is above (in minutes)",
+          "type": "text",
+          "value": "45"
+        },
+        {
+          "id": "in_19",
+          "name": "Include Weekends for Killzones?",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_20",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_21",
+          "name": null,
+          "type": "text",
+          "value": "London"
+        },
+        {
+          "id": "in_22",
+          "name": null,
+          "type": "session",
+          "value": "0800-1330"
+        },
+        {
+          "id": "in_23",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_24",
+          "name": null,
+          "type": "text",
+          "value": "LOKZ"
+        },
+        {
+          "id": "in_25",
+          "name": null,
+          "type": "session",
+          "value": "0700-1000"
+        },
+        {
+          "id": "in_26",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_27",
+          "name": null,
+          "type": "text",
+          "value": "LOCKZ"
+        },
+        {
+          "id": "in_28",
+          "name": null,
+          "type": "session",
+          "value": "1500-1700"
+        },
+        {
+          "id": "in_29",
+          "name": "Labels:",
+          "type": "color",
+          "value": 4281216558
+        },
+        {
+          "id": "in_30",
+          "name": "Lines:",
+          "type": "color",
+          "value": 4293111695
+        },
+        {
+          "id": "in_31",
+          "name": "Background:",
+          "type": "color",
+          "value": 1289990031
+        },
+        {
+          "id": "in_32",
+          "name": "KZ top/bottom:",
+          "type": "color",
+          "value": 4293111695
+        },
+        {
+          "id": "in_33",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_34",
+          "name": null,
+          "type": "text",
+          "value": "New York"
+        },
+        {
+          "id": "in_35",
+          "name": null,
+          "type": "session",
+          "value": "1330-2100"
+        },
+        {
+          "id": "in_36",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_37",
+          "name": null,
+          "type": "text",
+          "value": "NYKZ"
+        },
+        {
+          "id": "in_38",
+          "name": null,
+          "type": "session",
+          "value": "1200-1500"
+        },
+        {
+          "id": "in_39",
+          "name": "Labels:",
+          "type": "color",
+          "value": 4281216558
+        },
+        {
+          "id": "in_40",
+          "name": "Lines:",
+          "type": "color",
+          "value": 4290954407
+        },
+        {
+          "id": "in_41",
+          "name": "Background:",
+          "type": "color",
+          "value": 818070695
+        },
+        {
+          "id": "in_42",
+          "name": "KZ top/bottom:",
+          "type": "color",
+          "value": 4290954407
+        },
+        {
+          "id": "in_43",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_44",
+          "name": null,
+          "type": "text",
+          "value": "Asia"
+        },
+        {
+          "id": "in_45",
+          "name": null,
+          "type": "session",
+          "value": "0000-0700"
+        },
+        {
+          "id": "in_46",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_47",
+          "name": null,
+          "type": "text",
+          "value": "Asia KZ"
+        },
+        {
+          "id": "in_48",
+          "name": null,
+          "type": "session",
+          "value": "0000-0400"
+        },
+        {
+          "id": "in_49",
+          "name": "Labels:",
+          "type": "color",
+          "value": 4281216558
+        },
+        {
+          "id": "in_50",
+          "name": "Lines:",
+          "type": "color",
+          "value": 4292267207
+        },
+        {
+          "id": "in_51",
+          "name": "Background:",
+          "type": "color",
+          "value": 1071041735
+        },
+        {
+          "id": "in_52",
+          "name": "KZ top/bottom:",
+          "type": "color",
+          "value": 4292267207
+        },
+        {
+          "id": "in_53",
+          "name": null,
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_54",
+          "name": null,
+          "type": "text",
+          "value": "CBDR"
+        },
+        {
+          "id": "in_55",
+          "name": null,
+          "type": "session",
+          "value": "1900-0100"
+        },
+        {
+          "id": "in_56",
+          "name": "Labels:",
+          "type": "color",
+          "value": 4281216558
+        },
+        {
+          "id": "in_57",
+          "name": "Lines:",
+          "type": "color",
+          "value": 4283516483
+        },
+        {
+          "id": "in_58",
+          "name": "Background:",
+          "type": "color",
+          "value": 223430211
+        },
+        {
+          "id": "in_59",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_60",
+          "name": null,
+          "type": "text",
+          "value": "NYO"
+        },
+        {
+          "id": "in_61",
+          "name": null,
+          "type": "color",
+          "value": 4283516483
+        },
+        {
+          "id": "in_62",
+          "name": null,
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_63",
+          "name": null,
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_64",
+          "name": null,
+          "type": "text",
+          "value": "8.30"
+        },
+        {
+          "id": "in_65",
+          "name": null,
+          "type": "color",
+          "value": 4283516483
+        },
+        {
+          "id": "in_66",
+          "name": null,
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_67",
+          "name": null,
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_68",
+          "name": null,
+          "type": "text",
+          "value": "9.30"
+        },
+        {
+          "id": "in_69",
+          "name": null,
+          "type": "color",
+          "value": 4283516483
+        },
+        {
+          "id": "in_70",
+          "name": null,
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_71",
+          "name": "Hide price levels above (in minutes)",
+          "type": "text",
+          "value": "59"
+        },
+        {
+          "id": "in_72",
+          "name": "NY 8:30 Open",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_73",
+          "name": null,
+          "type": "color",
+          "value": 2152810051
+        },
+        {
+          "id": "in_74",
+          "name": null,
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_75",
+          "name": "Show label",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_76",
+          "name": "History",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_77",
+          "name": "NY 9:30 Open",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_78",
+          "name": null,
+          "type": "color",
+          "value": 2152810051
+        },
+        {
+          "id": "in_79",
+          "name": null,
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_80",
+          "name": "Show label",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_81",
+          "name": "History",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_82",
+          "name": "PM Session Algo start (13.30)",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_83",
+          "name": null,
+          "type": "color",
+          "value": 2152810051
+        },
+        {
+          "id": "in_84",
+          "name": null,
+          "type": "text",
+          "value": "Dotted"
+        },
+        {
+          "id": "in_85",
+          "name": "Show label",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_86",
+          "name": "Last Hour (15.00-16.00)",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_87",
+          "name": null,
+          "type": "color",
+          "value": 2152810051
+        },
+        {
+          "id": "in_88",
+          "name": null,
+          "type": "text",
+          "value": "Dashed"
+        },
+        {
+          "id": "in_89",
+          "name": "Show label",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_90",
+          "name": "90 Minute Cycles (AM+PM)",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_91",
+          "name": null,
+          "type": "color",
+          "value": 2152810051
+        },
+        {
+          "id": "in_92",
+          "name": null,
+          "type": "text",
+          "value": "Solid"
+        },
+        {
+          "id": "in_93",
+          "name": "Hide labels if timeframe is above (in minutes)",
+          "type": "text",
+          "value": "5"
+        },
+        {
+          "id": "in_94",
+          "name": "Timezone",
+          "type": "text",
+          "value": "GMT"
+        },
+        {
+          "id": "in_95",
+          "name": "Show Day Separators",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_96",
+          "name": null,
+          "type": "color",
+          "value": 2152810051
+        },
+        {
+          "id": "in_97",
+          "name": null,
+          "type": "text",
+          "value": "Solid"
+        },
+        {
+          "id": "in_98",
+          "name": "Show Day Labels",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_99",
+          "name": "Abbreviated Day Labels",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_100",
+          "name": "Show maximum amount of (calendar) days",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_101",
+          "name": null,
+          "type": "integer",
+          "value": 7
+        },
+        {
+          "id": "in_102",
+          "name": "Show weekends",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_103",
+          "name": null,
+          "type": "color",
+          "value": 223430211
+        },
+        {
+          "id": "__profile",
+          "name": null,
+          "type": "bool",
+          "value": false
+        }
+      ],
+      "plotTitles": {
+        "plot_0": {
+          "title": "plot_0",
+          "plottype": "shape_square",
+          "trackPrice": false,
+          "color": "#2962ff",
+          "display": 4294967287
+        },
+        "plot_10": {
+          "title": "plot_10",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_12": {
+          "title": "plot_12",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_14": {
+          "title": "plot_14",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_16": {
+          "title": "plot_16",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_18": {
+          "title": "plot_18",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_2": {
+          "title": "plot_2",
+          "plottype": "chars",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_20": {
+          "title": "plot_20",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_22": {
+          "title": "plot_22",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_24": {
+          "title": "plot_24",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_26": {
+          "title": "plot_26",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_28": {
+          "title": "plot_28",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_30": {
+          "title": "plot_30",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_32": {
+          "title": "plot_32",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_34": {
+          "title": "plot_34",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_36": {
+          "title": "plot_36",
+          "plottype": "shape_circle",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_38": {
+          "title": "plot_38",
+          "plottype": "bg_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_4": {
+          "title": "plot_4",
+          "plottype": "chars",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_6": {
+          "title": "plot_6",
+          "plottype": "chars",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_8": {
+          "title": "plot_8",
+          "plottype": "chars",
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 4294967287
+        },
+        "plot_3": {
+          "title": "plot_3",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_5": {
+          "title": "plot_5",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_7": {
+          "title": "plot_7",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_9": {
+          "title": "plot_9",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_11": {
+          "title": "plot_11",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_13": {
+          "title": "plot_13",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_15": {
+          "title": "plot_15",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_17": {
+          "title": "plot_17",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_19": {
+          "title": "plot_19",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_21": {
+          "title": "plot_21",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_23": {
+          "title": "plot_23",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_25": {
+          "title": "plot_25",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_27": {
+          "title": "plot_27",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_29": {
+          "title": "plot_29",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_31": {
+          "title": "plot_31",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_33": {
+          "title": "plot_33",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_35": {
+          "title": "plot_35",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_37": {
+          "title": "plot_37",
+          "plottype": "text_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        }
+      },
+      "graphicNonEmpty": {
+        "performance": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "performance",
+              "preview": {
+                "ctor": "Ye",
+                "keys": [
+                  "_primitivesDataById",
+                  "_primitiveById",
+                  "_changed",
+                  "_cleared",
+                  "_materializePrimitive",
+                  "_isRematerializationRequiredWithNewIndexes"
+                ],
+                "_primitivesDataById": {
+                  "ctor": "Map",
+                  "keys": []
+                },
+                "_primitiveById": {
+                  "ctor": "Map",
+                  "keys": []
+                },
+                "_changed": {
+                  "ctor": "s",
+                  "keys": [
+                    "fire",
+                    "_listeners"
+                  ]
+                },
+                "_cleared": {
+                  "ctor": "s",
+                  "keys": [
+                    "fire",
+                    "_listeners"
+                  ]
+                },
+                "_materializePrimitive": {
+                  "ctor": "Function",
+                  "keys": []
+                },
+                "_isRematerializationRequiredWithNewIndexes": false
+              }
+            }
+          ]
+        },
+        "dwglines": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "lines",
+              "preview": {
+                "ctor": "Map",
+                "keys": []
+              }
+            }
+          ]
+        },
+        "dwgboxes": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "boxes",
+              "preview": {
+                "ctor": "Map",
+                "keys": []
+              }
+            }
+          ]
+        },
+        "dwglabels": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "labels",
+              "preview": {
+                "ctor": "Map",
+                "keys": []
+              }
+            }
+          ]
+        }
+      },
+      "alert": {
+        "hasAlert": true,
+        "hasAlertConditions": true,
+        "hasAlertFunction": true,
+        "alertStatus": {
+          "_listeners": [],
+          "_value": 0
+        }
+      }
+    },
+    {
+      "id": "ZdJin1",
+      "name": "FXN - Asian Session Range",
+      "visible": false,
+      "dataLength": 0,
+      "hasPlots": true,
+      "inputNamed": [
+        {
+          "id": "text",
+          "name": "ILScript",
+          "type": "text",
+          "value": "[long-encrypted-or-text]"
+        },
+        {
+          "id": "pineId",
+          "name": "pineId",
+          "type": "text",
+          "value": "PUB;jNLZBfpYDOA3zFHJXTusK3CD7dbsi4sk"
+        },
+        {
+          "id": "pineVersion",
+          "name": "pineVersion",
+          "type": "text",
+          "value": "13.0"
+        },
+        {
+          "id": "in_0",
+          "name": "Start Session Hour (EST)",
+          "type": "text",
+          "value": "20"
+        },
+        {
+          "id": "in_1",
+          "name": "Start Session Minute (EST)",
+          "type": "text",
+          "value": "00"
+        },
+        {
+          "id": "in_2",
+          "name": "End Session Hour (EST)",
+          "type": "text",
+          "value": "02"
+        },
+        {
+          "id": "in_3",
+          "name": "End Session Minute (EST)",
+          "type": "text",
+          "value": "00"
+        },
+        {
+          "id": "in_4",
+          "name": "Extend Session Lines Until Hour (EST)",
+          "type": "text",
+          "value": "11"
+        },
+        {
+          "id": "in_5",
+          "name": "Extend Session Lines Until Minute (EST)",
+          "type": "text",
+          "value": "30"
+        },
+        {
+          "id": "in_6",
+          "name": "Asian Range Border Color",
+          "type": "text",
+          "value": "blue"
+        },
+        {
+          "id": "in_7",
+          "name": "Asian Box Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_8",
+          "name": "Asian Box Line Style",
+          "type": "text",
+          "value": "solid"
+        },
+        {
+          "id": "in_9",
+          "name": "Session High / Low / Mid Line Width",
+          "type": "integer",
+          "value": 2
+        },
+        {
+          "id": "in_10",
+          "name": "Session High / Low Line Style",
+          "type": "text",
+          "value": "dotted"
+        },
+        {
+          "id": "in_11",
+          "name": "Middle Range Line Color",
+          "type": "text",
+          "value": "orange"
+        },
+        {
+          "id": "in_12",
+          "name": "Middle Range Line Style",
+          "type": "text",
+          "value": "dotted"
+        },
+        {
+          "id": "in_13",
+          "name": "Text Color",
+          "type": "text",
+          "value": "blue"
+        },
+        {
+          "id": "in_14",
+          "name": "Text Size",
+          "type": "text",
+          "value": "normal"
+        },
+        {
+          "id": "in_15",
+          "name": "Show London Session Box",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_16",
+          "name": "Show London Session Range Pips",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_17",
+          "name": "London Start Hour (EST)",
+          "type": "text",
+          "value": "03"
+        },
+        {
+          "id": "in_18",
+          "name": "London Start Minute (EST)",
+          "type": "text",
+          "value": "00"
+        },
+        {
+          "id": "in_19",
+          "name": "London End Hour (EST)",
+          "type": "text",
+          "value": "07"
+        },
+        {
+          "id": "in_20",
+          "name": "London End Minute (EST)",
+          "type": "text",
+          "value": "00"
+        },
+        {
+          "id": "in_21",
+          "name": "London Range Border Color",
+          "type": "text",
+          "value": "teal"
+        },
+        {
+          "id": "in_22",
+          "name": "London Box Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_23",
+          "name": "London Box Line Style",
+          "type": "text",
+          "value": "solid"
+        },
+        {
+          "id": "in_24",
+          "name": "Session High / Low / Mid Line Width",
+          "type": "integer",
+          "value": 2
+        },
+        {
+          "id": "in_25",
+          "name": "Session High / Low Line Style",
+          "type": "text",
+          "value": "dotted"
+        },
+        {
+          "id": "in_26",
+          "name": "Middle Range Line Color",
+          "type": "text",
+          "value": "teal"
+        },
+        {
+          "id": "in_27",
+          "name": "Middle Range Line Style",
+          "type": "text",
+          "value": "dotted"
+        },
+        {
+          "id": "in_28",
+          "name": "Text Color",
+          "type": "text",
+          "value": "teal"
+        },
+        {
+          "id": "in_29",
+          "name": "Text Size",
+          "type": "text",
+          "value": "normal"
+        },
+        {
+          "id": "in_30",
+          "name": "Show New York Session Box",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_31",
+          "name": "Show New York Session Range Pips",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_32",
+          "name": "New York Start Hour (EST)",
+          "type": "text",
+          "value": "08"
+        },
+        {
+          "id": "in_33",
+          "name": "New York Start Minute (EST)",
+          "type": "text",
+          "value": "00"
+        },
+        {
+          "id": "in_34",
+          "name": "New York End Hour (EST)",
+          "type": "text",
+          "value": "12"
+        },
+        {
+          "id": "in_35",
+          "name": "New York End Minute (EST)",
+          "type": "text",
+          "value": "00"
+        },
+        {
+          "id": "in_36",
+          "name": "New York Range Border Color",
+          "type": "text",
+          "value": "silver"
+        },
+        {
+          "id": "in_37",
+          "name": "New York Box Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_38",
+          "name": "New York Box Line Style",
+          "type": "text",
+          "value": "solid"
+        },
+        {
+          "id": "in_39",
+          "name": "Session High / Low / Mid Line Width",
+          "type": "integer",
+          "value": 2
+        },
+        {
+          "id": "in_40",
+          "name": "Session High / Low Line Style",
+          "type": "text",
+          "value": "dotted"
+        },
+        {
+          "id": "in_41",
+          "name": "Middle Range Line Color",
+          "type": "text",
+          "value": "silver"
+        },
+        {
+          "id": "in_42",
+          "name": "Middle Range Line Style",
+          "type": "text",
+          "value": "dotted"
+        },
+        {
+          "id": "in_43",
+          "name": "Text Color",
+          "type": "text",
+          "value": "silver"
+        },
+        {
+          "id": "in_44",
+          "name": "Text Size",
+          "type": "text",
+          "value": "normal"
+        },
+        {
+          "id": "in_45",
+          "name": "Show Average Daily Range",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_46",
+          "name": "Display average range as forex pips?",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_47",
+          "name": "Show ADR for x days",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_48",
+          "name": "ADR Length parameter (Days - default 3 weeks, 21 days)",
+          "type": "integer",
+          "value": 21
+        },
+        {
+          "id": "in_49",
+          "name": "Show Previous Days High / Low",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_50",
+          "name": "Previous Days Line Color",
+          "type": "text",
+          "value": "yellow"
+        },
+        {
+          "id": "in_51",
+          "name": "Previous Days Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_52",
+          "name": "Previous Days Line Style",
+          "type": "text",
+          "value": "dashed"
+        },
+        {
+          "id": "in_53",
+          "name": "Show Previous Days Range",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_54",
+          "name": "Show Line Label (YH / YL)",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_55",
+          "name": "Show Last Weeks High / Low",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_56",
+          "name": "Last Week Line Color",
+          "type": "text",
+          "value": "orange"
+        },
+        {
+          "id": "in_57",
+          "name": "Last Week Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_58",
+          "name": "Last Week Line Style",
+          "type": "text",
+          "value": "dashed"
+        },
+        {
+          "id": "in_59",
+          "name": "Show Line Label (PWH / PWL)",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "id": "in_60",
+          "name": "Show This Weeks High / Low",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_61",
+          "name": "This Weeks Line Color",
+          "type": "text",
+          "value": "olive"
+        },
+        {
+          "id": "in_62",
+          "name": "This Weeks Line Width",
+          "type": "integer",
+          "value": 1
+        },
+        {
+          "id": "in_63",
+          "name": "This Weeks Line Style",
+          "type": "text",
+          "value": "dashed"
+        },
+        {
+          "id": "in_64",
+          "name": "Show Line Label (WH / WL)",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "id": "in_65",
+          "name": "Show Hi / Low Time of Day (Always Displays Eastern Standard Time)",
+          "type": "bool",
+          "value": false
+        }
+      ],
+      "plotTitles": {
+        "plot_0": {
+          "title": "plot_0",
+          "plottype": 0,
+          "visible": true,
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 15
+        },
+        "plot_1": {
+          "title": "plot_1",
+          "plottype": 0,
+          "visible": true,
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 15
+        },
+        "plot_10": {
+          "title": "plot_10",
+          "plottype": "bg_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_2": {
+          "title": "plot_2",
+          "plottype": "bg_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_4": {
+          "title": "plot_4",
+          "plottype": 0,
+          "visible": true,
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 15
+        },
+        "plot_5": {
+          "title": "plot_5",
+          "plottype": 0,
+          "visible": true,
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 15
+        },
+        "plot_6": {
+          "title": "plot_6",
+          "plottype": "bg_colorer",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        },
+        "plot_8": {
+          "title": "plot_8",
+          "plottype": 0,
+          "visible": true,
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 15
+        },
+        "plot_9": {
+          "title": "plot_9",
+          "plottype": 0,
+          "visible": true,
+          "trackPrice": false,
+          "color": "rgba(255,255,255,0)",
+          "display": 15
+        },
+        "plot_12": {
+          "title": "plot_12",
+          "plottype": "alertcondition",
+          "trackPrice": false,
+          "color": "#2962FF",
+          "display": 4294967295
+        }
+      },
+      "graphicNonEmpty": {
+        "performance": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "performance",
+              "preview": {
+                "ctor": "Ye",
+                "keys": [
+                  "_primitivesDataById",
+                  "_primitiveById",
+                  "_changed",
+                  "_cleared",
+                  "_materializePrimitive",
+                  "_isRematerializationRequiredWithNewIndexes"
+                ],
+                "_primitivesDataById": {
+                  "ctor": "Map",
+                  "keys": []
+                },
+                "_primitiveById": {
+                  "ctor": "Map",
+                  "keys": []
+                },
+                "_changed": {
+                  "ctor": "s",
+                  "keys": [
+                    "fire",
+                    "_listeners"
+                  ]
+                },
+                "_cleared": {
+                  "ctor": "s",
+                  "keys": [
+                    "fire",
+                    "_listeners"
+                  ]
+                },
+                "_materializePrimitive": {
+                  "ctor": "Function",
+                  "keys": []
+                },
+                "_isRematerializationRequiredWithNewIndexes": false
+              }
+            }
+          ]
+        },
+        "dwglines": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "lines",
+              "preview": {
+                "ctor": "Map",
+                "keys": []
+              }
+            }
+          ]
+        },
+        "dwglabels": {
+          "size": 1,
+          "sample": [
+            {
+              "key": "labels",
+              "preview": {
+                "ctor": "Map",
+                "keys": []
+              }
+            }
+          ]
+        }
+      },
+      "alert": {
+        "hasAlert": true,
+        "hasAlertConditions": true,
+        "hasAlertFunction": true,
+        "alertStatus": {
+          "_listeners": [],
+          "_value": 0
+        }
+      }
+    }
+  ],
+  "shapeCounts": {
+    "trend_line": 111,
+    "path": 5,
+    "short_position": 29,
+    "long_position": 35,
+    "rectangle": 60,
+    "brush": 1,
+    "highlighter": 3,
+    "horizontal_ray": 1,
+    "vertical_line": 22,
+    "fib_retracement": 1
+  },
+  "shapeTotal": 268
+}
