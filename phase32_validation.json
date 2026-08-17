@@ -1,7 +1,7 @@
 {
   "ok": true,
   "phase": 32,
-  "timestamp": "2026-08-17T09:47:01.099769+00:00",
+  "timestamp": "2026-08-17T09:51:12.476300+00:00",
   "project_status": "PAUSED_DEPLOYMENT_PREP",
   "execution_status": "PAUSED",
   "frozen": {
@@ -72,11 +72,10 @@
     "journal\\phase31_nq_dvp_sim": {
       "files": {
         "journal\\phase31_nq_dvp_sim\\executions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "journal\\phase31_nq_dvp_sim\\HALT": "24379c235f00f0f8318f985b5aee70438b797871a5b36673646e4195b1076f47",
         "journal\\phase31_nq_dvp_sim\\live_events.jsonl": "444431c1a4ea017453c010b1f7d92decbbfff74a86854d2c3d33eada870bfb42",
         "journal\\phase31_nq_dvp_sim\\runner_state.json": "f1b96f08ddfd88bb94aa42c0cd5cb87d2692d88abc6f0e5d70b9f03825cf32a2"
       },
-      "file_count": 4
+      "file_count": 3
     }
   },
   "secret_scan": {
@@ -88,18 +87,23 @@
   "tests": {
     "phase_tests": {
       "ok": true,
-      "returncode": 0,
-      "tail": "after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\nC:\\Users\\tanam\\AppData\\Roaming\\Python\\Python314\\site-packages\\openbb_intrinio\\models\\forward_eps_estimates.py:52: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\nC:\\Users\\tanam\\AppData\\Roaming\\Python\\Python314\\site-packages\\openbb_intrinio\\models\\forward_sales_estimates.py:52: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\nC:\\Users\\tanam\\AppData\\Roaming\\Python\\Python314\\site-packages\\openbb_intrinio\\models\\options_chains.py:118: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.13/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.\n  @model_validator(mode=\"after\")\n.....................................................................................................................................................................................................................................................................................................................................................\n----------------------------------------------------------------------\nRan 439 tests in 66.632s\n\nOK\n"
+      "count": 439
     },
     "nt_bridge_tests": {
       "ok": true,
-      "returncode": 0,
-      "tail": "...................\n----------------------------------------------------------------------\nRan 19 tests in 0.014s\n\nOK\n"
+      "count": 19
     },
     "ok": true
   },
   "git": {
-    "initialized": false
+    "initialized": true,
+    "branch": "main",
+    "commit": "534e3e4a9b60633b82baea8932eedc3826112db9",
+    "remote_url": "https://github.com/Tanatswa1011/Aitrade.git",
+    "tag": "aitrade-pre-prop-phase32",
+    "push_status": "success",
+    "remote_private_verified": false,
+    "remote_private_note": "gh CLI not authenticated; push succeeded to configured private remote"
   },
   "prop_firm_selected": false,
   "paid_live_data": false,
