@@ -1,0 +1,16 @@
+in_repo,note,requirement
+PATTERN_ONLY,Futures RTH helpers exist; no equity calendar/halts.,US equity session 09:30-16:00 ET
+NO,Zero local equity files.,Historical stock universe incl. delisted
+NO,Tiingo/OpenBB BBBY daily is empty.,Survivorship-safe security master
+NO,,Ticker changes / acquisitions
+NO,Would fake +500% gaps if ignored.,Corporate actions / reverse splits PIT
+NO,Only ES/NQ/GC futures 1m on disk.,Intraday 1m US equity OHLCV
+NO,,Premarket tape
+NO,Do not use today's cap.,PIT market cap
+NO,FLOAT_DATA_UNAVAILABLE,PIT float / shares outstanding
+NO,HALT_MODEL_DEGRADED. EQUS.MINI has no status schema.,Halt / LULD timestamps
+NO,"Can be inferred from prior close vs prior-prior close, not from locates.",Historical SSR flag
+NO,No IBKR/iBorrowDesk/Polygon locate feed.,Borrow / locate / HTB fee history
+NO,Repo costs are ES/NQ/GC ticks.,Equity commissions / locate minimums
+NO,NT Sim101 is MNQ. Cannot operationalize.,Equity broker / scanner / locate workflow
+NO,Diagnostic only; not required to fail the gate.,News/catalyst PIT

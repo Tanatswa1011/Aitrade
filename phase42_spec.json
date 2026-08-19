@@ -1,0 +1,100 @@
+{
+  "phase": 42,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "methodology_corrections": [],
+  "execution": "DRY_RUN_NO_BROKER",
+  "forbidden": "No VWAP as primary, no DVP clone, no EMA/RSI/FVG/volume-profile/ORB/sweep/DOM/MBP/MBO/TSMOM/news-alpha, no Fibonacci 0.618 search, no holdout tuning, no indicator soup, no freeze.",
+  "closed_branches": ["MACRO_EDGE_REJECTED", "CLOSE_NQ_SWEEP_RESEARCH_BRANCH", "CLOSE_ORB_RESEARCH_BRANCH", "CLOSE_TSMOM_RESEARCH_BRANCH", "VOLUME_PROFILE_STRUCTURAL_EFFECT_ONLY"],
+  "distinct_from_dvp": {
+    "dvp": "15m hour-return AND session VWAP drift, then opposing 1m candle, fixed 80-pt stop, trade window 10:30-15:30",
+    "phase42": "Completed 1h/4h return regime without VWAP, first RTH retracement of session impulse vs 09:30 open, 5m confirmation, stop at pullback extreme. VWAP recorded only as diagnostic."
+  },
+  "instruments": {
+    "ES": {"tick": 0.25, "point_usd": 50.0, "commission_points": 0.08, "data": "data/databento/ES/stitched/databento_ES_v0_1m.jsonl"},
+    "NQ": {"tick": 0.25, "point_usd": 20.0, "commission_points": 0.20, "data": "data/databento/NQ/stitched/databento_NQ_stitched_1m.jsonl"}
+  },
+  "session": {
+    "timezone": "America/New_York",
+    "rth_start": "09:30",
+    "no_new_entries_after": "15:30",
+    "flatten": "15:55",
+    "rth_end": "16:00",
+    "min_rth_1m_bars": 350,
+    "max_trades_per_day": 1
+  },
+  "htf": {
+    "1h": {
+      "alignment": "America/New_York clock hours (bucket start :00). Bar.time is bucket open. Close time = open + 3600. Unfinished hour omitted.",
+      "return": "close of last completed 1h / close of the 1h bar four intervals earlier - 1. Requires 5 completed 1h closes.",
+      "threshold": 0.002,
+      "bullish": "return >= +0.20%",
+      "bearish": "return <= -0.20%",
+      "neutral": "otherwise"
+    },
+    "4h": {
+      "alignment": "CME Globex 18:00 America/New_York, then +4h steps (18:00, 22:00, 02:00, 06:00, 10:00, 14:00).",
+      "return": "close of last completed 4h / close of the 4h bar three intervals earlier - 1. Requires 4 completed 4h closes.",
+      "threshold": 0.002
+    },
+    "leak": "Decision at time T uses only HTF bars whose close_ts <= T. Current unfinished HTF bar is never used.",
+    "threshold_locked": "0.20% predeclared from the research brief. Not chosen from P&L. TRAIN distribution is reported as feasibility only.",
+    "strength_buckets": {
+      "weak": "0.20% <= |return| < 0.40%",
+      "medium": "0.40% <= |return| < 0.80%",
+      "strong": "|return| >= 0.80%"
+    },
+    "age_buckets": ["new_1", "age_2", "age_3_5", "older_6plus"]
+  },
+  "impulse": {
+    "method": "SESSION_EXTREME_VS_RTH_OPEN",
+    "bullish": "impulse_high = running RTH high since 09:30; impulse_anchor = 09:30 open; retracement = (impulse_high - 5m_low) / (impulse_high - open)",
+    "bearish": "impulse_low = running RTH low since 09:30; impulse_anchor = 09:30 open; retracement = (5m_high - impulse_low) / (open - impulse_low)",
+    "min_impulse_ticks": 8,
+    "note": "No ICT swings. No 15m discretionary labeling. Impulse must exist in the trend direction (high > open for longs, low < open for shorts)."
+  },
+  "retracement_buckets": {
+    "shallow": [0.25, 0.40],
+    "medium": [0.40, 0.60],
+    "deep": [0.60, 0.75],
+    "cancel_beyond": 0.75
+  },
+  "primary_candidate": {
+    "id": "HTF_1H_TREND_FIRST_PULLBACK_5M_CONFIRM",
+    "family": "A",
+    "rules": "1h trend from completed bars only at each 5m decision. Wait for the first 5m bar whose retracement vs session impulse lands in the medium bucket [40%, 60%]. After that tagging bar, first completed 5m candle in the trend direction (long: close>open; short: close<open). Enter the next 5m open +/- 1 tick. Stop = pullback extreme from tag through confirm +/- 1 tick. Target = 1R (0.5/1.5/2/3R tracked independently). Flatten 15:55. Max 1 trade/day. Same-bar stop+target on 1m path = AMBIGUOUS. If retracement exceeds 75% before confirm, cancel. If HTF leaves the required side before confirm, cancel.",
+    "reason": "Locked before Phase 42 P&L. Tests whether a 1h directional regime plus first medium pullback plus simple 5m continuation can be monetized."
+  },
+  "secondary_candidates": [
+    {
+      "id": "HTF_1H_TREND_FIRST_PULLBACK_5M_BREAK",
+      "family": "B",
+      "rules": "Same 1h trend and first medium pullback. Confirmation = first subsequent 5m that breaks the prior 5m high (long) or prior 5m low (short). Enter next 5m open."
+    },
+    {
+      "id": "HTF_4H_TREND_FIRST_PULLBACK_5M_CONFIRM",
+      "family": "C",
+      "rules": "Same pullback and 5m candle confirmation, but regime is completed 4h return over prior 3 intervals at +/- 0.20%."
+    }
+  ],
+  "atr_robustness": {
+    "note": "Diagnostic only. Not a third family.",
+    "multiples": [0.5, 1.0],
+    "atr": "14-bar ATR of completed 5m bars at decision time. Bullish: pullback from session high >= k*ATR."
+  },
+  "fills": {"primary_adverse_ticks": 1, "overlays": [0, 1, 2]},
+  "stop_buffers_ticks": [0, 1, 2],
+  "targets_r": [0.5, 1.0, 1.5, 2.0, 3.0],
+  "primary_target_r": 1.0,
+  "chrono": {
+    "train_end": "2024-12-31",
+    "holdout_start": "2025-01-02",
+    "note": "Predeclared. Same split as Phase 38/39/41. No holdout tuning."
+  },
+  "news": {
+    "default": "T-5m to T+5m around 08:30 never overlaps RTH entries after 09:30.",
+    "1000_et": "No complete 10:00 calendar in-repo. Do not invent a daily 09:55-10:05 filter. Report as limitation."
+  },
+  "vwap": "Diagnostic only. If the candidate requires VWAP alignment to work, treat as DVP-like and do not promote.",
+  "do_not_pool": true,
+  "note": "Phase 42 does not freeze. Candidate JSON only if HTF_PULLBACK_EDGE_FOUND."
+}

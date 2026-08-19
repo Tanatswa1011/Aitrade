@@ -1,0 +1,112 @@
+{
+  "phase": 39,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "methodology_corrections": [],
+  "execution": "DRY_RUN_NO_BROKER",
+  "final_orb_branch": true,
+  "forbidden": "No VWAP, RSI, MACD, FVG, CHoCH, DOM, MBP, MBO, delta, sweep, MA filters. Not a news strategy. Not a DVP clone. Do not reopen a large OR-window or penetration grid. Do not enter the Phase 38 immediate breakout.",
+  "phase38_baseline": {
+    "id": "OR15_B_STOPA_1R",
+    "must_reproduce": true,
+    "note": "Phase 38 verdict BREAKOUT_EDGE_WEAK is source of truth. 91-92% returned inside the range. That is not evidence that retests work."
+  },
+  "instruments": {
+    "NQ": {
+      "data": "data/databento/NQ/stitched/databento_NQ_stitched_1m.jsonl",
+      "roll": "AITRADE volume-crossover, activate 18:00 America/New_York",
+      "tick": 0.25,
+      "point_usd": 20.0,
+      "commission_rt_usd": 4.0,
+      "commission_points": 0.2,
+      "max_stop_points": 80.0
+    },
+    "ES": {
+      "data": "data/databento/ES/stitched/databento_ES_v0_1m.jsonl",
+      "roll": "Databento ES.v.0 volume-continuous",
+      "tick": 0.25,
+      "point_usd": 50.0,
+      "commission_rt_usd": 4.0,
+      "commission_points": 0.08,
+      "max_stop_points": 40.0
+    }
+  },
+  "session": {
+    "timezone": "America/New_York",
+    "rth_start": "09:30",
+    "rth_end": "16:00",
+    "or_anchor": "09:30",
+    "flatten": "15:55",
+    "min_rth_1m_bars": 350
+  },
+  "opening_range": {
+    "primary_minutes": 15,
+    "diagnostic_minutes": [5, 30],
+    "or_valid_at": "window close. No trade may use OR levels before that close."
+  },
+  "breakout": {
+    "family": "close_1m",
+    "long": "completed 1m close > OR_HIGH",
+    "short": "completed 1m close < OR_LOW",
+    "activates": "WAITING_FOR_RETEST. Does not enter."
+  },
+  "retest_trigger_family": {
+    "T0_exact": "PRIMARY. Long: 1m low <= OR_HIGH. Short: 1m high >= OR_LOW.",
+    "T1_two_ticks": "Long: 1m low <= OR_HIGH + 2 ticks. Short: 1m high >= OR_LOW - 2 ticks. Approach within 2 ticks counts.",
+    "T2_five_pct_width": "Long: 1m low <= OR_HIGH + min(0.05*OR_WIDTH, 8 ticks). Short inverse. Cap prevents huge-range pathology."
+  },
+  "retest_fail_family": {
+    "fail_0pct": "Any strict trade inside the range (penetration > 0) fails.",
+    "fail_10pct": "PRIMARY. Fail if max penetration > 0.10 * OR_WIDTH.",
+    "fail_25pct": "Fail if max penetration > 0.25 * OR_WIDTH."
+  },
+  "confirmation_family": {
+    "A_range": "After a valid retest, first 1m range trades back outside the broken boundary. Fill = boundary +/- 1 tick (not wick extreme).",
+    "B_close_1m": "PRIMARY. After a valid retest, completed 1m close back outside the broken boundary. Entry at next 1m open +/- 1 tick.",
+    "C_close_5m": "Diagnostic. After a valid retest, RTH-aligned 5m close back outside. Entry at next 5m open +/- 1 tick."
+  },
+  "retest_expiry_sec": 1800,
+  "retest_expiry_note": "30 minutes after breakout confirmation close. Not optimized.",
+  "first_retest_only": true,
+  "opposite_boundary_before_confirm": "BREAKOUT_INVALIDATED. Range trades through the opposite OR boundary. No reversal trade.",
+  "stops": {
+    "A_retest_extreme": "PRIMARY. Long SL = retest_low - 1 tick. Short SL = retest_high + 1 tick.",
+    "B_boundary_2ticks": "Long SL = OR_HIGH - 2 ticks. Short SL = OR_LOW + 2 ticks.",
+    "C_mid": "Diagnostic. SL = OR_MID.",
+    "P38_opposite": "Read-only comparison. Long SL = OR_LOW. Short SL = OR_HIGH. Not a Phase 39 primary."
+  },
+  "min_stop_ticks": 2,
+  "targets_R": [0.5, 1.0, 1.5, 2.0, 3.0],
+  "gate_target_R": 1.0,
+  "same_bar_stop_and_target": "AMBIGUOUS — do not assume target first",
+  "fills": {
+    "primary_adverse_ticks": 1,
+    "overlays": [0, 1, 2],
+    "no_passive_or_boundary_fill_on_primary": true
+  },
+  "chrono": {
+    "train_end": "2024-12-31",
+    "holdout_start": "2025-01-02",
+    "walkforward_years": [2020, 2021, 2022, 2023, 2024, 2025, 2026]
+  },
+  "news": {
+    "bls_0830_pm5": "Does not overlap RTH 09:30 entries. Report 0 removed.",
+    "slot_1000_et_pm5": "Diagnostic count of would-be entries in 09:55-10:05 ET. Not a primary filter. No invented 10:00 event calendar.",
+    "fomc": "Not used as a trade filter."
+  },
+  "relative_volume": "DIAGNOSTIC_ONLY",
+  "primary_candidate": {
+    "id": "OR15_1M_BREAK_1M_RETEST_HOLD",
+    "or_minutes": 15,
+    "breakout": "close_1m",
+    "retest_trigger": "T0_exact",
+    "fail_frac": 0.10,
+    "confirm": "B_close_1m",
+    "stop": "A_retest_extreme",
+    "target_R": 1.0,
+    "fill_adverse_ticks": 1,
+    "expiry_sec": 1800,
+    "reason": "Shallow first return to the exact broken OR15 boundary, 1m close hold, next-bar market fill, stop beyond the retest extreme. Locked before Phase 39 P&L. 1R is the middle of the target family."
+  },
+  "do_not_pool_es_nq": true,
+  "note": "Phase 39 is the final ORB research phase. No freeze. Candidate JSON only if ORB_RETEST_EDGE_FOUND."
+}

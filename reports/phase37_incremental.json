@@ -1,0 +1,148 @@
+{
+  "model0_intercept": {
+    "name": "intercept",
+    "cols": [],
+    "n_train": 84,
+    "n_holdout": 30,
+    "train_brier": 0.24305555555555558,
+    "holdout_brier": 0.2236111111111111,
+    "holdout_logloss": 0.6399381717190507,
+    "holdout_base_rate": 0.7,
+    "holdout_mean_p": 0.5833333333333334,
+    "intercept_only": true
+  },
+  "model1_pen": {
+    "name": "penetration",
+    "cols": [
+      "penetration_points"
+    ],
+    "n_train": 84,
+    "n_holdout": 30,
+    "train_brier": 0.24304693003373856,
+    "holdout_brier": 0.2236398824520559,
+    "holdout_logloss": 0.639997128953395,
+    "holdout_base_rate": 0.7,
+    "holdout_mean_p": 0.5822866806442734,
+    "weights": [
+      0.3326633632292449,
+      0.005602401354184471
+    ]
+  },
+  "model2_struct": {
+    "name": "pen+tod+openbar",
+    "cols": [
+      "penetration_points",
+      "seconds_from_rth_open",
+      "opening_bar"
+    ],
+    "n_train": 84,
+    "n_holdout": 30,
+    "train_brier": 0.2256291330214209,
+    "holdout_brier": 0.24083157476154543,
+    "holdout_logloss": 0.6774558710198896,
+    "holdout_base_rate": 0.7,
+    "holdout_mean_p": 0.6078736611748632,
+    "weights": [
+      0.3396414692330658,
+      -0.02370322094408737,
+      -0.11423166900239885,
+      0.21497346208629706
+    ]
+  },
+  "model3_ndelta": {
+    "name": "struct+ndelta",
+    "cols": [
+      "penetration_points",
+      "seconds_from_rth_open",
+      "opening_bar",
+      "ndelta_rev_sweep60"
+    ],
+    "n_train": 84,
+    "n_holdout": 30,
+    "train_brier": 0.20583581850363442,
+    "holdout_brier": 0.22970207431228248,
+    "holdout_logloss": 0.6558538047215283,
+    "holdout_base_rate": 0.7,
+    "holdout_mean_p": 0.6205342009792448,
+    "weights": [
+      0.3483816971534625,
+      -0.03461906879302414,
+      -0.09890823658940337,
+      0.18205520737376202,
+      0.274919397826308
+    ]
+  },
+  "model4_burst": {
+    "name": "struct+burst",
+    "cols": [
+      "penetration_points",
+      "seconds_from_rth_open",
+      "opening_bar",
+      "volume_burst"
+    ],
+    "n_train": 84,
+    "n_holdout": 30,
+    "train_brier": 0.225571882618487,
+    "holdout_brier": 0.24129215496097448,
+    "holdout_logloss": 0.679669489726097,
+    "holdout_base_rate": 0.7,
+    "holdout_mean_p": 0.6122080044815915,
+    "weights": [
+      0.341775394954057,
+      -0.025719773665230507,
+      -0.11590504015432646,
+      0.20194466546296197,
+      0.057816331202746984
+    ]
+  },
+  "model5_eff": {
+    "name": "struct+efficiency",
+    "cols": [
+      "penetration_points",
+      "seconds_from_rth_open",
+      "opening_bar",
+      "flow_efficiency"
+    ],
+    "n_train": 84,
+    "n_holdout": 30,
+    "train_brier": 0.22549849626534177,
+    "holdout_brier": 0.24109918721118861,
+    "holdout_logloss": 0.6780115984053652,
+    "holdout_base_rate": 0.7,
+    "holdout_mean_p": 0.6081406242225463,
+    "weights": [
+      0.3397109120363822,
+      -0.020295112892636115,
+      -0.1139231390118904,
+      0.21505740790061767,
+      0.02353571769421361
+    ]
+  },
+  "model6_flow_set": {
+    "name": "struct+ndelta+burst+exhaustion",
+    "cols": [
+      "penetration_points",
+      "seconds_from_rth_open",
+      "opening_bar",
+      "ndelta_rev_sweep60",
+      "volume_burst",
+      "exhaustion_score"
+    ],
+    "n_train": 84,
+    "n_holdout": 30,
+    "train_brier": 0.20493648581012766,
+    "holdout_brier": 0.22822286299828684,
+    "holdout_logloss": 0.6545247147563374,
+    "holdout_base_rate": 0.7,
+    "holdout_mean_p": 0.6222767436333067,
+    "weights": [
+      0.350606062449492,
+      -0.044170481667784284,
+      -0.09600320445018942,
+      0.17196116960940216,
+      0.2721457255312361,
+      0.06729842523982704,
+      -0.04898605200165496
+    ]
+  }
+}

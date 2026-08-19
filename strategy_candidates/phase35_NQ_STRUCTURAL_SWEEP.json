@@ -1,0 +1,12 @@
+{
+  "phase": "phase35",
+  "strategy_family": "nq_liquidity_microstructure_reversal_v1",
+  "strategy_version": "v1.phase35",
+  "status": "RESEARCH_ONLY_NOT_FROZEN",
+  "verdict": "STRUCTURAL_ONLY_EDGE_FOUND",
+  "mbo_recommendation": "DO_NOT_ESCALATE_TO_MBO",
+  "n_eligible": 269,
+  "p_reversal": 0.4275092936802974,
+  "note": "RESEARCH ONLY. No freeze. No broker execution. No entries unless a later phase authorizes strategy construction.",
+  "mbo_note": "Phase T requires a precise unresolved hypothesis that needs order identity. Persistence is already an MBP-10 top-of-book size ratio; its stable lift is negative (high persistence -> continuation), the opposite of a reload-for-reversal story. withdrawal_proxy is 1-persistence. executed_to_displayed is THRESHOLD_UNSTABLE. Model 6 holdout Brier 0.226 is worse than structural Model 2 0.222. No MBO feature is specified."
+}

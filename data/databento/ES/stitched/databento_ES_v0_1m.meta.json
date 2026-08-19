@@ -1,0 +1,37 @@
+{
+  "symbol": "databento_ES_v0",
+  "timeframe": "1m",
+  "source": "databento:GLBX.MDP3:ES.v.0_volume_continuous",
+  "capture_time": "2026-08-18T19:15:14.792907+00:00",
+  "earliest_bar": 1577919600,
+  "latest_bar": 1786924740,
+  "bar_count": 2338955,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "databento_ES_v0",
+      "timeframe": "1m",
+      "bar_count": 2338955,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 0,
+      "gaps_head": [],
+      "earliest": 1577919600,
+      "latest": 1786924740,
+      "utc_normalized": true
+    },
+    "path": "data\\databento\\ES\\stitched\\databento_ES_v0_1m.jsonl"
+  },
+  "root": "ES",
+  "schema": "ohlcv-1m",
+  "continuous_choice": "databento_ES.v.0_volume_continuous",
+  "volume_semantics": "Databento GLBX.MDP3 ohlcv-1m volume = total trade volume aggregated over the 1m interval (CME MDP 3.0 electronic session trades). Units: contract lots traded. May differ from official venue settlement volumes that include block/OTC.",
+  "volume_status": "PROVIDER_DOCUMENTED_TRADE_VOLUME",
+  "tick_size": 0.25,
+  "phase": 38,
+  "period": "2020-01-01 -> 2026-08-16",
+  "cost_usd": 8.539020642638
+}

@@ -1,0 +1,29 @@
+{
+  "pilot_windows": {
+    "schema": "mbp-10 + trades",
+    "n_files": 40,
+    "compressed_bytes": 136768115,
+    "compressed_mb": 136.77,
+    "mbp10_cost_usd": 2.9228472188109995,
+    "mbp10_records": 17056431,
+    "trades_cost_usd": 0.549571573734,
+    "trades_records": 439061,
+    "note": "Overlapping ±60s/±120s windows around 20 NQM6 RTH sweeps, 2026-05-13..2026-06-12."
+  },
+  "scale_from_feasibility_probe_NQM6": {
+    "mbo_rth_day_usd": 1.197407881916,
+    "mbo_rth_day_records": 12755029,
+    "mbp10_rth_day_usd": 1.740522675216,
+    "mbp10_rth_day_records": 10156913,
+    "trades_rth_day_usd": 0.305068731308,
+    "mbo_month_usd": 32.213128606975,
+    "mbp10_month_usd": 47.788185164332,
+    "mbo_year_usd": 165.526697762311,
+    "mbp10_year_usd": 243.905096322298,
+    "compressed_mb_per_rth_day_est_from_pilot": 82,
+    "one_month_compressed_gb_est": 1.8,
+    "three_month_compressed_gb_est": 5.4,
+    "one_year_compressed_gb_est": 22,
+    "windowed_vs_full_rth": "Pilot windows cost $2.92 MBP-10 vs ~$35 for 20 full RTH days. Prefer windows until order-id / reload features require full-day MBO from UTC midnight."
+  }
+}

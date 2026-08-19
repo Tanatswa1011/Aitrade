@@ -1,0 +1,19 @@
+{
+  "gate": "scaled_phase34_estimate",
+  "scaled_estimate_usd": 46.70403275973024,
+  "cost_cap_usd": 50.0,
+  "n_windows_mbp10": 269,
+  "n_windows_trades": 269,
+  "mbp-10": {
+    "ok": true,
+    "schema": "mbp-10",
+    "n_windows": 269,
+    "cost_method": "scaled_from_phase34_not_per_window_get_cost"
+  },
+  "trades": {
+    "ok": true,
+    "schema": "trades",
+    "n_windows": 269,
+    "cost_method": "scaled_from_phase34_not_per_window_get_cost"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "dvp_journal": "journal/phase29_nq_drift_vwap/trades.jsonl",
+  "dvp_n_days": 1690,
+  "macro_n_days": 37,
+  "same_day_overlap_n": 37,
+  "daily_pnl_correlation_macro_vs_dvp": 0.2789808124367032,
+  "simultaneous_exposure_days": 3,
+  "dvp_mean_pnl_on_event_days": 7.123376623376624,
+  "dvp_mean_pnl_off_event_days": 21.426432291666668,
+  "gc_v2_replay": "in_memory_phase25_V2_not_writing_frozen_journals",
+  "gc_same_day_overlap_n": 2,
+  "daily_r_correlation_macro_vs_gc_v2": null,
+  "ensemble_agreement_n": 67,
+  "ensemble_compared_n": 121,
+  "note": "Frozen strategy files and paper journals were not modified."
+}

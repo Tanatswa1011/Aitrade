@@ -1,0 +1,71 @@
+{
+  "phase": 41,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "methodology_corrections": [],
+  "execution": "DRY_RUN_NO_BROKER",
+  "forbidden": "No ORB, sweeps, DOM, MBP, MBO, delta, VWAP, TSMOM, discretionary P/b/D shapes, HVN/LVN as primary, 68/75 value-area search, cash/ETF substitutes, holdout tuning.",
+  "closed_branches": ["MACRO_EDGE_REJECTED", "CLOSE_NQ_SWEEP_RESEARCH_BRANCH", "CLOSE_ORB_RESEARCH_BRANCH", "CLOSE_TSMOM_RESEARCH_BRANCH"],
+  "profile_source": {
+    "status": "DEGRADED_1M_VOLUME_PROFILE",
+    "reason": "Databento trades schema is ~$0.30 per NQ RTH day; 2020-2026 ES+NQ is economically infeasible (~$1000). No local trade tape exists. Phase 41 uses 1m OHLCV volume distributed uniformly across each bar's tick range. Not a trade-by-trade profile. Do not promote a result that would reverse under true prints without a later tape phase.",
+    "bucket": "1 tick (ES/NQ 0.25)",
+    "bar_volume_allocation": "For each RTH 1m bar, volume V is split equally across ticks from low to high inclusive. Zero-volume bars skipped. High==low: all V at that tick.",
+    "poc_tiebreak": "Max volume tick. Ties: closest to session VWAP of typical price (H+L+C)/3; remaining ties take the lower tick.",
+    "value_area": "70 percent. Single-row expansion from POC: at each step add the adjacent unused row with more volume. Equal volume: expand the lower-price side first. VAH=max included tick, VAL=min included tick.",
+    "leak": "Profile for day T uses only completed RTH 09:30-16:00 bars of the prior valid session. Next day cannot see T volume."
+  },
+  "instruments": {
+    "ES": {"tick": 0.25, "point_usd": 50.0, "commission_points": 0.08, "max_stop_points": 40.0, "data": "data/databento/ES/stitched/databento_ES_v0_1m.jsonl"},
+    "NQ": {"tick": 0.25, "point_usd": 20.0, "commission_points": 0.20, "max_stop_points": 80.0, "data": "data/databento/NQ/stitched/databento_NQ_stitched_1m.jsonl"}
+  },
+  "session": {
+    "timezone": "America/New_York",
+    "rth_start": "09:30",
+    "rth_end": "16:00",
+    "flatten": "15:55",
+    "min_rth_1m_bars": 350
+  },
+  "open_classes": ["OPEN_ABOVE_VAH", "OPEN_INSIDE_VALUE", "OPEN_BELOW_VAL"],
+  "acceptance": {
+    "A_1m_close": "PRIMARY. First completed 1m close with VAL <= close <= VAH.",
+    "B_two_1m": "Two consecutive completed 1m closes inside value.",
+    "C_5m": "Diagnostic. First RTH-aligned 5m close inside value."
+  },
+  "rejection": {
+    "primary": "1m close rejection. Open outside. Price trades to/through the boundary (low<=VAH from above, high>=VAL from below). Then a completed 1m close back outside. Enter next 1m open.",
+    "first_trade": "Diagnostic. Same test, but rejection is the first bar that trades the boundary then closes outside without a prior inside close.",
+    "close_5m": "Diagnostic only."
+  },
+  "primary_candidate": {
+    "id": "VP_OUTSIDE_ACCEPT_POC",
+    "family": "B",
+    "rules": "Open outside prior value. Acceptance A: first 1m close inside [VAL,VAH]. Enter next 1m open +/- 1 tick toward POC (short if open was above VAH, long if below VAL). Stop = extreme of the outside excursion from RTH open through the signal bar, plus 1 tick. Target = prior POC. Flatten 15:55. Reject if stop > instrument max_stop_points. Same-bar stop+target = AMBIGUOUS.",
+    "reason": "Tests whether acceptance into prior value rotates toward POC. Locked before Phase 41 P&L. Competing rejection and inside-rotation candidates are reported, not substituted after seeing results."
+  },
+  "secondary_candidates": [
+    {
+      "id": "VP_OUTSIDE_REJECT_1R",
+      "family": "A",
+      "rules": "Open outside. Boundary test then 1m close back outside. Enter next open away from value. Stop = test extreme + 1 tick. Target = 1R. Flatten 15:55."
+    },
+    {
+      "id": "VP_INSIDE_ROTATE_POC",
+      "family": "C",
+      "rules": "Open inside value and not exactly on POC. Enter 09:30 open +/- 1 tick toward POC. Stop = near value boundary +/- 1 tick. Target = POC. Flatten 15:55."
+    }
+  ],
+  "fills": {"primary_adverse_ticks": 1, "overlays": [0, 1, 2]},
+  "targets_on_primary": ["POC", "1R", "opposite_value"],
+  "chrono": {
+    "train_end": "2024-12-31",
+    "holdout_start": "2025-01-02",
+    "note": "Predeclared. Same split as Phase 38/39. Train 2020-2024; holdout 2025-2026 YTD."
+  },
+  "news": {
+    "bls_0830": "T-5m to T+5m around 08:30 never overlaps RTH 09:30 entries.",
+    "1000_et": "No complete 10:00 calendar in-repo. Do not invent a daily 09:55-10:05 filter. Report as limitation. Optional diagnostic overlay only."
+  },
+  "hvn_lvn": "Not primary. Skip unless VAH/VAL/POC already show a tradable edge.",
+  "do_not_pool": true,
+  "note": "Phase 41 does not freeze. Candidate JSON only if VOLUME_PROFILE_EDGE_FOUND."
+}

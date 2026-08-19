@@ -1,0 +1,10 @@
+{
+  "n_eligible_sweeps": 269,
+  "method": "scale Phase 34 windowed cost ($2.92 MBP-10 + $0.55 trades / 20 events)",
+  "est_mbp10_usd": 39.31229509300794,
+  "est_trades_usd": 7.3917376667223,
+  "est_total_usd": 46.70403275973024,
+  "est_mb_from_phase34": 1839.5565000000001,
+  "window": "T-60s to T+120s (Phase 34 frozen; not T-120/T+300)",
+  "cost_cap_usd": 50.0
+}

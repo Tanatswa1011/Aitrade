@@ -1,0 +1,54 @@
+{
+  "source": "BLS archived news releases (HTML)",
+  "timezone": "America/New_York",
+  "dst_aware": true,
+  "default_release_local": "08:30",
+  "coverage": {
+    "start": "2020-01-10",
+    "end": "2026-08-12",
+    "cpi_n": 79,
+    "nfp_n": 79
+  },
+  "first_print_parse": {
+    "cpi_u_mom_pct": {
+      "n": 79,
+      "parsed": 0,
+      "parse_rate": 0.0
+    },
+    "core_cpi_mom_pct": {
+      "n": 79,
+      "parsed": 0,
+      "parse_rate": 0.0
+    },
+    "nfp_change": {
+      "n": 79,
+      "parsed": 0,
+      "parse_rate": 0.0
+    },
+    "unemployment_rate_pct": {
+      "n": 79,
+      "parsed": 0,
+      "parse_rate": 0.0
+    },
+    "ahe_cents": {
+      "n": 79,
+      "parsed": 0,
+      "parse_rate": 0.0
+    }
+  },
+  "consensus": {
+    "available": false,
+    "openbb_calendar": "credentials_missing_fmp_tradingeconomics_fred",
+    "nasdaq_api": "current_session_only",
+    "implication": "Cannot compute raw_surprise = actual - consensus without leakage-safe survey vintages"
+  },
+  "known_limitations": [
+    "October 2025 Employment Situation and CPI were not published on the normal schedule due to the 2025 federal appropriations lapse; delayed/missing prints are whatever BLS archived.",
+    "Headline parsers can fail on atypical wording (especially COVID-era NFP). Unparsed actuals are null, not imputed.",
+    "Archived HTML is the first public release text, but BLS later revises CES/CPI in subsequent months. We do not splice those revisions into actuals.",
+    "No Treasury yield or DXY series is stored in this repository; those confirmation legs are omitted rather than substituted.",
+    "No ES Databento store exists; ES is not silently replaced by a cash index or CFD.",
+    "Survey consensus is unavailable; surprise-conditioned rules are not tested in this phase."
+  ],
+  "events_path": "C:/Users/tanam/OneDrive/Desktop/aitrade/data/macro/bls_events.jsonl"
+}

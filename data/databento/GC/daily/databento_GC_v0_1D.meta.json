@@ -1,0 +1,37 @@
+{
+  "symbol": "databento_GC_v0",
+  "timeframe": "1D",
+  "source": "databento:GLBX.MDP3:GC.v.0_ohlcv-1d",
+  "capture_time": "2026-08-18T20:30:05.413969+00:00",
+  "earliest_bar": 1275868800,
+  "latest_bar": 1786838400,
+  "bar_count": 5026,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "databento_GC_v0",
+      "timeframe": "1D",
+      "bar_count": 5026,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 0,
+      "gaps_head": [],
+      "earliest": 1275868800,
+      "latest": 1786838400,
+      "utc_normalized": true
+    },
+    "path": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\data\\databento\\GC\\daily\\databento_GC_v0_1D.jsonl"
+  },
+  "root": "GC",
+  "schema": "ohlcv-1d",
+  "continuous_choice": "GC.v.0_volume_continuous",
+  "volume_semantics": "Databento GLBX.MDP3 ohlcv-1m volume = total trade volume aggregated over the 1m interval (CME MDP 3.0 electronic session trades). Units: contract lots traded. May differ from official venue settlement volumes that include block/OTC.",
+  "volume_status": "PROVIDER_DOCUMENTED_TRADE_VOLUME",
+  "phase": 40,
+  "period": "2010-06-06 -> 2026-08-16",
+  "cost_usd": 0.049804002047,
+  "n_bars": 5026
+}

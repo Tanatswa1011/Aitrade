@@ -1,0 +1,33 @@
+{
+  "phase": "phase33",
+  "strategy_family": "nq_post_news_macro_repricing_v1",
+  "strategy_version": "v1.phase33",
+  "instrument": "NQ",
+  "provider": "databento:GLBX.MDP3",
+  "candidate": {
+    "strategy_family": "nq_post_news_macro_repricing_v1",
+    "candidate_id": "B_FIRST_PULLBACK_NFP_D60",
+    "status": "RESEARCH_ONLY_NOT_FROZEN",
+    "entry_family": "B_FIRST_PULLBACK",
+    "event_family": "NFP",
+    "delay_minutes": 60,
+    "blackout": "DEFAULT_CONSERVATIVE_PM_5_5",
+    "config_hash": "ed7fa19bb7a97b18",
+    "resolved_n": 37,
+    "win_rate": 0.5675675675675675,
+    "expectancy_points": 8.06081081081081,
+    "profit_factor": 1.3199249128452668,
+    "oos_expectancy_points": 38.3125,
+    "cost_1tick_expectancy": 7.5608108108108105,
+    "note": "MACRO_EDGE_REJECTED. Residual cell recorded for evidence only — not a freeze or next-phase config."
+  },
+  "predeclared": {
+    "min_close_move_atr": 0.5,
+    "min_range_atr": 0.75,
+    "min_retention": 0.5,
+    "atr_period": 14,
+    "target_r": 1.0,
+    "news_profile": "DEFAULT_CONSERVATIVE_PM_5_5"
+  },
+  "note": "RESEARCH ONLY — MACRO_EDGE_REJECTED. Not production default, not frozen."
+}

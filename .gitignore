@@ -39,6 +39,8 @@ logs/**/*.log
 
 # Huge downloaded raw market datasets
 data/databento/**/*.jsonl
+data/databento/**/*.dbn
+data/databento/**/*.dbn.zst
 data/openbb/**/*.jsonl
 data/**/*.parquet
 data/**/*.csv.gz

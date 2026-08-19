@@ -1,0 +1,13 @@
+borrow,cost_now,coverage,float,halts,intraday,note,source,survivorship
+no,0,none,no,no,no,No equity files.,Local AITRADE disk,n/a
+no,existing TIINGO_TOKEN,live names (AAPL ok),no,no,not used,Cannot be the research universe.,OpenBB+Tiingo equity daily,FAIL (BBBY empty)
+no,541.300256878138,2023-03-28T00:00:00.000000000Z,no,NO status schema,yes from 2023-03-28,Train through 2022 would be empty. Not purchased.,Databento EQUS.MINI ohlcv-1m ALL,unknown/incomplete vs CRSP
+no,12.213696911931,2023-03-28T00:00:00.000000000Z,no,no,daily only,"~$12. Still no OR5, float, borrow.",Databento EQUS.MINI ohlcv-1d ALL,unknown
+no,0.346594423056,2023-03-28T00:00:00.000000000Z,no,status schema exists,IEX-only from 2023-03-28,Small-cap volume on IEX is not NMS volume. History too short.,Databento IEXG.TOPS,IEX-listed prints only
+no,1501.963886618614,2018-05-01T00:00:00.000000000Z,no,status schema,Nasdaq 2018-05+,~$1502. Not purchased. Still missing PIT cap/float/borrow and AMEX names.,Databento XNAS.ITCH ohlcv-1m ALL,Nasdaq tape; not NYSE American
+no,1907.078280933201,2023-03-28T00:00:00.000000000Z,no,status schema,from 2023-03-28,~$1907. Not purchased. History too short for TRAIN<=2022.,Databento DBEQ.BASIC ohlcv-1m ALL,unknown
+no,no POLYGON_API_KEY,not credentialed,not native PIT float,paid market events,possible if subscribed,Do not subscribe in this phase.,Polygon,spotty delisted
+"locates live, not 2018 history",no ALPACA_API_KEY,not credentialed,no,limited,SIP/IEX by plan,,Alpaca,generally live-tradable names
+no,absent,FMP_API_KEY absent,current-leaning,no,limited,,FMP,mixed
+no,not licensed,gold-standard daily PIT,"shares outstanding, not true float",no,no 1m,Would still need a 1m tape for OR5.,CRSP / WRDS,yes
+no,no NASDAQ_DATA_LINK_API_KEY,not credentialed,shares outstanding,no,no,,Nasdaq Data Link / Sharadar,Sharadar SF1 better than Yahoo

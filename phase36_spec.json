@@ -1,0 +1,94 @@
+{
+  "phase": 36,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "methodology_corrections": [],
+  "carried_forward_from_phase_35": {
+    "timezone": "America/New_York",
+    "rth_start": "09:30",
+    "rth_end": "16:00",
+    "no_new_sweep_after": "15:45",
+    "pdh_pdl": "Prior same-contract RTH 09:30-16:00 high/low from completed 1m bars.",
+    "sweep_up": "first RTH 1m bar with high > PDH",
+    "sweep_down": "first RTH 1m bar with low < PDL",
+    "sweep_known_at": "sweep_bar_close = sweep_bar_time + 60",
+    "penetration": "PDH: bar.high - PDH; PDL: PDL - bar.low",
+    "tick": 0.25,
+    "news": "Eligible sample excludes full CPI/NFP publication dates. Strict ±5m around 08:30 never overlaps RTH.",
+    "roll": "volume-crossover, 18:00 NY activation; PDH/PDL on the same raw contract as the sweep RTH day",
+    "eligible_universe": "phase35_sweep_events.csv (269 news-filtered events). Not re-detected with new rules."
+  },
+  "shallow": {
+    "definition": "penetration_points <= Phase 35 TRAIN-ONLY median",
+    "threshold_points": 18.25,
+    "source": "phase35_validation.json chrono.train_penetration.median_from_train",
+    "not_used": "Phase 34 sample median 26.375; Phase 36 outcome-maximizing cutoffs",
+    "neighborhood_for_robustness_only": [16.425, 18.25, 20.075]
+  },
+  "first_sweep": {
+    "primary": "earliest eligible sweep on that RTH day (PDH or PDL). Keep only if that first sweep is also shallow.",
+    "diagnostic": "all shallow sweeps, including non-first"
+  },
+  "reclaim": {
+    "A_range_1m": "After confirmation, first completed 1m bar whose range crosses back through the level. Sweep-bar wick-only reclaim (close still beyond the level) is NOT taken — same-bar sweep vs reclaim order is unknown on 1m.",
+    "B_close_1m": "First completed 1m bar at or after confirmation whose close is back through the level.",
+    "C_close_5m": "Diagnostic. First 5m bar (RTH-aligned from 09:30) that closes through the level after confirmation.",
+    "no_fill_at_level": true,
+    "no_fill_at_sweep_extreme": true
+  },
+  "entry": {
+    "timing": "next 1m bar OPEN after the confirming bar close",
+    "no_new_entry_at_or_after": "15:55",
+    "fill_primary": "1 tick adverse",
+    "fill_overlays": [0, 1, 2],
+    "direction": "PDL sweep -> LONG; PDH sweep -> SHORT"
+  },
+  "stop": {
+    "long": "sweep_low - buffer",
+    "short": "sweep_high + buffer",
+    "buffer_ticks_primary": 1,
+    "buffer_family": [0, 1, 2],
+    "reject_if_risk_points_gt": 40.0,
+    "nq_point_value_usd": 20.0
+  },
+  "targets": {
+    "family_R": [1.0, 1.5, 2.0, 3.0],
+    "predeclared_primary_R": 1.5,
+    "flatten": "15:55 America/New_York TIME_EXIT if neither stop nor target hit",
+    "same_bar_stop_and_target": "AMBIGUOUS — do not assume target first"
+  },
+  "expiry": {
+    "primary_sec": 300,
+    "family_sec": [60, 180, 300, 600],
+    "clock": "from sweep confirmation (bar close), not bar open"
+  },
+  "costs": {
+    "tick": 0.25,
+    "tick_usd_nq": 5.0,
+    "commission_round_turn_usd": 4.0,
+    "commission_points": 0.2,
+    "primary_fill": "1 tick adverse entry, 0 extra exit ticks (stop/target are stop orders)",
+    "stress_exit": "1 tick adverse exit overlay"
+  },
+  "primary_candidate": {
+    "id": "B",
+    "name": "SHALLOW_FIRST_SWEEP + 1M_CLOSE_RECLAIM",
+    "reclaim": "B_close_1m",
+    "expiry_sec": 300,
+    "sl_buffer_ticks": 1,
+    "target_R": 1.5,
+    "entry_adverse_ticks": 1,
+    "reason": "1m close is leak-safe confirmation. 1.5R is the middle of the target family, not the maximum. 1-tick fill is the realistic primary overlay. Chosen before seeing Phase 36 trade results."
+  },
+  "chrono": {
+    "train_end_date": "2026-04-09",
+    "holdout_start_date": "2026-04-13",
+    "walkforward_blocks": [
+      ["2025-06-17", "2025-09-29"],
+      ["2025-09-30", "2026-01-16"],
+      ["2026-01-20", "2026-04-24"],
+      ["2026-04-28", "2026-08-14"]
+    ]
+  },
+  "dom": "NOT IN THE LIVE FEATURE SET. No MBP, MBO, CVD, imbalance, FVG, CHoCH, RSI, MA.",
+  "note": "Shallow threshold was not searched against Phase 36 P&L."
+}

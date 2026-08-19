@@ -1,0 +1,21 @@
+error,ok,quote,value
+,True,equs_mini_1m_all_1day,0.546307772398
+,True,equs_mini_1d_all_2023_2026,12.213696911931
+,True,equs_mini_definition_1day,0.059400200844
+"BentoClientError:422 dataset_schema_not_supported
+Schema `status` is not supported on dataset `EQUS.MINI`. Use any of ['mbp-1', 'tbbo', 'trades', 'bbo-1s', 'bbo-1m', 'ohlcv-1s', 'ohlcv-1m', 'ohlcv-1h', 'ohlcv-1d', 'definition'].
+documentation: https://databento.com/docs/api-reference-historical/metadata/metadata-list-schemas",False,equs_mini_status_1day,
+,True,iex_1m_all_1day,0.346594423056
+"BentoClientError:422 data_start_before_available_start
+`start` in query ('2018-01-02 00:00:00+00:00') was before the available start of dataset IEXG.TOPS ('2023-03-28 00:00:00+00:00'). Try requesting with a later `start`.
+documentation: https://databento.com/docs/api-reference-historical/basics/datasets",False,iex_1d_all_2018_2026,
+"BentoClientError:422 data_start_before_available_start
+`start` in query ('2018-01-02 00:00:00+00:00') was before the available start of dataset EQUS.SUMMARY ('2024-07-01 00:00:00+00:00'). Try requesting with a later `start`.
+documentation: https://databento.com/docs/api-reference-historical/basics/datasets",False,equs_summary_1d_2018_2026,
+,True,equs_mini_1m_all_2023_2026,541.300256878138
+,True,xnas_itch_1m_1day,0.76553696394
+,True,xnas_itch_1m_2018_2026,1501.963886618614
+,True,xnas_itch_1d_2018_2026,29.704359769821
+,True,xnas_itch_status_1day,0.026669502258
+,True,dbeq_1m_2023_2026,1907.078280933201
+,True,dbeq_status_1day,0.106004998088

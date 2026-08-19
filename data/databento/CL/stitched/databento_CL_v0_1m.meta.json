@@ -1,0 +1,158 @@
+{
+  "symbol": "databento_CL_v0",
+  "timeframe": "1m",
+  "source": "databento:GLBX.MDP3:CL.v.0_volume_continuous",
+  "capture_time": "2026-08-18T23:00:07.376364+00:00",
+  "earliest_bar": 1577919600,
+  "latest_bar": 1786924740,
+  "bar_count": 2316307,
+  "extras": {
+    "integrity": {
+      "ok": true,
+      "symbol": "databento_CL_v0",
+      "timeframe": "1m",
+      "bar_count": 2316307,
+      "sorted": true,
+      "duplicate_timestamps": [],
+      "duplicate_count": 0,
+      "ohlc_invalid_count": 0,
+      "ohlc_invalid_timestamps": [],
+      "gap_count": 22315,
+      "gaps_head": [
+        {
+          "from": 1577925000,
+          "to": 1577925120,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1577926320,
+          "to": 1577926440,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1577938980,
+          "to": 1577939100,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578002340,
+          "to": 1578006000,
+          "delta_sec": 3660,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578009540,
+          "to": 1578009660,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578011880,
+          "to": 1578012000,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578012180,
+          "to": 1578012300,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578012360,
+          "to": 1578012480,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578088740,
+          "to": 1578265200,
+          "delta_sec": 176460,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578347940,
+          "to": 1578351600,
+          "delta_sec": 3660,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578434340,
+          "to": 1578438000,
+          "delta_sec": 3660,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578520740,
+          "to": 1578524400,
+          "delta_sec": 3660,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578607140,
+          "to": 1578610800,
+          "delta_sec": 3660,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578626520,
+          "to": 1578626640,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578629220,
+          "to": 1578629340,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578693540,
+          "to": 1578870000,
+          "delta_sec": 176460,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578952740,
+          "to": 1578956400,
+          "delta_sec": 3660,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1578978600,
+          "to": 1578978720,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1579036560,
+          "to": 1579036680,
+          "delta_sec": 120,
+          "expected_period_sec": 60
+        },
+        {
+          "from": 1579039140,
+          "to": 1579042800,
+          "delta_sec": 3660,
+          "expected_period_sec": 60
+        }
+      ],
+      "earliest": 1577919600,
+      "latest": 1786924740,
+      "utc_normalized": true
+    },
+    "path": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\data\\databento\\CL\\stitched\\databento_CL_v0_1m.jsonl"
+  },
+  "root": "CL",
+  "schema": "ohlcv-1m",
+  "continuous_choice": "databento_CL.v.0_volume_continuous",
+  "tick_size": 0.01,
+  "phase": 46,
+  "period": "2020-01-01 -> 2026-08-17",
+  "cost_usd": 8.456337675452,
+  "dbn_path": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\data\\databento\\CL\\stitched\\databento_CL_v0_1m.dbn.zst",
+  "capture_note": "2026-08-18T23:00:07.427458+00:00"
+}

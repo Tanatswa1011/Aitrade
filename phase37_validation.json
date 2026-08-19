@@ -1,0 +1,2175 @@
+{
+  "ok": true,
+  "phase": 37,
+  "status": "RESEARCH_COMPLETE",
+  "execution": "DRY_RUN_NO_BROKER",
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "file_sha": {
+    "gc": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541",
+    "gc_expected": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq_expected": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541"
+  },
+  "spec": {
+    "phase": 37,
+    "status": "DEFINITIONS_FROZEN_BEFORE_FEATURES",
+    "methodology_corrections": [],
+    "execution": "DRY_RUN_NO_BROKER",
+    "dom": "NOT IN THE LIVE FEATURE SET. No MBP, MBO, book imbalance, slope, resting depth, iceberg, reload, persistence.",
+    "carried_forward": {
+      "universe": "reports/phase35_sweep_events.csv (269 news-filtered events). Not re-detected.",
+      "labels": "label_300s from Phase 35 CSV. REVERSAL vs not. Unresolved counts as not-reversal, same as Phase 35 p_reversal.",
+      "shallow_points": 18.25,
+      "shallow_source": "phase35_validation.json chrono.train_penetration.median_from_train",
+      "first_sweep": "earliest eligible sweep on that RTH day (PDH or PDL).",
+      "timezone": "America/New_York",
+      "rth": "09:30-16:00",
+      "sweep_bar_time": "1m bar open; event known at bar close = open+60s",
+      "feature_cutoff_classification": "sweep_bar_close = sweep_bar_time + 60. Classification models must not use trades after this timestamp.",
+      "tick": 0.25,
+      "news": "Eligible sample already excludes full CPI/NFP dates. Strict \u00b15m around 08:30 never overlaps RTH.",
+      "chrono": {
+        "train_end_date": "2026-04-09",
+        "holdout_start_date": "2026-04-13",
+        "walkforward_blocks": [
+          [
+            "2025-06-17",
+            "2025-09-29"
+          ],
+          [
+            "2025-09-30",
+            "2026-01-16"
+          ],
+          [
+            "2026-01-20",
+            "2026-04-24"
+          ],
+          [
+            "2026-04-28",
+            "2026-08-14"
+          ]
+        ]
+      }
+    },
+    "data": {
+      "schema": "Databento GLBX.MDP3 trades (already cached, Phase 35 windows)",
+      "path": "data/databento/NQ/microstructure/trades/",
+      "download_window": "T_open-60s through T_open+120s. Not expanded.",
+      "no_new_download_unless_cache_missing": true,
+      "cash_index_cfd": false
+    },
+    "trade_signing": {
+      "method": "Databento trades.side aggressor (direct). No quote test, no tick rule, no future quotes.",
+      "ASK_A": "AGGRESSIVE_SELL",
+      "BID_B": "AGGRESSIVE_BUY",
+      "NONE_N": "UNSIGNED \u2014 counted in total volume and trade intensity, excluded from ABV/ASV/delta",
+      "source": "https://databento.com/docs/schemas-and-data-formats/trades : Ask = sell aggressor, Bid = buy aggressor"
+    },
+    "windows": {
+      "T": "sweep_bar_time (1m open)",
+      "classification_only_le_cutoff": true,
+      "classification": {
+        "pre_30": "T-30s inclusive to T exclusive",
+        "pre_60": "T-60s inclusive to T exclusive",
+        "sweep_30": "T inclusive to T+30s exclusive",
+        "sweep_60": "T inclusive to T+60s inclusive (bar close / confirmation)"
+      },
+      "diagnostic_may_leak_vs_300s_label": {
+        "post_30": "T+60s exclusive to T+90s inclusive",
+        "post_60": "T+60s exclusive to T+120s inclusive (end of cached window)",
+        "note": "These overlap the Phase 35 outcome path (starts at first 1m bar after the sweep bar). They are reported, never used in Models 0-6."
+      }
+    },
+    "features": {
+      "abv": "sum size of AGGRESSIVE_BUY",
+      "asv": "sum size of AGGRESSIVE_SELL",
+      "delta": "ABV - ASV",
+      "normalized_delta": "(ABV-ASV)/(ABV+ASV); 0.0 if ABV+ASV==0 (predeclared, not NaN)",
+      "reversal_aligned_delta": "PDL: delta (buying is positive). PDH: -delta (selling is positive).",
+      "reversal_aligned_ndelta": "same sign flip on normalized_delta",
+      "volume_burst": "vol(sweep_60) / max(vol(pre_60), 1.0). Pre-event denominator only. No future-session or same-TOD cross-day median (those data were not cached).",
+      "flow_efficiency": "opposing_aggressive_volume(sweep_60) / max(penetration_points, 0.25). PDL opposing=ASV, PDH opposing=ABV. High = lots of sweep-direction volume for little extension.",
+      "price_impact": "penetration_points / max(opposing_aggressive_volume(sweep_60), 1.0)",
+      "exhaustion_score": "opposing_vol_ratio / (1 + penetration_ticks). opposing_vol_ratio = opposing(sweep_60) / max(opposing(pre_60), 1.0).",
+      "delta_divergence": "1 if reversal_aligned_ndelta(sweep_60) > 0 else 0. Price made a new extreme by construction; this flags flow already opposing the sweep during the bar.",
+      "cvd": "event-local cumulative signed size (buy +size, sell -size) from first cached trade. Classification uses CVD at cutoff minus CVD at T_open.",
+      "trade_intensity": "trades/sec and contracts/sec in sweep_60; avg and max trade size; burstiness = (n_trades * sum_size^2) / max(sum_size,1)^2 (Herfindahl).",
+      "flow_flip_diagnostic": "1 if reversal_aligned_ndelta(sweep_60) < 0 AND reversal_aligned_ndelta(post_60) > 0. Uses post-cutoff trades. Diagnostic only.",
+      "reclaim_delta_diagnostic": "reversal_aligned_ndelta from cutoff to Phase 36 1m-close reclaim timestamp, only if reclaim_ts is inside the cached window. Diagnostic only.",
+      "winsorize": "none on raw tables. Logistic z-score uses TRAIN mean/sd only."
+    },
+    "primary_universe": "first eligible sweep of the day AND shallow (penetration_points <= 18.25) AND usable trades at cutoff",
+    "models": {
+      "universe": "primary_universe (first+shallow+flow). Model 0 is intercept-only.",
+      "model0": "intercept (shallow first-sweep baseline)",
+      "model1": "penetration_points",
+      "model2": "penetration_points + seconds_from_rth_open + opening_bar",
+      "model3": "model2 + reversal_aligned_ndelta(sweep_60)",
+      "model4": "model2 + volume_burst",
+      "model5": "model2 + flow_efficiency",
+      "model6": "model2 + ndelta_rev_sweep60 + volume_burst + exhaustion_score",
+      "method": "L2 logistic, TRAIN z-score, no sklearn stack"
+    },
+    "incremental_gate": {
+      "holdout_brier_improvement_vs_model2": 0.01,
+      "conditional_holdout_lift_pp": 0.08,
+      "conditional_rule": "TRAIN-median (or TRAIN 70th for burst) split of a leak-safe flow feature must lift P(reversal) by >= 0.08 on HOLDOUT vs the complementary shallow cell, with the same sign on TRAIN and at least 3 of 4 walk-forward blocks.",
+      "spearman_holdout_must_match_expected_sign": true,
+      "both_brier_and_conditional_required_for_edge": true,
+      "note": "A coefficient with the expected sign is not sufficient."
+    },
+    "strategy": {
+      "build_only_if_classification_gate_passes": true,
+      "reuse_phase36": "Candidate B geometry: 1m close reclaim, 300s expiry, sweep-extreme stop \u00b11 tick, 1.5R, next-bar open + 1 tick adverse, $4 RT",
+      "candidates": [
+        "A range_1m",
+        "B close_1m primary",
+        "C close_5m diagnostic"
+      ]
+    },
+    "costs": {
+      "commission_round_turn_usd": 4.0,
+      "commission_points": 0.2,
+      "fill_primary": "1 tick adverse entry",
+      "fill_overlays": [
+        0,
+        1,
+        2
+      ]
+    },
+    "note": "Phase 37 does not search new sweep rules, does not reopen Phase 35 depth, and does not freeze. If flow adds no stable incremental value: NO_INCREMENTAL_FLOW_VALUE and CLOSE_NQ_SWEEP_RESEARCH_BRANCH."
+  },
+  "funnel": {
+    "n_phase35_eligible": 269,
+    "n_first_sweeps": 247,
+    "n_any_shallow": 130,
+    "n_first_shallow": 114,
+    "n_trade_files": 269,
+    "n_missing_trade_file": 0,
+    "missing_event_ids": [],
+    "n_usable_flow_all": 269,
+    "n_first_shallow_with_flow": 114,
+    "n_train_first_shallow_flow": 84,
+    "n_holdout_first_shallow_flow": 30,
+    "dropped_silently": 0
+  },
+  "signing_sample": [
+    {
+      "event_id": "NQ|NQU5|PDL|2025-06-17|1750181340",
+      "side": "pdl_sweep",
+      "sweep60_abv": 416.0,
+      "sweep60_asv": 908.0,
+      "ndelta_rev_sweep60": -0.3716012084592145,
+      "n_unsigned": 0,
+      "n_signed": 773
+    },
+    {
+      "event_id": "NQ|NQU5|PDL|2025-06-18|1750273020",
+      "side": "pdl_sweep",
+      "sweep60_abv": 1187.0,
+      "sweep60_asv": 1526.0,
+      "ndelta_rev_sweep60": -0.12495392554367858,
+      "n_unsigned": 0,
+      "n_signed": 1851
+    },
+    {
+      "event_id": "NQ|NQU5|PDH|2025-06-20|1750426260",
+      "side": "pdh_sweep",
+      "sweep60_abv": 1336.0,
+      "sweep60_asv": 1427.0,
+      "ndelta_rev_sweep60": 0.0329352153456388,
+      "n_unsigned": 0,
+      "n_signed": 1948
+    },
+    {
+      "event_id": "NQ|NQU5|PDL|2025-06-23|1750685640",
+      "side": "pdl_sweep",
+      "sweep60_abv": 1449.0,
+      "sweep60_asv": 1583.0,
+      "ndelta_rev_sweep60": -0.044195250659630606,
+      "n_unsigned": 0,
+      "n_signed": 2235
+    },
+    {
+      "event_id": "NQ|NQU5|PDH|2025-06-24|1750771800",
+      "side": "pdh_sweep",
+      "sweep60_abv": 1829.0,
+      "sweep60_asv": 1932.0,
+      "ndelta_rev_sweep60": 0.027386333421962245,
+      "n_unsigned": 0,
+      "n_signed": 2786
+    },
+    {
+      "event_id": "NQ|NQU5|PDH|2025-06-25|1750858200",
+      "side": "pdh_sweep",
+      "sweep60_abv": 2650.0,
+      "sweep60_asv": 2559.0,
+      "ndelta_rev_sweep60": -0.01746976387022461,
+      "n_unsigned": 0,
+      "n_signed": 3607
+    },
+    {
+      "event_id": "NQ|NQU5|PDH|2025-06-26|1750944600",
+      "side": "pdh_sweep",
+      "sweep60_abv": 1447.0,
+      "sweep60_asv": 1679.0,
+      "ndelta_rev_sweep60": 0.07421625079974409,
+      "n_unsigned": 0,
+      "n_signed": 2416
+    },
+    {
+      "event_id": "NQ|NQU5|PDH|2025-06-27|1751031000",
+      "side": "pdh_sweep",
+      "sweep60_abv": 1891.0,
+      "sweep60_asv": 1806.0,
+      "ndelta_rev_sweep60": -0.022991614822829323,
+      "n_unsigned": 0,
+      "n_signed": 2686
+    }
+  ],
+  "baseline": {
+    "all_phase35": {
+      "n": 269,
+      "reversal": 115,
+      "continuation": 84,
+      "neither": 48,
+      "ambiguous": 22,
+      "p_reversal": 0.4275092936802974,
+      "p_reversal_wilson_lo": 0.36981842809618454,
+      "p_reversal_wilson_hi": 0.4872414923851495
+    },
+    "first_sweeps": {
+      "n": 247,
+      "reversal": 99,
+      "continuation": 80,
+      "neither": 48,
+      "ambiguous": 20,
+      "p_reversal": 0.4008097165991903,
+      "p_reversal_wilson_lo": 0.3416629920228956,
+      "p_reversal_wilson_hi": 0.4629946086302656
+    },
+    "first_shallow_with_flow": {
+      "n": 114,
+      "reversal": 70,
+      "continuation": 16,
+      "neither": 10,
+      "ambiguous": 18,
+      "p_reversal": 0.6140350877192983,
+      "p_reversal_wilson_lo": 0.5223413507600964,
+      "p_reversal_wilson_hi": 0.6982938069431256
+    },
+    "train": {
+      "n": 84,
+      "reversal": 49,
+      "continuation": 13,
+      "neither": 10,
+      "ambiguous": 12,
+      "p_reversal": 0.5833333333333334,
+      "p_reversal_wilson_lo": 0.4765244867612664,
+      "p_reversal_wilson_hi": 0.6828533023500432
+    },
+    "holdout": {
+      "n": 30,
+      "reversal": 21,
+      "continuation": 3,
+      "neither": 0,
+      "ambiguous": 6,
+      "p_reversal": 0.7,
+      "p_reversal_wilson_lo": 0.5212387898833981,
+      "p_reversal_wilson_hi": 0.8333543735604105
+    }
+  },
+  "feature_eval_full": [
+    {
+      "feature": "ndelta_rev_sweep60",
+      "n": 114,
+      "spearman": 0.38274039311491426,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": -0.08687525390326753,
+        "n_lo": 57,
+        "n_hi": 57,
+        "p_reversal_lo": 0.43859649122807015,
+        "p_reversal_hi": 0.7894736842105263,
+        "lift_hi_minus_lo": 0.3508771929824562
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.3508771929824562,
+          "p60": 0.27053140096618356,
+          "p70": 0.2566176470588235,
+          "p80": 0.1567128523650262
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "volume_burst",
+      "n": 114,
+      "spearman": 0.01587907210347999,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": 1.6706787473886633,
+        "n_lo": 57,
+        "n_hi": 57,
+        "p_reversal_lo": 0.6140350877192983,
+        "p_reversal_hi": 0.6140350877192983,
+        "lift_hi_minus_lo": 0.0
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": 0.0,
+          "p60": 0.01352657004830915,
+          "p70": 0.08897058823529413,
+          "p80": 0.10224558050645005
+        },
+        "sign": 0
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "flow_efficiency",
+      "n": 114,
+      "spearman": 0.05968340894066617,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": 260.4185692541857,
+        "n_lo": 57,
+        "n_hi": 57,
+        "p_reversal_lo": 0.5614035087719298,
+        "p_reversal_hi": 0.6666666666666666,
+        "lift_hi_minus_lo": 0.10526315789473684
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": 0.10526315789473684,
+          "p60": 0.08695652173913038,
+          "p70": -0.03676470588235292,
+          "p80": -0.061156235069278586
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "exhaustion_score",
+      "n": 114,
+      "spearman": -0.08651356525344271,
+      "expected_sign": 1,
+      "spearman_matches_expected": false,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": 0.08179293002228014,
+        "n_lo": 57,
+        "n_hi": 57,
+        "p_reversal_lo": 0.631578947368421,
+        "p_reversal_hi": 0.5964912280701754,
+        "lift_hi_minus_lo": -0.03508771929824561
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": -0.03508771929824561,
+          "p60": -0.05990338164251208,
+          "p70": -0.07867647058823524,
+          "p80": -0.11562350692785472
+        },
+        "sign": -1
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "delta_divergence",
+      "n": 114,
+      "spearman": 0.14422505261176297,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": 0.0,
+        "n_lo": 90,
+        "n_hi": 24,
+        "p_reversal_lo": 0.5777777777777777,
+        "p_reversal_hi": 0.75,
+        "lift_hi_minus_lo": 0.17222222222222228
+      },
+      "threshold_stability": {
+        "ok": false,
+        "stable": false,
+        "lifts": {
+          "p50": 0.17222222222222228,
+          "p60": 0.17222222222222228,
+          "p70": 0.17222222222222228,
+          "p80": null
+        }
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "price_impact",
+      "n": 114,
+      "spearman": -0.05968340894066617,
+      "expected_sign": -1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": 0.00384121916091133,
+        "n_lo": 57,
+        "n_hi": 57,
+        "p_reversal_lo": 0.6666666666666666,
+        "p_reversal_hi": 0.5614035087719298,
+        "lift_hi_minus_lo": -0.10526315789473684
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": -0.10526315789473684,
+          "p60": -0.09661835748792269,
+          "p70": -0.03676470588235292,
+          "p80": -0.11562350692785472
+        },
+        "sign": -1
+      },
+      "status": "THRESHOLD_STABLE"
+    }
+  ],
+  "feature_eval_train": [
+    {
+      "feature": "ndelta_rev_sweep60",
+      "n": 84,
+      "spearman": 0.4506388555949462,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 84,
+        "median": -0.09312437206749258,
+        "n_lo": 42,
+        "n_hi": 42,
+        "p_reversal_lo": 0.38095238095238093,
+        "p_reversal_hi": 0.7857142857142857,
+        "lift_hi_minus_lo": 0.40476190476190477
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.3851389676687465,
+          "p60": 0.3368983957219251,
+          "p70": 0.3654237288135593,
+          "p80": 0.30114135206321335
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "volume_burst",
+      "n": 84,
+      "spearman": 0.030374552697559908,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 84,
+        "median": 1.6211294938586036,
+        "n_lo": 42,
+        "n_hi": 42,
+        "p_reversal_lo": 0.5476190476190477,
+        "p_reversal_hi": 0.6190476190476191,
+        "lift_hi_minus_lo": 0.0714285714285714
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": 0.051616562677254674,
+          "p60": -0.012477718360071277,
+          "p70": 0.13762711864406785,
+          "p80": 0.15364354697102722
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "flow_efficiency",
+      "n": 84,
+      "spearman": 0.10008664085589412,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 84,
+        "median": 239.33271889400922,
+        "n_lo": 42,
+        "n_hi": 42,
+        "p_reversal_lo": 0.5238095238095238,
+        "p_reversal_hi": 0.6428571428571429,
+        "lift_hi_minus_lo": 0.11904761904761907
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": 0.09926262053318213,
+          "p60": 0.08734402852049905,
+          "p70": 0.13762711864406785,
+          "p80": -0.06760316066725192
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "exhaustion_score",
+      "n": 84,
+      "spearman": -0.022407456908035996,
+      "expected_sign": 1,
+      "spearman_matches_expected": false,
+      "median_split": {
+        "ok": true,
+        "n": 84,
+        "median": 0.07347207856775245,
+        "n_lo": 42,
+        "n_hi": 42,
+        "p_reversal_lo": 0.5714285714285714,
+        "p_reversal_hi": 0.5952380952380952,
+        "lift_hi_minus_lo": 0.023809523809523836
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": 0.003970504821327214,
+          "p60": -0.012477718360071277,
+          "p70": 0.08067796610169498,
+          "p80": 0.006145741878841093
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "delta_divergence",
+      "n": 84,
+      "spearman": 0.18358274403305322,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 84,
+        "median": 0.0,
+        "n_lo": 70,
+        "n_hi": 14,
+        "p_reversal_lo": 0.5428571428571428,
+        "p_reversal_hi": 0.7857142857142857,
+        "lift_hi_minus_lo": 0.24285714285714288
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.24285714285714288,
+          "p60": 0.24285714285714288,
+          "p70": 0.24285714285714288,
+          "p80": 0.24285714285714288
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "price_impact",
+      "n": 84,
+      "spearman": -0.10008664085589412,
+      "expected_sign": -1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 84,
+        "median": 0.004178358139981531,
+        "n_lo": 42,
+        "n_hi": 42,
+        "p_reversal_lo": 0.6428571428571429,
+        "p_reversal_hi": 0.5238095238095238,
+        "lift_hi_minus_lo": -0.11904761904761907
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": -0.09132161089052748,
+          "p60": -0.0623885918003565,
+          "p70": -0.09016949152542375,
+          "p80": -0.21510096575943816
+        },
+        "sign": -1
+      },
+      "status": "THRESHOLD_STABLE"
+    }
+  ],
+  "feature_eval_holdout": [
+    {
+      "feature": "ndelta_rev_sweep60",
+      "n": 30,
+      "spearman": 0.1806834335773656,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 30,
+        "median": -0.039500169795514434,
+        "n_lo": 15,
+        "n_hi": 15,
+        "p_reversal_lo": 0.6,
+        "p_reversal_hi": 0.8,
+        "lift_hi_minus_lo": 0.20000000000000007
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.20000000000000007,
+          "p60": 0.08333333333333337,
+          "p70": 0.11111111111111116,
+          "p80": 0.16666666666666674
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "volume_burst",
+      "n": 30,
+      "spearman": -0.13866403041983874,
+      "expected_sign": 1,
+      "spearman_matches_expected": false,
+      "median_split": {
+        "ok": true,
+        "n": 30,
+        "median": 2.104081966765805,
+        "n_lo": 15,
+        "n_hi": 15,
+        "p_reversal_lo": 0.8,
+        "p_reversal_hi": 0.6,
+        "lift_hi_minus_lo": -0.20000000000000007
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": -0.20000000000000007,
+          "p60": -0.19444444444444442,
+          "p70": -0.20634920634920628,
+          "p80": -0.25
+        },
+        "sign": -1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "flow_efficiency",
+      "n": 30,
+      "spearman": -0.16387567231435488,
+      "expected_sign": 1,
+      "spearman_matches_expected": false,
+      "median_split": {
+        "ok": true,
+        "n": 30,
+        "median": 327.93333333333334,
+        "n_lo": 15,
+        "n_hi": 15,
+        "p_reversal_lo": 0.8,
+        "p_reversal_hi": 0.6,
+        "lift_hi_minus_lo": -0.20000000000000007
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": -0.20000000000000007,
+          "p60": -0.19444444444444442,
+          "p70": -0.20634920634920628,
+          "p80": -0.25
+        },
+        "sign": -1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "exhaustion_score",
+      "n": 30,
+      "spearman": -0.4159920912595162,
+      "expected_sign": 1,
+      "spearman_matches_expected": false,
+      "median_split": {
+        "ok": true,
+        "n": 30,
+        "median": 0.11810906912937826,
+        "n_lo": 15,
+        "n_hi": 15,
+        "p_reversal_lo": 0.9333333333333333,
+        "p_reversal_hi": 0.4666666666666667,
+        "lift_hi_minus_lo": -0.4666666666666667
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": -0.4666666666666667,
+          "p60": -0.47222222222222215,
+          "p70": -0.3650793650793651,
+          "p80": -0.25
+        },
+        "sign": -1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "delta_divergence",
+      "n": 30,
+      "spearman": 0.0,
+      "expected_sign": 1,
+      "spearman_matches_expected": false,
+      "median_split": {
+        "ok": true,
+        "n": 30,
+        "median": 0.0,
+        "n_lo": 20,
+        "n_hi": 10,
+        "p_reversal_lo": 0.7,
+        "p_reversal_hi": 0.7,
+        "lift_hi_minus_lo": 0.0
+      },
+      "threshold_stability": {
+        "ok": false,
+        "stable": false,
+        "lifts": {
+          "p50": 0.0,
+          "p60": 0.0,
+          "p70": null,
+          "p80": null
+        }
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "price_impact",
+      "n": 30,
+      "spearman": 0.16387567231435488,
+      "expected_sign": -1,
+      "spearman_matches_expected": false,
+      "median_split": {
+        "ok": true,
+        "n": 30,
+        "median": 0.003051067892370184,
+        "n_lo": 15,
+        "n_hi": 15,
+        "p_reversal_lo": 0.6,
+        "p_reversal_hi": 0.8,
+        "lift_hi_minus_lo": 0.20000000000000007
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": 0.20000000000000007,
+          "p60": 0.08333333333333337,
+          "p70": 0.11111111111111116,
+          "p80": -0.04166666666666674
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    }
+  ],
+  "leak_diagnostic_eval": [
+    {
+      "feature": "ndelta_rev_post60",
+      "n": 114,
+      "spearman": 0.4112132120590853,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": 0.006789843881821653,
+        "n_lo": 57,
+        "n_hi": 57,
+        "p_reversal_lo": 0.45614035087719296,
+        "p_reversal_hi": 0.7719298245614035,
+        "lift_hi_minus_lo": 0.3157894736842105
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.3157894736842105,
+          "p60": 0.3439613526570048,
+          "p70": 0.38235294117647056,
+          "p80": 0.3201146679407548
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "feature": "flow_flip_diagnostic",
+      "n": 114,
+      "spearman": 0.28300209820810085,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 114,
+        "median": 0.0,
+        "n_lo": 60,
+        "n_hi": 54,
+        "p_reversal_lo": 0.48333333333333334,
+        "p_reversal_hi": 0.7592592592592593,
+        "lift_hi_minus_lo": 0.27592592592592596
+      },
+      "threshold_stability": {
+        "ok": false,
+        "stable": false,
+        "lifts": {
+          "p50": 0.27592592592592596,
+          "p60": null,
+          "p70": null,
+          "p80": null
+        }
+      },
+      "status": "THRESHOLD_UNSTABLE"
+    },
+    {
+      "feature": "ndelta_rev_reclaim_diagnostic",
+      "n": 80,
+      "spearman": 0.3313603784738686,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 80,
+        "median": -0.03424926799955577,
+        "n_lo": 40,
+        "n_hi": 40,
+        "p_reversal_lo": 0.65,
+        "p_reversal_hi": 0.875,
+        "lift_hi_minus_lo": 0.22499999999999998
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.21325828642901812,
+          "p60": 0.13541666666666663,
+          "p70": 0.10119047619047628,
+          "p80": 0.0625
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    }
+  ],
+  "conditional_lift": [
+    {
+      "feature": "ndelta_rev_sweep60",
+      "threshold_source": "train",
+      "threshold": -0.09214866945238619,
+      "high_means_more_reversal": true,
+      "n_train_hi": 41,
+      "n_train_lo": 43,
+      "p_train_hi": 0.7804878048780488,
+      "p_train_lo": 0.3953488372093023,
+      "train_lift": 0.3851389676687465,
+      "n_hold_hi": 18,
+      "n_hold_lo": 12,
+      "p_hold_hi": 0.7777777777777778,
+      "p_hold_lo": 0.5833333333333334,
+      "hold_lift": 0.19444444444444442,
+      "hold_hi_minus_shallow_baseline": 0.07777777777777783,
+      "wf_same_sign": 4,
+      "walkforward": [
+        {
+          "block": 1,
+          "start": "2025-06-17",
+          "end": "2025-09-29",
+          "n_hi": 17,
+          "n_lo": 15,
+          "p_hi": 1.0,
+          "p_lo": 0.26666666666666666,
+          "lift": 0.7333333333333334
+        },
+        {
+          "block": 2,
+          "start": "2025-09-30",
+          "end": "2026-01-16",
+          "n_hi": 17,
+          "n_lo": 14,
+          "p_hi": 0.5882352941176471,
+          "p_lo": 0.42857142857142855,
+          "lift": 0.15966386554621853
+        },
+        {
+          "block": 3,
+          "start": "2026-01-20",
+          "end": "2026-04-24",
+          "n_hi": 12,
+          "n_lo": 14,
+          "p_hi": 0.75,
+          "p_lo": 0.5,
+          "lift": 0.25
+        },
+        {
+          "block": 4,
+          "start": "2026-04-28",
+          "end": "2026-08-14",
+          "n_hi": 13,
+          "n_lo": 12,
+          "p_hi": 0.7692307692307693,
+          "p_lo": 0.5833333333333334,
+          "lift": 0.1858974358974359
+        }
+      ],
+      "conditional_ok": true,
+      "neighbor_holdout": [
+        {
+          "percentile": 0.5,
+          "threshold": -0.09214866945238619,
+          "n_hi": 18,
+          "n_lo": 12,
+          "p_hi": 0.7777777777777778,
+          "p_lo": 0.5833333333333334,
+          "lift": 0.19444444444444442
+        },
+        {
+          "percentile": 0.6,
+          "threshold": -0.07251361421610776,
+          "n_hi": 17,
+          "n_lo": 13,
+          "p_hi": 0.7647058823529411,
+          "p_lo": 0.6153846153846154,
+          "lift": 0.1493212669683257
+        },
+        {
+          "percentile": 0.7,
+          "threshold": -0.050946142649199416,
+          "n_hi": 16,
+          "n_lo": 14,
+          "p_hi": 0.75,
+          "p_lo": 0.6428571428571429,
+          "lift": 0.1071428571428571
+        },
+        {
+          "percentile": 0.8,
+          "threshold": -0.02628232301822806,
+          "n_hi": 13,
+          "n_lo": 17,
+          "p_hi": 0.7692307692307693,
+          "p_lo": 0.6470588235294118,
+          "lift": 0.12217194570135748
+        }
+      ]
+    },
+    {
+      "feature": "volume_burst",
+      "threshold_source": "train",
+      "threshold": 2.3321513002364065,
+      "high_means_more_reversal": true,
+      "n_train_hi": 25,
+      "n_train_lo": 59,
+      "p_train_hi": 0.68,
+      "p_train_lo": 0.5423728813559322,
+      "train_lift": 0.13762711864406785,
+      "n_hold_hi": 14,
+      "n_hold_lo": 16,
+      "p_hold_hi": 0.5714285714285714,
+      "p_hold_lo": 0.8125,
+      "hold_lift": -0.2410714285714286,
+      "hold_hi_minus_shallow_baseline": -0.12857142857142856,
+      "wf_same_sign": 3,
+      "walkforward": [
+        {
+          "block": 1,
+          "start": "2025-06-17",
+          "end": "2025-09-29",
+          "n_hi": 7,
+          "n_lo": 25,
+          "p_hi": 0.7142857142857143,
+          "p_lo": 0.64,
+          "lift": 0.07428571428571429
+        },
+        {
+          "block": 2,
+          "start": "2025-09-30",
+          "end": "2026-01-16",
+          "n_hi": 11,
+          "n_lo": 20,
+          "p_hi": 0.6363636363636364,
+          "p_lo": 0.45,
+          "lift": 0.18636363636363634
+        },
+        {
+          "block": 3,
+          "start": "2026-01-20",
+          "end": "2026-04-24",
+          "n_hi": 10,
+          "n_lo": 16,
+          "p_hi": 0.7,
+          "p_lo": 0.5625,
+          "lift": 0.13749999999999996
+        },
+        {
+          "block": 4,
+          "start": "2026-04-28",
+          "end": "2026-08-14",
+          "n_hi": 11,
+          "n_lo": 14,
+          "p_hi": 0.5454545454545454,
+          "p_lo": 0.7857142857142857,
+          "lift": -0.24025974025974028
+        }
+      ],
+      "conditional_ok": false,
+      "neighbor_holdout": [
+        {
+          "percentile": 0.5,
+          "threshold": 1.6274179983179142,
+          "n_hi": 17,
+          "n_lo": 13,
+          "p_hi": 0.6470588235294118,
+          "p_lo": 0.7692307692307693,
+          "lift": -0.12217194570135748
+        },
+        {
+          "percentile": 0.6,
+          "threshold": 1.8735976065818998,
+          "n_hi": 16,
+          "n_lo": 14,
+          "p_hi": 0.625,
+          "p_lo": 0.7857142857142857,
+          "lift": -0.1607142857142857
+        },
+        {
+          "percentile": 0.7,
+          "threshold": 2.3321513002364065,
+          "n_hi": 14,
+          "n_lo": 16,
+          "p_hi": 0.5714285714285714,
+          "p_lo": 0.8125,
+          "lift": -0.2410714285714286
+        },
+        {
+          "percentile": 0.8,
+          "threshold": 2.8177641653905052,
+          "n_hi": 12,
+          "n_lo": 18,
+          "p_hi": 0.5833333333333334,
+          "p_lo": 0.7777777777777778,
+          "lift": -0.19444444444444442
+        }
+      ]
+    },
+    {
+      "feature": "flow_efficiency",
+      "threshold_source": "train",
+      "threshold": 240.34285714285716,
+      "high_means_more_reversal": true,
+      "n_train_hi": 41,
+      "n_train_lo": 43,
+      "p_train_hi": 0.6341463414634146,
+      "p_train_lo": 0.5348837209302325,
+      "train_lift": 0.09926262053318213,
+      "n_hold_hi": 21,
+      "n_hold_lo": 9,
+      "p_hold_hi": 0.6666666666666666,
+      "p_hold_lo": 0.7777777777777778,
+      "hold_lift": -0.11111111111111116,
+      "hold_hi_minus_shallow_baseline": -0.033333333333333326,
+      "wf_same_sign": 2,
+      "walkforward": [
+        {
+          "block": 1,
+          "start": "2025-06-17",
+          "end": "2025-09-29",
+          "n_hi": 16,
+          "n_lo": 16,
+          "p_hi": 0.75,
+          "p_lo": 0.5625,
+          "lift": 0.1875
+        },
+        {
+          "block": 2,
+          "start": "2025-09-30",
+          "end": "2026-01-16",
+          "n_hi": 14,
+          "n_lo": 17,
+          "p_hi": 0.5,
+          "p_lo": 0.5294117647058824,
+          "lift": -0.02941176470588236
+        },
+        {
+          "block": 3,
+          "start": "2026-01-20",
+          "end": "2026-04-24",
+          "n_hi": 15,
+          "n_lo": 11,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.5454545454545454,
+          "lift": 0.12121212121212122
+        },
+        {
+          "block": 4,
+          "start": "2026-04-28",
+          "end": "2026-08-14",
+          "n_hi": 17,
+          "n_lo": 8,
+          "p_hi": 0.6470588235294118,
+          "p_lo": 0.75,
+          "lift": -0.1029411764705882
+        }
+      ],
+      "conditional_ok": false,
+      "neighbor_holdout": [
+        {
+          "percentile": 0.5,
+          "threshold": 240.34285714285716,
+          "n_hi": 21,
+          "n_lo": 9,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.7777777777777778,
+          "lift": -0.11111111111111116
+        },
+        {
+          "percentile": 0.6,
+          "threshold": 280.0,
+          "n_hi": 18,
+          "n_lo": 12,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.75,
+          "lift": -0.08333333333333337
+        },
+        {
+          "percentile": 0.7,
+          "threshold": 338.3448275862069,
+          "n_hi": 14,
+          "n_lo": 16,
+          "p_hi": 0.5714285714285714,
+          "p_lo": 0.8125,
+          "lift": -0.2410714285714286
+        },
+        {
+          "percentile": 0.8,
+          "threshold": 442.6,
+          "n_hi": 12,
+          "n_lo": 18,
+          "p_hi": 0.5833333333333334,
+          "p_lo": 0.7777777777777778,
+          "lift": -0.19444444444444442
+        }
+      ]
+    },
+    {
+      "feature": "exhaustion_score",
+      "threshold_source": "train",
+      "threshold": 0.0775954525954526,
+      "high_means_more_reversal": true,
+      "n_train_hi": 41,
+      "n_train_lo": 43,
+      "p_train_hi": 0.5853658536585366,
+      "p_train_lo": 0.5813953488372093,
+      "train_lift": 0.003970504821327214,
+      "n_hold_hi": 21,
+      "n_hold_lo": 9,
+      "p_hold_hi": 0.6190476190476191,
+      "p_hold_lo": 0.8888888888888888,
+      "hold_lift": -0.26984126984126977,
+      "hold_hi_minus_shallow_baseline": -0.08095238095238089,
+      "wf_same_sign": 2,
+      "walkforward": [
+        {
+          "block": 1,
+          "start": "2025-06-17",
+          "end": "2025-09-29",
+          "n_hi": 16,
+          "n_lo": 16,
+          "p_hi": 0.5625,
+          "p_lo": 0.75,
+          "lift": -0.1875
+        },
+        {
+          "block": 2,
+          "start": "2025-09-30",
+          "end": "2026-01-16",
+          "n_hi": 14,
+          "n_lo": 17,
+          "p_hi": 0.5714285714285714,
+          "p_lo": 0.47058823529411764,
+          "lift": 0.10084033613445376
+        },
+        {
+          "block": 3,
+          "start": "2026-01-20",
+          "end": "2026-04-24",
+          "n_hi": 15,
+          "n_lo": 11,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.5454545454545454,
+          "lift": 0.12121212121212122
+        },
+        {
+          "block": 4,
+          "start": "2026-04-28",
+          "end": "2026-08-14",
+          "n_hi": 17,
+          "n_lo": 8,
+          "p_hi": 0.5882352941176471,
+          "p_lo": 0.875,
+          "lift": -0.2867647058823529
+        }
+      ],
+      "conditional_ok": false,
+      "neighbor_holdout": [
+        {
+          "percentile": 0.5,
+          "threshold": 0.0775954525954526,
+          "n_hi": 21,
+          "n_lo": 9,
+          "p_hi": 0.6190476190476191,
+          "p_lo": 0.8888888888888888,
+          "lift": -0.26984126984126977
+        },
+        {
+          "percentile": 0.6,
+          "threshold": 0.08747586872586872,
+          "n_hi": 19,
+          "n_lo": 11,
+          "p_hi": 0.5789473684210527,
+          "p_lo": 0.9090909090909091,
+          "lift": -0.3301435406698564
+        },
+        {
+          "percentile": 0.7,
+          "threshold": 0.12487892624878927,
+          "n_hi": 14,
+          "n_lo": 16,
+          "p_hi": 0.5,
+          "p_lo": 0.875,
+          "lift": -0.375
+        },
+        {
+          "percentile": 0.8,
+          "threshold": 0.1775462962962963,
+          "n_hi": 9,
+          "n_lo": 21,
+          "p_hi": 0.4444444444444444,
+          "p_lo": 0.8095238095238095,
+          "lift": -0.3650793650793651
+        }
+      ]
+    },
+    {
+      "feature": "delta_divergence",
+      "threshold_source": "train",
+      "threshold": 0.0,
+      "high_means_more_reversal": true,
+      "n_train_hi": 14,
+      "n_train_lo": 70,
+      "p_train_hi": 0.7857142857142857,
+      "p_train_lo": 0.5428571428571428,
+      "train_lift": 0.24285714285714288,
+      "n_hold_hi": 10,
+      "n_hold_lo": 20,
+      "p_hold_hi": 0.7,
+      "p_hold_lo": 0.7,
+      "hold_lift": 0.0,
+      "hold_hi_minus_shallow_baseline": 0.0,
+      "wf_same_sign": 3,
+      "walkforward": [
+        {
+          "block": 1,
+          "start": "2025-06-17",
+          "end": "2025-09-29",
+          "n_hi": 3,
+          "n_lo": 29,
+          "p_hi": 1.0,
+          "p_lo": 0.6206896551724138,
+          "lift": 0.3793103448275862
+        },
+        {
+          "block": 2,
+          "start": "2025-09-30",
+          "end": "2026-01-16",
+          "n_hi": 9,
+          "n_lo": 22,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.45454545454545453,
+          "lift": 0.2121212121212121
+        },
+        {
+          "block": 3,
+          "start": "2026-01-20",
+          "end": "2026-04-24",
+          "n_hi": 6,
+          "n_lo": 20,
+          "p_hi": 0.8333333333333334,
+          "p_lo": 0.55,
+          "lift": 0.2833333333333333
+        },
+        {
+          "block": 4,
+          "start": "2026-04-28",
+          "end": "2026-08-14",
+          "n_hi": 6,
+          "n_lo": 19,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.6842105263157895,
+          "lift": -0.01754385964912286
+        }
+      ],
+      "conditional_ok": false,
+      "neighbor_holdout": []
+    },
+    {
+      "feature": "price_impact",
+      "threshold_source": "train",
+      "threshold": 0.004195993502977802,
+      "high_means_more_reversal": false,
+      "n_train_hi": 43,
+      "n_train_lo": 41,
+      "p_train_hi": 0.627906976744186,
+      "p_train_lo": 0.5365853658536586,
+      "train_lift": 0.09132161089052748,
+      "n_hold_hi": 21,
+      "n_hold_lo": 9,
+      "p_hold_hi": 0.6666666666666666,
+      "p_hold_lo": 0.7777777777777778,
+      "hold_lift": -0.11111111111111116,
+      "hold_hi_minus_shallow_baseline": -0.033333333333333326,
+      "wf_same_sign": 2,
+      "walkforward": [
+        {
+          "block": 1,
+          "start": "2025-06-17",
+          "end": "2025-09-29",
+          "n_hi": 18,
+          "n_lo": 14,
+          "p_hi": 0.7222222222222222,
+          "p_lo": 0.5714285714285714,
+          "lift": 0.1507936507936508
+        },
+        {
+          "block": 2,
+          "start": "2025-09-30",
+          "end": "2026-01-16",
+          "n_hi": 14,
+          "n_lo": 17,
+          "p_hi": 0.5,
+          "p_lo": 0.5294117647058824,
+          "lift": -0.02941176470588236
+        },
+        {
+          "block": 3,
+          "start": "2026-01-20",
+          "end": "2026-04-24",
+          "n_hi": 15,
+          "n_lo": 11,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.5454545454545454,
+          "lift": 0.12121212121212122
+        },
+        {
+          "block": 4,
+          "start": "2026-04-28",
+          "end": "2026-08-14",
+          "n_hi": 17,
+          "n_lo": 8,
+          "p_hi": 0.6470588235294118,
+          "p_lo": 0.75,
+          "lift": -0.1029411764705882
+        }
+      ],
+      "conditional_ok": false,
+      "neighbor_holdout": [
+        {
+          "percentile": 0.5,
+          "threshold": 0.004195993502977802,
+          "n_hi": 21,
+          "n_lo": 9,
+          "p_hi": 0.6666666666666666,
+          "p_lo": 0.7777777777777778,
+          "lift": -0.11111111111111116
+        },
+        {
+          "percentile": 0.6,
+          "threshold": 0.004937629937629938,
+          "n_hi": 24,
+          "n_lo": 6,
+          "p_hi": 0.7083333333333334,
+          "p_lo": 0.6666666666666666,
+          "lift": 0.04166666666666674
+        },
+        {
+          "percentile": 0.7,
+          "threshold": 0.006,
+          "n_hi": 26,
+          "n_lo": 4,
+          "p_hi": 0.6923076923076923,
+          "p_lo": 0.75,
+          "lift": -0.05769230769230771
+        },
+        {
+          "percentile": 0.8,
+          "threshold": 0.007236095346197503,
+          "n_hi": 26,
+          "n_lo": 4,
+          "p_hi": 0.6923076923076923,
+          "p_lo": 0.75,
+          "lift": -0.05769230769230771
+        }
+      ]
+    }
+  ],
+  "models": {
+    "model0_intercept": {
+      "name": "intercept",
+      "cols": [],
+      "n_train": 84,
+      "n_holdout": 30,
+      "train_brier": 0.24305555555555558,
+      "holdout_brier": 0.2236111111111111,
+      "holdout_logloss": 0.6399381717190507,
+      "holdout_base_rate": 0.7,
+      "holdout_mean_p": 0.5833333333333334,
+      "intercept_only": true
+    },
+    "model1_pen": {
+      "name": "penetration",
+      "cols": [
+        "penetration_points"
+      ],
+      "n_train": 84,
+      "n_holdout": 30,
+      "train_brier": 0.24304693003373856,
+      "holdout_brier": 0.2236398824520559,
+      "holdout_logloss": 0.639997128953395,
+      "holdout_base_rate": 0.7,
+      "holdout_mean_p": 0.5822866806442734,
+      "weights": [
+        0.3326633632292449,
+        0.005602401354184471
+      ]
+    },
+    "model2_struct": {
+      "name": "pen+tod+openbar",
+      "cols": [
+        "penetration_points",
+        "seconds_from_rth_open",
+        "opening_bar"
+      ],
+      "n_train": 84,
+      "n_holdout": 30,
+      "train_brier": 0.2256291330214209,
+      "holdout_brier": 0.24083157476154543,
+      "holdout_logloss": 0.6774558710198896,
+      "holdout_base_rate": 0.7,
+      "holdout_mean_p": 0.6078736611748632,
+      "weights": [
+        0.3396414692330658,
+        -0.02370322094408737,
+        -0.11423166900239885,
+        0.21497346208629706
+      ]
+    },
+    "model3_ndelta": {
+      "name": "struct+ndelta",
+      "cols": [
+        "penetration_points",
+        "seconds_from_rth_open",
+        "opening_bar",
+        "ndelta_rev_sweep60"
+      ],
+      "n_train": 84,
+      "n_holdout": 30,
+      "train_brier": 0.20583581850363442,
+      "holdout_brier": 0.22970207431228248,
+      "holdout_logloss": 0.6558538047215283,
+      "holdout_base_rate": 0.7,
+      "holdout_mean_p": 0.6205342009792448,
+      "weights": [
+        0.3483816971534625,
+        -0.03461906879302414,
+        -0.09890823658940337,
+        0.18205520737376202,
+        0.274919397826308
+      ]
+    },
+    "model4_burst": {
+      "name": "struct+burst",
+      "cols": [
+        "penetration_points",
+        "seconds_from_rth_open",
+        "opening_bar",
+        "volume_burst"
+      ],
+      "n_train": 84,
+      "n_holdout": 30,
+      "train_brier": 0.225571882618487,
+      "holdout_brier": 0.24129215496097448,
+      "holdout_logloss": 0.679669489726097,
+      "holdout_base_rate": 0.7,
+      "holdout_mean_p": 0.6122080044815915,
+      "weights": [
+        0.341775394954057,
+        -0.025719773665230507,
+        -0.11590504015432646,
+        0.20194466546296197,
+        0.057816331202746984
+      ]
+    },
+    "model5_eff": {
+      "name": "struct+efficiency",
+      "cols": [
+        "penetration_points",
+        "seconds_from_rth_open",
+        "opening_bar",
+        "flow_efficiency"
+      ],
+      "n_train": 84,
+      "n_holdout": 30,
+      "train_brier": 0.22549849626534177,
+      "holdout_brier": 0.24109918721118861,
+      "holdout_logloss": 0.6780115984053652,
+      "holdout_base_rate": 0.7,
+      "holdout_mean_p": 0.6081406242225463,
+      "weights": [
+        0.3397109120363822,
+        -0.020295112892636115,
+        -0.1139231390118904,
+        0.21505740790061767,
+        0.02353571769421361
+      ]
+    },
+    "model6_flow_set": {
+      "name": "struct+ndelta+burst+exhaustion",
+      "cols": [
+        "penetration_points",
+        "seconds_from_rth_open",
+        "opening_bar",
+        "ndelta_rev_sweep60",
+        "volume_burst",
+        "exhaustion_score"
+      ],
+      "n_train": 84,
+      "n_holdout": 30,
+      "train_brier": 0.20493648581012766,
+      "holdout_brier": 0.22822286299828684,
+      "holdout_logloss": 0.6545247147563374,
+      "holdout_base_rate": 0.7,
+      "holdout_mean_p": 0.6222767436333067,
+      "weights": [
+        0.350606062449492,
+        -0.044170481667784284,
+        -0.09600320445018942,
+        0.17196116960940216,
+        0.2721457255312361,
+        0.06729842523982704,
+        -0.04898605200165496
+      ]
+    }
+  },
+  "classification_gate": {
+    "brier_ok": true,
+    "brier_delta_model2_minus_model6": 0.01260871176325859,
+    "brier_delta_intercept_minus_model6": -0.004611751887175747,
+    "required_brier_lift": 0.01,
+    "conditional_ok": true,
+    "conditional_ok_features": [
+      "ndelta_rev_sweep60"
+    ],
+    "required_conditional_lift": 0.08,
+    "note": "Predeclared Brier gate is Model 6 vs Model 2. Intercept-only is also reported; beating a worse structural model is not by itself an edge."
+  },
+  "side": [
+    {
+      "slice": "pdl_long_reversal",
+      "n": 51,
+      "reversal": 29,
+      "continuation": 10,
+      "neither": 0,
+      "ambiguous": 12,
+      "p_reversal": 0.5686274509803921,
+      "p_reversal_wilson_lo": 0.4326506123505807,
+      "p_reversal_wilson_hi": 0.694989719076657,
+      "feature": "ndelta_rev_sweep60",
+      "spearman": 0.44647967946110423,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 51,
+        "median": -0.10137149672033392,
+        "n_lo": 26,
+        "n_hi": 25,
+        "p_reversal_lo": 0.34615384615384615,
+        "p_reversal_hi": 0.8,
+        "lift_hi_minus_lo": 0.4538461538461539
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.4538461538461539,
+          "p60": 0.29838709677419356,
+          "p70": 0.23333333333333328,
+          "p80": 0.2878048780487805
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    },
+    {
+      "slice": "pdh_short_reversal",
+      "n": 63,
+      "reversal": 41,
+      "continuation": 6,
+      "neither": 10,
+      "ambiguous": 6,
+      "p_reversal": 0.6507936507936508,
+      "p_reversal_wilson_lo": 0.5275123111600184,
+      "p_reversal_wilson_hi": 0.7567418060364581,
+      "feature": "ndelta_rev_sweep60",
+      "spearman": 0.35156266763818333,
+      "expected_sign": 1,
+      "spearman_matches_expected": true,
+      "median_split": {
+        "ok": true,
+        "n": 63,
+        "median": -0.06842372022301065,
+        "n_lo": 32,
+        "n_hi": 31,
+        "p_reversal_lo": 0.5,
+        "p_reversal_hi": 0.8064516129032258,
+        "lift_hi_minus_lo": 0.30645161290322576
+      },
+      "threshold_stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.30645161290322576,
+          "p60": 0.24736842105263157,
+          "p70": 0.1985645933014354,
+          "p80": 0.12254901960784315
+        },
+        "sign": 1
+      },
+      "status": "THRESHOLD_STABLE"
+    }
+  ],
+  "session": [
+    {
+      "slice": "first_bar",
+      "n": 19,
+      "reversal": 15,
+      "continuation": 1,
+      "neither": 0,
+      "ambiguous": 3,
+      "p_reversal": 0.7894736842105263,
+      "p_reversal_wilson_lo": 0.5666528575973392,
+      "p_reversal_wilson_hi": 0.9149246150840843,
+      "mean_volume_burst": 5.330877006068278
+    },
+    {
+      "slice": "first_30m",
+      "n": 64,
+      "reversal": 41,
+      "continuation": 9,
+      "neither": 1,
+      "ambiguous": 13,
+      "p_reversal": 0.640625,
+      "p_reversal_wilson_lo": 0.5182062363615084,
+      "p_reversal_wilson_hi": 0.7471176946778538,
+      "mean_volume_burst": 2.5000254549008902
+    },
+    {
+      "slice": "first_60m",
+      "n": 75,
+      "reversal": 48,
+      "continuation": 9,
+      "neither": 4,
+      "ambiguous": 14,
+      "p_reversal": 0.64,
+      "p_reversal_wilson_lo": 0.5270045111400723,
+      "p_reversal_wilson_hi": 0.7393523360066117,
+      "mean_volume_burst": 2.373302318811223
+    },
+    {
+      "slice": "later",
+      "n": 39,
+      "reversal": 22,
+      "continuation": 7,
+      "neither": 6,
+      "ambiguous": 4,
+      "p_reversal": 0.5641025641025641,
+      "p_reversal_wilson_lo": 0.40975423474522105,
+      "p_reversal_wilson_hi": 0.7069547583829534,
+      "mean_volume_burst": 2.431368880877408
+    }
+  ],
+  "walkforward_baseline": [
+    {
+      "block": 1,
+      "start": "2025-06-17",
+      "end": "2025-09-29",
+      "n": 32,
+      "reversal": 21,
+      "continuation": 5,
+      "neither": 3,
+      "ambiguous": 3,
+      "p_reversal": 0.65625,
+      "p_reversal_wilson_lo": 0.4831077350878594,
+      "p_reversal_wilson_hi": 0.7958976664567146
+    },
+    {
+      "block": 2,
+      "start": "2025-09-30",
+      "end": "2026-01-16",
+      "n": 31,
+      "reversal": 16,
+      "continuation": 6,
+      "neither": 4,
+      "ambiguous": 5,
+      "p_reversal": 0.5161290322580645,
+      "p_reversal_wilson_lo": 0.34840118286973176,
+      "p_reversal_wilson_hi": 0.6803001396872117
+    },
+    {
+      "block": 3,
+      "start": "2026-01-20",
+      "end": "2026-04-24",
+      "n": 26,
+      "reversal": 16,
+      "continuation": 2,
+      "neither": 3,
+      "ambiguous": 5,
+      "p_reversal": 0.6153846153846154,
+      "p_reversal_wilson_lo": 0.42534520039420076,
+      "p_reversal_wilson_hi": 0.7757164048816557
+    },
+    {
+      "block": 4,
+      "start": "2026-04-28",
+      "end": "2026-08-14",
+      "n": 25,
+      "reversal": 17,
+      "continuation": 3,
+      "neither": 0,
+      "ambiguous": 5,
+      "p_reversal": 0.68,
+      "p_reversal_wilson_lo": 0.4840991373457672,
+      "p_reversal_wilson_hi": 0.8279501248310885
+    }
+  ],
+  "strategy": {
+    "built": true,
+    "confirm_feature": "ndelta_rev_sweep60",
+    "threshold": -0.09214866945238619,
+    "n_confirmed_setups": 59,
+    "primary": {
+      "full": {
+        "n_setups": 59,
+        "n_expired": 6,
+        "n_entered": 49,
+        "n_resolved": 46,
+        "n_ambiguous": 3,
+        "n_target": 17,
+        "n_stop": 29,
+        "n_time": 0,
+        "win_rate": 0.3695652173913043,
+        "expectancy_points": -2.8249999999999997,
+        "expectancy_r": -0.09105747479201376,
+        "median_r": -1.008040404040404,
+        "profit_factor": 0.7667175298447179,
+        "max_dd_points": 251.05000000000004,
+        "max_consec_losses": 7,
+        "n_days": 46,
+        "worst_day_points": -39.2,
+        "avg_stop_points": 17.627551020408163,
+        "p90_stop_points": 33.0,
+        "p95_stop_points": 36.0,
+        "avg_risk_usd_nq": 352.55102040816325,
+        "max_trades_one_day": 1,
+        "long": {
+          "n": 18,
+          "win_rate": 0.2777777777777778,
+          "expectancy_points": -7.679166666666666,
+          "expectancy_r": -0.32050716276713254
+        },
+        "short": {
+          "n": 28,
+          "win_rate": 0.42857142857142855,
+          "expectancy_points": 0.29553571428571435,
+          "expectancy_r": 0.05644589604913402
+        },
+        "cost_adjusted": true
+      },
+      "holdout": {
+        "n_setups": 18,
+        "n_expired": 2,
+        "n_entered": 13,
+        "n_resolved": 12,
+        "n_ambiguous": 1,
+        "n_target": 4,
+        "n_stop": 8,
+        "n_time": 0,
+        "win_rate": 0.3333333333333333,
+        "expectancy_points": -3.4499999999999997,
+        "expectancy_r": -0.1798160843718795,
+        "median_r": -1.0098375054896795,
+        "profit_factor": 0.7156593406593407,
+        "max_dd_points": 90.15,
+        "max_consec_losses": 4,
+        "n_days": 12,
+        "worst_day_points": -36.2,
+        "avg_stop_points": 17.596153846153847,
+        "p90_stop_points": 24.75,
+        "p95_stop_points": 36.0,
+        "avg_risk_usd_nq": 351.9230769230769,
+        "max_trades_one_day": 1,
+        "long": {
+          "n": 4,
+          "win_rate": 0.0,
+          "expectancy_points": -21.2,
+          "expectancy_r": -1.0108439428118208
+        },
+        "short": {
+          "n": 8,
+          "win_rate": 0.5,
+          "expectancy_points": 5.425000000000001,
+          "expectancy_r": 0.23569784484809117
+        },
+        "cost_adjusted": true
+      },
+      "full_expectancy_r": -0.09105747479201376,
+      "holdout_expectancy_r": -0.1798160843718795
+    },
+    "fill_stress": {
+      "0_tick": {
+        "full": {
+          "n_setups": 59,
+          "n_expired": 6,
+          "n_entered": 49,
+          "n_resolved": 46,
+          "n_ambiguous": 3,
+          "n_target": 17,
+          "n_stop": 29,
+          "n_time": 0,
+          "win_rate": 0.3695652173913043,
+          "expectancy_points": -2.805978260869565,
+          "expectancy_r": -0.09150775720037035,
+          "median_r": -1.0081220366934653,
+          "profit_factor": 0.7652328119316116,
+          "max_dd_points": 248.17500000000007,
+          "max_consec_losses": 7,
+          "n_days": 46,
+          "worst_day_points": -38.95,
+          "avg_stop_points": 17.377551020408163,
+          "p90_stop_points": 32.75,
+          "p95_stop_points": 35.75,
+          "avg_risk_usd_nq": 347.55102040816325,
+          "max_trades_one_day": 1,
+          "long": {
+            "n": 18,
+            "win_rate": 0.2777777777777778,
+            "expectancy_points": -7.602777777777778,
+            "expectancy_r": -0.32092497517515134
+          },
+          "short": {
+            "n": 28,
+            "win_rate": 0.42857142857142855,
+            "expectancy_points": 0.2776785714285715,
+            "expectancy_r": 0.05597474006913172
+          },
+          "cost_adjusted": true
+        },
+        "holdout": {
+          "n_setups": 18,
+          "n_expired": 2,
+          "n_entered": 13,
+          "n_resolved": 12,
+          "n_ambiguous": 1,
+          "n_target": 4,
+          "n_stop": 8,
+          "n_time": 0,
+          "win_rate": 0.3333333333333333,
+          "expectancy_points": -3.408333333333333,
+          "expectancy_r": -0.1800700329435607,
+          "median_r": -1.0099639855942377,
+          "profit_factor": 0.7151810584958218,
+          "max_dd_points": 89.025,
+          "max_consec_losses": 4,
+          "n_days": 12,
+          "worst_day_points": -35.95,
+          "avg_stop_points": 17.346153846153847,
+          "p90_stop_points": 24.5,
+          "p95_stop_points": 35.75,
+          "avg_risk_usd_nq": 346.9230769230769,
+          "max_trades_one_day": 1,
+          "long": {
+            "n": 4,
+            "win_rate": 0.0,
+            "expectancy_points": -20.95,
+            "expectancy_r": -1.0110064445358562
+          },
+          "short": {
+            "n": 8,
+            "win_rate": 0.5,
+            "expectancy_points": 5.362500000000001,
+            "expectancy_r": 0.23539817285258707
+          },
+          "cost_adjusted": true
+        }
+      },
+      "1_tick": {
+        "full": {
+          "n_setups": 59,
+          "n_expired": 6,
+          "n_entered": 49,
+          "n_resolved": 46,
+          "n_ambiguous": 3,
+          "n_target": 17,
+          "n_stop": 29,
+          "n_time": 0,
+          "win_rate": 0.3695652173913043,
+          "expectancy_points": -2.8249999999999997,
+          "expectancy_r": -0.09105747479201376,
+          "median_r": -1.008040404040404,
+          "profit_factor": 0.7667175298447179,
+          "max_dd_points": 251.05000000000004,
+          "max_consec_losses": 7,
+          "n_days": 46,
+          "worst_day_points": -39.2,
+          "avg_stop_points": 17.627551020408163,
+          "p90_stop_points": 33.0,
+          "p95_stop_points": 36.0,
+          "avg_risk_usd_nq": 352.55102040816325,
+          "max_trades_one_day": 1,
+          "long": {
+            "n": 18,
+            "win_rate": 0.2777777777777778,
+            "expectancy_points": -7.679166666666666,
+            "expectancy_r": -0.32050716276713254
+          },
+          "short": {
+            "n": 28,
+            "win_rate": 0.42857142857142855,
+            "expectancy_points": 0.29553571428571435,
+            "expectancy_r": 0.05644589604913402
+          },
+          "cost_adjusted": true
+        },
+        "holdout": {
+          "n_setups": 18,
+          "n_expired": 2,
+          "n_entered": 13,
+          "n_resolved": 12,
+          "n_ambiguous": 1,
+          "n_target": 4,
+          "n_stop": 8,
+          "n_time": 0,
+          "win_rate": 0.3333333333333333,
+          "expectancy_points": -3.4499999999999997,
+          "expectancy_r": -0.1798160843718795,
+          "median_r": -1.0098375054896795,
+          "profit_factor": 0.7156593406593407,
+          "max_dd_points": 90.15,
+          "max_consec_losses": 4,
+          "n_days": 12,
+          "worst_day_points": -36.2,
+          "avg_stop_points": 17.596153846153847,
+          "p90_stop_points": 24.75,
+          "p95_stop_points": 36.0,
+          "avg_risk_usd_nq": 351.9230769230769,
+          "max_trades_one_day": 1,
+          "long": {
+            "n": 4,
+            "win_rate": 0.0,
+            "expectancy_points": -21.2,
+            "expectancy_r": -1.0108439428118208
+          },
+          "short": {
+            "n": 8,
+            "win_rate": 0.5,
+            "expectancy_points": 5.425000000000001,
+            "expectancy_r": 0.23569784484809117
+          },
+          "cost_adjusted": true
+        }
+      },
+      "2_tick": {
+        "full": {
+          "n_setups": 59,
+          "n_expired": 6,
+          "n_entered": 49,
+          "n_resolved": 47,
+          "n_ambiguous": 2,
+          "n_target": 17,
+          "n_stop": 30,
+          "n_time": 0,
+          "win_rate": 0.3617021276595745,
+          "expectancy_points": -2.920744680851064,
+          "expectancy_r": -0.1106748719771241,
+          "median_r": -1.008,
+          "profit_factor": 0.7594831362242663,
+          "max_dd_points": 260.37500000000006,
+          "max_consec_losses": 7,
+          "n_days": 47,
+          "worst_day_points": -39.45,
+          "avg_stop_points": 17.877551020408163,
+          "p90_stop_points": 33.25,
+          "p95_stop_points": 36.25,
+          "avg_risk_usd_nq": 357.55102040816325,
+          "max_trades_one_day": 1,
+          "long": {
+            "n": 19,
+            "win_rate": 0.2631578947368421,
+            "expectancy_points": -7.686842105263158,
+            "expectancy_r": -0.3575866956804193
+          },
+          "short": {
+            "n": 28,
+            "win_rate": 0.42857142857142855,
+            "expectancy_points": 0.3133928571428571,
+            "expectancy_r": 0.056872436964397644
+          },
+          "cost_adjusted": true
+        },
+        "holdout": {
+          "n_setups": 18,
+          "n_expired": 2,
+          "n_entered": 13,
+          "n_resolved": 12,
+          "n_ambiguous": 1,
+          "n_target": 4,
+          "n_stop": 8,
+          "n_time": 0,
+          "win_rate": 0.3333333333333333,
+          "expectancy_points": -3.4916666666666667,
+          "expectancy_r": -0.1795726347067631,
+          "median_r": -1.0097142857142858,
+          "profit_factor": 0.7161246612466126,
+          "max_dd_points": 91.275,
+          "max_consec_losses": 4,
+          "n_days": 12,
+          "worst_day_points": -36.45,
+          "avg_stop_points": 17.846153846153847,
+          "p90_stop_points": 25.0,
+          "p95_stop_points": 36.25,
+          "avg_risk_usd_nq": 356.9230769230769,
+          "max_trades_one_day": 1,
+          "long": {
+            "n": 4,
+            "win_rate": 0.0,
+            "expectancy_points": -21.45,
+            "expectancy_r": -1.0106864016023833
+          },
+          "short": {
+            "n": 8,
+            "win_rate": 0.5,
+            "expectancy_points": 5.487500000000001,
+            "expectancy_r": 0.23598424874104698
+          },
+          "cost_adjusted": true
+        }
+      }
+    },
+    "candidate_A_1tick": {
+      "n_setups": 59,
+      "n_expired": 2,
+      "n_entered": 51,
+      "n_resolved": 47,
+      "n_ambiguous": 4,
+      "n_target": 19,
+      "n_stop": 28,
+      "n_time": 0,
+      "win_rate": 0.40425531914893614,
+      "expectancy_points": -0.854255319148936,
+      "expectancy_r": -0.008030487273053222,
+      "median_r": -1.0080808080808081,
+      "profit_factor": 0.9152238175675675,
+      "max_dd_points": 181.25000000000003,
+      "max_consec_losses": 6,
+      "n_days": 47,
+      "worst_day_points": -39.2,
+      "avg_stop_points": 15.431372549019608,
+      "p90_stop_points": 26.5,
+      "p95_stop_points": 34.25,
+      "avg_risk_usd_nq": 308.62745098039215,
+      "max_trades_one_day": 1,
+      "long": {
+        "n": 16,
+        "win_rate": 0.375,
+        "expectancy_points": -4.10625,
+        "expectancy_r": -0.07865400873465203
+      },
+      "short": {
+        "n": 31,
+        "win_rate": 0.41935483870967744,
+        "expectancy_points": 0.824193548387097,
+        "expectancy_r": 0.02842036251357842
+      },
+      "cost_adjusted": true
+    },
+    "portfolio_dvp": {
+      "n_entered_days": 49,
+      "same_day_overlap": 48,
+      "same_hour_overlap_trades": 12,
+      "direction_agree": 20,
+      "direction_conflict": 28,
+      "daily_pnl_correlation": -0.04293094694404084,
+      "n_days_for_corr": 45,
+      "losing_day_overlap": 15,
+      "note": "Read-only vs frozen NQ DVP historical trades. No combination."
+    },
+    "gc_v2": {
+      "gc_paper_empty": true,
+      "note": "GC paper journal empty. Loss-day overlap undefined."
+    }
+  },
+  "candidate_written": false,
+  "verdict": "FLOW_CONFIRMED_STRATEGY_NOT_TRADABLE",
+  "branch_recommendation": "CLOSE_NQ_SWEEP_RESEARCH_BRANCH"
+}

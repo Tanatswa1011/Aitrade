@@ -1,0 +1,552 @@
+{
+  "generated_at": "2026-08-18T21:43:02.666866+00:00",
+  "note": "Metadata and get_cost only. No timeseries download. No new subscription.",
+  "preflight": {
+    "databento_package_available": true,
+    "databento_version": "0.83.0",
+    "historical_client_available": true,
+    "dataset_glbx_mdp3": "GLBX.MDP3",
+    "schema_ohlcv_1m": "ohlcv-1m",
+    "schema_ohlcv_5m_native": false,
+    "note": "5m built by aggregating ohlcv-1m",
+    "credential_required": true,
+    "credential_present": true,
+    "credential_env_var": "DATABENTO_API_KEY",
+    "loaded_dotenv": true,
+    "ok": true
+  },
+  "credential_names_present": {
+    "DATABENTO_API_KEY": true,
+    "TIINGO_TOKEN": true,
+    "FMP_API_KEY": false,
+    "POLYGON_API_KEY": false,
+    "ALPACA_API_KEY": false
+  },
+  "datasets": {
+    "EQUS.MINI": {
+      "range": {
+        "ok": true,
+        "value": {
+          "start": "2023-03-28T00:00:00.000000000Z",
+          "end": "2026-08-18T04:00:00.000000000Z",
+          "schema": {
+            "mbp-1": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "tbbo": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "trades": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "bbo-1s": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "bbo-1m": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1s": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1m": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1h": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1d": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "definition": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            }
+          }
+        }
+      },
+      "schemas": {
+        "ok": true,
+        "value": [
+          "mbp-1",
+          "tbbo",
+          "trades",
+          "bbo-1s",
+          "bbo-1m",
+          "ohlcv-1s",
+          "ohlcv-1m",
+          "ohlcv-1h",
+          "ohlcv-1d",
+          "definition"
+        ]
+      }
+    },
+    "EQUS.SUMMARY": {
+      "range": {
+        "ok": true,
+        "value": {
+          "start": "2024-07-01T00:00:00.000000000Z",
+          "end": "2026-08-18T04:00:00.000000000Z",
+          "schema": {
+            "ohlcv-1d": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "definition": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "statistics": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            }
+          }
+        }
+      },
+      "schemas": {
+        "ok": true,
+        "value": [
+          "ohlcv-1d",
+          "definition",
+          "statistics"
+        ]
+      }
+    },
+    "IEXG.TOPS": {
+      "range": {
+        "ok": true,
+        "value": {
+          "start": "2023-03-28T00:00:00.000000000Z",
+          "end": "2026-08-18T04:00:00.000000000Z",
+          "schema": {
+            "mbp-1": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "tbbo": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "trades": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "bbo-1s": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "bbo-1m": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1s": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1m": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1h": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1d": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "definition": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "imbalance": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "statistics": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "status": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            }
+          }
+        }
+      },
+      "schemas": {
+        "ok": true,
+        "value": [
+          "mbp-1",
+          "tbbo",
+          "trades",
+          "bbo-1s",
+          "bbo-1m",
+          "ohlcv-1s",
+          "ohlcv-1m",
+          "ohlcv-1h",
+          "ohlcv-1d",
+          "definition",
+          "imbalance",
+          "statistics",
+          "status"
+        ]
+      }
+    },
+    "XNAS.ITCH": {
+      "range": {
+        "ok": true,
+        "value": {
+          "start": "2018-05-01T00:00:00.000000000Z",
+          "end": "2026-08-18T04:00:00.000000000Z",
+          "schema": {
+            "mbo": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "mbp-1": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "mbp-10": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "bbo-1s": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "bbo-1m": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "tbbo": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "trades": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1s": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1m": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1h": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1d": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "definition": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "statistics": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "status": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "imbalance": {
+              "start": "2018-05-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            }
+          }
+        }
+      },
+      "schemas": {
+        "ok": true,
+        "value": [
+          "mbo",
+          "mbp-1",
+          "mbp-10",
+          "bbo-1s",
+          "bbo-1m",
+          "tbbo",
+          "trades",
+          "ohlcv-1s",
+          "ohlcv-1m",
+          "ohlcv-1h",
+          "ohlcv-1d",
+          "definition",
+          "statistics",
+          "status",
+          "imbalance"
+        ]
+      }
+    },
+    "XNAS.BASIC": {
+      "range": {
+        "ok": true,
+        "value": {
+          "start": "2024-07-01T00:00:00.000000000Z",
+          "end": "2026-08-18T04:00:00.000000000Z",
+          "schema": {
+            "cmbp-1": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "tcbbo": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "trades": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "cbbo-1s": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "cbbo-1m": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1s": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1m": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1h": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "ohlcv-1d": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "definition": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "statistics": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            },
+            "status": {
+              "start": "2024-07-01T00:00:00.000000000Z",
+              "end": "2026-08-18T04:00:00.000000000Z"
+            }
+          }
+        }
+      },
+      "schemas": {
+        "ok": true,
+        "value": [
+          "cmbp-1",
+          "tcbbo",
+          "trades",
+          "cbbo-1s",
+          "cbbo-1m",
+          "ohlcv-1s",
+          "ohlcv-1m",
+          "ohlcv-1h",
+          "ohlcv-1d",
+          "definition",
+          "statistics",
+          "status"
+        ]
+      }
+    },
+    "DBEQ.BASIC": {
+      "range": {
+        "ok": true,
+        "value": {
+          "start": "2023-03-28T00:00:00.000000000Z",
+          "end": "2026-08-18T00:00:00.000000000Z",
+          "schema": {
+            "mbo": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "mbp-1": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "mbp-10": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "tbbo": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "trades": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "ohlcv-1s": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "ohlcv-1m": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "ohlcv-1h": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "ohlcv-1d": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "definition": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            },
+            "status": {
+              "start": "2023-03-28T00:00:00.000000000Z",
+              "end": "2026-08-18T00:00:00.000000000Z"
+            }
+          }
+        }
+      },
+      "schemas": {
+        "ok": true,
+        "value": [
+          "mbo",
+          "mbp-1",
+          "mbp-10",
+          "tbbo",
+          "trades",
+          "ohlcv-1s",
+          "ohlcv-1m",
+          "ohlcv-1h",
+          "ohlcv-1d",
+          "definition",
+          "status"
+        ]
+      }
+    }
+  },
+  "costs": {
+    "equs_mini_1m_all_1day": {
+      "ok": true,
+      "value": 0.546307772398
+    },
+    "equs_mini_1d_all_2023_2026": {
+      "ok": true,
+      "value": 12.213696911931
+    },
+    "equs_mini_definition_1day": {
+      "ok": true,
+      "value": 0.059400200844
+    },
+    "equs_mini_status_1day": {
+      "ok": false,
+      "error": "BentoClientError:422 dataset_schema_not_supported\nSchema `status` is not supported on dataset `EQUS.MINI`. Use any of ['mbp-1', 'tbbo', 'trades', 'bbo-1s', 'bbo-1m', 'ohlcv-1s', 'ohlcv-1m', 'ohlcv-1h', 'ohlcv-1d', 'definition'].\ndocumentation: https://databento.com/docs/api-reference-historical/metadata/metadata-list-schemas"
+    },
+    "iex_1m_all_1day": {
+      "ok": true,
+      "value": 0.346594423056
+    },
+    "iex_1d_all_2018_2026": {
+      "ok": false,
+      "error": "BentoClientError:422 data_start_before_available_start\n`start` in query ('2018-01-02 00:00:00+00:00') was before the available start of dataset IEXG.TOPS ('2023-03-28 00:00:00+00:00'). Try requesting with a later `start`.\ndocumentation: https://databento.com/docs/api-reference-historical/basics/datasets"
+    },
+    "equs_summary_1d_2018_2026": {
+      "ok": false,
+      "error": "BentoClientError:422 data_start_before_available_start\n`start` in query ('2018-01-02 00:00:00+00:00') was before the available start of dataset EQUS.SUMMARY ('2024-07-01 00:00:00+00:00'). Try requesting with a later `start`.\ndocumentation: https://databento.com/docs/api-reference-historical/basics/datasets"
+    },
+    "equs_mini_1m_all_2023_2026": {
+      "ok": true,
+      "value": 541.300256878138
+    },
+    "xnas_itch_1m_1day": {
+      "ok": true,
+      "value": 0.76553696394
+    },
+    "xnas_itch_1m_2018_2026": {
+      "ok": true,
+      "value": 1501.963886618614
+    },
+    "xnas_itch_1d_2018_2026": {
+      "ok": true,
+      "value": 29.704359769821
+    },
+    "xnas_itch_status_1day": {
+      "ok": true,
+      "value": 0.026669502258
+    },
+    "dbeq_1m_2023_2026": {
+      "ok": true,
+      "value": 1907.078280933201
+    },
+    "dbeq_status_1day": {
+      "ok": true,
+      "value": 0.106004998088
+    }
+  },
+  "tiingo_equity_probe": {
+    "route": "obb.equity.price.historical",
+    "provider": "tiingo",
+    "aapl_daily": {
+      "bar_count": 23,
+      "errors": [],
+      "note": "Live name returns daily bars."
+    },
+    "bbby_daily": {
+      "bar_count": 0,
+      "errors": [
+        "BBBY: The response is empty"
+      ],
+      "note": "Bankrupt/delisted BBBY is empty on this Tiingo/OpenBB route. Survivorship gap confirmed."
+    }
+  },
+  "local_equity_files": [],
+  "list_datasets": {
+    "ok": true,
+    "value": [
+      "ARCX.PILLAR",
+      "BATS.PITCH",
+      "BATY.PITCH",
+      "DBEQ.BASIC",
+      "EDGA.PITCH",
+      "EDGX.PITCH",
+      "EPRL.DOM",
+      "EQUS.MINI",
+      "EQUS.SUMMARY",
+      "GLBX.MDP3",
+      "IEXG.TOPS",
+      "IFEU.IMPACT",
+      "IFLL.IMPACT",
+      "IFUS.IMPACT",
+      "MEMX.MEMOIR",
+      "NDEX.IMPACT",
+      "OCEA.MEMOIR",
+      "OPRA.PILLAR",
+      "XASE.PILLAR",
+      "XBOS.ITCH",
+      "XCBF.PITCH",
+      "XCHI.PILLAR",
+      "XCIS.TRADESBBO",
+      "XEEE.EOBI",
+      "XEUR.EOBI",
+      "XNAS.BASIC",
+      "XNAS.ITCH",
+      "XNYS.PILLAR",
+      "XPSX.ITCH"
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "ok": true,
+  "phase": 43,
+  "execution": "DRY_RUN_NO_BROKER",
+  "verdict": "SMALLCAP_DATA_QUALITY_BLOCKED",
+  "FLOAT_DATA_UNAVAILABLE": true,
+  "HALT_MODEL_DEGRADED": true,
+  "BORROW_HISTORY_UNAVAILABLE": true,
+  "SURVIVORSHIP_SAFE_UNIVERSE": false,
+  "primary_tested": false,
+  "n_entered": 0,
+  "candidate_written": false,
+  "recommendation": "DO_NOT_PURCHASE_BLINDLY_DO_NOT_FAKE_UNIVERSE",
+  "recommendation_text": "Do not freeze. Do not test First Red Day or Bounce Short on the same missing universe. Do not download EQUS.MINI as a shortcut: TRAIN through 2022 would be empty, float and borrow are still missing, and Mini has no halt status. XNAS.ITCH 1m ALL 2018\u20132026 quotes at about $1502 and is still Nasdaq-only without PIT cap/float/borrow. Acquire a survivorship-safe master first, then 1m + halts + a conservative locate model, then run the locked OR5 candidate.",
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "file_sha": {
+    "gc": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541"
+  },
+  "feasibility": {
+    "credential_names_present": {
+      "DATABENTO_API_KEY": true,
+      "TIINGO_TOKEN": true,
+      "FMP_API_KEY": false,
+      "POLYGON_API_KEY": false,
+      "ALPACA_API_KEY": false
+    },
+    "costs": {
+      "equs_mini_1m_all_1day": {
+        "ok": true,
+        "value": 0.546307772398
+      },
+      "equs_mini_1d_all_2023_2026": {
+        "ok": true,
+        "value": 12.213696911931
+      },
+      "equs_mini_definition_1day": {
+        "ok": true,
+        "value": 0.059400200844
+      },
+      "equs_mini_status_1day": {
+        "ok": false,
+        "error": "BentoClientError:422 dataset_schema_not_supported\nSchema `status` is not supported on dataset `EQUS.MINI`. Use any of ['mbp-1', 'tbbo', 'trades', 'bbo-1s', 'bbo-1m', 'ohlcv-1s', 'ohlcv-1m', 'ohlcv-1h', 'ohlcv-1d', 'definition'].\ndocumentation: https://databento.com/docs/api-reference-historical/metadata/metadata-list-schemas"
+      },
+      "iex_1m_all_1day": {
+        "ok": true,
+        "value": 0.346594423056
+      },
+      "iex_1d_all_2018_2026": {
+        "ok": false,
+        "error": "BentoClientError:422 data_start_before_available_start\n`start` in query ('2018-01-02 00:00:00+00:00') was before the available start of dataset IEXG.TOPS ('2023-03-28 00:00:00+00:00'). Try requesting with a later `start`.\ndocumentation: https://databento.com/docs/api-reference-historical/basics/datasets"
+      },
+      "equs_summary_1d_2018_2026": {
+        "ok": false,
+        "error": "BentoClientError:422 data_start_before_available_start\n`start` in query ('2018-01-02 00:00:00+00:00') was before the available start of dataset EQUS.SUMMARY ('2024-07-01 00:00:00+00:00'). Try requesting with a later `start`.\ndocumentation: https://databento.com/docs/api-reference-historical/basics/datasets"
+      },
+      "equs_mini_1m_all_2023_2026": {
+        "ok": true,
+        "value": 541.300256878138
+      },
+      "xnas_itch_1m_1day": {
+        "ok": true,
+        "value": 0.76553696394
+      },
+      "xnas_itch_1m_2018_2026": {
+        "ok": true,
+        "value": 1501.963886618614
+      },
+      "xnas_itch_1d_2018_2026": {
+        "ok": true,
+        "value": 29.704359769821
+      },
+      "xnas_itch_status_1day": {
+        "ok": true,
+        "value": 0.026669502258
+      },
+      "dbeq_1m_2023_2026": {
+        "ok": true,
+        "value": 1907.078280933201
+      },
+      "dbeq_status_1day": {
+        "ok": true,
+        "value": 0.106004998088
+      }
+    },
+    "tiingo_equity_probe": {
+      "route": "obb.equity.price.historical",
+      "provider": "tiingo",
+      "aapl_daily": {
+        "bar_count": 23,
+        "errors": [],
+        "note": "Live name returns daily bars."
+      },
+      "bbby_daily": {
+        "bar_count": 0,
+        "errors": [
+          "BBBY: The response is empty"
+        ],
+        "note": "Bankrupt/delisted BBBY is empty on this Tiingo/OpenBB route. Survivorship gap confirmed."
+      }
+    },
+    "dataset_starts": {
+      "EQUS.MINI": "2023-03-28T00:00:00.000000000Z",
+      "EQUS.SUMMARY": "2024-07-01T00:00:00.000000000Z",
+      "IEXG.TOPS": "2023-03-28T00:00:00.000000000Z",
+      "XNAS.ITCH": "2018-05-01T00:00:00.000000000Z",
+      "XNAS.BASIC": "2024-07-01T00:00:00.000000000Z",
+      "DBEQ.BASIC": "2023-03-28T00:00:00.000000000Z"
+    },
+    "equs_mini_schemas": {
+      "ok": true,
+      "value": [
+        "mbp-1",
+        "tbbo",
+        "trades",
+        "bbo-1s",
+        "bbo-1m",
+        "ohlcv-1s",
+        "ohlcv-1m",
+        "ohlcv-1h",
+        "ohlcv-1d",
+        "definition"
+      ]
+    }
+  },
+  "gate_reasons": [
+    "No local US equity history.",
+    "No survivorship-safe security master; Tiingo BBBY empty.",
+    "FLOAT_DATA_UNAVAILABLE and no PIT market cap.",
+    "No halt tape; EQUS.MINI lacks status schema.",
+    "No borrow/locate history.",
+    "EQUS.MINI/IEX/DBEQ start 2023-03-28; declared TRAIN through 2022 is empty.",
+    "Purchasing Mini 1m (~$541) or ITCH 1m (~$1502) still would not complete float/borrow/PIT cap.",
+    "AITRADE has no equity execution path."
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "phase": 47,
+  "status": "LOCKED_FORWARD_VALIDATION_CANDIDATE",
+  "NOT_PRODUCTION": true,
+  "DRY_RUN_ONLY": true,
+  "no_broker_execution": true,
+  "not_frozen": true,
+  "candidate_id": "ES_DVP_PORT",
+  "locked_version": "es_dvp_v1.PORT.LOCKED_PHASE47",
+  "instrument": "ES",
+  "strategy_family": "nq_drift_vwap_pullback_v1",
+  "source_phase46_candidate": "strategy_candidates/phase46_ES_DVP.json",
+  "lock_timestamp": "2026-08-19T00:27:41.130916+00:00",
+  "locked_config_hash": "28d12b8f3a6631b8c6526d6c300244396c0c2ba5628a2d5baa143f5489f4b3c4",
+  "semantic": {
+    "strategy_family": "nq_drift_vwap_pullback_v1",
+    "candidate_id": "ES_DVP_PORT",
+    "locked_version": "es_dvp_v1.PORT.LOCKED_PHASE47",
+    "instrument": "ES",
+    "hour_return_threshold": 0.001,
+    "long_stop_points": 18.0,
+    "long_target_points": 9.0,
+    "short_stop_points": 18.0,
+    "short_target_points": 11.25,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "atr_scale_locked": 0.22547932918744962,
+    "timezone": "America/New_York",
+    "vwap_reset": "09:30",
+    "trade_start": "10:30",
+    "no_new_trades_after": "15:30",
+    "force_close": "15:55",
+    "vwap_price_basis": "typical_price=(H+L+C)/3",
+    "vwap_formula": "sum(typical_price*volume)/sum(volume)",
+    "trend_timeframe": "15m",
+    "execution_timeframe": "5m",
+    "completed_bars_only": true,
+    "long_drift": "close>VWAP AND VWAP rising AND 1h_return>=+0.10%",
+    "short_drift": "close<VWAP AND VWAP falling AND 1h_return<=-0.10%",
+    "long_trigger": "first completed red 5m; entry next 5m open",
+    "short_trigger": "first completed green 5m; entry next 5m open",
+    "loss_cap_interpretation": "any two losing trades in the day",
+    "one_position_at_a_time": true,
+    "tick_size": 0.25,
+    "point_usd": 50.0,
+    "mes_point_usd": 5.0,
+    "commission_points": 0.08,
+    "primary_fill": "1_TICK_ADVERSE",
+    "cost_overlays": [
+      "IDEAL_TOUCH",
+      "1_TICK_ADVERSE",
+      "2_TICK_ADVERSE"
+    ],
+    "news_blackout": "T-5m to T+5m around 08:30 ET; RTH entries start 10:30 so 08:30 never overlaps Phase 46 ES DVP",
+    "not_production": true,
+    "dry_run_only": true,
+    "no_broker_execution": true
+  },
+  "cfg": {
+    "strategy_family": "nq_drift_vwap_pullback_v1",
+    "candidate_id": "ES_DVP_PORT",
+    "hour_return_threshold": 0.001,
+    "long_stop_points": 18.0,
+    "long_target_points": 9.0,
+    "short_stop_points": 18.0,
+    "short_target_points": 11.25,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "extras": {
+      "scale": 0.22547932918744962,
+      "neighbor": 1.0,
+      "source": "phase46_ES_DVP"
+    }
+  },
+  "session": {
+    "timezone": "America/New_York",
+    "vwap_reset": "09:30",
+    "trade_start": "10:30",
+    "no_new_trades_after": "15:30",
+    "force_close": "15:55"
+  },
+  "signal_rules": {
+    "vwap": "session reset 09:30 ET, typical price volume-weighted, completed bars only",
+    "drift_15m": "close>VWAP AND VWAP rising AND 1h_return>=+0.10% / close<VWAP AND VWAP falling AND 1h_return<=-0.10%",
+    "entry": "first opposing completed 5m; fill next 5m open \u00b11 tick adverse (overlay, not signal)",
+    "one_position": true,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "force_close": "15:55 ET",
+    "no_new_after": "15:30 ET"
+  },
+  "risk_rules": {
+    "long_stop_points": 18.0,
+    "long_target_points": 9.0,
+    "short_stop_points": 18.0,
+    "short_target_points": 11.25,
+    "normalization": "Phase 46 TRAIN median session ATR14 scale 0.22547932918744962 vs NQ 80/40/50. Locked. Do not retune.",
+    "no_trailing": true,
+    "no_breakeven": true
+  },
+  "news": "T-5m to T+5m around 08:30 ET; RTH entries start 10:30 so 08:30 never overlaps Phase 46 ES DVP",
+  "cost_model": {
+    "tick_size": 0.25,
+    "primary": "1_TICK_ADVERSE",
+    "overlays": [
+      "IDEAL_TOUCH",
+      "1_TICK_ADVERSE",
+      "2_TICK_ADVERSE"
+    ],
+    "commission_points": 0.08
+  },
+  "forward_journal": "journal/phase47_es_dvp_paper/paper_trades.jsonl",
+  "forward_policy": "Setups count only if setup timestamp >= lock_timestamp. No historical backfill.",
+  "historical_benchmark": {
+    "source": "strategy_candidates/phase46_ES_DVP.json",
+    "phase46_status": "PORTABLE_EDGE_FOUND",
+    "full": {
+      "n_resolved": 5574,
+      "expectancy_r": 0.029565143722840182,
+      "expectancy_points": 0.5321725870111235,
+      "win_rate": 0.6498026551847865,
+      "profit_factor": 1.100766501141735,
+      "max_dd_points": 899.8300000000024,
+      "max_consec_losses": 15,
+      "avg_stop_points": 18.0,
+      "trades_per_year": 796.2857142857143,
+      "worst_day_points": -37.16,
+      "n_days": 1674,
+      "long": {
+        "n": 3075,
+        "win_rate": 0.6731707317073171,
+        "expectancy_points": 0.56479674796748,
+        "expectancy_r": 0.031377597109304455
+      },
+      "short": {
+        "n": 2499,
+        "win_rate": 0.6210484193677471,
+        "expectancy_points": 0.49202881152461025,
+        "expectancy_r": 0.02733493397358943
+      },
+      "years": [
+        {
+          "year": 2020,
+          "n_resolved": 823,
+          "win_rate": 0.5978128797083839,
+          "expectancy_points": -0.8482260024301332,
+          "expectancy_r": -0.047123666801674076,
+          "profit_factor": 0.8567426913305617
+        },
+        {
+          "year": 2021,
+          "n_resolved": 800,
+          "win_rate": 0.64375,
+          "expectancy_points": 0.9865625000000002,
+          "expectancy_r": 0.05480902777777778,
+          "profit_factor": 1.2247582976178613
+        },
+        {
+          "year": 2022,
+          "n_resolved": 888,
+          "win_rate": 0.6779279279279279,
+          "expectancy_points": 0.8521509009009014,
+          "expectancy_r": 0.04734171671671673,
+          "profit_factor": 1.1523741827137028
+        },
+        {
+          "year": 2023,
+          "n_resolved": 840,
+          "win_rate": 0.669047619047619,
+          "expectancy_points": 1.0327976190476194,
+          "expectancy_r": 0.05737764550264551,
+          "profit_factor": 1.209845098494524
+        },
+        {
+          "year": 2024,
+          "n_resolved": 853,
+          "win_rate": 0.6553341148886284,
+          "expectancy_points": 0.9006565064478316,
+          "expectancy_r": 0.050036472580435074,
+          "profit_factor": 1.1796145672356433
+        },
+        {
+          "year": 2025,
+          "n_resolved": 826,
+          "win_rate": 0.6404358353510896,
+          "expectancy_points": 0.20056900726392293,
+          "expectancy_r": 0.011142722625773486,
+          "profit_factor": 1.0355685994984716
+        },
+        {
+          "year": 2026,
+          "n_resolved": 544,
+          "win_rate": 0.6672794117647058,
+          "expectancy_points": 0.5826838235294122,
+          "expectancy_r": 0.03237132352941178,
+          "profit_factor": 1.1050392182203181
+        }
+      ]
+    },
+    "train": {
+      "n_resolved": 2511,
+      "expectancy_r": 0.01875901588565867,
+      "expectancy_points": 0.3376622859418562,
+      "win_rate": 0.6407805655117483,
+      "profit_factor": 1.0635077217156308,
+      "max_dd_points": 899.8300000000024,
+      "max_consec_losses": 15,
+      "avg_stop_points": 18.0,
+      "trades_per_year": 837.0,
+      "worst_day_points": -37.16,
+      "n_days": 761,
+      "long": {
+        "n": 1373,
+        "win_rate": 0.6700655498907502,
+        "expectancy_points": 0.5620247632920615,
+        "expectancy_r": 0.03122359796067009
+      },
+      "short": {
+        "n": 1138,
+        "win_rate": 0.6054481546572935,
+        "expectancy_points": 0.06696836555360325,
+        "expectancy_r": 0.003720464752977931
+      },
+      "years": [
+        {
+          "year": 2020,
+          "n_resolved": 823,
+          "win_rate": 0.5978128797083839,
+          "expectancy_points": -0.8482260024301332,
+          "expectancy_r": -0.047123666801674076,
+          "profit_factor": 0.8567426913305617
+        },
+        {
+          "year": 2021,
+          "n_resolved": 800,
+          "win_rate": 0.64375,
+          "expectancy_points": 0.9865625000000002,
+          "expectancy_r": 0.05480902777777778,
+          "profit_factor": 1.2247582976178613
+        },
+        {
+          "year": 2022,
+          "n_resolved": 888,
+          "win_rate": 0.6779279279279279,
+          "expectancy_points": 0.8521509009009014,
+          "expectancy_r": 0.04734171671671673,
+          "profit_factor": 1.1523741827137028
+        }
+      ]
+    },
+    "holdout": {
+      "n_resolved": 3063,
+      "expectancy_r": 0.03842384009866871,
+      "expectancy_points": 0.691629121776037,
+      "win_rate": 0.6571988246816847,
+      "profit_factor": 1.1316876981413564,
+      "max_dd_points": 774.0600000000129,
+      "max_consec_losses": 11,
+      "avg_stop_points": 18.0,
+      "trades_per_year": 765.75,
+      "worst_day_points": -37.16,
+      "n_days": 913,
+      "long": {
+        "n": 1702,
+        "win_rate": 0.6756756756756757,
+        "expectancy_points": 0.5670329024676855,
+        "expectancy_r": 0.03150182791487142
+      },
+      "short": {
+        "n": 1361,
+        "win_rate": 0.6340925789860397,
+        "expectancy_points": 0.8474430565760475,
+        "expectancy_r": 0.04708016980978039
+      },
+      "years": [
+        {
+          "year": 2023,
+          "n_resolved": 840,
+          "win_rate": 0.669047619047619,
+          "expectancy_points": 1.0327976190476194,
+          "expectancy_r": 0.05737764550264551,
+          "profit_factor": 1.209845098494524
+        },
+        {
+          "year": 2024,
+          "n_resolved": 853,
+          "win_rate": 0.6553341148886284,
+          "expectancy_points": 0.9006565064478316,
+          "expectancy_r": 0.050036472580435074,
+          "profit_factor": 1.1796145672356433
+        },
+        {
+          "year": 2025,
+          "n_resolved": 826,
+          "win_rate": 0.6404358353510896,
+          "expectancy_points": 0.20056900726392293,
+          "expectancy_r": 0.011142722625773486,
+          "profit_factor": 1.0355685994984716
+        },
+        {
+          "year": 2026,
+          "n_resolved": 544,
+          "win_rate": 0.6672794117647058,
+          "expectancy_points": 0.5826838235294122,
+          "expectancy_r": 0.03237132352941178,
+          "profit_factor": 1.1050392182203181
+        }
+      ]
+    },
+    "walk_forward": {
+      "method": "Phase 46 year-block holdouts (no additional retune). Not a new walk-forward.",
+      "years": [
+        {
+          "year": 2020,
+          "n_resolved": 823,
+          "win_rate": 0.5978128797083839,
+          "expectancy_points": -0.8482260024301332,
+          "expectancy_r": -0.047123666801674076,
+          "profit_factor": 0.8567426913305617
+        },
+        {
+          "year": 2021,
+          "n_resolved": 800,
+          "win_rate": 0.64375,
+          "expectancy_points": 0.9865625000000002,
+          "expectancy_r": 0.05480902777777778,
+          "profit_factor": 1.2247582976178613
+        },
+        {
+          "year": 2022,
+          "n_resolved": 888,
+          "win_rate": 0.6779279279279279,
+          "expectancy_points": 0.8521509009009014,
+          "expectancy_r": 0.04734171671671673,
+          "profit_factor": 1.1523741827137028
+        },
+        {
+          "year": 2023,
+          "n_resolved": 840,
+          "win_rate": 0.669047619047619,
+          "expectancy_points": 1.0327976190476194,
+          "expectancy_r": 0.05737764550264551,
+          "profit_factor": 1.209845098494524
+        },
+        {
+          "year": 2024,
+          "n_resolved": 853,
+          "win_rate": 0.6553341148886284,
+          "expectancy_points": 0.9006565064478316,
+          "expectancy_r": 0.050036472580435074,
+          "profit_factor": 1.1796145672356433
+        },
+        {
+          "year": 2025,
+          "n_resolved": 826,
+          "win_rate": 0.6404358353510896,
+          "expectancy_points": 0.20056900726392293,
+          "expectancy_r": 0.011142722625773486,
+          "profit_factor": 1.0355685994984716
+        },
+        {
+          "year": 2026,
+          "n_resolved": 544,
+          "win_rate": 0.6672794117647058,
+          "expectancy_points": 0.5826838235294122,
+          "expectancy_r": 0.03237132352941178,
+          "profit_factor": 1.1050392182203181
+        }
+      ]
+    },
+    "cost": {
+      "ideal_expectancy_r": 0.05734292150061798,
+      "one_tick_expectancy_r": 0.029565143722840182,
+      "two_tick_expectancy_r": 0.0017873659450624222
+    },
+    "corr_nq_dvp": {
+      "n_overlap": 1673,
+      "daily_pnl_correlation": 0.6043162895478795,
+      "losing_day_overlap": 549,
+      "active_day_union": 1691
+    },
+    "corr_gc_v2_proxy": {
+      "n_overlap": 1233,
+      "daily_pnl_correlation": 0.01169044782804582,
+      "losing_day_overlap": 364,
+      "active_day_union": 1681
+    },
+    "atr_scale": 0.22547932918744962,
+    "threshold_stable": true,
+    "n_news_removed": 0
+  },
+  "note": "Locked research candidate for prospective paper validation. Not strategy_frozen/. Any rule change requires a new version, hash, and journal."
+}

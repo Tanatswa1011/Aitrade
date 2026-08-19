@@ -1,0 +1,109 @@
+{
+  "phase": 37,
+  "status": "DEFINITIONS_FROZEN_BEFORE_FEATURES",
+  "methodology_corrections": [],
+  "execution": "DRY_RUN_NO_BROKER",
+  "dom": "NOT IN THE LIVE FEATURE SET. No MBP, MBO, book imbalance, slope, resting depth, iceberg, reload, persistence.",
+  "carried_forward": {
+    "universe": "reports/phase35_sweep_events.csv (269 news-filtered events). Not re-detected.",
+    "labels": "label_300s from Phase 35 CSV. REVERSAL vs not. Unresolved counts as not-reversal, same as Phase 35 p_reversal.",
+    "shallow_points": 18.25,
+    "shallow_source": "phase35_validation.json chrono.train_penetration.median_from_train",
+    "first_sweep": "earliest eligible sweep on that RTH day (PDH or PDL).",
+    "timezone": "America/New_York",
+    "rth": "09:30-16:00",
+    "sweep_bar_time": "1m bar open; event known at bar close = open+60s",
+    "feature_cutoff_classification": "sweep_bar_close = sweep_bar_time + 60. Classification models must not use trades after this timestamp.",
+    "tick": 0.25,
+    "news": "Eligible sample already excludes full CPI/NFP dates. Strict ±5m around 08:30 never overlaps RTH.",
+    "chrono": {
+      "train_end_date": "2026-04-09",
+      "holdout_start_date": "2026-04-13",
+      "walkforward_blocks": [
+        ["2025-06-17", "2025-09-29"],
+        ["2025-09-30", "2026-01-16"],
+        ["2026-01-20", "2026-04-24"],
+        ["2026-04-28", "2026-08-14"]
+      ]
+    }
+  },
+  "data": {
+    "schema": "Databento GLBX.MDP3 trades (already cached, Phase 35 windows)",
+    "path": "data/databento/NQ/microstructure/trades/",
+    "download_window": "T_open-60s through T_open+120s. Not expanded.",
+    "no_new_download_unless_cache_missing": true,
+    "cash_index_cfd": false
+  },
+  "trade_signing": {
+    "method": "Databento trades.side aggressor (direct). No quote test, no tick rule, no future quotes.",
+    "ASK_A": "AGGRESSIVE_SELL",
+    "BID_B": "AGGRESSIVE_BUY",
+    "NONE_N": "UNSIGNED — counted in total volume and trade intensity, excluded from ABV/ASV/delta",
+    "source": "https://databento.com/docs/schemas-and-data-formats/trades : Ask = sell aggressor, Bid = buy aggressor"
+  },
+  "windows": {
+    "T": "sweep_bar_time (1m open)",
+    "classification_only_le_cutoff": true,
+    "classification": {
+      "pre_30": "T-30s inclusive to T exclusive",
+      "pre_60": "T-60s inclusive to T exclusive",
+      "sweep_30": "T inclusive to T+30s exclusive",
+      "sweep_60": "T inclusive to T+60s inclusive (bar close / confirmation)"
+    },
+    "diagnostic_may_leak_vs_300s_label": {
+      "post_30": "T+60s exclusive to T+90s inclusive",
+      "post_60": "T+60s exclusive to T+120s inclusive (end of cached window)",
+      "note": "These overlap the Phase 35 outcome path (starts at first 1m bar after the sweep bar). They are reported, never used in Models 0-6."
+    }
+  },
+  "features": {
+    "abv": "sum size of AGGRESSIVE_BUY",
+    "asv": "sum size of AGGRESSIVE_SELL",
+    "delta": "ABV - ASV",
+    "normalized_delta": "(ABV-ASV)/(ABV+ASV); 0.0 if ABV+ASV==0 (predeclared, not NaN)",
+    "reversal_aligned_delta": "PDL: delta (buying is positive). PDH: -delta (selling is positive).",
+    "reversal_aligned_ndelta": "same sign flip on normalized_delta",
+    "volume_burst": "vol(sweep_60) / max(vol(pre_60), 1.0). Pre-event denominator only. No future-session or same-TOD cross-day median (those data were not cached).",
+    "flow_efficiency": "opposing_aggressive_volume(sweep_60) / max(penetration_points, 0.25). PDL opposing=ASV, PDH opposing=ABV. High = lots of sweep-direction volume for little extension.",
+    "price_impact": "penetration_points / max(opposing_aggressive_volume(sweep_60), 1.0)",
+    "exhaustion_score": "opposing_vol_ratio / (1 + penetration_ticks). opposing_vol_ratio = opposing(sweep_60) / max(opposing(pre_60), 1.0).",
+    "delta_divergence": "1 if reversal_aligned_ndelta(sweep_60) > 0 else 0. Price made a new extreme by construction; this flags flow already opposing the sweep during the bar.",
+    "cvd": "event-local cumulative signed size (buy +size, sell -size) from first cached trade. Classification uses CVD at cutoff minus CVD at T_open.",
+    "trade_intensity": "trades/sec and contracts/sec in sweep_60; avg and max trade size; burstiness = (n_trades * sum_size^2) / max(sum_size,1)^2 (Herfindahl).",
+    "flow_flip_diagnostic": "1 if reversal_aligned_ndelta(sweep_60) < 0 AND reversal_aligned_ndelta(post_60) > 0. Uses post-cutoff trades. Diagnostic only.",
+    "reclaim_delta_diagnostic": "reversal_aligned_ndelta from cutoff to Phase 36 1m-close reclaim timestamp, only if reclaim_ts is inside the cached window. Diagnostic only.",
+    "winsorize": "none on raw tables. Logistic z-score uses TRAIN mean/sd only."
+  },
+  "primary_universe": "first eligible sweep of the day AND shallow (penetration_points <= 18.25) AND usable trades at cutoff",
+  "models": {
+    "universe": "primary_universe (first+shallow+flow). Model 0 is intercept-only.",
+    "model0": "intercept (shallow first-sweep baseline)",
+    "model1": "penetration_points",
+    "model2": "penetration_points + seconds_from_rth_open + opening_bar",
+    "model3": "model2 + reversal_aligned_ndelta(sweep_60)",
+    "model4": "model2 + volume_burst",
+    "model5": "model2 + flow_efficiency",
+    "model6": "model2 + ndelta_rev_sweep60 + volume_burst + exhaustion_score",
+    "method": "L2 logistic, TRAIN z-score, no sklearn stack"
+  },
+  "incremental_gate": {
+    "holdout_brier_improvement_vs_model2": 0.01,
+    "conditional_holdout_lift_pp": 0.08,
+    "conditional_rule": "TRAIN-median (or TRAIN 70th for burst) split of a leak-safe flow feature must lift P(reversal) by >= 0.08 on HOLDOUT vs the complementary shallow cell, with the same sign on TRAIN and at least 3 of 4 walk-forward blocks.",
+    "spearman_holdout_must_match_expected_sign": true,
+    "both_brier_and_conditional_required_for_edge": true,
+    "note": "A coefficient with the expected sign is not sufficient."
+  },
+  "strategy": {
+    "build_only_if_classification_gate_passes": true,
+    "reuse_phase36": "Candidate B geometry: 1m close reclaim, 300s expiry, sweep-extreme stop ±1 tick, 1.5R, next-bar open + 1 tick adverse, $4 RT",
+    "candidates": ["A range_1m", "B close_1m primary", "C close_5m diagnostic"]
+  },
+  "costs": {
+    "commission_round_turn_usd": 4.0,
+    "commission_points": 0.2,
+    "fill_primary": "1 tick adverse entry",
+    "fill_overlays": [0, 1, 2]
+  },
+  "note": "Phase 37 does not search new sweep rules, does not reopen Phase 35 depth, and does not freeze. If flow adds no stable incremental value: NO_INCREMENTAL_FLOW_VALUE and CLOSE_NQ_SWEEP_RESEARCH_BRANCH."
+}

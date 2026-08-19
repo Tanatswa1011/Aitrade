@@ -1,0 +1,512 @@
+{
+  "phase": 47,
+  "es_candidate_status": "ES_DVP_FORWARD_VALIDATION_READY",
+  "portfolio_status": "MULTI_BOOK_FORWARD_VALIDATION_READY",
+  "overall": "FORWARD_VALIDATION_READY",
+  "broker_execution": false,
+  "DRY_RUN_ONLY": true,
+  "NOT_PRODUCTION": true,
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "locked_candidate": {
+    "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/strategy_candidates/phase47_ES_DVP_LOCKED_CANDIDATE.json",
+    "status": "LOCKED_FORWARD_VALIDATION_CANDIDATE",
+    "locked_version": "es_dvp_v1.PORT.LOCKED_PHASE47",
+    "locked_config_hash": "28d12b8f3a6631b8c6526d6c300244396c0c2ba5628a2d5baa143f5489f4b3c4",
+    "lock_timestamp": "2026-08-19T00:27:41.130916+00:00",
+    "cfg": {
+      "strategy_family": "nq_drift_vwap_pullback_v1",
+      "candidate_id": "ES_DVP_PORT",
+      "hour_return_threshold": 0.001,
+      "long_stop_points": 18.0,
+      "long_target_points": 9.0,
+      "short_stop_points": 18.0,
+      "short_target_points": 11.25,
+      "max_trades_per_day": 4,
+      "max_losses_per_day": 2,
+      "extras": {
+        "scale": 0.22547932918744962,
+        "neighbor": 1.0,
+        "source": "phase46_ES_DVP"
+      }
+    },
+    "session": {
+      "timezone": "America/New_York",
+      "vwap_reset": "09:30",
+      "trade_start": "10:30",
+      "no_new_trades_after": "15:30",
+      "force_close": "15:55"
+    },
+    "news": "T-5m to T+5m around 08:30 ET; RTH entries start 10:30 so 08:30 never overlaps Phase 46 ES DVP",
+    "historical_benchmark": {
+      "source": "strategy_candidates/phase46_ES_DVP.json",
+      "phase46_status": "PORTABLE_EDGE_FOUND",
+      "full": {
+        "n_resolved": 5574,
+        "expectancy_r": 0.029565143722840182,
+        "expectancy_points": 0.5321725870111235,
+        "win_rate": 0.6498026551847865,
+        "profit_factor": 1.100766501141735,
+        "max_dd_points": 899.8300000000024,
+        "max_consec_losses": 15,
+        "avg_stop_points": 18.0,
+        "trades_per_year": 796.2857142857143,
+        "worst_day_points": -37.16,
+        "n_days": 1674,
+        "long": {
+          "n": 3075,
+          "win_rate": 0.6731707317073171,
+          "expectancy_points": 0.56479674796748,
+          "expectancy_r": 0.031377597109304455
+        },
+        "short": {
+          "n": 2499,
+          "win_rate": 0.6210484193677471,
+          "expectancy_points": 0.49202881152461025,
+          "expectancy_r": 0.02733493397358943
+        },
+        "years": [
+          {
+            "year": 2020,
+            "n_resolved": 823,
+            "win_rate": 0.5978128797083839,
+            "expectancy_points": -0.8482260024301332,
+            "expectancy_r": -0.047123666801674076,
+            "profit_factor": 0.8567426913305617
+          },
+          {
+            "year": 2021,
+            "n_resolved": 800,
+            "win_rate": 0.64375,
+            "expectancy_points": 0.9865625000000002,
+            "expectancy_r": 0.05480902777777778,
+            "profit_factor": 1.2247582976178613
+          },
+          {
+            "year": 2022,
+            "n_resolved": 888,
+            "win_rate": 0.6779279279279279,
+            "expectancy_points": 0.8521509009009014,
+            "expectancy_r": 0.04734171671671673,
+            "profit_factor": 1.1523741827137028
+          },
+          {
+            "year": 2023,
+            "n_resolved": 840,
+            "win_rate": 0.669047619047619,
+            "expectancy_points": 1.0327976190476194,
+            "expectancy_r": 0.05737764550264551,
+            "profit_factor": 1.209845098494524
+          },
+          {
+            "year": 2024,
+            "n_resolved": 853,
+            "win_rate": 0.6553341148886284,
+            "expectancy_points": 0.9006565064478316,
+            "expectancy_r": 0.050036472580435074,
+            "profit_factor": 1.1796145672356433
+          },
+          {
+            "year": 2025,
+            "n_resolved": 826,
+            "win_rate": 0.6404358353510896,
+            "expectancy_points": 0.20056900726392293,
+            "expectancy_r": 0.011142722625773486,
+            "profit_factor": 1.0355685994984716
+          },
+          {
+            "year": 2026,
+            "n_resolved": 544,
+            "win_rate": 0.6672794117647058,
+            "expectancy_points": 0.5826838235294122,
+            "expectancy_r": 0.03237132352941178,
+            "profit_factor": 1.1050392182203181
+          }
+        ]
+      },
+      "train": {
+        "n_resolved": 2511,
+        "expectancy_r": 0.01875901588565867,
+        "expectancy_points": 0.3376622859418562,
+        "win_rate": 0.6407805655117483,
+        "profit_factor": 1.0635077217156308,
+        "max_dd_points": 899.8300000000024,
+        "max_consec_losses": 15,
+        "avg_stop_points": 18.0,
+        "trades_per_year": 837.0,
+        "worst_day_points": -37.16,
+        "n_days": 761,
+        "long": {
+          "n": 1373,
+          "win_rate": 0.6700655498907502,
+          "expectancy_points": 0.5620247632920615,
+          "expectancy_r": 0.03122359796067009
+        },
+        "short": {
+          "n": 1138,
+          "win_rate": 0.6054481546572935,
+          "expectancy_points": 0.06696836555360325,
+          "expectancy_r": 0.003720464752977931
+        },
+        "years": [
+          {
+            "year": 2020,
+            "n_resolved": 823,
+            "win_rate": 0.5978128797083839,
+            "expectancy_points": -0.8482260024301332,
+            "expectancy_r": -0.047123666801674076,
+            "profit_factor": 0.8567426913305617
+          },
+          {
+            "year": 2021,
+            "n_resolved": 800,
+            "win_rate": 0.64375,
+            "expectancy_points": 0.9865625000000002,
+            "expectancy_r": 0.05480902777777778,
+            "profit_factor": 1.2247582976178613
+          },
+          {
+            "year": 2022,
+            "n_resolved": 888,
+            "win_rate": 0.6779279279279279,
+            "expectancy_points": 0.8521509009009014,
+            "expectancy_r": 0.04734171671671673,
+            "profit_factor": 1.1523741827137028
+          }
+        ]
+      },
+      "holdout": {
+        "n_resolved": 3063,
+        "expectancy_r": 0.03842384009866871,
+        "expectancy_points": 0.691629121776037,
+        "win_rate": 0.6571988246816847,
+        "profit_factor": 1.1316876981413564,
+        "max_dd_points": 774.0600000000129,
+        "max_consec_losses": 11,
+        "avg_stop_points": 18.0,
+        "trades_per_year": 765.75,
+        "worst_day_points": -37.16,
+        "n_days": 913,
+        "long": {
+          "n": 1702,
+          "win_rate": 0.6756756756756757,
+          "expectancy_points": 0.5670329024676855,
+          "expectancy_r": 0.03150182791487142
+        },
+        "short": {
+          "n": 1361,
+          "win_rate": 0.6340925789860397,
+          "expectancy_points": 0.8474430565760475,
+          "expectancy_r": 0.04708016980978039
+        },
+        "years": [
+          {
+            "year": 2023,
+            "n_resolved": 840,
+            "win_rate": 0.669047619047619,
+            "expectancy_points": 1.0327976190476194,
+            "expectancy_r": 0.05737764550264551,
+            "profit_factor": 1.209845098494524
+          },
+          {
+            "year": 2024,
+            "n_resolved": 853,
+            "win_rate": 0.6553341148886284,
+            "expectancy_points": 0.9006565064478316,
+            "expectancy_r": 0.050036472580435074,
+            "profit_factor": 1.1796145672356433
+          },
+          {
+            "year": 2025,
+            "n_resolved": 826,
+            "win_rate": 0.6404358353510896,
+            "expectancy_points": 0.20056900726392293,
+            "expectancy_r": 0.011142722625773486,
+            "profit_factor": 1.0355685994984716
+          },
+          {
+            "year": 2026,
+            "n_resolved": 544,
+            "win_rate": 0.6672794117647058,
+            "expectancy_points": 0.5826838235294122,
+            "expectancy_r": 0.03237132352941178,
+            "profit_factor": 1.1050392182203181
+          }
+        ]
+      },
+      "walk_forward": {
+        "method": "Phase 46 year-block holdouts (no additional retune). Not a new walk-forward.",
+        "years": [
+          {
+            "year": 2020,
+            "n_resolved": 823,
+            "win_rate": 0.5978128797083839,
+            "expectancy_points": -0.8482260024301332,
+            "expectancy_r": -0.047123666801674076,
+            "profit_factor": 0.8567426913305617
+          },
+          {
+            "year": 2021,
+            "n_resolved": 800,
+            "win_rate": 0.64375,
+            "expectancy_points": 0.9865625000000002,
+            "expectancy_r": 0.05480902777777778,
+            "profit_factor": 1.2247582976178613
+          },
+          {
+            "year": 2022,
+            "n_resolved": 888,
+            "win_rate": 0.6779279279279279,
+            "expectancy_points": 0.8521509009009014,
+            "expectancy_r": 0.04734171671671673,
+            "profit_factor": 1.1523741827137028
+          },
+          {
+            "year": 2023,
+            "n_resolved": 840,
+            "win_rate": 0.669047619047619,
+            "expectancy_points": 1.0327976190476194,
+            "expectancy_r": 0.05737764550264551,
+            "profit_factor": 1.209845098494524
+          },
+          {
+            "year": 2024,
+            "n_resolved": 853,
+            "win_rate": 0.6553341148886284,
+            "expectancy_points": 0.9006565064478316,
+            "expectancy_r": 0.050036472580435074,
+            "profit_factor": 1.1796145672356433
+          },
+          {
+            "year": 2025,
+            "n_resolved": 826,
+            "win_rate": 0.6404358353510896,
+            "expectancy_points": 0.20056900726392293,
+            "expectancy_r": 0.011142722625773486,
+            "profit_factor": 1.0355685994984716
+          },
+          {
+            "year": 2026,
+            "n_resolved": 544,
+            "win_rate": 0.6672794117647058,
+            "expectancy_points": 0.5826838235294122,
+            "expectancy_r": 0.03237132352941178,
+            "profit_factor": 1.1050392182203181
+          }
+        ]
+      },
+      "cost": {
+        "ideal_expectancy_r": 0.05734292150061798,
+        "one_tick_expectancy_r": 0.029565143722840182,
+        "two_tick_expectancy_r": 0.0017873659450624222
+      },
+      "corr_nq_dvp": {
+        "n_overlap": 1673,
+        "daily_pnl_correlation": 0.6043162895478795,
+        "losing_day_overlap": 549,
+        "active_day_union": 1691
+      },
+      "corr_gc_v2_proxy": {
+        "n_overlap": 1233,
+        "daily_pnl_correlation": 0.01169044782804582,
+        "losing_day_overlap": 364,
+        "active_day_union": 1681
+      },
+      "atr_scale": 0.22547932918744962,
+      "threshold_stable": true,
+      "n_news_removed": 0
+    }
+  },
+  "journals": {
+    "gc": "journal/phase26_gc_vwap_v2_paper/paper_trades.jsonl",
+    "nq": "journal/phase30_nq_dvp_paper/paper_trades.jsonl",
+    "es": "journal/phase47_es_dvp_paper/paper_trades.jsonl",
+    "append_only": true,
+    "historical_backfill": false
+  },
+  "scorecard": {
+    "rows": [
+      {
+        "strategy": "GC VWAP V2",
+        "status": "FROZEN_PAPER_VALIDATION",
+        "forward_n": 0,
+        "target": 30,
+        "progress": "GC_FORWARD_N = 0 / 30",
+        "forward_e": null,
+        "historical_e": 0.34482758620689646,
+        "historical_e_unit": "E[2R]",
+        "hash_ok": true,
+        "config_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43"
+      },
+      {
+        "strategy": "NQ DVP",
+        "status": "FROZEN_PAPER_VALIDATION",
+        "forward_n": 0,
+        "target": 30,
+        "progress": "NQ_FORWARD_N = 0 / 30",
+        "forward_e": null,
+        "historical_e": 0.07439621981099055,
+        "historical_e_unit": "E[R]",
+        "hash_ok": true,
+        "config_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+      },
+      {
+        "strategy": "ES DVP",
+        "status": "LOCKED_FORWARD_VALIDATION_CANDIDATE",
+        "forward_n": 0,
+        "target": 30,
+        "progress": "ES_FORWARD_N = 0 / 30",
+        "forward_e": null,
+        "historical_e": 0.029565143722840182,
+        "historical_e_unit": "Phase46 E[R]",
+        "hash_ok": true,
+        "config_hash": "28d12b8f3a6631b8c6526d6c300244396c0c2ba5628a2d5baa143f5489f4b3c4"
+      }
+    ],
+    "checkpoints": {
+      "minimum": 30,
+      "preferred": 50,
+      "stronger": 100
+    },
+    "gc_status": "PAPER_VALIDATION_IN_PROGRESS",
+    "nq_status": "PAPER_VALIDATION_IN_PROGRESS",
+    "es_status": "ES_DVP_FORWARD_VALIDATION_READY",
+    "comparisons": [
+      {
+        "strategy": "GC VWAP V2",
+        "forward_n": 0,
+        "note": "Do not call deviations statistically meaningful with tiny N.",
+        "forward_wr": null,
+        "historical_wr": null,
+        "forward_e": null,
+        "historical_e": 0.34482758620689646,
+        "stop_frequency": null,
+        "target_frequency": null,
+        "avg_hold_sec": null,
+        "uncertainty": "VERY_HIGH"
+      },
+      {
+        "strategy": "NQ DVP",
+        "forward_n": 0,
+        "note": "Do not call deviations statistically meaningful with tiny N.",
+        "forward_wr": null,
+        "historical_wr": 0.6664333216660833,
+        "forward_e": null,
+        "historical_e": 0.07439621981099055,
+        "stop_frequency": null,
+        "target_frequency": null,
+        "avg_hold_sec": null,
+        "uncertainty": "VERY_HIGH"
+      },
+      {
+        "strategy": "ES DVP",
+        "forward_n": 0,
+        "note": "Do not call deviations statistically meaningful with tiny N.",
+        "forward_wr": null,
+        "historical_wr": 0.6498026551847865,
+        "forward_e": null,
+        "historical_e": 0.029565143722840182,
+        "stop_frequency": null,
+        "target_frequency": null,
+        "avg_hold_sec": null,
+        "uncertainty": "VERY_HIGH"
+      }
+    ],
+    "early_promotion": false,
+    "note": "Before N=30 per book, status remains FORWARD_VALIDATION_IN_PROGRESS. Do not freeze ES. Do not demote on a handful of losses."
+  },
+  "dvp_family": {
+    "status": "INSUFFICIENT_FORWARD_SAMPLE",
+    "nq_forward_trades": 0,
+    "es_forward_trades": 0,
+    "same_day_overlap": "INSUFFICIENT_FORWARD_SAMPLE",
+    "same_direction_overlap": "INSUFFICIENT_FORWARD_SAMPLE",
+    "simultaneous_position_overlap": "INSUFFICIENT_FORWARD_SAMPLE",
+    "p_es_active_given_nq": "INSUFFICIENT_FORWARD_SAMPLE",
+    "p_nq_active_given_es": "INSUFFICIENT_FORWARD_SAMPLE",
+    "forward_pnl_correlation": "INSUFFICIENT_FORWARD_SAMPLE",
+    "combined_family_dd_r": "INSUFFICIENT_FORWARD_SAMPLE",
+    "worst_same_day_loss_r": "INSUFFICIENT_FORWARD_SAMPLE",
+    "concentration_warnings": [],
+    "note": "No genuine forward DVP trades yet. Historical Phase 46 daily P&L corr was 0.60 \u2014 not a forward statistic."
+  },
+  "gc_diversification": {
+    "status": "INSUFFICIENT_FORWARD_SAMPLE",
+    "note": "Do not claim diversification from a tiny or empty forward sample.",
+    "gc_forward_n": 0,
+    "dvp_forward_n": 0
+  },
+  "forward_data": {
+    "cdp_module_present": true,
+    "live": {
+      "GC": {
+        "status": "FORWARD_DATA_BLOCKED",
+        "missing": "real-time CME GC futures OHLCV via TradingView/CDP (get_chart_info + fetch_bars on the matching futures chart)",
+        "historical_databento_present": true,
+        "note": "Databento stitch is research history. Replaying it does not count as forward N. Do not invent paper trades while the live chart feed is missing."
+      },
+      "NQ": {
+        "status": "FORWARD_DATA_BLOCKED",
+        "missing": "real-time CME NQ futures OHLCV via TradingView/CDP (get_chart_info + fetch_bars on the matching futures chart)",
+        "historical_databento_present": true,
+        "note": "Databento stitch is research history. Replaying it does not count as forward N. Do not invent paper trades while the live chart feed is missing."
+      },
+      "ES": {
+        "status": "FORWARD_DATA_BLOCKED",
+        "missing": "real-time CME ES futures OHLCV via TradingView/CDP (get_chart_info + fetch_bars on the matching futures chart)",
+        "historical_databento_present": true,
+        "note": "Databento stitch is research history. Replaying it does not count as forward N. Do not invent paper trades while the live chart feed is missing."
+      }
+    },
+    "overall": "FORWARD_DATA_BLOCKED",
+    "reason": "CLI/validator has no attached real-time CME chart. Forward N stays 0 until a live GC/NQ/ES futures chart feed is connected. Evaluation accounts are not required."
+  },
+  "runner": {
+    "ok": true,
+    "mode": "DRY_RUN",
+    "broker_execution": false,
+    "locked_config_hash": "28d12b8f3a6631b8c6526d6c300244396c0c2ba5628a2d5baa143f5489f4b3c4",
+    "lock_timestamp": "2026-08-19T00:27:41.130916+00:00",
+    "runner": {
+      "session_date": null,
+      "state": "NO_SETUP",
+      "daily_trades": 0,
+      "daily_losses": 0,
+      "open_position": null
+    },
+    "forward_n": 0,
+    "progress": "ES_FORWARD_N = 0 / 30",
+    "NOT_PRODUCTION": true
+  },
+  "duplicate_protection": {
+    "existing_es_ids": [],
+    "setup_key": "strategy + instrument + session_date + setup_timestamp + direction",
+    "restart_state": "NO_SETUP"
+  },
+  "decisions": {
+    "frozen_intact": true,
+    "es_locked": true,
+    "journals_ok": true,
+    "live_data": "FORWARD_DATA_BLOCKED",
+    "protections": true,
+    "family_monitor": true
+  },
+  "next": "Attach real-time CME GC, NQ, and ES futures charts and let the locked/frozen rules generate the first genuine forward trades. Do not retune. Do not backfill.",
+  "forbidden": [
+    "retune",
+    "freeze_es",
+    "broker_execution",
+    "historical_backfill",
+    "rty_ym_cl_fvg_orb_tsmom"
+  ]
+}

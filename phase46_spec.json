@@ -1,0 +1,107 @@
+{
+  "phase": 46,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "execution": "DRY_RUN_NO_BROKER",
+  "methodology_corrections": [],
+  "forbidden": "Do not modify strategy_frozen/. Do not backfill paper journals. No FVG/ORB/sweep/TSMOM/RSI/MACD/DOM/volume-profile/discretionary candles. No holdout tuning. No freeze. No huge parameter grids. Do not reopen closed families.",
+  "closed_branches": [
+    "MACRO_EDGE_REJECTED",
+    "CLOSE_NQ_SWEEP_RESEARCH_BRANCH",
+    "CLOSE_ORB_RESEARCH_BRANCH",
+    "CLOSE_TSMOM_RESEARCH_BRANCH",
+    "VOLUME_PROFILE_STRUCTURAL_EFFECT_ONLY",
+    "HTF_PULLBACK_EDGE_WEAK",
+    "SMALLCAP_DATA_QUALITY_BLOCKED",
+    "LONG_DRIFT_BETA_ONLY",
+    "CLOSE_TG_LONDON_BRANCH"
+  ],
+  "thesis": "Do the two surviving AITRADE mechanisms (session VWAP mean reversion; VWAP drift + first opposing 5m pullback) generalize to ES and CL, or are they market-specific?",
+  "workstream_a_forward": {
+    "gc_journal": "journal/phase26_gc_vwap_v2_paper/paper_trades.jsonl",
+    "nq_journal": "journal/phase30_nq_dvp_paper/paper_trades.jsonl",
+    "policy": "Read-only. Do not append. Do not synthesize."
+  },
+  "chrono": {
+    "train_end": "2022-12-30",
+    "holdout_start": "2023-01-03"
+  },
+  "parameter_classes": {
+    "structural_unchanged": [
+      "VWAP typical-price volume-weighted formula",
+      "session reset, no overnight VWAP carry",
+      "MR: 2σ extension -> BAND_RECLAIM -> FROZEN_2SIG_RETEST, stop = extension extreme, max 6 entry bars, min 6 VWAP bars",
+      "DVP: completed 15m close vs VWAP, VWAP slope, 1h return ±0.10%, first opposing 5m, next 5m open, one position, max 4/day, stop after 2 losses",
+      "completed bars only, no look-ahead"
+    ],
+    "market_unit_dependent": [
+      "tick size, point value, commission",
+      "DVP fixed 80/40/50 NQ points -> TRAIN median session-range ATR scale"
+    ],
+    "session_dependent_locked_before_pnl": {
+      "ES_MR": {"vwap_reset": "09:30", "end": "15:55", "no_new_setups_after": "14:55", "note": "US equity RTH analog of GC 08:20-13:30; 60 minutes no-new before flatten matches GC structure."},
+      "ES_DVP": {"vwap_reset": "09:30", "trade_start": "10:30", "no_new": "15:30", "force_close": "15:55", "note": "Identical to frozen NQ DVP clock."},
+      "CL_MR": {"vwap_reset": "09:00", "end": "14:30", "no_new_setups_after": "13:30", "note": "MECHANIZED_APPROXIMATION of NYMEX crude pit / US energy cash window. Not Globex 23h."},
+      "CL_DVP": {"vwap_reset": "09:00", "trade_start": "10:00", "no_new": "13:30", "force_close": "14:25", "note": "1h after VWAP reset, 60m no-new, flatten 5m before pit end — analog of NQ 10:30/15:30/15:55."},
+      "NQ_MR_diagnostic": {"vwap_reset": "09:30", "end": "15:55", "no_new_setups_after": "14:55"},
+      "GC_DVP_diagnostic": {"vwap_reset": "08:20", "trade_start": "09:20", "no_new": "12:30", "force_close": "13:25"}
+    }
+  },
+  "atr_normalization": {
+    "status": "LOCKED_BEFORE_TARGET_PNL",
+    "definition": "For each session day, session_range = session_high - session_low using the family session window. ATR14 = Wilder average of those daily ranges, using only prior days (no same-day leak). Scale constants are the median ATR14 on TRAIN dates for that instrument.",
+    "nq_source_distances": {"long_stop": 80.0, "long_target": 40.0, "short_stop": 80.0, "short_target": 50.0},
+    "scale": "distance_target = distance_NQ * (median_ATR14_target_TRAIN / median_ATR14_NQ_TRAIN), rounded to tick.",
+    "version_1_literal": "Copy 80/40/50 points unchanged. Diagnostic only. Not promotion-eligible.",
+    "version_2_normalized": "PRIMARY for all DVP ports.",
+    "neighbors": [0.9, 1.0, 1.1],
+    "do_not_search_atr_multipliers": true
+  },
+  "vwap_mr": {
+    "primary_id": "V2_BAND_RECLAIM_2SIG_RETEST_PORT",
+    "sigma_primary": 2.0,
+    "sigma_neighbors": [1.5, 2.0, 2.5],
+    "confirmation": "BAND_RECLAIM",
+    "entry": "FROZEN_2SIG_RETEST",
+    "stop": "extension_sequence_extreme",
+    "primary_target_r": 2.0,
+    "target_matrix": [1.0, 1.5, 2.0, 3.0],
+    "execution_tf": "5m_setup",
+    "path_resolution": "1m",
+    "candidates": {
+      "ES_VWAP_MR_V2_PORT": {"instrument": "ES", "stage": 1},
+      "CL_VWAP_MR_V2_PORT": {"instrument": "CL", "stage": 3},
+      "NQ_VWAP_MR_DIAGNOSTIC": {"instrument": "NQ", "role": "off_diagonal_diagnostic"},
+      "GC_VWAP_MR_FROZEN": {"instrument": "GC", "role": "frozen_reference_not_retuned"}
+    }
+  },
+  "dvp": {
+    "hour_return_threshold": 0.001,
+    "max_trades_per_day": 4,
+    "max_losses_per_day": 2,
+    "candidates": {
+      "ES_DVP_PORT": {"instrument": "ES", "stage": 2, "version": "risk_normalized"},
+      "CL_DVP_PORT": {"instrument": "CL", "stage": 4, "version": "risk_normalized"},
+      "GC_DVP_DIAGNOSTIC": {"instrument": "GC", "role": "off_diagonal_diagnostic", "version": "risk_normalized"},
+      "NQ_DVP_FROZEN": {"instrument": "NQ", "role": "frozen_reference_not_retuned"}
+    }
+  },
+  "instruments": {
+    "ES": {"tick": 0.25, "point_usd": 50.0, "commission_points": 0.08, "mes_point_usd": 5.0, "data": "data/databento/ES/stitched/databento_ES_v0_1m.jsonl"},
+    "CL": {"tick": 0.01, "point_usd": 1000.0, "commission_points": 0.02, "mcl_point_usd": 100.0, "data": "data/databento/CL/stitched/databento_CL_v0_1m.jsonl"},
+    "NQ": {"tick": 0.25, "point_usd": 20.0, "commission_points": 0.20, "mnq_point_usd": 2.0, "data": "data/databento/NQ/stitched/databento_NQ_stitched_1m.jsonl"},
+    "GC": {"tick": 0.10, "point_usd": 100.0, "commission_points": 0.04, "mgc_point_usd": 10.0, "data": "data/databento/GC/stitched/databento_GC_v0_1m.jsonl"}
+  },
+  "costs": {"primary_adverse_ticks": 1.0, "stress_adverse_ticks": 2.0, "ideal": 0.0},
+  "news": {
+    "default": "T-5m to T+5m around 08:30 ET high-impact if calendar available; no new entries",
+    "cl_eia_approximation": "MECHANIZED_APPROXIMATION: every Wednesday 10:25-10:35 ET. Not an inventory strategy. Report removals only."
+  },
+  "redundancy_threshold_daily_pnl_corr": 0.70,
+  "promotion": {
+    "min_full_n": 100,
+    "min_holdout_n": 25,
+    "require_holdout_positive": true,
+    "require_1tick_positive": true,
+    "prefer_2tick_positive": true
+  }
+}

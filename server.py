@@ -473,6 +473,27 @@ async def tv_nq_dvp_paper_state(
         return _tool_error(exc, "Unexpected frozen NQ DVP paper-state failure")
 
 
+@mcp.tool()
+async def tv_es_dvp_paper_state(
+    confirmation_note: str = "read_only",
+) -> dict[str, Any]:
+    """Read-only locked Phase 47 ES DVP paper state (not frozen, no tunable params).
+
+    Loads strategy_candidates/phase47_ES_DVP_LOCKED_CANDIDATE.json only.
+    Requires CME ES futures chart. DRY_RUN. No broker orders.
+
+    Args:
+        confirmation_note: Unused placeholder for API stability.
+    """
+    try:
+        from es_dvp_live import analyze_locked_es_dvp_paper_state
+
+        _ = confirmation_note
+        return await analyze_locked_es_dvp_paper_state()
+    except Exception as exc:  # noqa: BLE001
+        return _tool_error(exc, "Unexpected locked ES DVP paper-state failure")
+
+
 if __name__ == "__main__":
     # MCP stdio must stay clean; keep accidental prints off stdout.
     sys.stdout.reconfigure(encoding="utf-8")

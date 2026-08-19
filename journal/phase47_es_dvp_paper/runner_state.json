@@ -1,0 +1,16 @@
+{
+  "mode": "DRY_RUN",
+  "broker_execution": false,
+  "locked_config_hash": "28d12b8f3a6631b8c6526d6c300244396c0c2ba5628a2d5baa143f5489f4b3c4",
+  "locked_version": "es_dvp_v1.PORT.LOCKED_PHASE47",
+  "session_date": null,
+  "state": "NO_SETUP",
+  "armed_setup": null,
+  "open_position": null,
+  "daily_trades": 0,
+  "daily_losses": 0,
+  "seen_setup_keys": [],
+  "seen_triggers": [],
+  "seen_trade_ids": [],
+  "last_event": null
+}

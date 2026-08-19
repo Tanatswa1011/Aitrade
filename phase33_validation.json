@@ -1,0 +1,996 @@
+{
+  "ok": true,
+  "phase": 33,
+  "status": "RESEARCH_COMPLETE",
+  "strategy_family": "nq_post_news_macro_repricing_v1",
+  "execution": "DRY_RUN_NO_BROKER",
+  "verdict": "MACRO_EDGE_REJECTED",
+  "best_candidate": {
+    "strategy_family": "nq_post_news_macro_repricing_v1",
+    "candidate_id": "B_FIRST_PULLBACK_NFP_D60",
+    "status": "RESEARCH_ONLY_NOT_FROZEN",
+    "entry_family": "B_FIRST_PULLBACK",
+    "event_family": "NFP",
+    "delay_minutes": 60,
+    "blackout": "DEFAULT_CONSERVATIVE_PM_5_5",
+    "config_hash": "ed7fa19bb7a97b18",
+    "resolved_n": 37,
+    "win_rate": 0.5675675675675675,
+    "expectancy_points": 8.06081081081081,
+    "profit_factor": 1.3199249128452668,
+    "oos_expectancy_points": 38.3125,
+    "cost_1tick_expectancy": 7.5608108108108105,
+    "note": "Not frozen. Next research phase only if verdict is MACRO_EDGE_FOUND or PROMISING_NEEDS_MORE_DATA."
+  },
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+    "execution": "DRY_RUN_NO_BROKER"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+    "execution": "DRY_RUN_NO_BROKER"
+  },
+  "macro_data_audit": {
+    "source": "BLS archived news releases (HTML)",
+    "timezone": "America/New_York",
+    "dst_aware": true,
+    "default_release_local": "08:30",
+    "coverage": {
+      "start": "2020-01-10",
+      "end": "2026-08-12",
+      "cpi_n": 79,
+      "nfp_n": 79
+    },
+    "first_print_parse": {
+      "cpi_u_mom_pct": {
+        "n": 79,
+        "parsed": 0,
+        "parse_rate": 0.0
+      },
+      "core_cpi_mom_pct": {
+        "n": 79,
+        "parsed": 0,
+        "parse_rate": 0.0
+      },
+      "nfp_change": {
+        "n": 79,
+        "parsed": 0,
+        "parse_rate": 0.0
+      },
+      "unemployment_rate_pct": {
+        "n": 79,
+        "parsed": 0,
+        "parse_rate": 0.0
+      },
+      "ahe_cents": {
+        "n": 79,
+        "parsed": 0,
+        "parse_rate": 0.0
+      }
+    },
+    "consensus": {
+      "available": false,
+      "openbb_calendar": "credentials_missing_fmp_tradingeconomics_fred",
+      "nasdaq_api": "current_session_only",
+      "implication": "Cannot compute raw_surprise = actual - consensus without leakage-safe survey vintages"
+    },
+    "known_limitations": [
+      "October 2025 Employment Situation and CPI were not published on the normal schedule due to the 2025 federal appropriations lapse; delayed/missing prints are whatever BLS archived.",
+      "Headline parsers can fail on atypical wording (especially COVID-era NFP). Unparsed actuals are null, not imputed.",
+      "Archived HTML is the first public release text, but BLS later revises CES/CPI in subsequent months. We do not splice those revisions into actuals.",
+      "No Treasury yield or DXY series is stored in this repository; those confirmation legs are omitted rather than substituted.",
+      "No ES Databento store exists; ES is not silently replaced by a cash index or CFD.",
+      "Survey consensus is unavailable; surprise-conditioned rules are not tested in this phase."
+    ],
+    "events_path": "C:/Users/tanam/OneDrive/Desktop/aitrade/data/macro/bls_events.jsonl"
+  },
+  "nq_bars": {
+    "n_1m": 2338684,
+    "n_5m": 467985
+  },
+  "es_data": {
+    "available": false,
+    "note": "No Databento ES store; cash/CFD substitution forbidden."
+  },
+  "treasury_dxy": {
+    "available": false,
+    "note": "Not in repository; omitted rather than substituted."
+  },
+  "consensus": {
+    "available": false,
+    "implication": "Surprise-conditioned rules not tested."
+  },
+  "event_counts": [
+    {
+      "event_family": "CPI",
+      "n": 79,
+      "MACRO_BULLISH": 38,
+      "MACRO_NEUTRAL": 15,
+      "DATA_INSUFFICIENT": 1,
+      "MACRO_BEARISH": 25
+    },
+    {
+      "event_family": "NFP",
+      "n": 79,
+      "MACRO_BULLISH": 36,
+      "MACRO_BEARISH": 23,
+      "MACRO_NEUTRAL": 20
+    }
+  ],
+  "continuation_delay_decay": [
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_5m_signed",
+      "n": 38,
+      "mean": -2.3947368421052633,
+      "median": 2.25,
+      "hit_rate": 0.5526315789473685,
+      "stdev": 26.902335032370438
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_10m_signed",
+      "n": 38,
+      "mean": -2.6052631578947367,
+      "median": -0.375,
+      "hit_rate": 0.47368421052631576,
+      "stdev": 37.52786822285274
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_15m_signed",
+      "n": 38,
+      "mean": 0.3092105263157895,
+      "median": 1.25,
+      "hit_rate": 0.5263157894736842,
+      "stdev": 45.364294235466666
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_30m_signed",
+      "n": 38,
+      "mean": -2.164473684210526,
+      "median": 1.625,
+      "hit_rate": 0.5,
+      "stdev": 49.725075623629
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_60m_signed",
+      "n": 38,
+      "mean": -10.953947368421053,
+      "median": -6.125,
+      "hit_rate": 0.5,
+      "stdev": 68.49094387079958
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_0930_signed",
+      "n": 38,
+      "mean": -3.460526315789474,
+      "median": -8.0,
+      "hit_rate": 0.42105263157894735,
+      "stdev": 55.93057039746823
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_5m_signed",
+      "n": 25,
+      "mean": 9.82,
+      "median": 7.5,
+      "hit_rate": 0.6,
+      "stdev": 33.37195828835941
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_10m_signed",
+      "n": 25,
+      "mean": 8.81,
+      "median": 5.75,
+      "hit_rate": 0.6,
+      "stdev": 29.88070280297972
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_15m_signed",
+      "n": 25,
+      "mean": 9.31,
+      "median": 7.75,
+      "hit_rate": 0.68,
+      "stdev": 31.123968255992036
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_30m_signed",
+      "n": 25,
+      "mean": 15.01,
+      "median": 4.0,
+      "hit_rate": 0.56,
+      "stdev": 57.64193265323431
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_60m_signed",
+      "n": 25,
+      "mean": 3.99,
+      "median": -0.25,
+      "hit_rate": 0.48,
+      "stdev": 63.26252761311391
+    },
+    {
+      "event_family": "CPI",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_0930_signed",
+      "n": 25,
+      "mean": 7.41,
+      "median": 3.75,
+      "hit_rate": 0.52,
+      "stdev": 61.730498135038566
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_5m_signed",
+      "n": 36,
+      "mean": -4.784722222222222,
+      "median": -1.875,
+      "hit_rate": 0.5,
+      "stdev": 34.16647117717335
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_10m_signed",
+      "n": 36,
+      "mean": -8.92361111111111,
+      "median": -7.625,
+      "hit_rate": 0.3611111111111111,
+      "stdev": 32.36053513435924
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_15m_signed",
+      "n": 36,
+      "mean": -4.840277777777778,
+      "median": -3.875,
+      "hit_rate": 0.4166666666666667,
+      "stdev": 41.21160472259881
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_30m_signed",
+      "n": 36,
+      "mean": -2.8819444444444446,
+      "median": -1.5,
+      "hit_rate": 0.5,
+      "stdev": 50.78407743790504
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_60m_signed",
+      "n": 36,
+      "mean": -12.479166666666666,
+      "median": 5.5,
+      "hit_rate": 0.5277777777777778,
+      "stdev": 60.908354853601345
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BULLISH",
+      "horizon": "fwd_0930_signed",
+      "n": 36,
+      "mean": -14.01388888888889,
+      "median": -1.25,
+      "hit_rate": 0.4722222222222222,
+      "stdev": 61.60190699960233
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_5m_signed",
+      "n": 23,
+      "mean": -7.5978260869565215,
+      "median": -6.0,
+      "hit_rate": 0.34782608695652173,
+      "stdev": 32.140802586840856
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_10m_signed",
+      "n": 23,
+      "mean": -7.467391304347826,
+      "median": -1.25,
+      "hit_rate": 0.4782608695652174,
+      "stdev": 45.118822854806425
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_15m_signed",
+      "n": 23,
+      "mean": -6.413043478260869,
+      "median": -2.5,
+      "hit_rate": 0.43478260869565216,
+      "stdev": 52.412484443306525
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_30m_signed",
+      "n": 23,
+      "mean": 1.5869565217391304,
+      "median": 6.25,
+      "hit_rate": 0.5217391304347826,
+      "stdev": 57.781617013114854
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_60m_signed",
+      "n": 23,
+      "mean": -15.152173913043478,
+      "median": 12.0,
+      "hit_rate": 0.5652173913043478,
+      "stdev": 57.78087068410472
+    },
+    {
+      "event_family": "NFP",
+      "regime": "MACRO_BEARISH",
+      "horizon": "fwd_0930_signed",
+      "n": 23,
+      "mean": -19.380434782608695,
+      "median": -26.75,
+      "hit_rate": 0.43478260869565216,
+      "stdev": 63.861937938041535
+    }
+  ],
+  "experiments_n": 40,
+  "best_full": {
+    "trades": 37,
+    "resolved_n": 37,
+    "wins": 21,
+    "losses": 16,
+    "timed_exits": 3,
+    "ambiguous": 0,
+    "win_rate": 0.5675675675675675,
+    "average_win_points": 58.595238095238095,
+    "average_loss_points": 58.265625,
+    "expectancy_points": 8.06081081081081,
+    "expectancy_r": 0.12843443926603487,
+    "profit_factor": 1.3199249128452668,
+    "max_drawdown_points": 533.5,
+    "longest_losing_streak": 4,
+    "trading_days": 37,
+    "trades_per_day": 1.0,
+    "pct_profitable_days": 0.5675675675675675,
+    "long": {
+      "trades": 21,
+      "resolved_n": 21,
+      "wins": 12,
+      "losses": 9,
+      "timed_exits": 2,
+      "ambiguous": 0,
+      "win_rate": 0.5714285714285714,
+      "average_win_points": 58.333333333333336,
+      "average_loss_points": 54.69444444444444,
+      "expectancy_points": 9.892857142857142,
+      "expectancy_r": 0.11282076042928132,
+      "profit_factor": 1.4220416455053326,
+      "max_drawdown_points": 288.0,
+      "longest_losing_streak": 6,
+      "trading_days": 21,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.5714285714285714,
+      "long": {
+        "n": 21,
+        "win_rate": 0.5714285714285714,
+        "expectancy_points": 9.892857142857142
+      },
+      "short": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      }
+    },
+    "short": {
+      "trades": 16,
+      "resolved_n": 16,
+      "wins": 9,
+      "losses": 7,
+      "timed_exits": 1,
+      "ambiguous": 0,
+      "win_rate": 0.5625,
+      "average_win_points": 58.94444444444444,
+      "average_loss_points": 62.857142857142854,
+      "expectancy_points": 5.65625,
+      "expectancy_r": 0.1489273927392739,
+      "profit_factor": 1.205681818181818,
+      "max_drawdown_points": 327.25,
+      "longest_losing_streak": 3,
+      "trading_days": 16,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.5625,
+      "long": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      },
+      "short": {
+        "n": 16,
+        "win_rate": 0.5625,
+        "expectancy_points": 5.65625
+      }
+    },
+    "mfe_mean": 44.939189189189186,
+    "mae_mean": -41.4054054054054,
+    "mfe_n": 37,
+    "mae_n": 37
+  },
+  "best_train": {
+    "trades": 29,
+    "resolved_n": 29,
+    "wins": 15,
+    "losses": 14,
+    "timed_exits": 3,
+    "ambiguous": 0,
+    "win_rate": 0.5172413793103449,
+    "average_win_points": 50.083333333333336,
+    "average_loss_points": 54.25,
+    "expectancy_points": -0.28448275862068967,
+    "expectancy_r": 0.025933594925630715,
+    "profit_factor": 0.989137590520079,
+    "max_drawdown_points": 533.5,
+    "longest_losing_streak": 4,
+    "trading_days": 29,
+    "trades_per_day": 1.0,
+    "pct_profitable_days": 0.5172413793103449,
+    "long": {
+      "n": 15,
+      "win_rate": 0.5333333333333333,
+      "expectancy_points": 4.983333333333333
+    },
+    "short": {
+      "n": 14,
+      "win_rate": 0.5,
+      "expectancy_points": -5.928571428571429
+    }
+  },
+  "best_oos": {
+    "trades": 8,
+    "resolved_n": 8,
+    "wins": 6,
+    "losses": 2,
+    "timed_exits": 0,
+    "ambiguous": 0,
+    "win_rate": 0.75,
+    "average_win_points": 79.875,
+    "average_loss_points": 86.375,
+    "expectancy_points": 38.3125,
+    "expectancy_r": 0.5,
+    "profit_factor": 2.7742402315484807,
+    "max_drawdown_points": 119.75,
+    "longest_losing_streak": 1,
+    "trading_days": 8,
+    "trades_per_day": 1.0,
+    "pct_profitable_days": 0.75,
+    "long": {
+      "n": 6,
+      "win_rate": 0.6666666666666666,
+      "expectancy_points": 22.166666666666668
+    },
+    "short": {
+      "n": 2,
+      "win_rate": 1.0,
+      "expectancy_points": 86.75
+    }
+  },
+  "walkforward_class": "INSUFFICIENT",
+  "walkforward": [
+    {
+      "block": 1,
+      "resolved_n": 9,
+      "win_rate": 0.8888888888888888,
+      "expectancy_points": 41.888888888888886,
+      "profit_factor": 12.968253968253968,
+      "max_dd_points": 31.5
+    },
+    {
+      "block": 2,
+      "resolved_n": 9,
+      "win_rate": 0.2222222222222222,
+      "expectancy_points": -33.083333333333336,
+      "profit_factor": 0.26932515337423313,
+      "max_dd_points": 301.0
+    },
+    {
+      "block": 3,
+      "resolved_n": 9,
+      "win_rate": 0.3333333333333333,
+      "expectancy_points": -18.63888888888889,
+      "profit_factor": 0.4765990639625585,
+      "max_dd_points": 232.5
+    },
+    {
+      "block": 4,
+      "resolved_n": 10,
+      "win_rate": 0.8,
+      "expectancy_points": 38.675,
+      "profit_factor": 3.238784370477569,
+      "max_dd_points": 119.75
+    }
+  ],
+  "cost_1tick": {
+    "trades": 37,
+    "resolved_n": 37,
+    "wins": 21,
+    "losses": 16,
+    "timed_exits": 3,
+    "ambiguous": 0,
+    "win_rate": 0.5675675675675675,
+    "average_win_points": 58.095238095238095,
+    "average_loss_points": 58.765625,
+    "expectancy_points": 7.5608108108108105,
+    "expectancy_r": 0.11780512209751202,
+    "profit_factor": 1.297527253390056,
+    "max_drawdown_points": 541.0,
+    "longest_losing_streak": 4,
+    "trading_days": 37,
+    "trades_per_day": 1.0,
+    "pct_profitable_days": 0.5675675675675675,
+    "long": {
+      "n": 21,
+      "win_rate": 0.5714285714285714,
+      "expectancy_points": 9.392857142857142
+    },
+    "short": {
+      "n": 16,
+      "win_rate": 0.5625,
+      "expectancy_points": 5.15625
+    }
+  },
+  "monte_carlo": {
+    "ok": true,
+    "simulations": 10000,
+    "method": "trade_order_reshuffle",
+    "n_trades": 37,
+    "terminal_p05": 298.25,
+    "terminal_p50": 298.25,
+    "terminal_p95": 298.25,
+    "maxdd_p50": 293.5,
+    "maxdd_p95": 470.75,
+    "pct_terminal_positive": 1.0
+  },
+  "market_regimes": [
+    {
+      "bucket": "pre_covid",
+      "trades": 1,
+      "resolved_n": 1,
+      "wins": 1,
+      "losses": 0,
+      "timed_exits": 0,
+      "ambiguous": 0,
+      "win_rate": 1.0,
+      "average_win_points": 22.75,
+      "average_loss_points": null,
+      "expectancy_points": 22.75,
+      "expectancy_r": 1.0,
+      "profit_factor": null,
+      "max_drawdown_points": 0.0,
+      "longest_losing_streak": 0,
+      "trading_days": 1,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 1.0,
+      "long": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      },
+      "short": {
+        "n": 1,
+        "win_rate": 1.0,
+        "expectancy_points": 22.75
+      }
+    },
+    {
+      "bucket": "covid_2020_2021",
+      "trades": 10,
+      "resolved_n": 10,
+      "wins": 8,
+      "losses": 2,
+      "timed_exits": 1,
+      "ambiguous": 0,
+      "win_rate": 0.8,
+      "average_win_points": 53.15625,
+      "average_loss_points": 33.875,
+      "expectancy_points": 35.75,
+      "expectancy_r": 0.5633440514469453,
+      "profit_factor": 6.276752767527675,
+      "max_drawdown_points": 36.25,
+      "longest_losing_streak": 1,
+      "trading_days": 10,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.8,
+      "long": {
+        "n": 6,
+        "win_rate": 0.6666666666666666,
+        "expectancy_points": 22.666666666666668
+      },
+      "short": {
+        "n": 4,
+        "win_rate": 1.0,
+        "expectancy_points": 55.375
+      }
+    },
+    {
+      "bucket": "hiking_2022_mid2023",
+      "trades": 9,
+      "resolved_n": 9,
+      "wins": 1,
+      "losses": 8,
+      "timed_exits": 1,
+      "ambiguous": 0,
+      "win_rate": 0.1111111111111111,
+      "average_win_points": 70.25,
+      "average_loss_points": 57.21875,
+      "expectancy_points": -43.05555555555556,
+      "expectancy_r": -0.7352401906857352,
+      "profit_factor": 0.15346805024576735,
+      "max_drawdown_points": 387.5,
+      "longest_losing_streak": 4,
+      "trading_days": 9,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.1111111111111111,
+      "long": {
+        "n": 4,
+        "win_rate": 0.0,
+        "expectancy_points": -58.9375
+      },
+      "short": {
+        "n": 5,
+        "win_rate": 0.2,
+        "expectancy_points": -30.35
+      }
+    },
+    {
+      "bucket": "post_2023aug",
+      "trades": 17,
+      "resolved_n": 17,
+      "wins": 11,
+      "losses": 6,
+      "timed_exits": 1,
+      "ambiguous": 0,
+      "win_rate": 0.6470588235294118,
+      "average_win_points": 64.75,
+      "average_loss_points": 67.79166666666667,
+      "expectancy_points": 17.970588235294116,
+      "expectancy_r": 0.27857620320855614,
+      "profit_factor": 1.7510755992624463,
+      "max_drawdown_points": 188.5,
+      "longest_losing_streak": 2,
+      "trading_days": 17,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.6470588235294118,
+      "long": {
+        "n": 11,
+        "win_rate": 0.7272727272727273,
+        "expectancy_points": 27.954545454545453
+      },
+      "short": {
+        "n": 6,
+        "win_rate": 0.5,
+        "expectancy_points": -0.3333333333333333
+      }
+    }
+  ],
+  "gc_limited": [
+    {
+      "instrument": "GC",
+      "entry_family": "A_RANGE_BREAKOUT",
+      "event_family": "CPI",
+      "trades": 9,
+      "resolved_n": 9,
+      "wins": 2,
+      "losses": 7,
+      "timed_exits": 1,
+      "ambiguous": 0,
+      "win_rate": 0.2222222222222222,
+      "average_win_points": 19.750000000000455,
+      "average_loss_points": 22.75714285714295,
+      "expectancy_points": -13.311111111111082,
+      "expectancy_r": -0.4538530465949816,
+      "profit_factor": 0.2479598242310154,
+      "max_drawdown_points": 119.79999999999973,
+      "longest_losing_streak": 3,
+      "trading_days": 9,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.2222222222222222,
+      "long": {
+        "n": 7,
+        "win_rate": 0.14285714285714285,
+        "expectancy_points": -18.714285714285648
+      },
+      "short": {
+        "n": 2,
+        "win_rate": 0.5,
+        "expectancy_points": 5.599999999999909
+      }
+    },
+    {
+      "instrument": "GC",
+      "entry_family": "A_RANGE_BREAKOUT",
+      "event_family": "NFP",
+      "trades": 10,
+      "resolved_n": 10,
+      "wins": 6,
+      "losses": 4,
+      "timed_exits": 6,
+      "ambiguous": 0,
+      "win_rate": 0.6,
+      "average_win_points": 21.500000000000075,
+      "average_loss_points": 12.399999999999864,
+      "expectancy_points": 7.9400000000001,
+      "expectancy_r": 0.39953525198589157,
+      "profit_factor": 2.600806451612941,
+      "max_drawdown_points": 35.79999999999927,
+      "longest_losing_streak": 2,
+      "trading_days": 10,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.6,
+      "long": {
+        "n": 8,
+        "win_rate": 0.625,
+        "expectancy_points": 8.550000000000125
+      },
+      "short": {
+        "n": 2,
+        "win_rate": 0.5,
+        "expectancy_points": 5.5
+      }
+    },
+    {
+      "instrument": "GC",
+      "entry_family": "B_FIRST_PULLBACK",
+      "event_family": "CPI",
+      "trades": 9,
+      "resolved_n": 9,
+      "wins": 4,
+      "losses": 5,
+      "timed_exits": 1,
+      "ambiguous": 0,
+      "win_rate": 0.4444444444444444,
+      "average_win_points": 12.324999999999818,
+      "average_loss_points": 13.959999999999855,
+      "expectancy_points": -2.2777777777777777,
+      "expectancy_r": -0.01380670611439775,
+      "profit_factor": 0.7063037249283637,
+      "max_drawdown_points": 29.300000000000182,
+      "longest_losing_streak": 2,
+      "trading_days": 9,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.4444444444444444,
+      "long": {
+        "n": 7,
+        "win_rate": 0.2857142857142857,
+        "expectancy_points": -5.671428571428545
+      },
+      "short": {
+        "n": 2,
+        "win_rate": 1.0,
+        "expectancy_points": 9.599999999999909
+      }
+    },
+    {
+      "instrument": "GC",
+      "entry_family": "B_FIRST_PULLBACK",
+      "event_family": "NFP",
+      "trades": 8,
+      "resolved_n": 8,
+      "wins": 4,
+      "losses": 4,
+      "timed_exits": 1,
+      "ambiguous": 0,
+      "win_rate": 0.5,
+      "average_win_points": 12.775000000000091,
+      "average_loss_points": 14.975000000000023,
+      "expectancy_points": -1.099999999999966,
+      "expectancy_r": -0.09459459459459096,
+      "profit_factor": 0.8530884808013404,
+      "max_drawdown_points": 33.19999999999982,
+      "longest_losing_streak": 2,
+      "trading_days": 8,
+      "trades_per_day": 1.0,
+      "pct_profitable_days": 0.5,
+      "long": {
+        "n": 7,
+        "win_rate": 0.42857142857142855,
+        "expectancy_points": -5.071428571428506
+      },
+      "short": {
+        "n": 1,
+        "win_rate": 1.0,
+        "expectancy_points": 26.699999999999818
+      }
+    },
+    {
+      "instrument": "GC",
+      "entry_family": "C_5M_CLOSE_CONFIRM",
+      "event_family": "CPI",
+      "trades": 0,
+      "resolved_n": 0,
+      "wins": 0,
+      "losses": 0,
+      "timed_exits": 0,
+      "ambiguous": 0,
+      "win_rate": null,
+      "average_win_points": null,
+      "average_loss_points": null,
+      "expectancy_points": null,
+      "expectancy_r": null,
+      "profit_factor": null,
+      "max_drawdown_points": 0.0,
+      "longest_losing_streak": 0,
+      "trading_days": 0,
+      "trades_per_day": null,
+      "pct_profitable_days": null,
+      "long": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      },
+      "short": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      }
+    },
+    {
+      "instrument": "GC",
+      "entry_family": "C_5M_CLOSE_CONFIRM",
+      "event_family": "NFP",
+      "trades": 0,
+      "resolved_n": 0,
+      "wins": 0,
+      "losses": 0,
+      "timed_exits": 0,
+      "ambiguous": 0,
+      "win_rate": null,
+      "average_win_points": null,
+      "average_loss_points": null,
+      "expectancy_points": null,
+      "expectancy_r": null,
+      "profit_factor": null,
+      "max_drawdown_points": 0.0,
+      "longest_losing_streak": 0,
+      "trading_days": 0,
+      "trades_per_day": null,
+      "pct_profitable_days": null,
+      "long": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      },
+      "short": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      }
+    },
+    {
+      "instrument": "GC",
+      "entry_family": "D_CASH_OPEN",
+      "event_family": "CPI",
+      "trades": 0,
+      "resolved_n": 0,
+      "wins": 0,
+      "losses": 0,
+      "timed_exits": 0,
+      "ambiguous": 0,
+      "win_rate": null,
+      "average_win_points": null,
+      "average_loss_points": null,
+      "expectancy_points": null,
+      "expectancy_r": null,
+      "profit_factor": null,
+      "max_drawdown_points": 0.0,
+      "longest_losing_streak": 0,
+      "trading_days": 0,
+      "trades_per_day": null,
+      "pct_profitable_days": null,
+      "long": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      },
+      "short": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      }
+    },
+    {
+      "instrument": "GC",
+      "entry_family": "D_CASH_OPEN",
+      "event_family": "NFP",
+      "trades": 0,
+      "resolved_n": 0,
+      "wins": 0,
+      "losses": 0,
+      "timed_exits": 0,
+      "ambiguous": 0,
+      "win_rate": null,
+      "average_win_points": null,
+      "average_loss_points": null,
+      "expectancy_points": null,
+      "expectancy_r": null,
+      "profit_factor": null,
+      "max_drawdown_points": 0.0,
+      "longest_losing_streak": 0,
+      "trading_days": 0,
+      "trades_per_day": null,
+      "pct_profitable_days": null,
+      "long": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      },
+      "short": {
+        "n": 0,
+        "win_rate": null,
+        "expectancy_points": null
+      }
+    }
+  ],
+  "portfolio": {
+    "dvp_journal": "journal/phase29_nq_drift_vwap/trades.jsonl",
+    "dvp_n_days": 1690,
+    "macro_n_days": 37,
+    "same_day_overlap_n": 37,
+    "daily_pnl_correlation_macro_vs_dvp": 0.2789808124367032,
+    "simultaneous_exposure_days": 3,
+    "dvp_mean_pnl_on_event_days": 7.123376623376624,
+    "dvp_mean_pnl_off_event_days": 21.426432291666668,
+    "gc_v2_replay": "in_memory_phase25_V2_not_writing_frozen_journals",
+    "gc_same_day_overlap_n": 2,
+    "daily_r_correlation_macro_vs_gc_v2": null,
+    "ensemble_agreement_n": 67,
+    "ensemble_compared_n": 121,
+    "note": "Frozen strategy files and paper journals were not modified."
+  },
+  "blackout_check": {
+    "ok": true,
+    "violations": [],
+    "n_violations": 0
+  },
+  "lookahead_tests_ok": true,
+  "lookahead_tests_output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.279s\n\nOK\n",
+  "split": {
+    "method": "calendar_2020_2024_dev_2025plus_oos",
+    "dev_start": "2020-02-07",
+    "dev_end": "2024-12-06",
+    "oos_start": "2025-01-10",
+    "oos_end": "2026-08-07"
+  },
+  "generated_at": "2026-08-18T12:34:20.433597+00:00",
+  "philosophy": "Goal is not to manufacture a profitable-looking macro bot. Question: after the prop-firm news blackout, is there a persistent, cost-adjusted directional edge in NQ/ES/GC that is different from frozen DVP and GC V2?"
+}

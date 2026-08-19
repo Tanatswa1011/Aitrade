@@ -1,0 +1,582 @@
+{
+  "ok": true,
+  "phase": 34,
+  "status": "RESEARCH_COMPLETE",
+  "verdict": "MICROSTRUCTURE_PROMISING_NEEDS_MORE_DATA",
+  "execution": "DRY_RUN_NO_BROKER",
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "pilot": {
+    "contract": "NQM6",
+    "start": "2026-05-13",
+    "end": "2026-06-12",
+    "trading_days": [
+      "2026-05-13",
+      "2026-05-14",
+      "2026-05-15",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-22",
+      "2026-05-26",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-11",
+      "2026-06-12"
+    ],
+    "n_days": 20,
+    "excluded_news_dates": [
+      "2026-05-08",
+      "2026-06-05",
+      "2026-06-10"
+    ],
+    "holidays_skipped_as_pdh_pdl_source": [
+      "2026-05-25"
+    ],
+    "roll": "NQM6 is front-month (volume-crossover 2026-03-16 until 2026-06-14). No month mix.",
+    "pdh_pdl": "Prior RTH 09:30-16:00 America/New_York high/low from completed 1m bars. Holidays skipped as source.",
+    "schema_plan": "Windowed MBP-10 (self-contained 10-level snapshots). Full-day MBO not downloaded: mid-session slices lack the UTC-midnight snapshot.",
+    "feature_window": {
+      "lookback_sec": 60,
+      "cutoff": "sweep_bar_close = sweep_bar_time + 60s",
+      "download_after_sec": 120,
+      "note": "Predictive features ignore records after bar close."
+    },
+    "outcome": {
+      "horizons_sec": [
+        30,
+        60,
+        180,
+        300,
+        900
+      ],
+      "primary_horizon_sec": 300,
+      "reversal_target_points": 8.0,
+      "continuation_extension_points": 12.0,
+      "subminute_note": "30s/60s labels on 1m OHLC are empty by construction (path starts at bar close)."
+    }
+  },
+  "n_sweeps": 20,
+  "baseline_primary_300s": {
+    "horizon_sec": 300,
+    "side": "ALL",
+    "n": 20,
+    "reversal": 9,
+    "continuation": 7,
+    "neither": 3,
+    "ambiguous": 1,
+    "p_reversal": 0.45,
+    "p_continuation": 0.35,
+    "p_reversal_among_decided": 0.5625
+  },
+  "baseline_all_horizons": [
+    {
+      "horizon_sec": 30,
+      "side": "pdl_sweep",
+      "n": 5,
+      "reversal": 0,
+      "continuation": 0,
+      "neither": 5,
+      "ambiguous": 0,
+      "p_reversal": 0.0,
+      "p_continuation": 0.0,
+      "p_reversal_among_decided": null
+    },
+    {
+      "horizon_sec": 30,
+      "side": "pdh_sweep",
+      "n": 15,
+      "reversal": 0,
+      "continuation": 0,
+      "neither": 15,
+      "ambiguous": 0,
+      "p_reversal": 0.0,
+      "p_continuation": 0.0,
+      "p_reversal_among_decided": null
+    },
+    {
+      "horizon_sec": 30,
+      "side": "ALL",
+      "n": 20,
+      "reversal": 0,
+      "continuation": 0,
+      "neither": 20,
+      "ambiguous": 0,
+      "p_reversal": 0.0,
+      "p_continuation": 0.0,
+      "p_reversal_among_decided": null
+    },
+    {
+      "horizon_sec": 60,
+      "side": "pdl_sweep",
+      "n": 5,
+      "reversal": 0,
+      "continuation": 0,
+      "neither": 5,
+      "ambiguous": 0,
+      "p_reversal": 0.0,
+      "p_continuation": 0.0,
+      "p_reversal_among_decided": null
+    },
+    {
+      "horizon_sec": 60,
+      "side": "pdh_sweep",
+      "n": 15,
+      "reversal": 0,
+      "continuation": 0,
+      "neither": 15,
+      "ambiguous": 0,
+      "p_reversal": 0.0,
+      "p_continuation": 0.0,
+      "p_reversal_among_decided": null
+    },
+    {
+      "horizon_sec": 60,
+      "side": "ALL",
+      "n": 20,
+      "reversal": 0,
+      "continuation": 0,
+      "neither": 20,
+      "ambiguous": 0,
+      "p_reversal": 0.0,
+      "p_continuation": 0.0,
+      "p_reversal_among_decided": null
+    },
+    {
+      "horizon_sec": 180,
+      "side": "pdl_sweep",
+      "n": 5,
+      "reversal": 0,
+      "continuation": 2,
+      "neither": 2,
+      "ambiguous": 1,
+      "p_reversal": 0.0,
+      "p_continuation": 0.4,
+      "p_reversal_among_decided": 0.0
+    },
+    {
+      "horizon_sec": 180,
+      "side": "pdh_sweep",
+      "n": 15,
+      "reversal": 8,
+      "continuation": 5,
+      "neither": 2,
+      "ambiguous": 0,
+      "p_reversal": 0.5333333333333333,
+      "p_continuation": 0.3333333333333333,
+      "p_reversal_among_decided": 0.6153846153846154
+    },
+    {
+      "horizon_sec": 180,
+      "side": "ALL",
+      "n": 20,
+      "reversal": 8,
+      "continuation": 7,
+      "neither": 4,
+      "ambiguous": 1,
+      "p_reversal": 0.4,
+      "p_continuation": 0.35,
+      "p_reversal_among_decided": 0.5333333333333333
+    },
+    {
+      "horizon_sec": 300,
+      "side": "pdl_sweep",
+      "n": 5,
+      "reversal": 1,
+      "continuation": 2,
+      "neither": 1,
+      "ambiguous": 1,
+      "p_reversal": 0.2,
+      "p_continuation": 0.4,
+      "p_reversal_among_decided": 0.3333333333333333
+    },
+    {
+      "horizon_sec": 300,
+      "side": "pdh_sweep",
+      "n": 15,
+      "reversal": 8,
+      "continuation": 5,
+      "neither": 2,
+      "ambiguous": 0,
+      "p_reversal": 0.5333333333333333,
+      "p_continuation": 0.3333333333333333,
+      "p_reversal_among_decided": 0.6153846153846154
+    },
+    {
+      "horizon_sec": 300,
+      "side": "ALL",
+      "n": 20,
+      "reversal": 9,
+      "continuation": 7,
+      "neither": 3,
+      "ambiguous": 1,
+      "p_reversal": 0.45,
+      "p_continuation": 0.35,
+      "p_reversal_among_decided": 0.5625
+    },
+    {
+      "horizon_sec": 900,
+      "side": "pdl_sweep",
+      "n": 5,
+      "reversal": 1,
+      "continuation": 2,
+      "neither": 1,
+      "ambiguous": 1,
+      "p_reversal": 0.2,
+      "p_continuation": 0.4,
+      "p_reversal_among_decided": 0.3333333333333333
+    },
+    {
+      "horizon_sec": 900,
+      "side": "pdh_sweep",
+      "n": 15,
+      "reversal": 9,
+      "continuation": 5,
+      "neither": 1,
+      "ambiguous": 0,
+      "p_reversal": 0.6,
+      "p_continuation": 0.3333333333333333,
+      "p_reversal_among_decided": 0.6428571428571429
+    },
+    {
+      "horizon_sec": 900,
+      "side": "ALL",
+      "n": 20,
+      "reversal": 10,
+      "continuation": 7,
+      "neither": 2,
+      "ambiguous": 1,
+      "p_reversal": 0.5,
+      "p_continuation": 0.35,
+      "p_reversal_among_decided": 0.5882352941176471
+    }
+  ],
+  "chrono_split": {
+    "train": {
+      "n": 13,
+      "p_reversal": 0.38461538461538464
+    },
+    "holdout": {
+      "n": 7,
+      "p_reversal": 0.5714285714285714
+    },
+    "train_dates": 13,
+    "holdout_dates": 6
+  },
+  "news_blackout_removed_sweeps": 1,
+  "dvp": {
+    "dvp_same_day_overlap_n": 19,
+    "dvp_overlap_days": [
+      "2026-05-13",
+      "2026-05-14",
+      "2026-05-15",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-22",
+      "2026-05-26",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-09",
+      "2026-06-11",
+      "2026-06-12"
+    ],
+    "n_sweeps_with_dvp_same_hour": 9,
+    "n_sweeps_opposing_dvp_drift": 14,
+    "n_sweeps_agreeing_dvp_drift": 6,
+    "dvp_mean_points_on_sweep_days": 44.73684210526316,
+    "ensemble_flags_n": 14,
+    "ensemble_flags_head": [
+      {
+        "event_id": "NQ|PDH|2026-05-13|1778683920",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-05-14|1778765700",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDL|2026-05-18|1779114720",
+        "flag": "PDL_SWEEP+DVP_NEGATIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDL|2026-05-19|1779199620",
+        "flag": "PDL_SWEEP+DVP_NEGATIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-05-20|1779283860",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-05-21|1779383760",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-05-22|1779456600",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-05-26|1779802200",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-05-28|1779980400",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-06-01|1780327800",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-06-02|1780415760",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-06-03|1780493400",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDL|2026-06-09|1781016240",
+        "flag": "PDL_SWEEP+DVP_NEGATIVE_DRIFT"
+      },
+      {
+        "event_id": "NQ|PDH|2026-06-12|1781273220",
+        "flag": "PDH_SWEEP+DVP_POSITIVE_DRIFT"
+      }
+    ],
+    "note": "No microstructure P&L exists yet; overlap is event-level only."
+  },
+  "gc": {
+    "gc_paper_empty": true,
+    "gc_active_day_overlap_n": 0,
+    "gc_overlap_days": [],
+    "note": "GC is a different market. No microstructure entries, so P&L correlation is not defined."
+  },
+  "window_cost_mbp10": {
+    "ok": true,
+    "schema": "mbp-10",
+    "total_cost_usd": 2.9228472188109995,
+    "total_records": 17056431.0
+  },
+  "window_cost_trades": {
+    "ok": true,
+    "schema": "trades",
+    "total_cost_usd": 0.549571573734,
+    "total_records": 439061.0
+  },
+  "download_mbp": {
+    "ok": true,
+    "dir": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\data\\databento\\NQ\\microstructure\\mbp-10"
+  },
+  "n_events_with_book": 20,
+  "microstructure_median_splits": [
+    {
+      "feature": "signed_flow_for_reversal",
+      "spearman": -0.06100348165520025,
+      "stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": -0.01010101010101011,
+          "p60": -0.125,
+          "p70": -0.16666666666666669
+        },
+        "sign": -1
+      },
+      "ok": true,
+      "n": 20,
+      "median": -797.0,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.4,
+      "p_reversal_hi": 0.5,
+      "lift_hi_minus_lo": 0.09999999999999998
+    },
+    {
+      "feature": "absorption_proxy",
+      "spearman": -0.23529914352720097,
+      "stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": -0.01010101010101011,
+          "p60": -0.125,
+          "p70": -0.16666666666666669
+        },
+        "sign": -1
+      },
+      "ok": true,
+      "n": 20,
+      "median": 243.19915905231665,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.5,
+      "p_reversal_hi": 0.4,
+      "lift_hi_minus_lo": -0.09999999999999998
+    },
+    {
+      "feature": "imb_for_reversal_top1",
+      "spearman": -0.24671853965774962,
+      "stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": -0.2121212121212121,
+          "p60": -0.3333333333333333,
+          "p70": -0.3333333333333333
+        },
+        "sign": -1
+      },
+      "ok": true,
+      "n": 20,
+      "median": 0.3666666666666667,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.5,
+      "p_reversal_hi": 0.4,
+      "lift_hi_minus_lo": -0.09999999999999998
+    },
+    {
+      "feature": "book_imbalance_top10",
+      "spearman": 0.18301044496560076,
+      "stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.3939393939393939,
+          "p60": 0.2916666666666667,
+          "p70": 0.07142857142857145
+        },
+        "sign": 1
+      },
+      "ok": true,
+      "n": 20,
+      "median": 0.4772727272727273,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.3,
+      "p_reversal_hi": 0.6,
+      "lift_hi_minus_lo": 0.3
+    },
+    {
+      "feature": "ofi_for_reversal",
+      "spearman": 0.017711464249741717,
+      "stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": -0.032967032967033016,
+          "p60": -0.032967032967033016,
+          "p70": 0.0625
+        },
+        "sign": 1
+      },
+      "ok": true,
+      "n": 20,
+      "median": -0.5,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.4,
+      "p_reversal_hi": 0.5,
+      "lift_hi_minus_lo": 0.09999999999999998
+    },
+    {
+      "feature": "executed_to_displayed",
+      "spearman": -0.07843304784240032,
+      "stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": -0.01010101010101011,
+          "p60": 0.08333333333333331,
+          "p70": -0.16666666666666669
+        },
+        "sign": 1
+      },
+      "ok": true,
+      "n": 20,
+      "median": 4927.0,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.4,
+      "p_reversal_hi": 0.5,
+      "lift_hi_minus_lo": 0.09999999999999998
+    },
+    {
+      "feature": "price_impact_per_lot",
+      "spearman": 0.23529914352720097,
+      "stability": {
+        "ok": true,
+        "stable": false,
+        "lifts": {
+          "p50": -0.01010101010101011,
+          "p60": 0.08333333333333331,
+          "p70": 0.07142857142857145
+        },
+        "sign": 1
+      },
+      "ok": true,
+      "n": 20,
+      "median": 0.004114861794327123,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.4,
+      "p_reversal_hi": 0.5,
+      "lift_hi_minus_lo": 0.09999999999999998
+    },
+    {
+      "feature": "bid_ask_slope_ratio",
+      "spearman": 0.04357391546800018,
+      "stability": {
+        "ok": true,
+        "stable": true,
+        "lifts": {
+          "p50": 0.19191919191919193,
+          "p60": 0.08333333333333331,
+          "p70": 0.07142857142857145
+        },
+        "sign": 1
+      },
+      "ok": true,
+      "n": 20,
+      "median": 0.8229166666666666,
+      "n_lo": 10,
+      "n_hi": 10,
+      "p_reversal_lo": 0.4,
+      "p_reversal_hi": 0.5,
+      "lift_hi_minus_lo": 0.09999999999999998
+    }
+  ],
+  "microstructure_stable_features": [
+    "imb_for_reversal_top1",
+    "book_imbalance_top10",
+    "bid_ask_slope_ratio"
+  ],
+  "microstructure_improves_baseline": true,
+  "cost_stress_note": "No entries tested. A reclaim-after-confirmation market order is the only realistic first fill model. Passive fills at the sweep extreme are rejected as unmodelable. NQ tick=0.25 pts ($5); 1-tick adverse=$5; 2-tick=$10; round-turn CME/clearing typically a few dollars on NQ / under $1 on MNQ.",
+  "generated_at": "2026-08-18T13:22:04.982760+00:00"
+}

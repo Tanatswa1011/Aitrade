@@ -1,0 +1,403 @@
+{
+  "generated_at": "2026-08-18T12:48:53.129851+00:00",
+  "preflight": {
+    "databento_package_available": true,
+    "databento_version": "0.83.0",
+    "historical_client_available": true,
+    "dataset_glbx_mdp3": "GLBX.MDP3",
+    "schema_ohlcv_1m": "ohlcv-1m",
+    "schema_ohlcv_5m_native": false,
+    "note": "5m built by aggregating ohlcv-1m",
+    "credential_required": true,
+    "credential_present": true,
+    "credential_env_var": "DATABENTO_API_KEY",
+    "loaded_dotenv": true,
+    "ok": true
+  },
+  "dataset": "GLBX.MDP3",
+  "probe_symbol": "NQM6",
+  "note": "Cost/record-count metadata only. No bulk MBO/MBP download in this probe.",
+  "schemas": {
+    "mbo": {
+      "schema": "mbo",
+      "rth_one_day": {
+        "cost_usd": {
+          "ok": true,
+          "value": 1.197407881916
+        },
+        "record_count": {
+          "ok": true,
+          "value": 12755029.0
+        }
+      },
+      "one_month": {
+        "cost_usd": {
+          "ok": true,
+          "value": 32.213128606975
+        },
+        "record_count": {
+          "ok": true,
+          "value": 343140709.0
+        }
+      },
+      "one_year": {
+        "cost_usd": {
+          "ok": true,
+          "value": 165.526697762311
+        },
+        "record_count": {
+          "ok": true,
+          "value": 1763223595.0
+        }
+      }
+    },
+    "mbp-10": {
+      "schema": "mbp-10",
+      "rth_one_day": {
+        "cost_usd": {
+          "ok": true,
+          "value": 1.740522675216
+        },
+        "record_count": {
+          "ok": true,
+          "value": 10156913.0
+        }
+      },
+      "one_month": {
+        "cost_usd": {
+          "ok": true,
+          "value": 47.788185164332
+        },
+        "record_count": {
+          "ok": true,
+          "value": 278870506.0
+        }
+      },
+      "one_year": {
+        "cost_usd": {
+          "ok": true,
+          "value": 243.905096322298
+        },
+        "record_count": {
+          "ok": true,
+          "value": 1423321212.0
+        }
+      }
+    },
+    "mbp-1": {
+      "schema": "mbp-1",
+      "rth_one_day": {
+        "cost_usd": {
+          "ok": true,
+          "value": 0.877979144454
+        },
+        "record_count": {
+          "ok": true,
+          "value": 6546687.0
+        }
+      },
+      "one_month": {
+        "cost_usd": {
+          "ok": true,
+          "value": 23.125173434615
+        },
+        "record_count": {
+          "ok": true,
+          "value": 172433791.0
+        }
+      },
+      "one_year": {
+        "cost_usd": {
+          "ok": true,
+          "value": 118.852459475398
+        },
+        "record_count": {
+          "ok": true,
+          "value": 886228171.0
+        }
+      }
+    },
+    "tbbo": {
+      "schema": "tbbo",
+      "rth_one_day": {
+        "cost_usd": {
+          "ok": true,
+          "value": 0.508447885513
+        },
+        "record_count": {
+          "ok": true,
+          "value": 243724.0
+        }
+      },
+      "one_month": {
+        "cost_usd": {
+          "ok": true,
+          "value": 11.092387139797
+        },
+        "record_count": {
+          "ok": true,
+          "value": 5317125.0
+        }
+      },
+      "one_year": {
+        "cost_usd": {
+          "ok": true,
+          "value": 54.398124217987
+        },
+        "record_count": {
+          "ok": true,
+          "value": 26075688.0
+        }
+      }
+    },
+    "trades": {
+      "schema": "trades",
+      "rth_one_day": {
+        "cost_usd": {
+          "ok": true,
+          "value": 0.305068731308
+        },
+        "record_count": {
+          "ok": true,
+          "value": 243724.0
+        }
+      },
+      "one_month": {
+        "cost_usd": {
+          "ok": true,
+          "value": 6.655432283878
+        },
+        "record_count": {
+          "ok": true,
+          "value": 5317125.0
+        }
+      },
+      "one_year": {
+        "cost_usd": {
+          "ok": true,
+          "value": 32.638874530792
+        },
+        "record_count": {
+          "ok": true,
+          "value": 26075688.0
+        }
+      }
+    },
+    "ohlcv-1s": {
+      "schema": "ohlcv-1s",
+      "rth_one_day": {
+        "cost_usd": {
+          "ok": true,
+          "value": 0.083095505834
+        },
+        "record_count": {
+          "ok": true,
+          "value": 22761.0
+        }
+      },
+      "one_month": {
+        "cost_usd": {
+          "ok": true,
+          "value": 2.352207750082
+        },
+        "record_count": {
+          "ok": true,
+          "value": 644302.0
+        }
+      },
+      "one_year": {
+        "cost_usd": {
+          "ok": true,
+          "value": 13.153831288218
+        },
+        "record_count": {
+          "ok": true,
+          "value": 3603015.0
+        }
+      }
+    },
+    "ohlcv-1m": {
+      "schema": "ohlcv-1m",
+      "rth_one_day": {
+        "cost_usd": {
+          "ok": true,
+          "value": 0.001423805952
+        },
+        "record_count": {
+          "ok": true,
+          "value": 390.0
+        }
+      },
+      "one_month": {
+        "cost_usd": {
+          "ok": true,
+          "value": 0.067156180739
+        },
+        "record_count": {
+          "ok": true,
+          "value": 18395.0
+        }
+      },
+      "one_year": {
+        "cost_usd": {
+          "ok": true,
+          "value": 0.424053221941
+        },
+        "record_count": {
+          "ok": true,
+          "value": 116154.0
+        }
+      }
+    }
+  },
+  "range": {
+    "ok": true,
+    "value": {
+      "start": "2010-06-06T00:00:00.000000000Z",
+      "end": "2026-08-18T04:48:55.454771000Z",
+      "schema": {
+        "mbo": {
+          "start": "2017-05-21T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "mbp-1": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "mbp-10": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "tbbo": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "trades": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "bbo-1s": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "bbo-1m": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "ohlcv-1s": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "ohlcv-1m": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "ohlcv-1h": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "ohlcv-1d": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T00:00:00.000000000Z"
+        },
+        "definition": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "statistics": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        },
+        "status": {
+          "start": "2010-06-06T00:00:00.000000000Z",
+          "end": "2026-08-18T04:48:55.454771000Z"
+        }
+      }
+    }
+  },
+  "unit_prices": [
+    {
+      "mode": "historical",
+      "unit_prices": {
+        "mbo": 1.8,
+        "mbp-1": 1.8,
+        "mbp-10": 0.5,
+        "tbbo": 28.0,
+        "trades": 28.0,
+        "bbo-1s": 18.0,
+        "bbo-1m": 18.0,
+        "ohlcv-1s": 70.0,
+        "ohlcv-1m": 70.0,
+        "ohlcv-1h": 190.0,
+        "ohlcv-1d": 190.0,
+        "definition": 1.7,
+        "statistics": 1.0,
+        "status": 4.0
+      }
+    },
+    {
+      "mode": "historical-streaming",
+      "unit_prices": {
+        "mbo": 1.8,
+        "mbp-1": 1.8,
+        "mbp-10": 0.5,
+        "tbbo": 28.0,
+        "trades": 28.0,
+        "bbo-1s": 18.0,
+        "bbo-1m": 18.0,
+        "ohlcv-1s": 70.0,
+        "ohlcv-1m": 70.0,
+        "ohlcv-1h": 190.0,
+        "ohlcv-1d": 190.0,
+        "definition": 1.7,
+        "statistics": 1.0,
+        "status": 4.0
+      }
+    },
+    {
+      "mode": "live",
+      "unit_prices": {
+        "mbo": 2.16,
+        "mbp-1": 2.16,
+        "mbp-10": 0.6,
+        "tbbo": 33.6,
+        "trades": 33.6,
+        "bbo-1s": 21.6,
+        "bbo-1m": 21.6,
+        "ohlcv-1s": 84.0,
+        "ohlcv-1m": 84.0,
+        "ohlcv-1h": 228.0,
+        "ohlcv-1d": 228.0,
+        "definition": 2.04,
+        "statistics": 1.2,
+        "status": 4.0
+      }
+    }
+  ],
+  "schemas_available": {
+    "ok": true,
+    "value": [
+      "mbo",
+      "mbp-1",
+      "mbp-10",
+      "tbbo",
+      "trades",
+      "bbo-1s",
+      "bbo-1m",
+      "ohlcv-1s",
+      "ohlcv-1m",
+      "ohlcv-1h",
+      "ohlcv-1d",
+      "definition",
+      "statistics",
+      "status"
+    ]
+  },
+  "fields": {
+    "mbo": "ERR:TypeError:MetadataHttpAPI.list_fields() missing 1 required positional argument: 'encoding'",
+    "mbp-10": "ERR:TypeError:MetadataHttpAPI.list_fields() missing 1 required positional argument: 'encoding'",
+    "trades": "ERR:TypeError:MetadataHttpAPI.list_fields() missing 1 required positional argument: 'encoding'"
+  },
+  "unit_prices_error": "TypeError:MetadataHttpAPI.list_unit_prices() got an unexpected keyword argument 'mode'",
+  "continuous_mapping_sample": "ERR:BentoClientError:422 symbology_invalid_request\nUnable to process symbology with parameters: `dataset=GLBX.MDP3`, `stype_in=continuous`, `stype_out=raw_symbol`. See the symbology docs for supported combinations per dataset https://databento.com/docs/standards-and-conventions/symbology.\ndocumentation: https://databento.com/docs/api-reference-historical/basics/symbology"
+}

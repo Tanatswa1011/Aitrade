@@ -1,0 +1,35 @@
+{
+  "phase": 35,
+  "status": "DEFINITIONS_FROZEN_BEFORE_EXPANSION",
+  "carried_forward_from_phase_34": {
+    "timezone": "America/New_York",
+    "rth_start": "09:30",
+    "rth_end": "16:00",
+    "no_new_sweep_after": "15:45",
+    "pdh_pdl": "Prior same-contract RTH 09:30-16:00 high/low from completed 1m bars. Skip weekends/holidays and days with <30 RTH 1m bars.",
+    "sweep_up": "first RTH 1m bar with high > PDH",
+    "sweep_down": "first RTH 1m bar with low < PDL",
+    "sweep_timestamp": "1m bar open (event known at bar close = open+60s)",
+    "penetration": "PDH: bar.high - PDH; PDL: PDL - bar.low",
+    "primary_horizon_sec": 300,
+    "reversal_target_points": 8.0,
+    "continuation_extension_points": 12.0,
+    "outcome_path_start": "first 1m bar strictly after sweep bar (open+60s)",
+    "unresolved": "NEITHER (neither condition) and AMBIGUOUS (same 1m bar hits both)",
+    "feature_lookback_sec": 60,
+    "feature_cutoff": "sweep_bar_close = sweep_bar_time + 60",
+    "download_window": "T-60s through T+120s (Phase 34). T+300 not used: 1m labels do not consume MBP after bar close. T-120 not used: would change OFI lookback.",
+    "opening_drive": "seconds_from_rth_open < 1800 (30m); < 3600 (60m). Predeclared, not fit.",
+    "shallow": "NOT a point cutoff. Phase 34 median 26.375 pts is sample-specific and is NOT carried forward as a rule. Phase 35 uses train-only median split, quintiles, and Spearman.",
+    "news": "Eligible sample excludes full CPI/NFP publication dates (Phase 34 conservative). Also report how many RTH sweeps a strict T-5m..T+5m 08:30 blackout would remove.",
+    "tick": 0.25,
+    "cost_assumptions_if_entries_later": "market/stop after reclaim; 1-tick $5 NQ; no passive fill at sweep extreme. Entries not built in Phase 35 unless gate passes."
+  },
+  "roll": {
+    "method": "AITRADE volume-crossover, activate 18:00 America/New_York on decision_date",
+    "pdh_pdl_contract": "same raw front-month contract as the sweep RTH day",
+    "roll_day_rth": "still the old contract (activation is 18:00, after RTH)"
+  },
+  "methodology_corrections": [],
+  "note": "No definition was changed because the larger sample might look worse. Additive MBP keys (top-3/5/10 reversal-aligned imbalance, persistence, withdrawal) do not alter Phase 34 formulas."
+}

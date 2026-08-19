@@ -1,0 +1,65 @@
+{
+  "phase": 45,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "methodology_corrections": [],
+  "execution": "DRY_RUN_NO_BROKER",
+  "forbidden": "No RSI/MACD/DOM/MBP/MBO/VWAP/volume-profile/sweep/ML/discretionary labels. No holdout tuning. No freeze. Do not reopen closed families.",
+  "closed_branches": ["MACRO_EDGE_REJECTED", "CLOSE_NQ_SWEEP_RESEARCH_BRANCH", "CLOSE_ORB_RESEARCH_BRANCH", "CLOSE_TSMOM_RESEARCH_BRANCH", "VOLUME_PROFILE_STRUCTURAL_EFFECT_ONLY", "HTF_PULLBACK_EDGE_WEAK", "SMALLCAP_DATA_QUALITY_BLOCKED", "LONG_DRIFT_BETA_ONLY"],
+  "thesis": "LONDON -> HTF 4H BIAS -> EMA ALIGNMENT -> TREND FVG -> 50% RETRACE -> REACTION -> CONTINUATION",
+  "source_fidelity": {
+    "fvg_three_candle": "EXACT",
+    "fvg_midpoint": "EXACT",
+    "ema200_side": "EXACT_AS_STATED (length 200 fixed)",
+    "ema_stack_20_50_200": "MECHANIZED_APPROXIMATION",
+    "htf_4h_close_vs_ema200": "MECHANIZED_APPROXIMATION",
+    "london_0700_1100_europe_london": "MECHANIZED_APPROXIMATION",
+    "doji_body_range_0.25": "MECHANIZED_APPROXIMATION",
+    "trident_wick_ge_body_close_half": "TRIDENT_MECHANIZED_APPROXIMATION",
+    "stop_fvg_boundary": "MECHANIZED_APPROXIMATION",
+    "entry_next_30m_open": "MECHANIZED_APPROXIMATION",
+    "flatten_1555_et": "MECHANIZED_APPROXIMATION (prop-compatible)",
+    "note": "No TG Capital source notes exist in this repository. Approximations are minimal and locked before P&L."
+  },
+  "instruments": {
+    "GC": {"primary": true, "tick": 0.10, "point_usd": 100.0, "commission_points": 0.04, "mgc_point_usd": 10.0},
+    "NQ": {"primary": false, "portability_only": true, "tick": 0.25, "point_usd": 20.0, "commission_points": 0.20, "mnq_point_usd": 2.0}
+  },
+  "london": {
+    "timezone": "Europe/London",
+    "primary_window": ["07:00", "11:00"],
+    "label": "MECHANIZED_APPROXIMATION",
+    "diagnostic_windows": [["06:00", "10:00"], ["07:00", "11:00"], ["08:00", "12:00"]],
+    "report_timezone": "America/New_York"
+  },
+  "timeframe": {"setup": "30m", "htf": "4h_globex_1800_et", "execution_path": "1m_if_available_else_5m"},
+  "primary_state_filters": {
+    "htf": "completed 4h close vs EMA200",
+    "ema200_30m": "completed 30m close vs EMA200",
+    "stack": "EMA20 > EMA50 > EMA200 bullish (inverse bearish)"
+  },
+  "primary_candidate": {
+    "id": "TG_GC_30M_LONDON_FVG50_REACTION",
+    "instrument": "GC",
+    "reaction": "B_trident",
+    "stop": "fvg_boundary",
+    "target_r": 2.0,
+    "rules": "GC, 30m, London 07:00-11:00 Europe/London. Completed 4H close on EMA200 side. Completed 30m close on EMA200 side. EMA20/50/200 stack aligned. Trend-aligned 3-candle FVG. Wait for 50% midpoint interaction. Trident approximation reaction candle whose range contains the midpoint. Enter next 30m open +/- 1 tick. Stop beyond FVG far boundary +/- 1 tick. 2R tracked independently of 1/1.5/3/4/5R. Max 1 trade/day. No new entry at/after 11:00 London. Flatten 15:55 ET. Never average. No VWAP."
+  },
+  "reaction_variants": {
+    "A": "midpoint + doji body/range <= 0.25",
+    "B": "midpoint + trident approximation PRIMARY",
+    "C": "midpoint + simple directional close (baseline)"
+  },
+  "stops": ["fvg_boundary", "reaction_extreme"],
+  "targets_r": [1.0, 1.5, 2.0, 3.0, 4.0, 5.0],
+  "fills": {"primary_adverse_ticks": 1, "overlays": [0, 1, 2]},
+  "doji_body_range": {"primary": 0.25, "neighbors": [0.20, 0.25, 0.30]},
+  "trident_wick_body": {"primary": 1.0, "neighbors": [0.8, 1.0, 1.2]},
+  "max_trades_per_day": 1,
+  "first_setup_per_london_session": true,
+  "flatten": "15:55",
+  "flatten_tz": "America/New_York",
+  "chrono": {"train_end": "2022-12-30", "holdout_start": "2023-01-03", "preferred_coverage": "2020-2026"},
+  "do_not_pool": true,
+  "note": "Phase 45 does not freeze. Candidate JSON only if TG_LONDON_EDGE_FOUND."
+}

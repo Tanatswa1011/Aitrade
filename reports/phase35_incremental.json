@@ -1,0 +1,72 @@
+{
+  "model0_side": {
+    "name": "side",
+    "n_train": 188,
+    "n_holdout": 81,
+    "train_brier": 0.24173652718077124,
+    "holdout_brier": 0.2527064138420644,
+    "holdout_logloss": 0.6987179431485993,
+    "holdout_base_rate": 0.4691358024691358,
+    "holdout_mean_p": 0.4098141867756215
+  },
+  "model1_side_pen": {
+    "name": "side+penetration",
+    "n_train": 188,
+    "n_holdout": 81,
+    "train_brier": 0.22704667700668787,
+    "holdout_brier": 0.22637231054722398,
+    "holdout_logloss": 0.6401216928598055,
+    "holdout_base_rate": 0.4691358024691358,
+    "holdout_mean_p": 0.3937054420281306
+  },
+  "model2_struct": {
+    "name": "side+pen+tod+vol",
+    "n_train": 188,
+    "n_holdout": 81,
+    "train_brier": 0.22260633528987137,
+    "holdout_brier": 0.22156297576781217,
+    "holdout_logloss": 0.6292232093517562,
+    "holdout_base_rate": 0.4691358024691358,
+    "holdout_mean_p": 0.38554291157440046
+  },
+  "model3_top10": {
+    "name": "struct+top10",
+    "n_train": 188,
+    "n_holdout": 81,
+    "train_brier": 0.22092090603977307,
+    "holdout_brier": 0.2264588156590307,
+    "holdout_logloss": 0.6399396959049685,
+    "holdout_base_rate": 0.4691358024691358,
+    "holdout_mean_p": 0.38404097853321595
+  },
+  "model4_ofi": {
+    "name": "struct+ofi",
+    "n_train": 188,
+    "n_holdout": 81,
+    "train_brier": 0.21764341585687547,
+    "holdout_brier": 0.21969567122153988,
+    "holdout_logloss": 0.624811042578863,
+    "holdout_base_rate": 0.4691358024691358,
+    "holdout_mean_p": 0.3869457556315694
+  },
+  "model5_abs": {
+    "name": "struct+absorption",
+    "n_train": 188,
+    "n_holdout": 81,
+    "train_brier": 0.22258687931310261,
+    "holdout_brier": 0.2217633971840416,
+    "holdout_logloss": 0.6296169883817193,
+    "holdout_base_rate": 0.4691358024691358,
+    "holdout_mean_p": 0.3849967554719849
+  },
+  "model6_mbp_set": {
+    "name": "struct+mbp_set",
+    "n_train": 188,
+    "n_holdout": 81,
+    "train_brier": 0.21417771251996284,
+    "holdout_brier": 0.22585606890882157,
+    "holdout_logloss": 0.6382252365986949,
+    "holdout_base_rate": 0.4691358024691358,
+    "holdout_mean_p": 0.3852612756457961
+  }
+}

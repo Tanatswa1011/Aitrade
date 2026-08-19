@@ -1,0 +1,76 @@
+{
+  "phase": 38,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "methodology_corrections": [],
+  "execution": "DRY_RUN_NO_BROKER",
+  "forbidden": "No VWAP, RSI, MACD, FVG, CHoCH, DOM, MBP, MBO, delta, sweep logic, MA regime filters. Not a news strategy. Not a DVP clone.",
+  "instruments": {
+    "NQ": {
+      "data": "data/databento/NQ/stitched/databento_NQ_stitched_1m.jsonl",
+      "roll": "AITRADE volume-crossover, activate 18:00 America/New_York",
+      "tick": 0.25,
+      "point_usd": 20.0,
+      "commission_rt_usd": 4.0,
+      "commission_points": 0.2
+    },
+    "ES": {
+      "data": "data/databento/ES/stitched/databento_ES_v0_1m.jsonl",
+      "roll": "Databento ES.v.0 volume-continuous (closest available match to NQ volume-crossover; not re-stitched from raw contracts in this phase)",
+      "tick": 0.25,
+      "point_usd": 50.0,
+      "commission_rt_usd": 4.0,
+      "commission_points": 0.08
+    }
+  },
+  "session": {
+    "timezone": "America/New_York",
+    "rth_start": "09:30",
+    "rth_end": "16:00",
+    "or_anchor": "09:30",
+    "flatten": "15:55",
+    "min_rth_1m_bars": 350
+  },
+  "opening_range_family_minutes": [5, 15, 30],
+  "or_valid_at": "window close timestamp. No trade may use OR_HIGH/OR_LOW before that close.",
+  "entry_families": {
+    "A_range": "First 1m bar after OR complete whose range trades through the boundary. Fill = boundary +/- 1 tick (not the wick extreme). Gap-through open fills at that open +/- 1 tick.",
+    "B_close_1m": "First completed 1m close beyond the boundary. Entry at next 1m open +/- 1 tick.",
+    "C_close_5m": "Diagnostic. First RTH-aligned 5m close beyond the boundary. Entry at next 5m open +/- 1 tick."
+  },
+  "first_break_only": true,
+  "stops": {
+    "A_opposite": "Long SL=OR_LOW; Short SL=OR_HIGH. PRIMARY.",
+    "B_mid": "SL = OR midpoint. Diagnostic on primary config only.",
+    "C_atr": "SL = entry +/- 1.0 * 14-day RTH ATR (prior completed days only). Diagnostic on primary config only. Reject if risk > 80 NQ pts / 40 ES pts."
+  },
+  "targets_R": [0.5, 1.0, 1.5, 2.0, 3.0],
+  "same_bar_stop_and_target": "AMBIGUOUS — do not assume target first",
+  "fills": {
+    "primary_adverse_ticks": 1,
+    "overlays": [0, 1, 2]
+  },
+  "chrono": {
+    "train_end": "2024-12-31",
+    "holdout_start": "2025-01-02",
+    "walkforward_years": [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+    "note": "Predeclared. Train covers 2020 vol, 2021, 2022 bear, 2023-24. Holdout is 2025-2026 YTD."
+  },
+  "primary_candidate": {
+    "id": "OR15_B_STOPA_1R",
+    "or_minutes": 15,
+    "entry": "B_close_1m",
+    "stop": "A_opposite",
+    "target_R": 1.0,
+    "fill_adverse_ticks": 1,
+    "reason": "Classic 15-minute RTH opening range, leak-safe 1m close confirmation, structural invalidation at the opposite boundary, 1R is the middle of the target family not the maximum. Declared before seeing Phase 38 P&L."
+  },
+  "news": {
+    "bls_0830_pm5": "T-5m to T+5m around CPI/NFP 08:30 never overlaps RTH 09:30. Report 0 removed.",
+    "1000_et": "No complete 10:00 calendar in-repo. Do not invent one. Report as limitation, not a hidden news filter.",
+    "fomc": "Not used as a trade filter in Phase 38."
+  },
+  "incremental_features_after_baseline": ["or_width_quantile", "breakout_timing", "relative_volume", "or_width_over_atr"],
+  "feature_cutoff": "OR completion for width/ATR/gap/prior-day. Breakout bar only for timing/volume at the signal.",
+  "do_not_pool_es_nq": true,
+  "note": "Phase 38 does not freeze. Candidate JSON only if a simple configuration survives costs and holdout."
+}

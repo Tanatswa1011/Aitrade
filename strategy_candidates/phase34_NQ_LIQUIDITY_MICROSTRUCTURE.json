@@ -1,0 +1,32 @@
+{
+  "phase": "phase34",
+  "strategy_family": "nq_liquidity_microstructure_reversal_v1",
+  "strategy_version": "v1.phase34",
+  "instrument": "NQ",
+  "provider": "databento:GLBX.MDP3",
+  "contract": "NQM6",
+  "execution": "DRY_RUN_NO_BROKER",
+  "candidate": {
+    "candidate_id": "PDH_PDL_SWEEP_MBP10_CLASSIFIER",
+    "status": "RESEARCH_ONLY_NOT_FROZEN",
+    "verdict": "MICROSTRUCTURE_PROMISING_NEEDS_MORE_DATA",
+    "n_sweeps": 20,
+    "p_reversal_sweep_only_300s": 0.45,
+    "p_reversal_among_decided_300s": 0.5625,
+    "note": "No entry rule. Classification-only pilot. Book-imbalance top-10 showed a +30pp median-split lift on N=10/10 that collapsed at the 70th percentile. Absorption and signed flow did not support the reversal hypothesis. Do not freeze."
+  },
+  "predeclared": {
+    "pdh_pdl": "prior RTH 09:30-16:00 America/New_York high/low",
+    "primary_horizon_sec": 300,
+    "horizons_sec": [30, 60, 180, 300, 900],
+    "reversal_target_points": 8.0,
+    "continuation_extension_points": 12.0,
+    "feature_cutoff": "sweep_bar_close",
+    "news_blackout": "CPI/NFP days excluded; configurable T-5m to T+5m"
+  },
+  "frozen_hashes_untouched": {
+    "gc_vwap_v2": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq_dvp": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "note": "RESEARCH ONLY — MICROSTRUCTURE_PROMISING_NEEDS_MORE_DATA. Not production default, not frozen, no broker execution."
+}

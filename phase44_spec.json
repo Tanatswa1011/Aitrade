@@ -1,0 +1,53 @@
+{
+  "phase": 44,
+  "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+  "methodology_corrections": [],
+  "execution": "DRY_RUN_NO_BROKER",
+  "forbidden": "No shorts, no Phase 40/42 retrofit, no VWAP, no DVP 15m drift, no RSI/MACD/ADX, no holdout tuning, no freeze, no cash/ETF substitutes.",
+  "closed_branches": ["MACRO_EDGE_REJECTED", "CLOSE_NQ_SWEEP_RESEARCH_BRANCH", "CLOSE_ORB_RESEARCH_BRANCH", "CLOSE_TSMOM_RESEARCH_BRANCH", "VOLUME_PROFILE_STRUCTURAL_EFFECT_ONLY", "HTF_PULLBACK_EDGE_WEAK", "SMALLCAP_DATA_QUALITY_BLOCKED"],
+  "thesis": "BULLISH STATE -> LONG; NON-BULLISH STATE -> FLAT. Never BEARISH -> SHORT.",
+  "distinct_from": {
+    "phase40": "Two-sided TSMOM closed. Phase 44 is a new long-only state model, not TSMOM minus shorts.",
+    "phase42": "HTF 1h pullback closed. Phase 44 state is prior-session multi-day, not completed 1h return.",
+    "dvp": "No VWAP, no 15m hour-return drift, no 80-pt stop. Prior-session 20d state only."
+  },
+  "instruments": {
+    "ES": {"tick": 0.25, "point_usd": 50.0, "commission_points": 0.08},
+    "NQ": {"tick": 0.25, "point_usd": 20.0, "commission_points": 0.20}
+  },
+  "signal_series": "Databento ohlcv-1d .v.0. Lookback uses roll-cleaned close-to-close (Phase 40 mark_rolls: instrument_id sidecar else 8x median overnight AND 80 bps). Sunday Globex stubs dropped.",
+  "state_at": "Completed prior session. Current RTH cannot see today's unfinished daily bar.",
+  "primary_state": {
+    "id": "LONG_STATE_20D_POSITIVE",
+    "rule": "20-session roll-cleaned return ending at prior completed close > 0 => BULLISH next session, else FLAT."
+  },
+  "neighbor_states": ["10d > 0", "60d > 0"],
+  "diagnostic_states": ["EMA20 rising and close > EMA20", "20d > 0 AND 5d > 0"],
+  "primary_intraday_baseline": {
+    "id": "BULL_STATE_RTH_OPEN_LONG",
+    "rules": "If prior 20d > 0, buy next RTH 09:30 open +/- 1 tick, flatten 15:55. Long only."
+  },
+  "primary_intraday_candidate": {
+    "id": "LONG20_FIRST_RED_GREEN_5M",
+    "rules": "Prior 20d > 0. First completed red 5m after 09:30, then first completed green 5m. Enter next 5m open +/- 1 tick. Stop = pullback low - 1 tick. 1R tracked independently. No new entry after 15:00. Flatten 15:55. Max 1/day. Never short.",
+    "reason": "Locked before Phase 44 P&L. Pullback is not a rescue if the open-long baseline is negative."
+  },
+  "mode2": {
+    "id": "LONG20_HOLD_N_SESSIONS",
+    "holds": [1, 3, 5],
+    "note": "Diagnostic overnight. Not the prop primary."
+  },
+  "fills": {"primary_adverse_ticks": 1, "overlays": [0, 1, 2]},
+  "targets_r": [0.5, 1.0, 1.5, 2.0, 3.0],
+  "flatten": "15:55",
+  "no_new_after": "15:00",
+  "chrono": {
+    "train_end": "2022-12-30",
+    "holdout_start": "2023-01-03",
+    "daily_coverage_preferred": "2010-2026",
+    "intraday_coverage": "2020-2026"
+  },
+  "always_long_benchmark": "Required. If the filter does not improve return/risk vs buying every RTH, status is LONG_DRIFT_BETA_ONLY.",
+  "do_not_pool": true,
+  "note": "Phase 44 does not freeze. Candidate JSON only if LONG_ONLY_EDGE_FOUND."
+}

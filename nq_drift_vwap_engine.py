@@ -48,12 +48,19 @@ def _local_ts(trading_date: str, hhmm: str) -> int:
     return int(datetime(d.year, d.month, d.day, hh, mm, tzinfo=NY).timestamp())
 
 
-def session_anchors(trading_date: str) -> dict[str, int]:
+def session_anchors(
+    trading_date: str,
+    *,
+    vwap_reset: Optional[str] = None,
+    trade_start: Optional[str] = None,
+    no_new: Optional[str] = None,
+    force_close: Optional[str] = None,
+) -> dict[str, int]:
     return {
-        "vwap_reset": _local_ts(trading_date, VWAP_RESET_LOCAL),
-        "trade_start": _local_ts(trading_date, TRADE_START_LOCAL),
-        "no_new": _local_ts(trading_date, NO_NEW_TRADES_AFTER_LOCAL),
-        "force_close": _local_ts(trading_date, FORCE_CLOSE_LOCAL),
+        "vwap_reset": _local_ts(trading_date, vwap_reset or VWAP_RESET_LOCAL),
+        "trade_start": _local_ts(trading_date, trade_start or TRADE_START_LOCAL),
+        "no_new": _local_ts(trading_date, no_new or NO_NEW_TRADES_AFTER_LOCAL),
+        "force_close": _local_ts(trading_date, force_close or FORCE_CLOSE_LOCAL),
     }
 
 
@@ -76,9 +83,18 @@ def index_bars_by_ny_date(bars: Sequence[Bar]) -> dict[str, list[Bar]]:
 def compute_session_vwap_by_ts(
     bars_1m: Sequence[Bar],
     trading_date: str,
+    *,
+    clock: Optional[dict[str, str]] = None,
 ) -> dict[int, float]:
-    """Running VWAP from 09:30 using 1m bars; key = bar timestamp."""
-    anchors = session_anchors(trading_date)
+    """Running VWAP from session reset using 1m bars; key = bar timestamp."""
+    clock = clock or {}
+    anchors = session_anchors(
+        trading_date,
+        vwap_reset=clock.get("vwap_reset"),
+        trade_start=clock.get("trade_start"),
+        no_new=clock.get("no_new"),
+        force_close=clock.get("force_close"),
+    )
     start = anchors["vwap_reset"]
     end = anchors["force_close"] + 3600
     session = [b for b in bars_1m if start <= int(b.time) < end]
@@ -192,13 +208,23 @@ def replay_dvp_day(
     bars_5m: Sequence[Bar],
     bars_15m: Sequence[Bar],
     cfg: DVPStrategyConfig = DVP_ORIGINAL,
+    clock: Optional[dict[str, str]] = None,
+    instrument: str = "NQ",
 ) -> dict[str, Any]:
     """
     Exact DVP_ORIGINAL day simulation.
     Loss-limit interpretation: stop after TWO losing trades in the day (any two, not only consecutive).
+    Optional `clock` remaps session times for portability research; defaults remain frozen NQ.
     """
-    anchors = session_anchors(trading_date)
-    vwap_map = compute_session_vwap_by_ts(bars_1m, trading_date)
+    clock = clock or {}
+    anchors = session_anchors(
+        trading_date,
+        vwap_reset=clock.get("vwap_reset"),
+        trade_start=clock.get("trade_start"),
+        no_new=clock.get("no_new"),
+        force_close=clock.get("force_close"),
+    )
+    vwap_map = compute_session_vwap_by_ts(bars_1m, trading_date, clock=clock)
     vwap_keys = sorted(vwap_map)
     b15 = [b for b in bars_15m if int(b.time) >= anchors["vwap_reset"]]
     b5 = [b for b in bars_5m if int(b.time) >= anchors["vwap_reset"]]
@@ -286,7 +312,7 @@ def replay_dvp_day(
 
         trades.append(
             DVPTrade(
-                trade_id=f"NQ|DVP|{trading_date}|{direction}|{entry_ts}",
+                trade_id=f"{instrument}|DVP|{trading_date}|{direction}|{entry_ts}",
                 trading_date=trading_date,
                 direction=direction,
                 entry_timestamp=entry_ts,
@@ -325,6 +351,9 @@ def replay_all_days(
     bars_5m: Sequence[Bar],
     bars_15m: Sequence[Bar],
     cfg: DVPStrategyConfig = DVP_ORIGINAL,
+    *,
+    clock: Optional[dict[str, str]] = None,
+    instrument: str = "NQ",
 ) -> tuple[list[DVPTrade], dict[str, Any]]:
     """Returns trades + guardrail aggregate (single pass)."""
     by1 = index_bars_by_ny_date(bars_1m)
@@ -342,6 +371,8 @@ def replay_all_days(
             bars_5m=by5.get(td, []),
             bars_15m=by15.get(td, []),
             cfg=cfg,
+            clock=clock,
+            instrument=instrument,
         )
         all_trades.extend(day["trades"])
         suppressed += int(day.get("suppressed_setups") or 0)

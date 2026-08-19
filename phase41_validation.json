@@ -1,0 +1,2541 @@
+{
+  "ok": true,
+  "phase": 41,
+  "status": "RESEARCH_COMPLETE",
+  "execution": "DRY_RUN_NO_BROKER",
+  "profile_source": "DEGRADED_1M_VOLUME_PROFILE",
+  "verdict": "VOLUME_PROFILE_STRUCTURAL_EFFECT_ONLY",
+  "ES_VOLUME_PROFILE_STATUS": "VOLUME_PROFILE_EDGE_REJECTED",
+  "NQ_VOLUME_PROFILE_STATUS": "VOLUME_PROFILE_STRUCTURAL_EFFECT_ONLY",
+  "recommendation": "DO_NOT_FORCE_TRADE_STRUCTURAL_ONLY",
+  "recommendation_text": "Prior value location changes next-session transition probabilities, but the simple acceptance/rejection geometries do not monetize it after costs. Do not force a trade. Do not add Phase 42 filter soup.",
+  "branch": "DO_NOT_FORCE_TRADE_STRUCTURAL_ONLY",
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "file_sha": {
+    "gc": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541",
+    "gc_expected": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq_expected": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541"
+  },
+  "spec": {
+    "phase": 41,
+    "status": "DEFINITIONS_FROZEN_BEFORE_ENTRIES",
+    "methodology_corrections": [],
+    "execution": "DRY_RUN_NO_BROKER",
+    "forbidden": "No ORB, sweeps, DOM, MBP, MBO, delta, VWAP, TSMOM, discretionary P/b/D shapes, HVN/LVN as primary, 68/75 value-area search, cash/ETF substitutes, holdout tuning.",
+    "closed_branches": [
+      "MACRO_EDGE_REJECTED",
+      "CLOSE_NQ_SWEEP_RESEARCH_BRANCH",
+      "CLOSE_ORB_RESEARCH_BRANCH",
+      "CLOSE_TSMOM_RESEARCH_BRANCH"
+    ],
+    "profile_source": {
+      "status": "DEGRADED_1M_VOLUME_PROFILE",
+      "reason": "Databento trades schema is ~$0.30 per NQ RTH day; 2020-2026 ES+NQ is economically infeasible (~$1000). No local trade tape exists. Phase 41 uses 1m OHLCV volume distributed uniformly across each bar's tick range. Not a trade-by-trade profile. Do not promote a result that would reverse under true prints without a later tape phase.",
+      "bucket": "1 tick (ES/NQ 0.25)",
+      "bar_volume_allocation": "For each RTH 1m bar, volume V is split equally across ticks from low to high inclusive. Zero-volume bars skipped. High==low: all V at that tick.",
+      "poc_tiebreak": "Max volume tick. Ties: closest to session VWAP of typical price (H+L+C)/3; remaining ties take the lower tick.",
+      "value_area": "70 percent. Single-row expansion from POC: at each step add the adjacent unused row with more volume. Equal volume: expand the lower-price side first. VAH=max included tick, VAL=min included tick.",
+      "leak": "Profile for day T uses only completed RTH 09:30-16:00 bars of the prior valid session. Next day cannot see T volume."
+    },
+    "instruments": {
+      "ES": {
+        "tick": 0.25,
+        "point_usd": 50.0,
+        "commission_points": 0.08,
+        "max_stop_points": 40.0,
+        "data": "data/databento/ES/stitched/databento_ES_v0_1m.jsonl"
+      },
+      "NQ": {
+        "tick": 0.25,
+        "point_usd": 20.0,
+        "commission_points": 0.2,
+        "max_stop_points": 80.0,
+        "data": "data/databento/NQ/stitched/databento_NQ_stitched_1m.jsonl"
+      }
+    },
+    "session": {
+      "timezone": "America/New_York",
+      "rth_start": "09:30",
+      "rth_end": "16:00",
+      "flatten": "15:55",
+      "min_rth_1m_bars": 350
+    },
+    "open_classes": [
+      "OPEN_ABOVE_VAH",
+      "OPEN_INSIDE_VALUE",
+      "OPEN_BELOW_VAL"
+    ],
+    "acceptance": {
+      "A_1m_close": "PRIMARY. First completed 1m close with VAL <= close <= VAH.",
+      "B_two_1m": "Two consecutive completed 1m closes inside value.",
+      "C_5m": "Diagnostic. First RTH-aligned 5m close inside value."
+    },
+    "rejection": {
+      "primary": "1m close rejection. Open outside. Price trades to/through the boundary (low<=VAH from above, high>=VAL from below). Then a completed 1m close back outside. Enter next 1m open.",
+      "first_trade": "Diagnostic. Same test, but rejection is the first bar that trades the boundary then closes outside without a prior inside close.",
+      "close_5m": "Diagnostic only."
+    },
+    "primary_candidate": {
+      "id": "VP_OUTSIDE_ACCEPT_POC",
+      "family": "B",
+      "rules": "Open outside prior value. Acceptance A: first 1m close inside [VAL,VAH]. Enter next 1m open +/- 1 tick toward POC (short if open was above VAH, long if below VAL). Stop = extreme of the outside excursion from RTH open through the signal bar, plus 1 tick. Target = prior POC. Flatten 15:55. Reject if stop > instrument max_stop_points. Same-bar stop+target = AMBIGUOUS.",
+      "reason": "Tests whether acceptance into prior value rotates toward POC. Locked before Phase 41 P&L. Competing rejection and inside-rotation candidates are reported, not substituted after seeing results."
+    },
+    "secondary_candidates": [
+      {
+        "id": "VP_OUTSIDE_REJECT_1R",
+        "family": "A",
+        "rules": "Open outside. Boundary test then 1m close back outside. Enter next open away from value. Stop = test extreme + 1 tick. Target = 1R. Flatten 15:55."
+      },
+      {
+        "id": "VP_INSIDE_ROTATE_POC",
+        "family": "C",
+        "rules": "Open inside value and not exactly on POC. Enter 09:30 open +/- 1 tick toward POC. Stop = near value boundary +/- 1 tick. Target = POC. Flatten 15:55."
+      }
+    ],
+    "fills": {
+      "primary_adverse_ticks": 1,
+      "overlays": [
+        0,
+        1,
+        2
+      ]
+    },
+    "targets_on_primary": [
+      "POC",
+      "1R",
+      "opposite_value"
+    ],
+    "chrono": {
+      "train_end": "2024-12-31",
+      "holdout_start": "2025-01-02",
+      "note": "Predeclared. Same split as Phase 38/39. Train 2020-2024; holdout 2025-2026 YTD."
+    },
+    "news": {
+      "bls_0830": "T-5m to T+5m around 08:30 never overlaps RTH 09:30 entries.",
+      "1000_et": "No complete 10:00 calendar in-repo. Do not invent a daily 09:55-10:05 filter. Report as limitation. Optional diagnostic overlay only."
+    },
+    "hvn_lvn": "Not primary. Skip unless VAH/VAL/POC already show a tradable edge.",
+    "do_not_pool": true,
+    "note": "Phase 41 does not freeze. Candidate JSON only if VOLUME_PROFILE_EDGE_FOUND."
+  },
+  "results": {
+    "ES": {
+      "instrument": "ES",
+      "status": "VOLUME_PROFILE_EDGE_REJECTED",
+      "data": {
+        "path": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\data\\databento\\ES\\stitched",
+        "roll": "databento_ES.v.0",
+        "source": "phase38_download",
+        "ok": true,
+        "n_bars": 2338955,
+        "earliest": 1577919600,
+        "latest": 1786924740
+      },
+      "n_profile_days": 1651,
+      "n_next_days": 1650,
+      "open_location": {
+        "OPEN_BELOW_VAL": 443,
+        "OPEN_INSIDE_VALUE": 559,
+        "OPEN_ABOVE_VAH": 648
+      },
+      "open_share": {
+        "OPEN_BELOW_VAL": 0.2684848484848485,
+        "OPEN_INSIDE_VALUE": 0.3387878787878788,
+        "OPEN_ABOVE_VAH": 0.3927272727272727
+      },
+      "structural": {
+        "OPEN_ABOVE_VAH": {
+          "open_class": "OPEN_ABOVE_VAH",
+          "n": 648,
+          "share": 0.3927272727272727,
+          "P_return_vah": 0.5879629629629629,
+          "P_return_val": 0.27314814814814814,
+          "P_enter_value": 0.5864197530864198,
+          "P_touch_poc": 0.4166666666666667,
+          "P_traverse_full": 0.27314814814814814,
+          "P_continue_away": 0.41203703703703703,
+          "P_reject_1m": 0.35030864197530864,
+          "P_accept_1m": 0.558641975308642,
+          "P_accept_two_1m": 0.5354938271604939,
+          "P_accept_5m": 0.5246913580246914,
+          "mean_mfe_away": 23.187114197530864,
+          "mean_mae_into": -29.908564814814813,
+          "exit_side": {
+            "NONE": 648
+          }
+        },
+        "OPEN_INSIDE_VALUE": {
+          "open_class": "OPEN_INSIDE_VALUE",
+          "n": 559,
+          "share": 0.3387878787878788,
+          "P_return_vah": 0.6976744186046512,
+          "P_return_val": 0.6404293381037567,
+          "P_enter_value": 1.0,
+          "P_touch_poc": 0.8085867620751341,
+          "P_traverse_full": 0.37209302325581395,
+          "P_continue_away": 0.0,
+          "P_reject_1m": 0.0,
+          "P_accept_1m": 0.9910554561717353,
+          "P_accept_two_1m": 0.9803220035778175,
+          "P_accept_5m": 0.9713774597495528,
+          "mean_mfe_away": 0.0,
+          "mean_mae_into": 0.0,
+          "exit_side": {
+            "VAH": 292,
+            "BOTH_SAME_BAR": 1,
+            "VAL": 247,
+            "NONE": 19
+          }
+        },
+        "OPEN_BELOW_VAL": {
+          "open_class": "OPEN_BELOW_VAL",
+          "n": 443,
+          "share": 0.2684848484848485,
+          "P_return_vah": 0.255079006772009,
+          "P_return_val": 0.5981941309255079,
+          "P_enter_value": 0.5936794582392777,
+          "P_touch_poc": 0.3747178329571106,
+          "P_traverse_full": 0.255079006772009,
+          "P_continue_away": 0.4018058690744921,
+          "P_reject_1m": 0.3182844243792325,
+          "P_accept_1m": 0.5869074492099323,
+          "P_accept_two_1m": 0.5711060948081265,
+          "P_accept_5m": 0.5688487584650113,
+          "mean_mfe_away": 29.97629796839729,
+          "mean_mae_into": -32.42720090293454,
+          "exit_side": {
+            "NONE": 443
+          }
+        }
+      },
+      "structural_effect_flag": false,
+      "width_quintiles": [
+        {
+          "bucket": 1,
+          "n": 217,
+          "mean_width_atr": 0.21632611008332578,
+          "P_enter": 0.631336405529954,
+          "P_continue_away": 0.3686635944700461,
+          "P_touch_poc": 0.5299539170506913
+        },
+        {
+          "bucket": 2,
+          "n": 218,
+          "mean_width_atr": 0.31873814635228837,
+          "P_enter": 0.6009174311926605,
+          "P_continue_away": 0.39908256880733944,
+          "P_touch_poc": 0.44954128440366975
+        },
+        {
+          "bucket": 3,
+          "n": 217,
+          "mean_width_atr": 0.42517028283354047,
+          "P_enter": 0.576036866359447,
+          "P_continue_away": 0.4147465437788018,
+          "P_touch_poc": 0.3686635944700461
+        },
+        {
+          "bucket": 4,
+          "n": 218,
+          "mean_width_atr": 0.5690646497306933,
+          "P_enter": 0.5504587155963303,
+          "P_continue_away": 0.44495412844036697,
+          "P_touch_poc": 0.3119266055045872
+        },
+        {
+          "bucket": 5,
+          "n": 218,
+          "mean_width_atr": 0.9293090551118178,
+          "P_enter": 0.5825688073394495,
+          "P_continue_away": 0.41743119266055045,
+          "P_touch_poc": 0.3394495412844037
+        }
+      ],
+      "primary": {
+        "id": "VP_OUTSIDE_ACCEPT_POC",
+        "full": {
+          "n_days": 1650,
+          "n_entered": 498,
+          "n_resolved": 498,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 498,
+            "NO_SETUP": 1028,
+            "REJECT_WIDE_STOP": 103,
+            "REJECT_TARGET": 21
+          },
+          "win_rate": 0.5883534136546185,
+          "expectancy_points": -0.14877510040160616,
+          "expectancy_r": -0.03340646613030004,
+          "profit_factor": 0.9697918577864758,
+          "max_dd_points": 284.3200000000002,
+          "max_consec_losses": 5,
+          "avg_stop_points": 16.81777108433735,
+          "p95_stop_points": 35.0,
+          "long": {
+            "n": 199,
+            "win_rate": 0.5628140703517588,
+            "expectancy_points": -0.7144221105527635,
+            "expectancy_r": -0.0562394136735458
+          },
+          "short": {
+            "n": 299,
+            "win_rate": 0.6053511705685619,
+            "expectancy_points": 0.22769230769230792,
+            "expectancy_r": -0.018209955892487646
+          },
+          "use_cost": true
+        },
+        "train": {
+          "n_days": 1248,
+          "n_entered": 389,
+          "n_resolved": 389,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 389,
+            "NO_SETUP": 780,
+            "REJECT_WIDE_STOP": 66,
+            "REJECT_TARGET": 13
+          },
+          "win_rate": 0.5912596401028277,
+          "expectancy_points": 0.18670951156812363,
+          "expectancy_r": -0.022597370267584408,
+          "profit_factor": 1.0409824965297763,
+          "max_dd_points": 190.77000000000044,
+          "max_consec_losses": 5,
+          "avg_stop_points": 16.48007712082262,
+          "p95_stop_points": 34.75,
+          "long": {
+            "n": 163,
+            "win_rate": 0.558282208588957,
+            "expectancy_points": -0.469570552147239,
+            "expectancy_r": -0.0700810371325221
+          },
+          "short": {
+            "n": 226,
+            "win_rate": 0.6150442477876106,
+            "expectancy_points": 0.6600442477876108,
+            "expectancy_r": 0.011649699196950301
+          },
+          "use_cost": true
+        },
+        "holdout": {
+          "n_days": 402,
+          "n_entered": 109,
+          "n_resolved": 109,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 109,
+            "NO_SETUP": 248,
+            "REJECT_WIDE_STOP": 37,
+            "REJECT_TARGET": 8
+          },
+          "win_rate": 0.5779816513761468,
+          "expectancy_points": -1.3460550458715592,
+          "expectancy_r": -0.07198204677797326,
+          "profit_factor": 0.7843716473406523,
+          "max_dd_points": 173.17,
+          "max_consec_losses": 3,
+          "avg_stop_points": 18.022935779816514,
+          "p95_stop_points": 36.75,
+          "long": {
+            "n": 36,
+            "win_rate": 0.5833333333333334,
+            "expectancy_points": -1.823055555555555,
+            "expectancy_r": 0.00643238143237468
+          },
+          "short": {
+            "n": 73,
+            "win_rate": 0.5753424657534246,
+            "expectancy_points": -1.1108219178082188,
+            "expectancy_r": -0.11065217575841882
+          },
+          "use_cost": true
+        },
+        "years": [
+          {
+            "year": 2020,
+            "n_days": 250,
+            "n_entered": 74,
+            "n_resolved": 74,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 74,
+              "NO_SETUP": 158,
+              "REJECT_WIDE_STOP": 15,
+              "REJECT_TARGET": 3
+            },
+            "win_rate": 0.6486486486486487,
+            "expectancy_points": 0.8625675675675676,
+            "expectancy_r": 0.034394232839837634,
+            "profit_factor": 1.2880675151186933,
+            "max_dd_points": 46.48,
+            "max_consec_losses": 4,
+            "avg_stop_points": 14.39527027027027,
+            "p95_stop_points": 32.0,
+            "long": {
+              "n": 37,
+              "win_rate": 0.5945945945945946,
+              "expectancy_points": 0.12945945945945958,
+              "expectancy_r": 0.055231297323908156
+            },
+            "short": {
+              "n": 37,
+              "win_rate": 0.7027027027027027,
+              "expectancy_points": 1.5956756756756756,
+              "expectancy_r": 0.013557168355767119
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2021,
+            "n_days": 251,
+            "n_entered": 79,
+            "n_resolved": 79,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 79,
+              "NO_SETUP": 164,
+              "REJECT_TARGET": 1,
+              "REJECT_WIDE_STOP": 7
+            },
+            "win_rate": 0.6455696202531646,
+            "expectancy_points": 0.38518987341772154,
+            "expectancy_r": 0.046706748111536085,
+            "profit_factor": 1.1288096850660345,
+            "max_dd_points": 98.24999999999997,
+            "max_consec_losses": 5,
+            "avg_stop_points": 13.708860759493671,
+            "p95_stop_points": 28.25,
+            "long": {
+              "n": 25,
+              "win_rate": 0.68,
+              "expectancy_points": 1.04,
+              "expectancy_r": -0.037749125512418755
+            },
+            "short": {
+              "n": 54,
+              "win_rate": 0.6296296296296297,
+              "expectancy_points": 0.0820370370370371,
+              "expectancy_r": 0.08580668960410777
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2022,
+            "n_days": 250,
+            "n_entered": 61,
+            "n_resolved": 61,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 155,
+              "ENTERED": 61,
+              "REJECT_WIDE_STOP": 26,
+              "REJECT_TARGET": 8
+            },
+            "win_rate": 0.5573770491803278,
+            "expectancy_points": 0.719180327868853,
+            "expectancy_r": -0.01171273763472679,
+            "profit_factor": 1.100640040375307,
+            "max_dd_points": 109.27999999999997,
+            "max_consec_losses": 5,
+            "avg_stop_points": 20.811475409836067,
+            "p95_stop_points": 37.25,
+            "long": {
+              "n": 28,
+              "win_rate": 0.4642857142857143,
+              "expectancy_points": -2.6871428571428564,
+              "expectancy_r": -0.11614846944391631
+            },
+            "short": {
+              "n": 33,
+              "win_rate": 0.6363636363636364,
+              "expectancy_points": 3.60939393939394,
+              "expectancy_r": 0.07689939844579766
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2023,
+            "n_days": 248,
+            "n_entered": 95,
+            "n_resolved": 95,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 9,
+              "ENTERED": 95,
+              "NO_SETUP": 143,
+              "REJECT_TARGET": 1
+            },
+            "win_rate": 0.5368421052631579,
+            "expectancy_points": -0.924736842105263,
+            "expectancy_r": -0.14544134735665484,
+            "profit_factor": 0.805327187714672,
+            "max_dd_points": 136.9399999999999,
+            "max_consec_losses": 3,
+            "avg_stop_points": 17.13684210526316,
+            "p95_stop_points": 34.25,
+            "long": {
+              "n": 47,
+              "win_rate": 0.5106382978723404,
+              "expectancy_points": -1.266170212765957,
+              "expectancy_r": -0.15545418438060368
+            },
+            "short": {
+              "n": 48,
+              "win_rate": 0.5625,
+              "expectancy_points": -0.5904166666666666,
+              "expectancy_r": -0.13563711110403828
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2024,
+            "n_days": 249,
+            "n_entered": 80,
+            "n_resolved": 80,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 160,
+              "ENTERED": 80,
+              "REJECT_WIDE_STOP": 9
+            },
+            "win_rate": 0.575,
+            "expectancy_points": 0.2793750000000003,
+            "expectancy_r": -0.0061747296306140665,
+            "profit_factor": 1.0523149665277844,
+            "max_dd_points": 100.36999999999999,
+            "max_consec_losses": 4,
+            "avg_stop_points": 17.0625,
+            "p95_stop_points": 34.75,
+            "long": {
+              "n": 26,
+              "win_rate": 0.5769230769230769,
+              "expectancy_points": 1.054615384615385,
+              "expectancy_r": -0.0755590425175848
+            },
+            "short": {
+              "n": 54,
+              "win_rate": 0.5740740740740741,
+              "expectancy_points": -0.09388888888888856,
+              "expectancy_r": 0.027232532129779254
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2025,
+            "n_days": 247,
+            "n_entered": 69,
+            "n_resolved": 69,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 69,
+              "NO_SETUP": 147,
+              "REJECT_WIDE_STOP": 24,
+              "REJECT_TARGET": 7
+            },
+            "win_rate": 0.5507246376811594,
+            "expectancy_points": -1.301014492753623,
+            "expectancy_r": -0.08266976005816233,
+            "profit_factor": 0.7856136412485374,
+            "max_dd_points": 153.63,
+            "max_consec_losses": 3,
+            "avg_stop_points": 17.97826086956522,
+            "p95_stop_points": 39.25,
+            "long": {
+              "n": 20,
+              "win_rate": 0.6,
+              "expectancy_points": -0.004999999999999538,
+              "expectancy_r": 0.09754688239360139
+            },
+            "short": {
+              "n": 49,
+              "win_rate": 0.5306122448979592,
+              "expectancy_points": -1.8299999999999996,
+              "expectancy_r": -0.15622757330378018
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2026,
+            "n_days": 155,
+            "n_entered": 40,
+            "n_resolved": 40,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 101,
+              "ENTERED": 40,
+              "REJECT_WIDE_STOP": 13,
+              "REJECT_TARGET": 1
+            },
+            "win_rate": 0.625,
+            "expectancy_points": -1.4237499999999996,
+            "expectancy_r": -0.053545741369647105,
+            "profit_factor": 0.7823844096293466,
+            "max_dd_points": 159.19,
+            "max_consec_losses": 3,
+            "avg_stop_points": 18.1,
+            "p95_stop_points": 32.25,
+            "long": {
+              "n": 16,
+              "win_rate": 0.5625,
+              "expectancy_points": -4.095624999999999,
+              "expectancy_r": -0.1074607447691587
+            },
+            "short": {
+              "n": 24,
+              "win_rate": 0.6666666666666666,
+              "expectancy_points": 0.3575000000000004,
+              "expectancy_r": -0.01760240576997271
+            },
+            "use_cost": true
+          }
+        ],
+        "walkforward": [
+          {
+            "year": 2020,
+            "n_days": 250,
+            "n_entered": 74,
+            "n_resolved": 74,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 74,
+              "NO_SETUP": 158,
+              "REJECT_WIDE_STOP": 15,
+              "REJECT_TARGET": 3
+            },
+            "win_rate": 0.6486486486486487,
+            "expectancy_points": 0.8625675675675676,
+            "expectancy_r": 0.034394232839837634,
+            "profit_factor": 1.2880675151186933,
+            "max_dd_points": 46.48,
+            "max_consec_losses": 4,
+            "avg_stop_points": 14.39527027027027,
+            "p95_stop_points": 32.0,
+            "long": {
+              "n": 37,
+              "win_rate": 0.5945945945945946,
+              "expectancy_points": 0.12945945945945958,
+              "expectancy_r": 0.055231297323908156
+            },
+            "short": {
+              "n": 37,
+              "win_rate": 0.7027027027027027,
+              "expectancy_points": 1.5956756756756756,
+              "expectancy_r": 0.013557168355767119
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2021,
+            "n_days": 251,
+            "n_entered": 79,
+            "n_resolved": 79,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 79,
+              "NO_SETUP": 164,
+              "REJECT_TARGET": 1,
+              "REJECT_WIDE_STOP": 7
+            },
+            "win_rate": 0.6455696202531646,
+            "expectancy_points": 0.38518987341772154,
+            "expectancy_r": 0.046706748111536085,
+            "profit_factor": 1.1288096850660345,
+            "max_dd_points": 98.24999999999997,
+            "max_consec_losses": 5,
+            "avg_stop_points": 13.708860759493671,
+            "p95_stop_points": 28.25,
+            "long": {
+              "n": 25,
+              "win_rate": 0.68,
+              "expectancy_points": 1.04,
+              "expectancy_r": -0.037749125512418755
+            },
+            "short": {
+              "n": 54,
+              "win_rate": 0.6296296296296297,
+              "expectancy_points": 0.0820370370370371,
+              "expectancy_r": 0.08580668960410777
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2022,
+            "n_days": 250,
+            "n_entered": 61,
+            "n_resolved": 61,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 155,
+              "ENTERED": 61,
+              "REJECT_WIDE_STOP": 26,
+              "REJECT_TARGET": 8
+            },
+            "win_rate": 0.5573770491803278,
+            "expectancy_points": 0.719180327868853,
+            "expectancy_r": -0.01171273763472679,
+            "profit_factor": 1.100640040375307,
+            "max_dd_points": 109.27999999999997,
+            "max_consec_losses": 5,
+            "avg_stop_points": 20.811475409836067,
+            "p95_stop_points": 37.25,
+            "long": {
+              "n": 28,
+              "win_rate": 0.4642857142857143,
+              "expectancy_points": -2.6871428571428564,
+              "expectancy_r": -0.11614846944391631
+            },
+            "short": {
+              "n": 33,
+              "win_rate": 0.6363636363636364,
+              "expectancy_points": 3.60939393939394,
+              "expectancy_r": 0.07689939844579766
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2023,
+            "n_days": 248,
+            "n_entered": 95,
+            "n_resolved": 95,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 9,
+              "ENTERED": 95,
+              "NO_SETUP": 143,
+              "REJECT_TARGET": 1
+            },
+            "win_rate": 0.5368421052631579,
+            "expectancy_points": -0.924736842105263,
+            "expectancy_r": -0.14544134735665484,
+            "profit_factor": 0.805327187714672,
+            "max_dd_points": 136.9399999999999,
+            "max_consec_losses": 3,
+            "avg_stop_points": 17.13684210526316,
+            "p95_stop_points": 34.25,
+            "long": {
+              "n": 47,
+              "win_rate": 0.5106382978723404,
+              "expectancy_points": -1.266170212765957,
+              "expectancy_r": -0.15545418438060368
+            },
+            "short": {
+              "n": 48,
+              "win_rate": 0.5625,
+              "expectancy_points": -0.5904166666666666,
+              "expectancy_r": -0.13563711110403828
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2024,
+            "n_days": 249,
+            "n_entered": 80,
+            "n_resolved": 80,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 160,
+              "ENTERED": 80,
+              "REJECT_WIDE_STOP": 9
+            },
+            "win_rate": 0.575,
+            "expectancy_points": 0.2793750000000003,
+            "expectancy_r": -0.0061747296306140665,
+            "profit_factor": 1.0523149665277844,
+            "max_dd_points": 100.36999999999999,
+            "max_consec_losses": 4,
+            "avg_stop_points": 17.0625,
+            "p95_stop_points": 34.75,
+            "long": {
+              "n": 26,
+              "win_rate": 0.5769230769230769,
+              "expectancy_points": 1.054615384615385,
+              "expectancy_r": -0.0755590425175848
+            },
+            "short": {
+              "n": 54,
+              "win_rate": 0.5740740740740741,
+              "expectancy_points": -0.09388888888888856,
+              "expectancy_r": 0.027232532129779254
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2025,
+            "n_days": 247,
+            "n_entered": 69,
+            "n_resolved": 69,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 69,
+              "NO_SETUP": 147,
+              "REJECT_WIDE_STOP": 24,
+              "REJECT_TARGET": 7
+            },
+            "win_rate": 0.5507246376811594,
+            "expectancy_points": -1.301014492753623,
+            "expectancy_r": -0.08266976005816233,
+            "profit_factor": 0.7856136412485374,
+            "max_dd_points": 153.63,
+            "max_consec_losses": 3,
+            "avg_stop_points": 17.97826086956522,
+            "p95_stop_points": 39.25,
+            "long": {
+              "n": 20,
+              "win_rate": 0.6,
+              "expectancy_points": -0.004999999999999538,
+              "expectancy_r": 0.09754688239360139
+            },
+            "short": {
+              "n": 49,
+              "win_rate": 0.5306122448979592,
+              "expectancy_points": -1.8299999999999996,
+              "expectancy_r": -0.15622757330378018
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2026,
+            "n_days": 155,
+            "n_entered": 40,
+            "n_resolved": 40,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 101,
+              "ENTERED": 40,
+              "REJECT_WIDE_STOP": 13,
+              "REJECT_TARGET": 1
+            },
+            "win_rate": 0.625,
+            "expectancy_points": -1.4237499999999996,
+            "expectancy_r": -0.053545741369647105,
+            "profit_factor": 0.7823844096293466,
+            "max_dd_points": 159.19,
+            "max_consec_losses": 3,
+            "avg_stop_points": 18.1,
+            "p95_stop_points": 32.25,
+            "long": {
+              "n": 16,
+              "win_rate": 0.5625,
+              "expectancy_points": -4.095624999999999,
+              "expectancy_r": -0.1074607447691587
+            },
+            "short": {
+              "n": 24,
+              "win_rate": 0.6666666666666666,
+              "expectancy_points": 0.3575000000000004,
+              "expectancy_r": -0.01760240576997271
+            },
+            "use_cost": true
+          }
+        ],
+        "ideal": {
+          "n_days": 1650,
+          "n_entered": 504,
+          "n_resolved": 504,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 504,
+            "NO_SETUP": 1028,
+            "REJECT_WIDE_STOP": 101,
+            "REJECT_TARGET": 17
+          },
+          "win_rate": 0.5912698412698413,
+          "expectancy_points": 0.15128968253968253,
+          "expectancy_r": -0.003765998102597847,
+          "profit_factor": 1.0316751479904456,
+          "max_dd_points": 221.75,
+          "max_consec_losses": 5,
+          "avg_stop_points": 16.65327380952381,
+          "p95_stop_points": 35.0,
+          "long": {
+            "n": 200,
+            "win_rate": 0.56,
+            "expectancy_points": -0.49375,
+            "expectancy_r": -0.02983968764281324
+          },
+          "short": {
+            "n": 304,
+            "win_rate": 0.6118421052631579,
+            "expectancy_points": 0.5756578947368421,
+            "expectancy_r": 0.013387745015964913
+          },
+          "use_cost": false
+        },
+        "stress_2tick": {
+          "n_days": 1650,
+          "n_entered": 496,
+          "n_resolved": 496,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 496,
+            "NO_SETUP": 1028,
+            "REJECT_WIDE_STOP": 103,
+            "REJECT_TARGET": 23
+          },
+          "win_rate": 0.5826612903225806,
+          "expectancy_points": -0.4000604838709675,
+          "expectancy_r": -0.05430059256363756,
+          "profit_factor": 0.9207566911335991,
+          "max_dd_points": 360.24,
+          "max_consec_losses": 5,
+          "avg_stop_points": 17.097782258064516,
+          "p95_stop_points": 35.25,
+          "long": {
+            "n": 198,
+            "win_rate": 0.5505050505050505,
+            "expectancy_points": -0.9688888888888886,
+            "expectancy_r": -0.07648070759435024
+          },
+          "short": {
+            "n": 298,
+            "win_rate": 0.6040268456375839,
+            "expectancy_points": -0.022114093959731334,
+            "expectancy_r": -0.039563469153969404
+          },
+          "use_cost": true
+        },
+        "target_1r": {
+          "n_days": 1650,
+          "n_entered": 511,
+          "n_resolved": 511,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 511,
+            "NO_SETUP": 1028,
+            "REJECT_WIDE_STOP": 111
+          },
+          "win_rate": 0.5225048923679061,
+          "expectancy_points": 0.9410371819960867,
+          "expectancy_r": 0.04608098335164408,
+          "profit_factor": 1.1495930963254235,
+          "max_dd_points": 335.9299999999988,
+          "max_consec_losses": 7,
+          "avg_stop_points": 16.88454011741683,
+          "p95_stop_points": 35.0,
+          "long": {
+            "n": 202,
+            "win_rate": 0.5297029702970297,
+            "expectancy_points": 0.2640594059405945,
+            "expectancy_r": 0.02567541934136689
+          },
+          "short": {
+            "n": 309,
+            "win_rate": 0.517799352750809,
+            "expectancy_points": 1.3835922330097092,
+            "expectancy_r": 0.05942054299590296
+          },
+          "use_cost": true
+        },
+        "target_opposite": {
+          "n_days": 1650,
+          "n_entered": 510,
+          "n_resolved": 510,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 510,
+            "NO_SETUP": 1028,
+            "REJECT_WIDE_STOP": 111,
+            "REJECT_TARGET": 1
+          },
+          "win_rate": 0.4725490196078431,
+          "expectancy_points": 1.2131372549019612,
+          "expectancy_r": 0.05678754807016053,
+          "profit_factor": 1.1833581782133618,
+          "max_dd_points": 423.4299999999996,
+          "max_consec_losses": 9,
+          "avg_stop_points": 16.892156862745097,
+          "p95_stop_points": 35.0,
+          "long": {
+            "n": 202,
+            "win_rate": 0.4801980198019802,
+            "expectancy_points": 0.43237623762376287,
+            "expectancy_r": 0.05758384080450703
+          },
+          "short": {
+            "n": 308,
+            "win_rate": 0.4675324675324675,
+            "expectancy_points": 1.7251948051948058,
+            "expectancy_r": 0.05626530413399822
+          },
+          "use_cost": true
+        },
+        "tod": [
+          {
+            "bucket": "0930_1000",
+            "n_days": 296,
+            "n_entered": 296,
+            "n_resolved": 296,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 296
+            },
+            "win_rate": 0.5337837837837838,
+            "expectancy_points": 0.14550675675675695,
+            "expectancy_r": -0.05273974154937141,
+            "profit_factor": 1.0312942766422775,
+            "max_dd_points": 180.3299999999999,
+            "max_consec_losses": 9,
+            "avg_stop_points": 11.99239864864865,
+            "p95_stop_points": 28.25,
+            "long": {
+              "n": 116,
+              "win_rate": 0.49137931034482757,
+              "expectancy_points": -1.1338793103448273,
+              "expectancy_r": -0.11846546513712612
+            },
+            "short": {
+              "n": 180,
+              "win_rate": 0.5611111111111111,
+              "expectancy_points": 0.9700000000000002,
+              "expectancy_r": -0.010383164126151697
+            },
+            "use_cost": true
+          },
+          {
+            "bucket": "1000_1130",
+            "n_days": 136,
+            "n_entered": 136,
+            "n_resolved": 136,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 136
+            },
+            "win_rate": 0.7352941176470589,
+            "expectancy_points": 0.7012500000000004,
+            "expectancy_r": 0.051930104190508176,
+            "profit_factor": 1.1434394176392733,
+            "max_dd_points": 118.84000000000015,
+            "max_consec_losses": 3,
+            "avg_stop_points": 22.389705882352942,
+            "p95_stop_points": 36.75,
+            "long": {
+              "n": 55,
+              "win_rate": 0.7818181818181819,
+              "expectancy_points": 1.974545454545455,
+              "expectancy_r": 0.12946856634390702
+            },
+            "short": {
+              "n": 81,
+              "win_rate": 0.7037037037037037,
+              "expectancy_points": -0.163333333333333,
+              "expectancy_r": -0.0007194688766145004
+            },
+            "use_cost": true
+          },
+          {
+            "bucket": "1130_1330",
+            "n_days": 37,
+            "n_entered": 37,
+            "n_resolved": 37,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 37
+            },
+            "win_rate": 0.5675675675675675,
+            "expectancy_points": -4.485405405405405,
+            "expectancy_r": -0.17017679029787564,
+            "profit_factor": 0.41927356707957175,
+            "max_dd_points": 199.24,
+            "max_consec_losses": 5,
+            "avg_stop_points": 27.58783783783784,
+            "p95_stop_points": 39.5,
+            "long": {
+              "n": 13,
+              "win_rate": 0.38461538461538464,
+              "expectancy_points": -9.137692307692307,
+              "expectancy_r": -0.35088099543432527
+            },
+            "short": {
+              "n": 24,
+              "win_rate": 0.6666666666666666,
+              "expectancy_points": -1.9654166666666664,
+              "expectancy_r": -0.07229534584896541
+            },
+            "use_cost": true
+          },
+          {
+            "bucket": "1330_1530",
+            "n_days": 29,
+            "n_entered": 29,
+            "n_resolved": 29,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 29
+            },
+            "win_rate": 0.4827586206896552,
+            "expectancy_points": -1.6058620689655172,
+            "expectancy_r": -0.06177274355735162,
+            "profit_factor": 0.6295147175815433,
+            "max_dd_points": 49.259999999999984,
+            "max_consec_losses": 3,
+            "avg_stop_points": 26.198275862068964,
+            "p95_stop_points": 37.5,
+            "long": {
+              "n": 15,
+              "win_rate": 0.4666666666666667,
+              "expectancy_points": -0.02999999999999995,
+              "expectancy_r": -0.000597838226509373
+            },
+            "short": {
+              "n": 14,
+              "win_rate": 0.5,
+              "expectancy_points": -3.294285714285714,
+              "expectancy_r": -0.12731728498325404
+            },
+            "use_cost": true
+          }
+        ],
+        "mc": {
+          "ok": true,
+          "n_trades": 498,
+          "n_shuffles": 250,
+          "p05_terminal_r": -16.63642013288944,
+          "p50_terminal_r": -16.63642013288942,
+          "p95_maxdd_r": 21.099905902704304,
+          "median_maxdd_r": 28.74686284403832
+        },
+        "prop": {
+          "avg_stop_points": 16.81777108433735,
+          "p95_stop_points": 35.0,
+          "avg_usd_risk": 840.8885542168674,
+          "max_consec_losses": 5,
+          "flatten": "15:55",
+          "overnight": false
+        },
+        "dvp": null
+      },
+      "cand_A_reject": {
+        "n_days": 1650,
+        "n_entered": 320,
+        "n_resolved": 309,
+        "n_ambiguous": 11,
+        "status_counts": {
+          "ENTERED": 320,
+          "NO_SETUP": 1004,
+          "ACCEPTED_INSTEAD": 278,
+          "REJECT_WIDE_STOP": 48
+        },
+        "win_rate": 0.45307443365695793,
+        "expectancy_points": -1.2499029126213588,
+        "expectancy_r": -0.07178802356868923,
+        "profit_factor": 0.8037270615976461,
+        "max_dd_points": 537.4399999999995,
+        "max_consec_losses": 8,
+        "avg_stop_points": 13.89296875,
+        "p95_stop_points": 33.25,
+        "long": {
+          "n": 112,
+          "win_rate": 0.4732142857142857,
+          "expectancy_points": -0.17598214285714248,
+          "expectancy_r": -0.04930677823669233
+        },
+        "short": {
+          "n": 197,
+          "win_rate": 0.4416243654822335,
+          "expectancy_points": -1.860456852791878,
+          "expectancy_r": -0.08456923918891082
+        },
+        "use_cost": true
+      },
+      "cand_A_train": {
+        "n_days": 1248,
+        "n_entered": 250,
+        "n_resolved": 242,
+        "n_ambiguous": 8,
+        "status_counts": {
+          "ENTERED": 250,
+          "NO_SETUP": 765,
+          "ACCEPTED_INSTEAD": 203,
+          "REJECT_WIDE_STOP": 30
+        },
+        "win_rate": 0.45867768595041325,
+        "expectancy_points": -0.9167768595041319,
+        "expectancy_r": -0.06335510218501007,
+        "profit_factor": 0.8399544087200538,
+        "max_dd_points": 442.3599999999999,
+        "max_consec_losses": 8,
+        "avg_stop_points": 12.959,
+        "p95_stop_points": 31.25,
+        "long": {
+          "n": 91,
+          "win_rate": 0.46153846153846156,
+          "expectancy_points": -0.3986813186813184,
+          "expectancy_r": -0.07097040919407227
+        },
+        "short": {
+          "n": 151,
+          "win_rate": 0.45695364238410596,
+          "expectancy_points": -1.229006622516556,
+          "expectancy_r": -0.058765744980873266
+        },
+        "use_cost": true
+      },
+      "cand_A_holdout": {
+        "n_days": 402,
+        "n_entered": 70,
+        "n_resolved": 67,
+        "n_ambiguous": 3,
+        "status_counts": {
+          "ACCEPTED_INSTEAD": 75,
+          "NO_SETUP": 239,
+          "ENTERED": 70,
+          "REJECT_WIDE_STOP": 18
+        },
+        "win_rate": 0.43283582089552236,
+        "expectancy_points": -2.453134328358208,
+        "expectancy_r": -0.10224723214854528,
+        "profit_factor": 0.7173711180658253,
+        "max_dd_points": 235.98000000000025,
+        "max_consec_losses": 5,
+        "avg_stop_points": 17.228571428571428,
+        "p95_stop_points": 37.25,
+        "long": {
+          "n": 21,
+          "win_rate": 0.5238095238095238,
+          "expectancy_points": 0.7890476190476198,
+          "expectancy_r": 0.04456895591195409
+        },
+        "short": {
+          "n": 46,
+          "win_rate": 0.391304347826087,
+          "expectancy_points": -3.9332608695652165,
+          "expectancy_r": -0.16927201365442543
+        },
+        "use_cost": true
+      },
+      "cand_C_inside": {
+        "n_days": 1650,
+        "n_entered": 536,
+        "n_resolved": 528,
+        "n_ambiguous": 8,
+        "status_counts": {
+          "NO_SETUP": 1091,
+          "ENTERED": 536,
+          "OPEN_ON_POC": 5,
+          "REJECT_WIDE_STOP": 12,
+          "REJECT_TARGET": 6
+        },
+        "win_rate": 0.4962121212121212,
+        "expectancy_points": 0.22539772727272736,
+        "expectancy_r": -0.1121850515144835,
+        "profit_factor": 1.06856283630414,
+        "max_dd_points": 182.8000000000019,
+        "max_consec_losses": 7,
+        "avg_stop_points": 9.67910447761194,
+        "p95_stop_points": 29.0,
+        "long": {
+          "n": 270,
+          "win_rate": 0.5481481481481482,
+          "expectancy_points": 1.282962962962963,
+          "expectancy_r": 0.02151901646137215
+        },
+        "short": {
+          "n": 258,
+          "win_rate": 0.4418604651162791,
+          "expectancy_points": -0.8813565891472868,
+          "expectancy_r": -0.25210791334968125
+        },
+        "use_cost": true
+      },
+      "cand_C_train": {
+        "n_days": 1248,
+        "n_entered": 403,
+        "n_resolved": 397,
+        "n_ambiguous": 6,
+        "status_counts": {
+          "NO_SETUP": 829,
+          "ENTERED": 403,
+          "OPEN_ON_POC": 4,
+          "REJECT_WIDE_STOP": 7,
+          "REJECT_TARGET": 5
+        },
+        "win_rate": 0.4987405541561713,
+        "expectancy_points": 0.280831234256927,
+        "expectancy_r": -0.11462513385301064,
+        "profit_factor": 1.093774181610201,
+        "max_dd_points": 159.61000000000072,
+        "max_consec_losses": 7,
+        "avg_stop_points": 9.19727047146402,
+        "p95_stop_points": 28.0,
+        "long": {
+          "n": 204,
+          "win_rate": 0.5490196078431373,
+          "expectancy_points": 1.3329901960784314,
+          "expectancy_r": 0.03563543694444042
+        },
+        "short": {
+          "n": 193,
+          "win_rate": 0.44559585492227977,
+          "expectancy_points": -0.8312953367875647,
+          "expectancy_r": -0.2734497786337361
+        },
+        "use_cost": true
+      },
+      "cand_C_holdout": {
+        "n_days": 402,
+        "n_entered": 133,
+        "n_resolved": 131,
+        "n_ambiguous": 2,
+        "status_counts": {
+          "NO_SETUP": 262,
+          "ENTERED": 133,
+          "REJECT_WIDE_STOP": 5,
+          "OPEN_ON_POC": 1,
+          "REJECT_TARGET": 1
+        },
+        "win_rate": 0.48854961832061067,
+        "expectancy_points": 0.05740458015267199,
+        "expectancy_r": -0.1047902981679547,
+        "profit_factor": 1.0137512343195698,
+        "max_dd_points": 148.86999999999998,
+        "max_consec_losses": 6,
+        "avg_stop_points": 11.139097744360901,
+        "p95_stop_points": 29.5,
+        "long": {
+          "n": 66,
+          "win_rate": 0.5454545454545454,
+          "expectancy_points": 1.1283333333333336,
+          "expectancy_r": -0.022113555940838876
+        },
+        "short": {
+          "n": 65,
+          "win_rate": 0.4307692307692308,
+          "expectancy_points": -1.0299999999999998,
+          "expectancy_r": -0.18873899027548768
+        },
+        "use_cost": true
+      },
+      "poc_magnet": {
+        "P_touch_poc_open_above": 0.4166666666666667,
+        "P_touch_poc_open_below": 0.3747178329571106,
+        "P_touch_poc_open_inside": 0.8085867620751341
+      }
+    },
+    "NQ": {
+      "instrument": "NQ",
+      "status": "VOLUME_PROFILE_STRUCTURAL_EFFECT_ONLY",
+      "data": {
+        "path": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\data\\databento\\NQ\\stitched",
+        "roll": "aitrade_volume_crossover",
+        "source": "local_cache",
+        "ok": true,
+        "n_bars": 2338684,
+        "earliest": 1577919600,
+        "latest": 1786741140
+      },
+      "n_profile_days": 1651,
+      "n_next_days": 1650,
+      "open_location": {
+        "OPEN_BELOW_VAL": 448,
+        "OPEN_ABOVE_VAH": 644,
+        "OPEN_INSIDE_VALUE": 558
+      },
+      "open_share": {
+        "OPEN_BELOW_VAL": 0.27151515151515154,
+        "OPEN_ABOVE_VAH": 0.3903030303030303,
+        "OPEN_INSIDE_VALUE": 0.3381818181818182
+      },
+      "structural": {
+        "OPEN_ABOVE_VAH": {
+          "open_class": "OPEN_ABOVE_VAH",
+          "n": 644,
+          "share": 0.3903030303030303,
+          "P_return_vah": 0.6319875776397516,
+          "P_return_val": 0.2779503105590062,
+          "P_enter_value": 0.6319875776397516,
+          "P_touch_poc": 0.45962732919254656,
+          "P_traverse_full": 0.2779503105590062,
+          "P_continue_away": 0.36801242236024845,
+          "P_reject_1m": 0.327639751552795,
+          "P_accept_1m": 0.6009316770186336,
+          "P_accept_two_1m": 0.5791925465838509,
+          "P_accept_5m": 0.5652173913043478,
+          "mean_mfe_away": 107.18167701863354,
+          "mean_mae_into": -143.39479813664596,
+          "exit_side": {
+            "NONE": 644
+          }
+        },
+        "OPEN_INSIDE_VALUE": {
+          "open_class": "OPEN_INSIDE_VALUE",
+          "n": 558,
+          "share": 0.3381818181818182,
+          "P_return_vah": 0.7078853046594982,
+          "P_return_val": 0.6290322580645161,
+          "P_enter_value": 1.0,
+          "P_touch_poc": 0.7921146953405018,
+          "P_traverse_full": 0.3602150537634409,
+          "P_continue_away": 0.0,
+          "P_reject_1m": 0.0,
+          "P_accept_1m": 0.9802867383512545,
+          "P_accept_two_1m": 0.9695340501792115,
+          "P_accept_5m": 0.9408602150537635,
+          "mean_mfe_away": 0.0,
+          "mean_mae_into": 0.0,
+          "exit_side": {
+            "VAL": 245,
+            "VAH": 300,
+            "NONE": 13
+          }
+        },
+        "OPEN_BELOW_VAL": {
+          "open_class": "OPEN_BELOW_VAL",
+          "n": 448,
+          "share": 0.27151515151515154,
+          "P_return_vah": 0.25223214285714285,
+          "P_return_val": 0.6160714285714286,
+          "P_enter_value": 0.6160714285714286,
+          "P_touch_poc": 0.40625,
+          "P_traverse_full": 0.25223214285714285,
+          "P_continue_away": 0.38392857142857145,
+          "P_reject_1m": 0.31473214285714285,
+          "P_accept_1m": 0.5848214285714286,
+          "P_accept_two_1m": 0.5758928571428571,
+          "P_accept_5m": 0.578125,
+          "mean_mfe_away": 138.38895089285714,
+          "mean_mae_into": -147.83035714285714,
+          "exit_side": {
+            "NONE": 448
+          }
+        }
+      },
+      "structural_effect_flag": true,
+      "width_quintiles": [
+        {
+          "bucket": 1,
+          "n": 217,
+          "mean_width_atr": 0.22110406912068276,
+          "P_enter": 0.6728110599078341,
+          "P_continue_away": 0.3271889400921659,
+          "P_touch_poc": 0.5391705069124424
+        },
+        {
+          "bucket": 2,
+          "n": 218,
+          "mean_width_atr": 0.3222539687938792,
+          "P_enter": 0.5963302752293578,
+          "P_continue_away": 0.4036697247706422,
+          "P_touch_poc": 0.45871559633027525
+        },
+        {
+          "bucket": 3,
+          "n": 217,
+          "mean_width_atr": 0.42042802749573216,
+          "P_enter": 0.6267281105990783,
+          "P_continue_away": 0.37327188940092165,
+          "P_touch_poc": 0.4792626728110599
+        },
+        {
+          "bucket": 4,
+          "n": 218,
+          "mean_width_atr": 0.5541922856981226,
+          "P_enter": 0.6376146788990825,
+          "P_continue_away": 0.3623853211009174,
+          "P_touch_poc": 0.41284403669724773
+        },
+        {
+          "bucket": 5,
+          "n": 218,
+          "mean_width_atr": 0.8842178180622285,
+          "P_enter": 0.5871559633027523,
+          "P_continue_away": 0.41284403669724773,
+          "P_touch_poc": 0.2981651376146789
+        }
+      ],
+      "primary": {
+        "id": "VP_OUTSIDE_ACCEPT_POC",
+        "full": {
+          "n_days": 1650,
+          "n_entered": 292,
+          "n_resolved": 292,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 292,
+            "REJECT_WIDE_STOP": 335,
+            "NO_SETUP": 1001,
+            "REJECT_TARGET": 18,
+            "NO_ENTRY_BAR": 4
+          },
+          "win_rate": 0.5753424657534246,
+          "expectancy_points": 1.4018835616438348,
+          "expectancy_r": -0.010146305868416505,
+          "profit_factor": 1.0851296128770627,
+          "max_dd_points": 755.4499999999995,
+          "max_consec_losses": 5,
+          "avg_stop_points": 46.23287671232877,
+          "p95_stop_points": 76.75,
+          "long": {
+            "n": 110,
+            "win_rate": 0.509090909090909,
+            "expectancy_points": -2.9363636363636374,
+            "expectancy_r": -0.06610328198135283
+          },
+          "short": {
+            "n": 182,
+            "win_rate": 0.6153846153846154,
+            "expectancy_points": 4.023901098901098,
+            "expectancy_r": 0.02367384452951204
+          },
+          "use_cost": true
+        },
+        "train": {
+          "n_days": 1248,
+          "n_entered": 252,
+          "n_resolved": 252,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 252,
+            "REJECT_WIDE_STOP": 223,
+            "NO_SETUP": 757,
+            "REJECT_TARGET": 13,
+            "NO_ENTRY_BAR": 3
+          },
+          "win_rate": 0.5634920634920635,
+          "expectancy_points": -0.8478174603174612,
+          "expectancy_r": -0.05153498375368338,
+          "profit_factor": 0.9495692198748967,
+          "max_dd_points": 755.4499999999995,
+          "max_consec_losses": 5,
+          "avg_stop_points": 45.64087301587302,
+          "p95_stop_points": 76.25,
+          "long": {
+            "n": 98,
+            "win_rate": 0.5102040816326531,
+            "expectancy_points": -4.725510204081633,
+            "expectancy_r": -0.08180682396486594
+          },
+          "short": {
+            "n": 154,
+            "win_rate": 0.5974025974025974,
+            "expectancy_points": 1.619805194805194,
+            "expectancy_r": -0.032271085437476296
+          },
+          "use_cost": true
+        },
+        "holdout": {
+          "n_days": 402,
+          "n_entered": 40,
+          "n_resolved": 40,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "NO_SETUP": 244,
+            "REJECT_WIDE_STOP": 112,
+            "ENTERED": 40,
+            "NO_ENTRY_BAR": 1,
+            "REJECT_TARGET": 5
+          },
+          "win_rate": 0.65,
+          "expectancy_points": 15.575,
+          "expectancy_r": 0.2506023648087648,
+          "profit_factor": 2.089065641115287,
+          "max_dd_points": 194.8,
+          "max_consec_losses": 4,
+          "avg_stop_points": 49.9625,
+          "p95_stop_points": 79.25,
+          "long": {
+            "n": 12,
+            "win_rate": 0.5,
+            "expectancy_points": 11.674999999999999,
+            "expectancy_r": 0.06214231088400422
+          },
+          "short": {
+            "n": 28,
+            "win_rate": 0.7142857142857143,
+            "expectancy_points": 17.24642857142857,
+            "expectancy_r": 0.3313709593479479
+          },
+          "use_cost": true
+        },
+        "years": [
+          {
+            "year": 2020,
+            "n_days": 250,
+            "n_entered": 63,
+            "n_resolved": 63,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 63,
+              "REJECT_WIDE_STOP": 40,
+              "NO_SETUP": 143,
+              "REJECT_TARGET": 3,
+              "NO_ENTRY_BAR": 1
+            },
+            "win_rate": 0.6031746031746031,
+            "expectancy_points": 1.43095238095238,
+            "expectancy_r": 0.09035696711647889,
+            "profit_factor": 1.1051618547681539,
+            "max_dd_points": 259.6999999999998,
+            "max_consec_losses": 4,
+            "avg_stop_points": 40.77777777777778,
+            "p95_stop_points": 74.0,
+            "long": {
+              "n": 25,
+              "win_rate": 0.68,
+              "expectancy_points": 4.079999999999999,
+              "expectancy_r": 0.3904819158801628
+            },
+            "short": {
+              "n": 38,
+              "win_rate": 0.5526315789473685,
+              "expectancy_points": -0.3118421052631586,
+              "expectancy_r": -0.10709365707015522
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2021,
+            "n_days": 251,
+            "n_entered": 66,
+            "n_resolved": 66,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 36,
+              "NO_SETUP": 146,
+              "ENTERED": 66,
+              "REJECT_TARGET": 2,
+              "NO_ENTRY_BAR": 1
+            },
+            "win_rate": 0.6363636363636364,
+            "expectancy_points": 1.7772727272727262,
+            "expectancy_r": 0.00360611019010239,
+            "profit_factor": 1.1205178259529434,
+            "max_dd_points": 336.7999999999997,
+            "max_consec_losses": 4,
+            "avg_stop_points": 46.015151515151516,
+            "p95_stop_points": 75.5,
+            "long": {
+              "n": 17,
+              "win_rate": 0.5294117647058824,
+              "expectancy_points": -2.0970588235294123,
+              "expectancy_r": -0.12386872228295316
+            },
+            "short": {
+              "n": 49,
+              "win_rate": 0.673469387755102,
+              "expectancy_points": 3.12142857142857,
+              "expectancy_r": 0.047832072476672684
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2022,
+            "n_days": 250,
+            "n_entered": 26,
+            "n_resolved": 26,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 160,
+              "ENTERED": 26,
+              "REJECT_WIDE_STOP": 59,
+              "REJECT_TARGET": 4,
+              "NO_ENTRY_BAR": 1
+            },
+            "win_rate": 0.5,
+            "expectancy_points": -2.5653846153846174,
+            "expectancy_r": -0.06829147555393679,
+            "profit_factor": 0.8887127721698506,
+            "max_dd_points": 253.50000000000006,
+            "max_consec_losses": 5,
+            "avg_stop_points": 51.09615384615385,
+            "p95_stop_points": 78.0,
+            "long": {
+              "n": 11,
+              "win_rate": 0.45454545454545453,
+              "expectancy_points": -5.404545454545457,
+              "expectancy_r": -0.011724696430624642
+            },
+            "short": {
+              "n": 15,
+              "win_rate": 0.5333333333333333,
+              "expectancy_points": -0.483333333333335,
+              "expectancy_r": -0.1097737802443657
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2023,
+            "n_days": 248,
+            "n_entered": 51,
+            "n_resolved": 51,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 41,
+              "ENTERED": 51,
+              "NO_SETUP": 153,
+              "REJECT_TARGET": 3
+            },
+            "win_rate": 0.39215686274509803,
+            "expectancy_points": -8.788235294117648,
+            "expectancy_r": -0.32508543393937317,
+            "profit_factor": 0.6192660550458715,
+            "max_dd_points": 482.64999999999964,
+            "max_consec_losses": 5,
+            "avg_stop_points": 45.4264705882353,
+            "p95_stop_points": 77.5,
+            "long": {
+              "n": 27,
+              "win_rate": 0.3333333333333333,
+              "expectancy_points": -13.33888888888889,
+              "expectancy_r": -0.4315487175333579
+            },
+            "short": {
+              "n": 24,
+              "win_rate": 0.4583333333333333,
+              "expectancy_points": -3.66875,
+              "expectancy_r": -0.20531423989614037
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2024,
+            "n_days": 249,
+            "n_entered": 46,
+            "n_resolved": 46,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 155,
+              "REJECT_WIDE_STOP": 47,
+              "ENTERED": 46,
+              "REJECT_TARGET": 1
+            },
+            "win_rate": 0.6304347826086957,
+            "expectancy_points": 2.0391304347826082,
+            "expectancy_r": -0.01222549155440766,
+            "profit_factor": 1.1490308230060375,
+            "max_dd_points": 186.95000000000005,
+            "max_consec_losses": 3,
+            "avg_stop_points": 48.91847826086956,
+            "p95_stop_points": 74.5,
+            "long": {
+              "n": 18,
+              "win_rate": 0.5555555555555556,
+              "expectancy_points": -6.102777777777779,
+              "expectancy_r": -0.21625340736739965
+            },
+            "short": {
+              "n": 28,
+              "win_rate": 0.6785714285714286,
+              "expectancy_points": 7.273214285714285,
+              "expectancy_r": 0.11893531146823005
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2025,
+            "n_days": 247,
+            "n_entered": 29,
+            "n_resolved": 29,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 145,
+              "REJECT_WIDE_STOP": 70,
+              "ENTERED": 29,
+              "NO_ENTRY_BAR": 1,
+              "REJECT_TARGET": 2
+            },
+            "win_rate": 0.6896551724137931,
+            "expectancy_points": 11.08448275862069,
+            "expectancy_r": 0.20275853841522626,
+            "profit_factor": 1.8273066529404194,
+            "max_dd_points": 194.8,
+            "max_consec_losses": 4,
+            "avg_stop_points": 50.439655172413794,
+            "p95_stop_points": 79.75,
+            "long": {
+              "n": 7,
+              "win_rate": 0.42857142857142855,
+              "expectancy_points": -14.164285714285715,
+              "expectancy_r": -0.44904059443656513
+            },
+            "short": {
+              "n": 22,
+              "win_rate": 0.7727272727272727,
+              "expectancy_points": 19.118181818181817,
+              "expectancy_r": 0.4101491715953417
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2026,
+            "n_days": 155,
+            "n_entered": 11,
+            "n_resolved": 11,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 42,
+              "NO_SETUP": 99,
+              "ENTERED": 11,
+              "REJECT_TARGET": 3
+            },
+            "win_rate": 0.5454545454545454,
+            "expectancy_points": 27.413636363636364,
+            "expectancy_r": 0.37673608893718463,
+            "profit_factor": 2.643324250681199,
+            "max_dd_points": 68.65,
+            "max_consec_losses": 2,
+            "avg_stop_points": 48.70454545454545,
+            "p95_stop_points": 79.25,
+            "long": {
+              "n": 5,
+              "win_rate": 0.6,
+              "expectancy_points": 47.85,
+              "expectancy_r": 0.7777983783328013
+            },
+            "short": {
+              "n": 6,
+              "win_rate": 0.5,
+              "expectancy_points": 10.383333333333331,
+              "expectancy_r": 0.04251751444083738
+            },
+            "use_cost": true
+          }
+        ],
+        "walkforward": [
+          {
+            "year": 2020,
+            "n_days": 250,
+            "n_entered": 63,
+            "n_resolved": 63,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 63,
+              "REJECT_WIDE_STOP": 40,
+              "NO_SETUP": 143,
+              "REJECT_TARGET": 3,
+              "NO_ENTRY_BAR": 1
+            },
+            "win_rate": 0.6031746031746031,
+            "expectancy_points": 1.43095238095238,
+            "expectancy_r": 0.09035696711647889,
+            "profit_factor": 1.1051618547681539,
+            "max_dd_points": 259.6999999999998,
+            "max_consec_losses": 4,
+            "avg_stop_points": 40.77777777777778,
+            "p95_stop_points": 74.0,
+            "long": {
+              "n": 25,
+              "win_rate": 0.68,
+              "expectancy_points": 4.079999999999999,
+              "expectancy_r": 0.3904819158801628
+            },
+            "short": {
+              "n": 38,
+              "win_rate": 0.5526315789473685,
+              "expectancy_points": -0.3118421052631586,
+              "expectancy_r": -0.10709365707015522
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2021,
+            "n_days": 251,
+            "n_entered": 66,
+            "n_resolved": 66,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 36,
+              "NO_SETUP": 146,
+              "ENTERED": 66,
+              "REJECT_TARGET": 2,
+              "NO_ENTRY_BAR": 1
+            },
+            "win_rate": 0.6363636363636364,
+            "expectancy_points": 1.7772727272727262,
+            "expectancy_r": 0.00360611019010239,
+            "profit_factor": 1.1205178259529434,
+            "max_dd_points": 336.7999999999997,
+            "max_consec_losses": 4,
+            "avg_stop_points": 46.015151515151516,
+            "p95_stop_points": 75.5,
+            "long": {
+              "n": 17,
+              "win_rate": 0.5294117647058824,
+              "expectancy_points": -2.0970588235294123,
+              "expectancy_r": -0.12386872228295316
+            },
+            "short": {
+              "n": 49,
+              "win_rate": 0.673469387755102,
+              "expectancy_points": 3.12142857142857,
+              "expectancy_r": 0.047832072476672684
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2022,
+            "n_days": 250,
+            "n_entered": 26,
+            "n_resolved": 26,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 160,
+              "ENTERED": 26,
+              "REJECT_WIDE_STOP": 59,
+              "REJECT_TARGET": 4,
+              "NO_ENTRY_BAR": 1
+            },
+            "win_rate": 0.5,
+            "expectancy_points": -2.5653846153846174,
+            "expectancy_r": -0.06829147555393679,
+            "profit_factor": 0.8887127721698506,
+            "max_dd_points": 253.50000000000006,
+            "max_consec_losses": 5,
+            "avg_stop_points": 51.09615384615385,
+            "p95_stop_points": 78.0,
+            "long": {
+              "n": 11,
+              "win_rate": 0.45454545454545453,
+              "expectancy_points": -5.404545454545457,
+              "expectancy_r": -0.011724696430624642
+            },
+            "short": {
+              "n": 15,
+              "win_rate": 0.5333333333333333,
+              "expectancy_points": -0.483333333333335,
+              "expectancy_r": -0.1097737802443657
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2023,
+            "n_days": 248,
+            "n_entered": 51,
+            "n_resolved": 51,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 41,
+              "ENTERED": 51,
+              "NO_SETUP": 153,
+              "REJECT_TARGET": 3
+            },
+            "win_rate": 0.39215686274509803,
+            "expectancy_points": -8.788235294117648,
+            "expectancy_r": -0.32508543393937317,
+            "profit_factor": 0.6192660550458715,
+            "max_dd_points": 482.64999999999964,
+            "max_consec_losses": 5,
+            "avg_stop_points": 45.4264705882353,
+            "p95_stop_points": 77.5,
+            "long": {
+              "n": 27,
+              "win_rate": 0.3333333333333333,
+              "expectancy_points": -13.33888888888889,
+              "expectancy_r": -0.4315487175333579
+            },
+            "short": {
+              "n": 24,
+              "win_rate": 0.4583333333333333,
+              "expectancy_points": -3.66875,
+              "expectancy_r": -0.20531423989614037
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2024,
+            "n_days": 249,
+            "n_entered": 46,
+            "n_resolved": 46,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 155,
+              "REJECT_WIDE_STOP": 47,
+              "ENTERED": 46,
+              "REJECT_TARGET": 1
+            },
+            "win_rate": 0.6304347826086957,
+            "expectancy_points": 2.0391304347826082,
+            "expectancy_r": -0.01222549155440766,
+            "profit_factor": 1.1490308230060375,
+            "max_dd_points": 186.95000000000005,
+            "max_consec_losses": 3,
+            "avg_stop_points": 48.91847826086956,
+            "p95_stop_points": 74.5,
+            "long": {
+              "n": 18,
+              "win_rate": 0.5555555555555556,
+              "expectancy_points": -6.102777777777779,
+              "expectancy_r": -0.21625340736739965
+            },
+            "short": {
+              "n": 28,
+              "win_rate": 0.6785714285714286,
+              "expectancy_points": 7.273214285714285,
+              "expectancy_r": 0.11893531146823005
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2025,
+            "n_days": 247,
+            "n_entered": 29,
+            "n_resolved": 29,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "NO_SETUP": 145,
+              "REJECT_WIDE_STOP": 70,
+              "ENTERED": 29,
+              "NO_ENTRY_BAR": 1,
+              "REJECT_TARGET": 2
+            },
+            "win_rate": 0.6896551724137931,
+            "expectancy_points": 11.08448275862069,
+            "expectancy_r": 0.20275853841522626,
+            "profit_factor": 1.8273066529404194,
+            "max_dd_points": 194.8,
+            "max_consec_losses": 4,
+            "avg_stop_points": 50.439655172413794,
+            "p95_stop_points": 79.75,
+            "long": {
+              "n": 7,
+              "win_rate": 0.42857142857142855,
+              "expectancy_points": -14.164285714285715,
+              "expectancy_r": -0.44904059443656513
+            },
+            "short": {
+              "n": 22,
+              "win_rate": 0.7727272727272727,
+              "expectancy_points": 19.118181818181817,
+              "expectancy_r": 0.4101491715953417
+            },
+            "use_cost": true
+          },
+          {
+            "year": 2026,
+            "n_days": 155,
+            "n_entered": 11,
+            "n_resolved": 11,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "REJECT_WIDE_STOP": 42,
+              "NO_SETUP": 99,
+              "ENTERED": 11,
+              "REJECT_TARGET": 3
+            },
+            "win_rate": 0.5454545454545454,
+            "expectancy_points": 27.413636363636364,
+            "expectancy_r": 0.37673608893718463,
+            "profit_factor": 2.643324250681199,
+            "max_dd_points": 68.65,
+            "max_consec_losses": 2,
+            "avg_stop_points": 48.70454545454545,
+            "p95_stop_points": 79.25,
+            "long": {
+              "n": 5,
+              "win_rate": 0.6,
+              "expectancy_points": 47.85,
+              "expectancy_r": 0.7777983783328013
+            },
+            "short": {
+              "n": 6,
+              "win_rate": 0.5,
+              "expectancy_points": 10.383333333333331,
+              "expectancy_r": 0.04251751444083738
+            },
+            "use_cost": true
+          }
+        ],
+        "ideal": {
+          "n_days": 1650,
+          "n_entered": 293,
+          "n_resolved": 293,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 293,
+            "REJECT_WIDE_STOP": 334,
+            "NO_SETUP": 1001,
+            "REJECT_TARGET": 18,
+            "NO_ENTRY_BAR": 4
+          },
+          "win_rate": 0.5733788395904437,
+          "expectancy_points": 1.7124573378839592,
+          "expectancy_r": 0.00037928841341305805,
+          "profit_factor": 1.1047112224135232,
+          "max_dd_points": 714.5,
+          "max_consec_losses": 5,
+          "avg_stop_points": 46.098976109215016,
+          "p95_stop_points": 77.25,
+          "long": {
+            "n": 111,
+            "win_rate": 0.5045045045045045,
+            "expectancy_points": -2.815315315315315,
+            "expectancy_r": -0.056011473288864966
+          },
+          "short": {
+            "n": 182,
+            "win_rate": 0.6153846153846154,
+            "expectancy_points": 4.4739010989010985,
+            "expectancy_r": 0.0347714562648024
+          },
+          "use_cost": false
+        },
+        "stress_2tick": {
+          "n_days": 1650,
+          "n_entered": 290,
+          "n_resolved": 290,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 290,
+            "REJECT_WIDE_STOP": 336,
+            "NO_SETUP": 1001,
+            "REJECT_TARGET": 19,
+            "NO_ENTRY_BAR": 4
+          },
+          "win_rate": 0.5724137931034483,
+          "expectancy_points": 0.9767241379310335,
+          "expectancy_r": -0.019127098510688185,
+          "profit_factor": 1.0585281689413273,
+          "max_dd_points": 778.1999999999994,
+          "max_consec_losses": 5,
+          "avg_stop_points": 46.3198275862069,
+          "p95_stop_points": 77.0,
+          "long": {
+            "n": 110,
+            "win_rate": 0.509090909090909,
+            "expectancy_points": -3.1863636363636374,
+            "expectancy_r": -0.07372697143797396
+          },
+          "short": {
+            "n": 180,
+            "win_rate": 0.6111111111111112,
+            "expectancy_points": 3.520833333333332,
+            "expectancy_r": 0.014239490500430906
+          },
+          "use_cost": true
+        },
+        "target_1r": {
+          "n_days": 1650,
+          "n_entered": 303,
+          "n_resolved": 302,
+          "n_ambiguous": 1,
+          "status_counts": {
+            "ENTERED": 303,
+            "REJECT_WIDE_STOP": 342,
+            "NO_SETUP": 1001,
+            "NO_ENTRY_BAR": 4
+          },
+          "win_rate": 0.4966887417218543,
+          "expectancy_points": 1.38526490066225,
+          "expectancy_r": -0.016735264010186008,
+          "profit_factor": 1.0662402128046993,
+          "max_dd_points": 729.8999999999996,
+          "max_consec_losses": 8,
+          "avg_stop_points": 46.222772277227726,
+          "p95_stop_points": 76.75,
+          "long": {
+            "n": 113,
+            "win_rate": 0.48672566371681414,
+            "expectancy_points": -2.2110619469026562,
+            "expectancy_r": -0.06585110039616367
+          },
+          "short": {
+            "n": 189,
+            "win_rate": 0.5026455026455027,
+            "expectancy_points": 3.535449735449734,
+            "expectancy_r": 0.012630288961324444
+          },
+          "use_cost": true
+        },
+        "target_opposite": {
+          "n_days": 1650,
+          "n_entered": 303,
+          "n_resolved": 303,
+          "n_ambiguous": 0,
+          "status_counts": {
+            "ENTERED": 303,
+            "REJECT_WIDE_STOP": 342,
+            "NO_SETUP": 1001,
+            "NO_ENTRY_BAR": 4
+          },
+          "win_rate": 0.38943894389438943,
+          "expectancy_points": 4.120132013201319,
+          "expectancy_r": 0.03124059382006207,
+          "profit_factor": 1.1686172547695424,
+          "max_dd_points": 771.7000000000006,
+          "max_consec_losses": 9,
+          "avg_stop_points": 46.222772277227726,
+          "p95_stop_points": 76.75,
+          "long": {
+            "n": 114,
+            "win_rate": 0.3684210526315789,
+            "expectancy_points": -2.987280701754387,
+            "expectancy_r": -0.07202787302435952
+          },
+          "short": {
+            "n": 189,
+            "win_rate": 0.4021164021164021,
+            "expectancy_points": 8.407142857142857,
+            "expectancy_r": 0.09352951032939573
+          },
+          "use_cost": true
+        },
+        "tod": [
+          {
+            "bucket": "0930_1000",
+            "n_days": 260,
+            "n_entered": 260,
+            "n_resolved": 260,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 260
+            },
+            "win_rate": 0.5615384615384615,
+            "expectancy_points": 1.1692307692307682,
+            "expectancy_r": -0.01547342094971097,
+            "profit_factor": 1.0697799864571738,
+            "max_dd_points": 775.7499999999993,
+            "max_consec_losses": 5,
+            "avg_stop_points": 44.17115384615385,
+            "p95_stop_points": 75.5,
+            "long": {
+              "n": 102,
+              "win_rate": 0.49019607843137253,
+              "expectancy_points": -3.557843137254903,
+              "expectancy_r": -0.07342124534696
+            },
+            "short": {
+              "n": 158,
+              "win_rate": 0.6075949367088608,
+              "expectancy_points": 4.220886075949366,
+              "expectancy_r": 0.02193593404091815
+            },
+            "use_cost": true
+          },
+          {
+            "bucket": "1000_1130",
+            "n_days": 24,
+            "n_entered": 24,
+            "n_resolved": 24,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 24
+            },
+            "win_rate": 0.6666666666666666,
+            "expectancy_points": 0.6229166666666658,
+            "expectancy_r": 0.004853151943438086,
+            "profit_factor": 1.0393576411741476,
+            "max_dd_points": 153.95000000000002,
+            "max_consec_losses": 3,
+            "avg_stop_points": 60.40625,
+            "p95_stop_points": 76.75,
+            "long": {
+              "n": 6,
+              "win_rate": 0.6666666666666666,
+              "expectancy_points": -0.8250000000000011,
+              "expectancy_r": -0.060024508585547476
+            },
+            "short": {
+              "n": 18,
+              "win_rate": 0.6666666666666666,
+              "expectancy_points": 1.1055555555555547,
+              "expectancy_r": 0.026479038786433273
+            },
+            "use_cost": true
+          },
+          {
+            "bucket": "1130_1330",
+            "n_days": 7,
+            "n_entered": 7,
+            "n_resolved": 7,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 7
+            },
+            "win_rate": 0.7142857142857143,
+            "expectancy_points": 11.692857142857141,
+            "expectancy_r": 0.11733026307763264,
+            "profit_factor": 2.1344421344421343,
+            "max_dd_points": 40.2,
+            "max_consec_losses": 1,
+            "avg_stop_points": 70.85714285714286,
+            "p95_stop_points": null,
+            "long": {
+              "n": 1,
+              "win_rate": 1.0,
+              "expectancy_points": 36.3,
+              "expectancy_r": 0.4551724137931034
+            },
+            "short": {
+              "n": 6,
+              "win_rate": 0.6666666666666666,
+              "expectancy_points": 7.591666666666666,
+              "expectancy_r": 0.061023237958387516
+            },
+            "use_cost": true
+          },
+          {
+            "bucket": "1330_1530",
+            "n_days": 1,
+            "n_entered": 1,
+            "n_resolved": 1,
+            "n_ambiguous": 0,
+            "status_counts": {
+              "ENTERED": 1
+            },
+            "win_rate": 1.0,
+            "expectancy_points": 8.55,
+            "expectancy_r": 0.12258064516129033,
+            "profit_factor": null,
+            "max_dd_points": 0.0,
+            "max_consec_losses": 0,
+            "avg_stop_points": 69.75,
+            "p95_stop_points": null,
+            "long": {
+              "n": 1,
+              "win_rate": 1.0,
+              "expectancy_points": 8.55,
+              "expectancy_r": 0.12258064516129033
+            },
+            "short": {
+              "n": 0
+            },
+            "use_cost": true
+          }
+        ],
+        "mc": {
+          "ok": true,
+          "n_trades": 292,
+          "n_shuffles": 250,
+          "p05_terminal_r": -2.962721313577628,
+          "p50_terminal_r": -2.9627213135776183,
+          "p95_maxdd_r": 12.935489990129893,
+          "median_maxdd_r": 19.31570404207936
+        },
+        "prop": {
+          "avg_stop_points": 46.23287671232877,
+          "p95_stop_points": 76.75,
+          "avg_usd_risk": 924.6575342465753,
+          "max_consec_losses": 5,
+          "flatten": "15:55",
+          "overnight": false
+        },
+        "dvp": {
+          "overlap_days": 292,
+          "n_days_for_corr": 292,
+          "daily_pnl_correlation": 0.10405403951289367,
+          "note": "Read-only vs Phase 29 NQ DVP. No combination."
+        }
+      },
+      "cand_A_reject": {
+        "n_days": 1650,
+        "n_entered": 202,
+        "n_resolved": 179,
+        "n_ambiguous": 23,
+        "status_counts": {
+          "ENTERED": 202,
+          "REJECT_WIDE_STOP": 150,
+          "NO_SETUP": 967,
+          "ACCEPTED_INSTEAD": 331
+        },
+        "win_rate": 0.5307262569832403,
+        "expectancy_points": 4.745530726256982,
+        "expectancy_r": 0.06021202817470094,
+        "profit_factor": 1.29783839694255,
+        "max_dd_points": 327.8499999999996,
+        "max_consec_losses": 6,
+        "avg_stop_points": 34.426980198019805,
+        "p95_stop_points": 72.75,
+        "long": {
+          "n": 67,
+          "win_rate": 0.47761194029850745,
+          "expectancy_points": 0.5574626865671631,
+          "expectancy_r": -0.06806116660620982
+        },
+        "short": {
+          "n": 112,
+          "win_rate": 0.5625,
+          "expectancy_points": 7.250892857142856,
+          "expectancy_r": 0.1369468857668529
+        },
+        "use_cost": true
+      },
+      "cand_A_train": {
+        "n_days": 1248,
+        "n_entered": 162,
+        "n_resolved": 145,
+        "n_ambiguous": 17,
+        "status_counts": {
+          "ENTERED": 162,
+          "REJECT_WIDE_STOP": 100,
+          "NO_SETUP": 734,
+          "ACCEPTED_INSTEAD": 252
+        },
+        "win_rate": 0.5448275862068965,
+        "expectancy_points": 6.032758620689654,
+        "expectancy_r": 0.08981343679815251,
+        "profit_factor": 1.4082942425727552,
+        "max_dd_points": 327.8499999999996,
+        "max_consec_losses": 6,
+        "avg_stop_points": 34.126543209876544,
+        "p95_stop_points": 72.75,
+        "long": {
+          "n": 53,
+          "win_rate": 0.49056603773584906,
+          "expectancy_points": 0.941509433962263,
+          "expectancy_r": -0.04567318703341385
+        },
+        "short": {
+          "n": 92,
+          "win_rate": 0.5760869565217391,
+          "expectancy_points": 8.965760869565216,
+          "expectancy_r": 0.16786551357068533
+        },
+        "use_cost": true
+      },
+      "cand_A_holdout": {
+        "n_days": 402,
+        "n_entered": 40,
+        "n_resolved": 34,
+        "n_ambiguous": 6,
+        "status_counts": {
+          "NO_SETUP": 233,
+          "REJECT_WIDE_STOP": 50,
+          "ACCEPTED_INSTEAD": 79,
+          "ENTERED": 40
+        },
+        "win_rate": 0.47058823529411764,
+        "expectancy_points": -0.7441176470588249,
+        "expectancy_r": -0.06602927330766609,
+        "profit_factor": 0.96434611048478,
+        "max_dd_points": 187.65000000000003,
+        "max_consec_losses": 3,
+        "avg_stop_points": 35.64375,
+        "p95_stop_points": 72.0,
+        "long": {
+          "n": 14,
+          "win_rate": 0.42857142857142855,
+          "expectancy_points": -0.8964285714285722,
+          "expectancy_r": -0.1528156607032231
+        },
+        "short": {
+          "n": 20,
+          "win_rate": 0.5,
+          "expectancy_points": -0.6375000000000017,
+          "expectancy_r": -0.005278802130776162
+        },
+        "use_cost": true
+      },
+      "cand_C_inside": {
+        "n_days": 1650,
+        "n_entered": 453,
+        "n_resolved": 443,
+        "n_ambiguous": 10,
+        "status_counts": {
+          "NO_SETUP": 1092,
+          "ENTERED": 453,
+          "OPEN_ON_POC": 4,
+          "REJECT_WIDE_STOP": 99,
+          "REJECT_TARGET": 2
+        },
+        "win_rate": 0.4853273137697517,
+        "expectancy_points": 1.1352144469525958,
+        "expectancy_r": -0.1011444558906873,
+        "profit_factor": 1.1119957241640406,
+        "max_dd_points": 684.750000000005,
+        "max_consec_losses": 12,
+        "avg_stop_points": 28.76710816777042,
+        "p95_stop_points": 68.75,
+        "long": {
+          "n": 224,
+          "win_rate": 0.5133928571428571,
+          "expectancy_points": 4.548883928571429,
+          "expectancy_r": 0.05813732674544782
+        },
+        "short": {
+          "n": 219,
+          "win_rate": 0.45662100456621,
+          "expectancy_points": -2.3563926940639273,
+          "expectancy_r": -0.26406280890664285
+        },
+        "use_cost": true
+      },
+      "cand_C_train": {
+        "n_days": 1248,
+        "n_entered": 355,
+        "n_resolved": 349,
+        "n_ambiguous": 6,
+        "status_counts": {
+          "NO_SETUP": 819,
+          "ENTERED": 355,
+          "OPEN_ON_POC": 4,
+          "REJECT_WIDE_STOP": 68,
+          "REJECT_TARGET": 2
+        },
+        "win_rate": 0.49283667621776506,
+        "expectancy_points": 1.886676217765043,
+        "expectancy_r": -0.09226548337613294,
+        "profit_factor": 1.2102733601583955,
+        "max_dd_points": 556.3500000000017,
+        "max_consec_losses": 12,
+        "avg_stop_points": 27.861267605633802,
+        "p95_stop_points": 68.5,
+        "long": {
+          "n": 180,
+          "win_rate": 0.5222222222222223,
+          "expectancy_points": 5.256944444444445,
+          "expectancy_r": 0.0653804632180497
+        },
+        "short": {
+          "n": 169,
+          "win_rate": 0.46153846153846156,
+          "expectancy_points": -1.7029585798816569,
+          "expectancy_r": -0.260172408742718
+        },
+        "use_cost": true
+      },
+      "cand_C_holdout": {
+        "n_days": 402,
+        "n_entered": 98,
+        "n_resolved": 94,
+        "n_ambiguous": 4,
+        "status_counts": {
+          "ENTERED": 98,
+          "REJECT_WIDE_STOP": 31,
+          "NO_SETUP": 273
+        },
+        "win_rate": 0.4574468085106383,
+        "expectancy_points": -1.6547872340425538,
+        "expectancy_r": -0.1341100027798306,
+        "profit_factor": 0.8855366275433237,
+        "max_dd_points": 388.6999999999996,
+        "max_consec_losses": 7,
+        "avg_stop_points": 32.048469387755105,
+        "p95_stop_points": 70.5,
+        "long": {
+          "n": 44,
+          "win_rate": 0.4772727272727273,
+          "expectancy_points": 1.6522727272727267,
+          "expectancy_r": 0.02850631390298559
+        },
+        "short": {
+          "n": 50,
+          "win_rate": 0.44,
+          "expectancy_points": -4.565,
+          "expectancy_r": -0.2772123614607088
+        },
+        "use_cost": true
+      },
+      "poc_magnet": {
+        "P_touch_poc_open_above": 0.45962732919254656,
+        "P_touch_poc_open_below": 0.40625,
+        "P_touch_poc_open_inside": 0.7921146953405018
+      }
+    }
+  },
+  "candidate_written": false,
+  "candidate_path": null
+}

@@ -1,0 +1,7 @@
+ambiguous,average_loss_points,average_win_points,event_family,expectancy_points,expectancy_r,long,longest_losing_streak,losses,max_drawdown_points,min_close_move_atr,min_range_atr,min_retention,pct_profitable_days,profit_factor,resolved_n,short,timed_exits,trades,trades_per_day,trading_days,win_rate,wins
+0,,,CPI,,,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,0.0,0.35,0.5,0.35,,,0,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,,0,,0
+0,,,CPI,,,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,0.0,0.5,0.75,0.5,,,0,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,,0,,0
+0,,,CPI,,,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,0.0,0.75,1.0,0.65,,,0,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,,0,,0
+0,,,NFP,,,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,0.0,0.35,0.5,0.35,,,0,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,,0,,0
+0,,,NFP,,,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,0.0,0.5,0.75,0.5,,,0,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,,0,,0
+0,,,NFP,,,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,0.0,0.75,1.0,0.65,,,0,"{""n"": 0, ""win_rate"": null, ""expectancy_points"": null}",0,0,,0,,0

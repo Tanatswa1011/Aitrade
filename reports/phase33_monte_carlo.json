@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "simulations": 10000,
+  "method": "trade_order_reshuffle",
+  "n_trades": 37,
+  "terminal_p05": 298.25,
+  "terminal_p50": 298.25,
+  "terminal_p95": 298.25,
+  "maxdd_p50": 293.5,
+  "maxdd_p95": 470.75,
+  "pct_terminal_positive": 1.0
+}
