@@ -1,0 +1,15 @@
+{
+  "schema": "AITRADE_PHASE55A_SIM_ONLY_V1",
+  "PROP_EXECUTION": false,
+  "mode": "SIM_ONLY",
+  "recovery": "UNKNOWN_STATE",
+  "entries_blocked": true,
+  "disconnect": false,
+  "halt_reason": "UNKNOWN_STATE",
+  "seen_triggers": [],
+  "attempted_triggers": [],
+  "open_trade": null,
+  "last_submit": null,
+  "last_flatten": null,
+  "updated_at": "2026-08-21T02:53:32.771937+00:00"
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "reserve_usd": "1000.0",
+    "n": 9,
+    "P(first payout)": 0.5059555555555556,
+    "P(5 payouts)": 0.16342222222222225,
+    "P(10 payouts)": 0.040622222222222226,
+    "P(survive 1 year)": 0.9837333333333333,
+    "P(survive 504)": 0.9477333333333333,
+    "expected_cumulative_payout": 1366.6046500965717,
+    "P(breach)": 0.05226666666666666
+  },
+  {
+    "reserve_usd": "1125.0",
+    "n": 3,
+    "P(first payout)": 0.4122666666666667,
+    "P(5 payouts)": 0.1472,
+    "P(10 payouts)": 0.03266666666666667,
+    "P(survive 1 year)": 0.9763999999999999,
+    "P(survive 504)": 0.9268000000000001,
+    "expected_cumulative_payout": 1431.4109546663738,
+    "P(breach)": 0.0732
+  },
+  {
+    "reserve_usd": "1250.0",
+    "n": 9,
+    "P(first payout)": 0.4687111111111111,
+    "P(5 payouts)": 0.2064,
+    "P(10 payouts)": 0.0692888888888889,
+    "P(survive 1 year)": 0.9852888888888889,
+    "P(survive 504)": 0.9492444444444443,
+    "expected_cumulative_payout": 1591.6587073741123,
+    "P(breach)": 0.05075555555555556
+  },
+  {
+    "reserve_usd": "1500.0",
+    "n": 9,
+    "P(first payout)": 0.46066666666666667,
+    "P(5 payouts)": 0.25093333333333334,
+    "P(10 payouts)": 0.1058222222222222,
+    "P(survive 1 year)": 0.9854666666666666,
+    "P(survive 504)": 0.9504444444444444,
+    "expected_cumulative_payout": 1919.5163015746257,
+    "P(breach)": 0.04955555555555555
+  },
+  {
+    "reserve_usd": "250.0",
+    "n": 6,
+    "P(first payout)": 0.5328,
+    "P(5 payouts)": 0.005333333333333333,
+    "P(10 payouts)": 0.0,
+    "P(survive 1 year)": 0.9774666666666668,
+    "P(survive 504)": 0.9368666666666666,
+    "expected_cumulative_payout": 884.2560296824118,
+    "P(breach)": 0.06313333333333332
+  },
+  {
+    "reserve_usd": "375.0",
+    "n": 3,
+    "P(first payout)": 0.5453333333333333,
+    "P(5 payouts)": 0.012266666666666667,
+    "P(10 payouts)": 0.0,
+    "P(survive 1 year)": 0.972,
+    "P(survive 504)": 0.9210666666666666,
+    "expected_cumulative_payout": 828.9558766666088,
+    "P(breach)": 0.07893333333333333
+  },
+  {
+    "reserve_usd": "500.0",
+    "n": 9,
+    "P(first payout)": 0.5207999999999999,
+    "P(5 payouts)": 0.042622222222222214,
+    "P(10 payouts)": 0.0017777777777777779,
+    "P(survive 1 year)": 0.9840444444444445,
+    "P(survive 504)": 0.9474222222222222,
+    "expected_cumulative_payout": 1018.3456309583803,
+    "P(breach)": 0.052577777777777786
+  },
+  {
+    "reserve_usd": "562.5",
+    "n": 3,
+    "P(first payout)": 0.5362666666666667,
+    "P(5 payouts)": 0.03813333333333333,
+    "P(10 payouts)": 0.0016,
+    "P(survive 1 year)": 0.9728,
+    "P(survive 504)": 0.9255999999999999,
+    "expected_cumulative_payout": 917.0897896665765,
+    "P(breach)": 0.0744
+  },
+  {
+    "reserve_usd": "750.0",
+    "n": 12,
+    "P(first payout)": 0.5127,
+    "P(5 payouts)": 0.09206666666666667,
+    "P(10 payouts)": 0.012400000000000001,
+    "P(survive 1 year)": 0.9794666666666666,
+    "P(survive 504)": 0.9384999999999999,
+    "expected_cumulative_payout": 1120.5488840429052,
+    "P(breach)": 0.06149999999999999
+  },
+  {
+    "reserve_usd": "937.5",
+    "n": 3,
+    "P(first payout)": 0.5206666666666667,
+    "P(5 payouts)": 0.12639999999999998,
+    "P(10 payouts)": 0.022000000000000002,
+    "P(survive 1 year)": 0.9728,
+    "P(survive 504)": 0.9214666666666668,
+    "expected_cumulative_payout": 1242.3946479998149,
+    "P(breach)": 0.07853333333333333
+  }
+]

@@ -1,0 +1,41 @@
+COMMAND
+  python -m unittest tests_phase55b tests_phase55 tests_notifications -v
+
+CWD
+  c:\Users\tanam\OneDrive\Desktop\aitrade
+
+RESULT
+  Ran 86 tests in 1.478s
+  OK
+  exit_code=0
+
+BREAKDOWN (do not collapse into one suite name)
+  tests_phase55b.py        22 ok   Sim101 telemetry, NQ 1m/5m/15m plumbing, fail-closed execution boundaries
+  tests_phase55.py         36 ok   gates (including drop_oif blocked), flatten, recovery, Phase 54 integration
+  tests_notifications.py   28 ok   outbound-only Apprise layer, masking, isolation, dedup fixtures
+
+Captured Saturday 2026-08-22. All listed tests returned ok. Unittest -v names:
+
+tests_phase55b
+  ExecutionBoundaryTests: test_duplicate_live_event_blocked, test_fn_account_still_blocked,
+    test_phase54_live_approved_reaches_bridge, test_shadow_cannot_execute,
+    test_stale_live_event_blocked, test_warmup_cannot_execute
+  LiveBarTests: test_5m_and_15m_finalization, test_partial_bar_excluded,
+    test_session_closed_and_open, test_timezone_and_dst, test_unique_signal_ids,
+    test_warmup_boundary_not_executable
+  Sim101TelemetryTests: test_addon_read_only, test_fundednext_flat_does_not_substitute,
+    test_known_flat_flat_safe, test_long_expected_flat_orphan, test_missing_unknown,
+    test_old_addon_excluded_without_position_is_unknown, test_short_expected_flat_orphan,
+    test_stale_unknown
+  StrategyIntegrityTests: test_frozen_hash_unchanged, test_same_bars_same_output
+
+tests_phase55
+  ApprovedSubmitTests, FlattenTests, GateTests, InstrumentTests,
+  Phase54IntegrationTests, RecoveryTests (36 methods; all ok)
+
+tests_notifications
+  28 NotificationTests methods; all ok including test_secrets_are_masked,
+  test_repo_has_no_inbound_telegram_execution, test_failed_notifier_does_not_crash,
+  test_planned_engine_stop_not_failure, test_nt_disconnect_reconnect
+
+These unittest runs do not arm Sim101 or submit orders. PROP_EXECUTION remained false.

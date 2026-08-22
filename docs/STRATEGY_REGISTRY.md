@@ -58,6 +58,100 @@ Evidence-preserving record of AITRADE strategies. Frozen configs must not be edi
 
 ## RESEARCH-ONLY / RETIRED
 
+### Operations console (Phase 54)
+
+| Field | Value |
+|-------|--------|
+| Phase | 54 |
+| Status | Phase 54F live NT market-data heartbeat + FundedNext MCP read-only account/risk. Custom Tradovate path deprecated. `PROP_EXECUTION=false`. |
+| Question | Can operators observe engine / NT market / FundedNext (not Sim101) state without a path that sends real eval orders? |
+| Forbidden | Enable broker execution; send FundedNext orders; assign GC to the eval account; redesign frozen strategy logic |
+| Evidence | `docs/PHASE54_OPS_CONSOLE.md`, `dashboard/ops-console/`, `phase54_ops.py`, `tests_phase54.py` |
+| Frozen impact | None. DRY_RUN only. |
+
+### Pre-evaluation shadow validation (Phase 53)
+
+| Field | Value |
+|-------|--------|
+| Phase | 53 |
+| Status | See `phase53_validation.json` verdict (`READY_TO_PURCHASE_EVALUATION`) |
+| Question | Does the frozen NQ → Phase 52 policy → simulated-order pipeline behave correctly on the most recent NQ sequencing, enough to justify buying one FundedNext Flex 50K evaluation? |
+| Forbidden | Retune GC/NQ; enable broker; purchase/connect eval; overwrite Phase 49–52 reports |
+| Evidence | `docs/PHASE53_PRE_EVALUATION_SHADOW_VALIDATION.md`, `reports/phase53_*`, `phase53_validation.json`, `tests_phase53.py` |
+| Frozen impact | None. DRY_RUN only. |
+
+
+### Prop execution policy layer (Phase 52)
+
+| Field | Value |
+|-------|--------|
+| Phase | 52 |
+| Status | See `phase52_validation.json` verdict (`PROP_EXECUTION_POLICY_LOCKED`) |
+| Question | Can AITRADE deterministically translate frozen NQ DVP into a FundedNext Flex 50K-safe evaluation policy? |
+| Forbidden | Retune GC/NQ/ES; freeze ES; enable broker; live execution; buy/activate accounts; overwrite Phase 49/49B/50/51 reports |
+| Evidence | `docs/PHASE52_PROP_EXECUTION_POLICY_LOCK.md`, `reports/phase52_*`, `phase52_validation.json`, `tests_phase52.py` |
+| Frozen impact | None. Phase 26 / 30 hashes unchanged. DRY_RUN only. `risk_per_trade` is now PROP_CONTRACT_QTY (2 MNQ FAST / 1 MNQ SAFE), not 1% of $50k. |
+
+
+### Fast-pass evaluation optimization (Phase 49B)
+
+| Field | Value |
+|-------|--------|
+| Phase | 49B |
+| Status | See `phase49b_validation.json` verdict (`PHASE49B_FAST_PASS_RESEARCH_READY`) |
+| Question | Can evaluation pass time be reduced (target 10–14 trading days) while preserving pass probability and improving Phase 51 replication speed? |
+| Forbidden | Retune GC/NQ/ES; freeze ES; enable broker; write production risk; overwrite Phase 49/50/51 reports; martingale |
+| Evidence | `docs/PHASE49B_FAST_PASS_EVALUATION.md`, `reports/phase49b_*`, `phase49b_validation.json`, `tests_phase49b.py` |
+| Frozen impact | None. Phase 26 / 30 hashes unchanged. DRY_RUN only. EVAL_ACCELERATE added to account-state scaffold as research state. |
+
+### Prop account replication flywheel (Phase 51)
+
+| Field | Value |
+|-------|--------|
+| Phase | 51 |
+| Status | See `phase51_validation.json` verdict |
+| Question | Can payouts from funded NQ (and secondary ES) accounts finance additional evaluations into a self-funding prop-capital flywheel? |
+| Forbidden | Retune GC/NQ/ES; freeze ES; enable broker; write production risk/payout; buy/activate accounts; invent MFFU price or FundedNext funded-account cap |
+| Evidence | `docs/PHASE51_PROP_ACCOUNT_REPLICATION_FLYWHEEL.md`, `reports/phase51_*`, `phase51_validation.json`, `tests_phase51.py` |
+| Frozen impact | None. Phase 26 / 30 hashes unchanged. DRY_RUN only. |
+
+### Funded survival, reserve & payout policy (Phase 50)
+
+| Field | Value |
+|-------|--------|
+| Phase | 50 |
+| Status | See `phase50_validation.json` verdict |
+| Question | Can a funded-account reserve, payout, and cushion-dependent risk policy produce repeated payouts without near-certain long-horizon ruin? |
+| Forbidden | Retune GC/NQ/ES; freeze ES; enable broker; write production risk/payout into operating policy; martingale |
+| Evidence | `docs/PHASE50_FUNDED_SURVIVAL_PAYOUT_POLICY.md`, `reports/phase50_*`, `phase50_validation.json`, `tests_phase50.py` |
+| Frozen impact | None. Phase 26 / 30 hashes unchanged. DRY_RUN only. |
+
+### Strategy distribution + prop risk simulation (Phase 49)
+
+| Field | Value |
+|-------|--------|
+| Phase | 49 |
+| Status | See `phase49_validation.json` verdict |
+| Question | Given frozen/locked strategy trade distributions, which PROP_RULES_V1 risk fractions and state policies are mathematically suitable for MFFU Rapid EOD 50K and FundedNext Flex 50K (eval vs funded)? |
+| Forbidden | Retune GC/NQ/ES; freeze ES; enable broker; write production risk into operating policy; martingale |
+| Evidence | `docs/PHASE49_STRATEGY_DISTRIBUTION_PROP_SIM.md`, `reports/phase49_*`, `phase49_validation.json`, `tests_phase49.py` |
+| Frozen impact | None. Phase 26 / 30 hashes unchanged. DRY_RUN only. |
+
+### Prop Rule Engine V1 (Phase 48)
+
+| Field | Value |
+|-------|--------|
+| Phase | 48 |
+| Status | `PROP_RULE_ENGINE_V1_READY`. Compliance layer only. |
+| Primary profiles | `MFFU_RAPID_EOD_50K`, `FUNDEDNEXT_FLEX_50K` |
+| Source | `config/PROP_RULES_V1.json` |
+| API | `prop_rule_engine.evaluate_trade` |
+| Question | Can the existing strategy engine operate under named prop-firm rules without embedding those rules in strategy code? |
+| Forbidden | Retune GC/NQ/ES; invent unstated firm rules; choose risk-per-trade; enable broker execution |
+| Evidence | `docs/PHASE48_PROP_RULE_ENGINE.md`, `phase48_validation.json`, `tests_phase48.py` |
+| Frozen impact | None. Phase 26 / 30 hashes unchanged. DRY_RUN only. |
+
+
 ### ES DVP forward lock + multi-book paper (Phase 47)
 
 | Field | Value |

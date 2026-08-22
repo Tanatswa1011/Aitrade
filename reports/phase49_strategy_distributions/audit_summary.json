@@ -1,0 +1,133 @@
+{
+  "forward_paper_journals": {
+    "gc": "journal/phase26_gc_vwap_v2_paper/paper_trades.jsonl N=0 \u2014 not used",
+    "nq": "journal/phase30_nq_dvp_paper/paper_trades.jsonl N=0 \u2014 not used",
+    "es": "journal/phase47_es_dvp_paper/paper_trades.jsonl N=0 \u2014 not used"
+  },
+  "originals_not_overwritten": [
+    "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase46_nq_dvp_frozen_proxy.csv",
+    "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase46_es_dvp.csv"
+  ],
+  "books": {
+    "GC": {
+      "source": {
+        "ok": true,
+        "source": "data/databento/GC/stitched/databento_GC_stitched_5m.jsonl",
+        "method": "run_frozen_v2_on_bars persist=False + 2R path resolve on 5m",
+        "frozen": {
+          "ok": true,
+          "reasons": [],
+          "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+          "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+        },
+        "paper_journal_written": false,
+        "n_engine_rows": 631,
+        "n_triggered": 458,
+        "n_resolved_engine": 271,
+        "n_sim_trades": 430,
+        "skipped_untriggered": 173,
+        "skipped_ambiguous": 28,
+        "frozen_config_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+        "bar_count": 71833,
+        "cost_note": "1 tick adverse entry already in fill; minus 1 tick exit + 0.04 commission points",
+        "loaded_from_cache": false
+      },
+      "number_of_trades": 430,
+      "date_range": [
+        "2025-08-04",
+        "2026-08-14"
+      ],
+      "instruments": [
+        "GC"
+      ],
+      "fields": {
+        "entry_time": "available",
+        "exit_time": "available",
+        "gross_pnl": "UNAVAILABLE",
+        "net_pnl": "1_micro_usd_from_points",
+        "pnl_R": "available",
+        "win_loss": "derived_from_r_multiple",
+        "holding_time": "available",
+        "MAE": "available",
+        "MFE": "available",
+        "fees_slippage": "1_TICK_ADVERSE_ENTRY + 1_TICK_EXIT + 0.04pt_commission (family_port GC model)",
+        "session_day_grouping": "trading_date"
+      },
+      "missing_warnings": [
+        "gross_pnl USD at account size is UNAVAILABLE \u2014 R and 1-micro point dollars only",
+        "T1 news flags not applied to simulation paths (historical trades are not news-labeled except phase46 news_blackout skips)",
+        "GC sample is the frozen 5m stitch window (~2025-08 to 2026-08), not the 2020\u20132026 v0 continuous used for NQ/ES",
+        "GC realized R uses frozen 2R target vs stop vs session flatten on 5m; not the paper journal"
+      ]
+    },
+    "NQ": {
+      "source": {
+        "ok": true,
+        "source": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase46_nq_dvp_frozen_proxy.csv",
+        "method": "phase46 frozen-rule DVP replay CSV (not paper journal)"
+      },
+      "number_of_trades": 5000,
+      "date_range": [
+        "2020-01-02",
+        "2025-10-21"
+      ],
+      "instruments": [
+        "NQ"
+      ],
+      "fields": {
+        "entry_time": "available",
+        "exit_time": "available",
+        "gross_pnl": "UNAVAILABLE",
+        "net_pnl": "1_micro_usd_from_points",
+        "pnl_R": "available",
+        "win_loss": "derived_from_r_multiple",
+        "holding_time": "UNAVAILABLE",
+        "MAE": "UNAVAILABLE",
+        "MFE": "UNAVAILABLE",
+        "fees_slippage": "phase46: 2*1tick + 0.20pt commission already in points/r_multiple",
+        "session_day_grouping": "trading_date"
+      },
+      "missing_warnings": [
+        "gross_pnl USD at account size is UNAVAILABLE \u2014 R and 1-micro point dollars only",
+        "T1 news flags not applied to simulation paths (historical trades are not news-labeled except phase46 news_blackout skips)",
+        "NQ: MAE/MFE columns empty in phase46 CSV",
+        "NQ: hold_sec empty in phase46 CSV"
+      ]
+    },
+    "ES": {
+      "source": {
+        "ok": true,
+        "source": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase46_es_dvp.csv",
+        "method": "phase46 ES DVP port CSV; locked candidate Phase 47; not frozen"
+      },
+      "number_of_trades": 5574,
+      "date_range": [
+        "2020-01-02",
+        "2026-08-14"
+      ],
+      "instruments": [
+        "ES"
+      ],
+      "fields": {
+        "entry_time": "available",
+        "exit_time": "available",
+        "gross_pnl": "UNAVAILABLE",
+        "net_pnl": "1_micro_usd_from_points",
+        "pnl_R": "available",
+        "win_loss": "derived_from_r_multiple",
+        "holding_time": "UNAVAILABLE",
+        "MAE": "UNAVAILABLE",
+        "MFE": "UNAVAILABLE",
+        "fees_slippage": "phase46: 2*1tick + 0.08pt commission already in points/r_multiple",
+        "session_day_grouping": "trading_date"
+      },
+      "missing_warnings": [
+        "gross_pnl USD at account size is UNAVAILABLE \u2014 R and 1-micro point dollars only",
+        "T1 news flags not applied to simulation paths (historical trades are not news-labeled except phase46 news_blackout skips)",
+        "ES: MAE/MFE columns empty in phase46 CSV",
+        "ES: hold_sec empty in phase46 CSV",
+        "ES is LOCKED_FORWARD_VALIDATION_CANDIDATE \u2014 not frozen, not in strategy_frozen/"
+      ]
+    }
+  }
+}

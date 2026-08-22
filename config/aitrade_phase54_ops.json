@@ -1,0 +1,43 @@
+{
+  "schema_version": "AITRADE_PHASE54_OPS_V1",
+  "phase": 54,
+  "PROP_EXECUTION": false,
+  "connection_mode": "NINJATRADER_MARKET_FUNDEDNEXT_MCP_ACCOUNT",
+  "sim_account_id": "Sim101",
+  "expected_account_id": "FNFTCHTANATSWAPHILMU92044",
+  "prop_firm": "FUNDEDNEXT",
+  "product": "FLEX_50K",
+  "profile_id": "FUNDEDNEXT_FLEX_50K",
+  "evaluation_strategy_id": "NQ_DRIFT_VWAP_PULLBACK",
+  "gc_assignment": "NOT_ASSIGNED",
+  "bind_host": "127.0.0.1",
+  "bind_port": 8765,
+  "stale_market_sec": 120,
+  "stale_account_sec": 60,
+  "fundednext_mcp": {
+    "url": "https://mcp.fundednext.com",
+    "stale_account_sec": 60,
+    "expected_account_name": "FNFTCHTANATSWAPHILMU92044",
+    "expected_login": "962841277",
+    "expected_account_id": 3969349,
+    "expected_plan": "Futures Flex Challenge | 50K",
+    "read_allowlist": [
+      "get_accounts_v2",
+      "get_accounts",
+      "get_account_overview",
+      "get_account_applicable_rules",
+      "get_futures_trade_history",
+      "resolve_account"
+    ]
+  },
+  "tradovate": {
+    "deprecated": true,
+    "fallback_enabled": false,
+    "env": "live",
+    "stale_account_sec": 60,
+    "expected_account_name": "FNFTCHTANATSWAPHILMU92044",
+    "note": "Phase 54D custom Tradovate REST path is deprecated for FundedNext money/risk. FundedNext MCP is authoritative."
+  },
+  "SIM_ONLY_EXECUTION": false,
+  "note": "Phase 55C: PROP_EXECUTION remains false. FundedNext one-shot canary is a separate opt-in via AITRADE_PROP_CANARY_EXECUTION (default DISARMED). SIM_ONLY Sim101 ATI is opt-in via AITRADE_SIM_ONLY_EXECUTION=1. MCP is read-only and cannot submit orders. Default path does not write OIF."
+}

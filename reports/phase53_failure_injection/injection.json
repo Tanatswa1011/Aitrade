@@ -1,0 +1,159 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "case": "stale_quote",
+      "expected": [
+        "LIVE_DATA_STALE"
+      ],
+      "got": "LIVE_DATA_STALE",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "missing_candle",
+      "expected": [
+        "LIVE_DATA_STALE"
+      ],
+      "got": "LIVE_DATA_STALE",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "duplicate_candle",
+      "expected": [
+        "LIVE_DATA_STALE"
+      ],
+      "got": "LIVE_DATA_STALE",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "ooo_timestamp",
+      "expected": [
+        "LIVE_DATA_STALE"
+      ],
+      "got": "LIVE_DATA_STALE",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "calendar_missing",
+      "expected": [
+        "NEWS_BLACKOUT_VIOLATION_RISK"
+      ],
+      "got": "NEWS_BLACKOUT_VIOLATION_RISK",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "equity_unavailable",
+      "expected": [
+        "ACCOUNT_EQUITY_UNKNOWN"
+      ],
+      "got": "ACCOUNT_EQUITY_UNKNOWN",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "wrong_hash",
+      "expected": [
+        "STRATEGY_HASH_MISMATCH"
+      ],
+      "got": "STRATEGY_HASH_MISMATCH",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "wrong_strategy_id",
+      "expected": [
+        "STRATEGY_HASH_MISMATCH"
+      ],
+      "got": "STRATEGY_HASH_MISMATCH",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "corrupt_signal",
+      "expected": [
+        "SIGNAL_PAYLOAD_CORRUPT"
+      ],
+      "got": "SIGNAL_PAYLOAD_CORRUPT",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "delayed_ack",
+      "expected": [
+        "ORDER_STATE_MISMATCH"
+      ],
+      "got": "ORDER_STATE_MISMATCH",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "order_rejected",
+      "expected": [
+        "BROKER_CONNECTION_UNSTABLE"
+      ],
+      "got": "BROKER_CONNECTION_UNSTABLE",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "unexpected_open",
+      "expected": [
+        "POSITION_STATE_MISMATCH"
+      ],
+      "got": "POSITION_STATE_MISMATCH",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "position_missing",
+      "expected": [
+        "POSITION_STATE_MISMATCH"
+      ],
+      "got": "POSITION_STATE_MISMATCH",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "impossible_mll",
+      "expected": [
+        "DRAW_DOWN_CALCULATION_INVALID"
+      ],
+      "got": "DRAW_DOWN_CALCULATION_INVALID",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "balance_jump",
+      "expected": [
+        "ACCOUNT_EQUITY_UNKNOWN"
+      ],
+      "got": "ACCOUNT_EQUITY_UNKNOWN",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "pnl_mismatch",
+      "expected": [
+        "DRAW_DOWN_CALCULATION_INVALID"
+      ],
+      "got": "DRAW_DOWN_CALCULATION_INVALID",
+      "pass": true,
+      "transmitted": 0
+    },
+    {
+      "case": "qty_3mnq",
+      "expected": [
+        "BLOCK_QTY_3MNQ_REJECTED",
+        "MAX_POSITION_EXCEEDED"
+      ],
+      "got": "MAX_POSITION_EXCEEDED",
+      "pass": true,
+      "transmitted": 0
+    }
+  ]
+}

@@ -50,6 +50,11 @@ data/**/raw/
 config/local_*.json
 config/*_secrets.json
 **/local_override.json
+state/tradovate_device_id.txt
+state/fundednext_mcp_oauth.json
+state/aitrade_notifications.json
+state/prop_canary.json
+state/unattended_prop_canary.json
 
 # Credential screenshots / exports
 **/*screenshot*credential*

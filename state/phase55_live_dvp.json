@@ -1,0 +1,9 @@
+{
+  "last_evaluated_trigger": null,
+  "seen_triggers": [],
+  "last_historical_bar_ts": null,
+  "first_live_bar_ts": null,
+  "last_live_bar_ts": null,
+  "strategy_status": "WARMING_UP",
+  "pipeline": "LIVE_DVP_WARMING_UP"
+}

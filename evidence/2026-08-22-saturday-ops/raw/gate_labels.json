@@ -1,0 +1,204 @@
+[
+  {
+    "label": "A1_BASELINE",
+    "ts": "2026-08-22T13:35:02.124282+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 6020,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787399709899)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 0.222,
+    "sim101_recovery": "FLAT_SAFE",
+    "fail_reasons": null
+  },
+  {
+    "label": "A2_AFTER_STOP",
+    "ts": "2026-08-22T13:37:14.192097+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 6020,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787399709899)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 0.899,
+    "sim101_recovery": null,
+    "fail_reasons": null
+  },
+  {
+    "label": "A3_NT_CLOSED",
+    "ts": "2026-08-22T13:38:19.164580+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": [],
+    "engine": "STOPPED",
+    "dump_age": 23.23,
+    "sim101_recovery": null,
+    "fail_reasons": null
+  },
+  {
+    "label": "A4_AFTER_WELCOME",
+    "ts": "2026-08-22T13:57:38.108782+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 15376,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787405934557)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 0.497,
+    "sim101_recovery": "FLAT_SAFE",
+    "fail_reasons": null
+  },
+  {
+    "label": "A4_RESTORED",
+    "ts": "2026-08-22T14:01:17.307860+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 15376,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787405934557)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 0.498,
+    "sim101_recovery": "FLAT_SAFE",
+    "fail_reasons": null
+  },
+  {
+    "label": "A5_DESK_RESTARTED",
+    "ts": "2026-08-22T14:02:33.333906+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 15376,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787405934557)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 1.012,
+    "sim101_recovery": "FLAT_SAFE",
+    "fail_reasons": null
+  },
+  {
+    "label": "A6_RECONNECT_ALERT",
+    "ts": "2026-08-22T14:03:17.301246+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": null,
+    "engine": null,
+    "dump_age": null,
+    "sim101_recovery": null,
+    "fail_reasons": null
+  },
+  {
+    "label": "A7_COLD_RESTART",
+    "ts": "2026-08-22T14:03:17.318594+00:00",
+    "verdict": "COLD_RESTART_SAFE",
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 15376,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787405934557)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 0.705,
+    "sim101_recovery": "FLAT_SAFE",
+    "fail_reasons": []
+  },
+  {
+    "label": "B0_BEFORE_DISCONNECT",
+    "ts": "2026-08-22T14:04:41.801727+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 15376,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787405934557)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 0.897,
+    "sim101_recovery": "FLAT_SAFE",
+    "fail_reasons": null
+  },
+  {
+    "label": "B2_KINETICK_DISCONNECTED",
+    "ts": "2026-08-22T14:10:14.043350+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": null,
+    "engine": null,
+    "dump_age": null,
+    "sim101_recovery": null,
+    "fail_reasons": null
+  },
+  {
+    "label": "B3_KINETICK_RECONNECTED",
+    "ts": "2026-08-22T14:11:02.569055+00:00",
+    "verdict": null,
+    "overall": null,
+    "nt_processes": null,
+    "engine": null,
+    "dump_age": null,
+    "sim101_recovery": null,
+    "fail_reasons": null
+  },
+  {
+    "label": "B4_RESTORED_KINETICK_OFF",
+    "ts": "2026-08-22T14:11:44.141554+00:00",
+    "verdict": "DISCONNECT_RECOVERY_SAFE",
+    "overall": null,
+    "nt_processes": [
+      {
+        "pid": 15376,
+        "name": "NinjaTrader.exe",
+        "start": "/Date(1787405934557)/"
+      }
+    ],
+    "engine": "STOPPED",
+    "dump_age": 0.169,
+    "sim101_recovery": "FLAT_SAFE",
+    "fail_reasons": []
+  },
+  {
+    "label": "C_OPTIONAL_TELEMETRY_INJECTION",
+    "ts": "2026-08-22T14:11:48.863922+00:00",
+    "verdict": "OPTIONAL_TELEMETRY_INJECTION_NOT_RUN",
+    "overall": null,
+    "nt_processes": null,
+    "engine": null,
+    "dump_age": null,
+    "sim101_recovery": null,
+    "fail_reasons": null
+  },
+  {
+    "label": "OVERALL",
+    "ts": "2026-08-22T14:11:48.863940+00:00",
+    "verdict": null,
+    "overall": "SATURDAY_RECOVERY_GATES_PASS",
+    "nt_processes": null,
+    "engine": null,
+    "dump_age": null,
+    "sim101_recovery": null,
+    "fail_reasons": []
+  }
+]

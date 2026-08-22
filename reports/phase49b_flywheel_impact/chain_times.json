@@ -1,0 +1,38 @@
+{
+  "FUNDEDNEXT_FLEX_50K": {
+    "baseline": {
+      "expected_time_to_funded_td": 61.19014838610984,
+      "expected_time_to_first_payout_td": 102.19014838610984,
+      "expected_time_to_next_evaluation_purchase_td": 102.19014838610984,
+      "expected_time_to_next_funded_account_td": 142.19014838610985,
+      "P(pass)": 0.6537,
+      "median_days_to_pass": 40.0
+    },
+    "fast_pass": {
+      "expected_time_to_funded_td": 24.475524475524477,
+      "expected_time_to_first_payout_td": 65.47552447552448,
+      "expected_time_to_next_evaluation_purchase_td": 65.47552447552448,
+      "expected_time_to_next_funded_account_td": 79.47552447552448,
+      "P(pass)": 0.572,
+      "median_days_to_pass": 14.0
+    }
+  },
+  "MFFU_RAPID_EOD_50K": {
+    "baseline": {
+      "expected_time_to_funded_td": 76.01935038009675,
+      "expected_time_to_first_payout_td": 120.01935038009675,
+      "expected_time_to_next_evaluation_purchase_td": 120.01935038009675,
+      "expected_time_to_next_funded_account_td": 175.01935038009674,
+      "P(pass)": 0.7235,
+      "median_days_to_pass": 55.0
+    },
+    "fast_pass": {
+      "expected_time_to_funded_td": 24.875621890547265,
+      "expected_time_to_first_payout_td": 68.87562189054727,
+      "expected_time_to_next_evaluation_purchase_td": 68.87562189054727,
+      "expected_time_to_next_funded_account_td": 82.87562189054727,
+      "P(pass)": 0.5628,
+      "median_days_to_pass": 14.0
+    }
+  }
+}

@@ -1,0 +1,2143 @@
+{
+  "book": "GC",
+  "number_of_trades": 430,
+  "date_range": [
+    "2025-08-04",
+    "2026-08-14"
+  ],
+  "n_trading_days": 209,
+  "win_rate": 0.37906976744186044,
+  "average_win_R": 1.7109880167773999,
+  "average_loss_R": -1.008751261584268,
+  "median_win_R": 1.9651063968707778,
+  "median_loss_R": -1.0264851731835194,
+  "expectancy_R": 0.02221967416678278,
+  "profit_factor": 1.0354740512743115,
+  "trades_per_day": 2.0574162679425836,
+  "trades_per_week": 8.026666666666667,
+  "trades_per_month": 34.901093333333336,
+  "max_consecutive_wins": 5,
+  "max_consecutive_losses": 10,
+  "90th_percentile_losing_streak": 5.0,
+  "95th_percentile_losing_streak": 6.0,
+  "max_historical_drawdown_R": 19.485221463586026,
+  "average_daily_R": 0.04571511909912247,
+  "standard_deviation_daily_R": 1.846805018963307,
+  "best_day_R": 6.011760878780307,
+  "worst_day_R": -4.131237186209882,
+  "best_day_as_percent_of_total_profit": 0.021555947920044748,
+  "recovery_factor": 0.49034392088239626,
+  "total_R": 9.554459891716595,
+  "n_wins": 163,
+  "n_losses": 267,
+  "n_scratches": 0,
+  "monthly_outcome_R": {
+    "2025-08": -2.660409297896497,
+    "2025-09": -11.070929664986034,
+    "2025-10": -1.7197556695261724,
+    "2025-11": 5.141543180772283,
+    "2025-12": 5.024800576082007,
+    "2026-01": -1.0889660627442557,
+    "2026-02": 2.0138041530154642,
+    "2026-03": -2.7581542713653615,
+    "2026-04": 11.519363068865568,
+    "2026-05": -0.47050141162557724,
+    "2026-06": -4.290531513985893,
+    "2026-07": 8.43557187205278,
+    "2026-08": 1.4786249330582795
+  },
+  "rolling_drawdown_20d": [
+    {
+      "date": "2025-08-04",
+      "window_days": 1,
+      "drawdown_R": 1.1971935175547317
+    },
+    {
+      "date": "2025-08-05",
+      "window_days": 2,
+      "drawdown_R": 2.2346379704810317
+    },
+    {
+      "date": "2025-08-06",
+      "window_days": 3,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-07",
+      "window_days": 4,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-11",
+      "window_days": 5,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-12",
+      "window_days": 6,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-14",
+      "window_days": 7,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-18",
+      "window_days": 8,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-19",
+      "window_days": 9,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-20",
+      "window_days": 10,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-25",
+      "window_days": 11,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-26",
+      "window_days": 12,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-27",
+      "window_days": 13,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-28",
+      "window_days": 14,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-09-02",
+      "window_days": 15,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-03",
+      "window_days": 16,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-04",
+      "window_days": 17,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-05",
+      "window_days": 18,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-09",
+      "window_days": 19,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-10",
+      "window_days": 20,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-11",
+      "window_days": 20,
+      "drawdown_R": 6.618890652002859
+    },
+    {
+      "date": "2025-09-12",
+      "window_days": 20,
+      "drawdown_R": 6.618890652002857
+    },
+    {
+      "date": "2025-09-15",
+      "window_days": 20,
+      "drawdown_R": 6.618890652002858
+    },
+    {
+      "date": "2025-09-16",
+      "window_days": 20,
+      "drawdown_R": 6.618890652002859
+    },
+    {
+      "date": "2025-09-17",
+      "window_days": 20,
+      "drawdown_R": 6.618890652002859
+    },
+    {
+      "date": "2025-09-22",
+      "window_days": 20,
+      "drawdown_R": 6.618890652002859
+    },
+    {
+      "date": "2025-09-23",
+      "window_days": 20,
+      "drawdown_R": 8.052977434649918
+    },
+    {
+      "date": "2025-09-24",
+      "window_days": 20,
+      "drawdown_R": 11.187243367262216
+    },
+    {
+      "date": "2025-09-25",
+      "window_days": 20,
+      "drawdown_R": 11.187243367262214
+    },
+    {
+      "date": "2025-09-26",
+      "window_days": 20,
+      "drawdown_R": 11.187243367262216
+    },
+    {
+      "date": "2025-09-29",
+      "window_days": 20,
+      "drawdown_R": 12.439011052100476
+    },
+    {
+      "date": "2025-10-02",
+      "window_days": 20,
+      "drawdown_R": 14.539187346469395
+    },
+    {
+      "date": "2025-10-06",
+      "window_days": 20,
+      "drawdown_R": 16.64773316663005
+    },
+    {
+      "date": "2025-10-07",
+      "window_days": 20,
+      "drawdown_R": 16.64773316663005
+    },
+    {
+      "date": "2025-10-08",
+      "window_days": 20,
+      "drawdown_R": 16.647733166630047
+    },
+    {
+      "date": "2025-10-09",
+      "window_days": 20,
+      "drawdown_R": 16.64773316663005
+    },
+    {
+      "date": "2025-10-10",
+      "window_days": 20,
+      "drawdown_R": 16.028957807549148
+    },
+    {
+      "date": "2025-10-13",
+      "window_days": 20,
+      "drawdown_R": 16.028957807549148
+    },
+    {
+      "date": "2025-10-14",
+      "window_days": 20,
+      "drawdown_R": 16.028957807549148
+    },
+    {
+      "date": "2025-10-15",
+      "window_days": 20,
+      "drawdown_R": 16.558357744650248
+    },
+    {
+      "date": "2025-10-16",
+      "window_days": 20,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-10-17",
+      "window_days": 20,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-10-21",
+      "window_days": 20,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-10-22",
+      "window_days": 20,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-10-24",
+      "window_days": 20,
+      "drawdown_R": 14.543487989425568
+    },
+    {
+      "date": "2025-10-27",
+      "window_days": 20,
+      "drawdown_R": 12.361669771164534
+    },
+    {
+      "date": "2025-10-29",
+      "window_days": 20,
+      "drawdown_R": 9.292938374551495
+    },
+    {
+      "date": "2025-11-03",
+      "window_days": 20,
+      "drawdown_R": 8.03673925254869
+    },
+    {
+      "date": "2025-11-04",
+      "window_days": 20,
+      "drawdown_R": 8.036739252548692
+    },
+    {
+      "date": "2025-11-05",
+      "window_days": 20,
+      "drawdown_R": 7.020533735250448
+    },
+    {
+      "date": "2025-11-06",
+      "window_days": 20,
+      "drawdown_R": 4.8178131679568255
+    },
+    {
+      "date": "2025-11-07",
+      "window_days": 20,
+      "drawdown_R": 4.227048141643352
+    },
+    {
+      "date": "2025-11-12",
+      "window_days": 20,
+      "drawdown_R": 4.227048141643352
+    },
+    {
+      "date": "2025-11-13",
+      "window_days": 20,
+      "drawdown_R": 4.227048141643352
+    },
+    {
+      "date": "2025-11-14",
+      "window_days": 20,
+      "drawdown_R": 4.227048141643352
+    },
+    {
+      "date": "2025-11-17",
+      "window_days": 20,
+      "drawdown_R": 3.2810698378962324
+    },
+    {
+      "date": "2025-11-18",
+      "window_days": 20,
+      "drawdown_R": 3.2810698378962324
+    },
+    {
+      "date": "2025-11-19",
+      "window_days": 20,
+      "drawdown_R": 3.2810698378962324
+    },
+    {
+      "date": "2025-11-20",
+      "window_days": 20,
+      "drawdown_R": 3.2810698378962324
+    },
+    {
+      "date": "2025-11-24",
+      "window_days": 20,
+      "drawdown_R": 3.281069837896232
+    },
+    {
+      "date": "2025-11-25",
+      "window_days": 20,
+      "drawdown_R": 3.281069837896232
+    },
+    {
+      "date": "2025-11-26",
+      "window_days": 20,
+      "drawdown_R": 3.2810698378962324
+    },
+    {
+      "date": "2025-12-01",
+      "window_days": 20,
+      "drawdown_R": 3.2810698378962324
+    },
+    {
+      "date": "2025-12-02",
+      "window_days": 20,
+      "drawdown_R": 3.2810698378962324
+    },
+    {
+      "date": "2025-12-03",
+      "window_days": 20,
+      "drawdown_R": 3.2107277862012946
+    },
+    {
+      "date": "2025-12-04",
+      "window_days": 20,
+      "drawdown_R": 3.544513715071628
+    },
+    {
+      "date": "2025-12-05",
+      "window_days": 20,
+      "drawdown_R": 3.5940556868291056
+    },
+    {
+      "date": "2025-12-08",
+      "window_days": 20,
+      "drawdown_R": 3.5940556868291056
+    },
+    {
+      "date": "2025-12-09",
+      "window_days": 20,
+      "drawdown_R": 3.694002830466113
+    },
+    {
+      "date": "2025-12-10",
+      "window_days": 20,
+      "drawdown_R": 3.6940028304661126
+    },
+    {
+      "date": "2025-12-11",
+      "window_days": 20,
+      "drawdown_R": 3.8585737232041177
+    },
+    {
+      "date": "2025-12-12",
+      "window_days": 20,
+      "drawdown_R": 3.8585737232041173
+    },
+    {
+      "date": "2025-12-15",
+      "window_days": 20,
+      "drawdown_R": 4.544478563558438
+    },
+    {
+      "date": "2025-12-16",
+      "window_days": 20,
+      "drawdown_R": 5.564990222317114
+    },
+    {
+      "date": "2025-12-17",
+      "window_days": 20,
+      "drawdown_R": 5.564990222317114
+    },
+    {
+      "date": "2025-12-18",
+      "window_days": 20,
+      "drawdown_R": 5.564990222317114
+    },
+    {
+      "date": "2025-12-19",
+      "window_days": 20,
+      "drawdown_R": 5.564990222317114
+    },
+    {
+      "date": "2025-12-22",
+      "window_days": 20,
+      "drawdown_R": 5.564990222317114
+    },
+    {
+      "date": "2025-12-24",
+      "window_days": 20,
+      "drawdown_R": 5.564990222317114
+    },
+    {
+      "date": "2025-12-26",
+      "window_days": 20,
+      "drawdown_R": 5.467502794199592
+    },
+    {
+      "date": "2025-12-31",
+      "window_days": 20,
+      "drawdown_R": 4.44234328553757
+    },
+    {
+      "date": "2026-01-02",
+      "window_days": 20,
+      "drawdown_R": 4.096873595091003
+    },
+    {
+      "date": "2026-01-05",
+      "window_days": 20,
+      "drawdown_R": 4.096873595091003
+    },
+    {
+      "date": "2026-01-06",
+      "window_days": 20,
+      "drawdown_R": 4.096873595091002
+    },
+    {
+      "date": "2026-01-07",
+      "window_days": 20,
+      "drawdown_R": 4.096873595091003
+    },
+    {
+      "date": "2026-01-08",
+      "window_days": 20,
+      "drawdown_R": 3.9245180202114716
+    },
+    {
+      "date": "2026-01-09",
+      "window_days": 20,
+      "drawdown_R": 3.924518020211471
+    },
+    {
+      "date": "2026-01-12",
+      "window_days": 20,
+      "drawdown_R": 3.9245180202114707
+    },
+    {
+      "date": "2026-01-13",
+      "window_days": 20,
+      "drawdown_R": 3.8075194183998073
+    },
+    {
+      "date": "2026-01-14",
+      "window_days": 20,
+      "drawdown_R": 3.8075194183998073
+    },
+    {
+      "date": "2026-01-16",
+      "window_days": 20,
+      "drawdown_R": 3.1218645917829466
+    },
+    {
+      "date": "2026-01-19",
+      "window_days": 20,
+      "drawdown_R": 3.3756016469405967
+    },
+    {
+      "date": "2026-01-20",
+      "window_days": 20,
+      "drawdown_R": 6.5307624160049755
+    },
+    {
+      "date": "2026-01-21",
+      "window_days": 20,
+      "drawdown_R": 6.557242682817646
+    },
+    {
+      "date": "2026-01-22",
+      "window_days": 20,
+      "drawdown_R": 7.5798836367609645
+    },
+    {
+      "date": "2026-01-23",
+      "window_days": 20,
+      "drawdown_R": 7.668147254664374
+    },
+    {
+      "date": "2026-01-26",
+      "window_days": 20,
+      "drawdown_R": 10.733274494545118
+    },
+    {
+      "date": "2026-01-27",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-01-28",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-01-29",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-01-30",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-02",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-03",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-04",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-05",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-06",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-09",
+      "window_days": 20,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-10",
+      "window_days": 20,
+      "drawdown_R": 11.64224276405586
+    },
+    {
+      "date": "2026-02-11",
+      "window_days": 20,
+      "drawdown_R": 11.64224276405586
+    },
+    {
+      "date": "2026-02-12",
+      "window_days": 20,
+      "drawdown_R": 10.612204870688736
+    },
+    {
+      "date": "2026-02-17",
+      "window_days": 20,
+      "drawdown_R": 10.351650062096187
+    },
+    {
+      "date": "2026-02-18",
+      "window_days": 20,
+      "drawdown_R": 8.266641117115265
+    },
+    {
+      "date": "2026-02-19",
+      "window_days": 20,
+      "drawdown_R": 5.111480348050887
+    },
+    {
+      "date": "2026-02-20",
+      "window_days": 20,
+      "drawdown_R": 5.085000081238215
+    },
+    {
+      "date": "2026-02-24",
+      "window_days": 20,
+      "drawdown_R": 5.8942099267002295
+    },
+    {
+      "date": "2026-02-25",
+      "window_days": 20,
+      "drawdown_R": 5.8942099267002295
+    },
+    {
+      "date": "2026-02-26",
+      "window_days": 20,
+      "drawdown_R": 5.894209926700228
+    },
+    {
+      "date": "2026-03-02",
+      "window_days": 20,
+      "drawdown_R": 5.894209926700227
+    },
+    {
+      "date": "2026-03-04",
+      "window_days": 20,
+      "drawdown_R": 5.894209926700228
+    },
+    {
+      "date": "2026-03-05",
+      "window_days": 20,
+      "drawdown_R": 6.594561019746029
+    },
+    {
+      "date": "2026-03-09",
+      "window_days": 20,
+      "drawdown_R": 8.652708109863259
+    },
+    {
+      "date": "2026-03-10",
+      "window_days": 20,
+      "drawdown_R": 9.688158633501555
+    },
+    {
+      "date": "2026-03-12",
+      "window_days": 20,
+      "drawdown_R": 11.738842099067098
+    },
+    {
+      "date": "2026-03-13",
+      "window_days": 20,
+      "drawdown_R": 11.820901984983369
+    },
+    {
+      "date": "2026-03-16",
+      "window_days": 20,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-03-17",
+      "window_days": 20,
+      "drawdown_R": 12.871557217031002
+    },
+    {
+      "date": "2026-03-20",
+      "window_days": 20,
+      "drawdown_R": 12.793716425586823
+    },
+    {
+      "date": "2026-03-23",
+      "window_days": 20,
+      "drawdown_R": 12.79371642558682
+    },
+    {
+      "date": "2026-03-24",
+      "window_days": 20,
+      "drawdown_R": 12.128241355128953
+    },
+    {
+      "date": "2026-03-25",
+      "window_days": 20,
+      "drawdown_R": 12.128241355128953
+    },
+    {
+      "date": "2026-03-26",
+      "window_days": 20,
+      "drawdown_R": 12.128241355128953
+    },
+    {
+      "date": "2026-03-27",
+      "window_days": 20,
+      "drawdown_R": 11.090572883796732
+    },
+    {
+      "date": "2026-03-30",
+      "window_days": 20,
+      "drawdown_R": 10.065640978544744
+    },
+    {
+      "date": "2026-04-02",
+      "window_days": 20,
+      "drawdown_R": 8.358905330997523
+    },
+    {
+      "date": "2026-04-06",
+      "window_days": 20,
+      "drawdown_R": 8.358905330997523
+    },
+    {
+      "date": "2026-04-07",
+      "window_days": 20,
+      "drawdown_R": 8.358905330997523
+    },
+    {
+      "date": "2026-04-08",
+      "window_days": 20,
+      "drawdown_R": 8.358905330997523
+    },
+    {
+      "date": "2026-04-09",
+      "window_days": 20,
+      "drawdown_R": 8.292959446043753
+    },
+    {
+      "date": "2026-04-10",
+      "window_days": 20,
+      "drawdown_R": 8.292959446043753
+    },
+    {
+      "date": "2026-04-13",
+      "window_days": 20,
+      "drawdown_R": 6.276996197284969
+    },
+    {
+      "date": "2026-04-14",
+      "window_days": 20,
+      "drawdown_R": 4.21884910716774
+    },
+    {
+      "date": "2026-04-15",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864837
+    },
+    {
+      "date": "2026-04-16",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864837
+    },
+    {
+      "date": "2026-04-17",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864837
+    },
+    {
+      "date": "2026-04-20",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864837
+    },
+    {
+      "date": "2026-04-21",
+      "window_days": 20,
+      "drawdown_R": 3.345433431386482
+    },
+    {
+      "date": "2026-04-22",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864837
+    },
+    {
+      "date": "2026-04-23",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-04-24",
+      "window_days": 20,
+      "drawdown_R": 3.345433431386483
+    },
+    {
+      "date": "2026-04-28",
+      "window_days": 20,
+      "drawdown_R": 3.345433431386482
+    },
+    {
+      "date": "2026-04-29",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-04-30",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-05-01",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-05-04",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-05-05",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-05-07",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-05-12",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-05-13",
+      "window_days": 20,
+      "drawdown_R": 3.3454334313864824
+    },
+    {
+      "date": "2026-05-14",
+      "window_days": 20,
+      "drawdown_R": 3.345433431386483
+    },
+    {
+      "date": "2026-05-15",
+      "window_days": 20,
+      "drawdown_R": 3.345433431386483
+    },
+    {
+      "date": "2026-05-18",
+      "window_days": 20,
+      "drawdown_R": 3.0614795731128357
+    },
+    {
+      "date": "2026-05-20",
+      "window_days": 20,
+      "drawdown_R": 3.0614795731128357
+    },
+    {
+      "date": "2026-05-21",
+      "window_days": 20,
+      "drawdown_R": 4.1871480696569705
+    },
+    {
+      "date": "2026-05-22",
+      "window_days": 20,
+      "drawdown_R": 4.1871480696569705
+    },
+    {
+      "date": "2026-05-26",
+      "window_days": 20,
+      "drawdown_R": 4.261866692592205
+    },
+    {
+      "date": "2026-05-27",
+      "window_days": 20,
+      "drawdown_R": 5.299258530472439
+    },
+    {
+      "date": "2026-05-28",
+      "window_days": 20,
+      "drawdown_R": 6.310228312607995
+    },
+    {
+      "date": "2026-06-02",
+      "window_days": 20,
+      "drawdown_R": 7.326740121676022
+    },
+    {
+      "date": "2026-06-04",
+      "window_days": 20,
+      "drawdown_R": 8.34437042820665
+    },
+    {
+      "date": "2026-06-08",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-09",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-10",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-11",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-12",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-16",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-17",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-18",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-19",
+      "window_days": 20,
+      "drawdown_R": 8.431825959650082
+    },
+    {
+      "date": "2026-06-22",
+      "window_days": 20,
+      "drawdown_R": 8.123875629326513
+    },
+    {
+      "date": "2026-06-23",
+      "window_days": 20,
+      "drawdown_R": 10.18836372624074
+    },
+    {
+      "date": "2026-06-24",
+      "window_days": 20,
+      "drawdown_R": 10.18836372624074
+    },
+    {
+      "date": "2026-06-25",
+      "window_days": 20,
+      "drawdown_R": 9.085742171173852
+    },
+    {
+      "date": "2026-06-26",
+      "window_days": 20,
+      "drawdown_R": 7.94902368410518
+    },
+    {
+      "date": "2026-06-29",
+      "window_days": 20,
+      "drawdown_R": 7.94902368410518
+    },
+    {
+      "date": "2026-06-30",
+      "window_days": 20,
+      "drawdown_R": 6.929776193344539
+    },
+    {
+      "date": "2026-07-01",
+      "window_days": 20,
+      "drawdown_R": 6.157892429899355
+    },
+    {
+      "date": "2026-07-03",
+      "window_days": 20,
+      "drawdown_R": 6.157892429899354
+    },
+    {
+      "date": "2026-07-07",
+      "window_days": 20,
+      "drawdown_R": 6.157892429899354
+    },
+    {
+      "date": "2026-07-08",
+      "window_days": 20,
+      "drawdown_R": 6.157892429899354
+    },
+    {
+      "date": "2026-07-10",
+      "window_days": 20,
+      "drawdown_R": 6.157892429899354
+    },
+    {
+      "date": "2026-07-13",
+      "window_days": 20,
+      "drawdown_R": 8.486665947634046
+    },
+    {
+      "date": "2026-07-15",
+      "window_days": 20,
+      "drawdown_R": 9.531634489915092
+    },
+    {
+      "date": "2026-07-17",
+      "window_days": 20,
+      "drawdown_R": 12.61197041737622
+    },
+    {
+      "date": "2026-07-20",
+      "window_days": 20,
+      "drawdown_R": 12.611970417376222
+    },
+    {
+      "date": "2026-07-21",
+      "window_days": 20,
+      "drawdown_R": 12.61197041737622
+    },
+    {
+      "date": "2026-07-22",
+      "window_days": 20,
+      "drawdown_R": 12.61197041737622
+    },
+    {
+      "date": "2026-07-23",
+      "window_days": 20,
+      "drawdown_R": 10.567606786444724
+    },
+    {
+      "date": "2026-07-24",
+      "window_days": 20,
+      "drawdown_R": 9.548780645975578
+    },
+    {
+      "date": "2026-07-27",
+      "window_days": 20,
+      "drawdown_R": 9.360379770079705
+    },
+    {
+      "date": "2026-07-28",
+      "window_days": 20,
+      "drawdown_R": 9.360379770079705
+    },
+    {
+      "date": "2026-07-29",
+      "window_days": 20,
+      "drawdown_R": 9.360379770079703
+    },
+    {
+      "date": "2026-07-30",
+      "window_days": 20,
+      "drawdown_R": 9.360379770079705
+    },
+    {
+      "date": "2026-07-31",
+      "window_days": 20,
+      "drawdown_R": 9.025758782952016
+    },
+    {
+      "date": "2026-08-03",
+      "window_days": 20,
+      "drawdown_R": 9.025758782952016
+    },
+    {
+      "date": "2026-08-05",
+      "window_days": 20,
+      "drawdown_R": 9.025758782952016
+    },
+    {
+      "date": "2026-08-10",
+      "window_days": 20,
+      "drawdown_R": 9.025758782952018
+    },
+    {
+      "date": "2026-08-11",
+      "window_days": 20,
+      "drawdown_R": 8.337546278909306
+    },
+    {
+      "date": "2026-08-13",
+      "window_days": 20,
+      "drawdown_R": 8.337546278909306
+    },
+    {
+      "date": "2026-08-14",
+      "window_days": 20,
+      "drawdown_R": 7.323944799148509
+    }
+  ],
+  "rolling_drawdown_60d": [
+    {
+      "date": "2025-08-04",
+      "window_days": 1,
+      "drawdown_R": 1.1971935175547317
+    },
+    {
+      "date": "2025-08-05",
+      "window_days": 2,
+      "drawdown_R": 2.2346379704810317
+    },
+    {
+      "date": "2025-08-06",
+      "window_days": 3,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-07",
+      "window_days": 4,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-11",
+      "window_days": 5,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-12",
+      "window_days": 6,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-14",
+      "window_days": 7,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-18",
+      "window_days": 8,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-19",
+      "window_days": 9,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-20",
+      "window_days": 10,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-25",
+      "window_days": 11,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-26",
+      "window_days": 12,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-27",
+      "window_days": 13,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-08-28",
+      "window_days": 14,
+      "drawdown_R": 5.448422892204198
+    },
+    {
+      "date": "2025-09-02",
+      "window_days": 15,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-03",
+      "window_days": 16,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-04",
+      "window_days": 17,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-05",
+      "window_days": 18,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-09",
+      "window_days": 19,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-10",
+      "window_days": 20,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-11",
+      "window_days": 21,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-12",
+      "window_days": 22,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-15",
+      "window_days": 23,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-16",
+      "window_days": 24,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-17",
+      "window_days": 25,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-22",
+      "window_days": 26,
+      "drawdown_R": 6.791646484106378
+    },
+    {
+      "date": "2025-09-23",
+      "window_days": 27,
+      "drawdown_R": 9.25621375628786
+    },
+    {
+      "date": "2025-09-24",
+      "window_days": 28,
+      "drawdown_R": 12.479571278044272
+    },
+    {
+      "date": "2025-09-25",
+      "window_days": 29,
+      "drawdown_R": 12.479571278044272
+    },
+    {
+      "date": "2025-09-26",
+      "window_days": 30,
+      "drawdown_R": 12.479571278044272
+    },
+    {
+      "date": "2025-09-29",
+      "window_days": 31,
+      "drawdown_R": 13.73133896288253
+    },
+    {
+      "date": "2025-10-02",
+      "window_days": 32,
+      "drawdown_R": 15.831515257251453
+    },
+    {
+      "date": "2025-10-06",
+      "window_days": 33,
+      "drawdown_R": 17.940061077412107
+    },
+    {
+      "date": "2025-10-07",
+      "window_days": 34,
+      "drawdown_R": 17.940061077412107
+    },
+    {
+      "date": "2025-10-08",
+      "window_days": 35,
+      "drawdown_R": 17.940061077412107
+    },
+    {
+      "date": "2025-10-09",
+      "window_days": 36,
+      "drawdown_R": 17.940061077412107
+    },
+    {
+      "date": "2025-10-10",
+      "window_days": 37,
+      "drawdown_R": 17.940061077412107
+    },
+    {
+      "date": "2025-10-13",
+      "window_days": 38,
+      "drawdown_R": 17.940061077412107
+    },
+    {
+      "date": "2025-10-14",
+      "window_days": 39,
+      "drawdown_R": 17.940061077412107
+    },
+    {
+      "date": "2025-10-15",
+      "window_days": 40,
+      "drawdown_R": 18.469461014513207
+    },
+    {
+      "date": "2025-10-16",
+      "window_days": 41,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-10-17",
+      "window_days": 42,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-10-21",
+      "window_days": 43,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-10-22",
+      "window_days": 44,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-10-24",
+      "window_days": 45,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-10-27",
+      "window_days": 46,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-10-29",
+      "window_days": 47,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-03",
+      "window_days": 48,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-04",
+      "window_days": 49,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-05",
+      "window_days": 50,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-06",
+      "window_days": 51,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-07",
+      "window_days": 52,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-12",
+      "window_days": 53,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-13",
+      "window_days": 54,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-14",
+      "window_days": 55,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-17",
+      "window_days": 56,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-18",
+      "window_days": 57,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-19",
+      "window_days": 58,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-20",
+      "window_days": 59,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-24",
+      "window_days": 60,
+      "drawdown_R": 18.549152130839353
+    },
+    {
+      "date": "2025-11-25",
+      "window_days": 60,
+      "drawdown_R": 18.376396298735834
+    },
+    {
+      "date": "2025-11-26",
+      "window_days": 60,
+      "drawdown_R": 18.376396298735834
+    },
+    {
+      "date": "2025-12-01",
+      "window_days": 60,
+      "drawdown_R": 18.376396298735834
+    },
+    {
+      "date": "2025-12-02",
+      "window_days": 60,
+      "drawdown_R": 18.376396298735834
+    },
+    {
+      "date": "2025-12-03",
+      "window_days": 60,
+      "drawdown_R": 18.376396298735838
+    },
+    {
+      "date": "2025-12-04",
+      "window_days": 60,
+      "drawdown_R": 18.376396298735834
+    },
+    {
+      "date": "2025-12-05",
+      "window_days": 60,
+      "drawdown_R": 17.345915809201415
+    },
+    {
+      "date": "2025-12-08",
+      "window_days": 60,
+      "drawdown_R": 17.2568242200573
+    },
+    {
+      "date": "2025-12-09",
+      "window_days": 60,
+      "drawdown_R": 17.256824220057297
+    },
+    {
+      "date": "2025-12-10",
+      "window_days": 60,
+      "drawdown_R": 17.2568242200573
+    },
+    {
+      "date": "2025-12-11",
+      "window_days": 60,
+      "drawdown_R": 17.2568242200573
+    },
+    {
+      "date": "2025-12-12",
+      "window_days": 60,
+      "drawdown_R": 17.256824220057297
+    },
+    {
+      "date": "2025-12-15",
+      "window_days": 60,
+      "drawdown_R": 17.2568242200573
+    },
+    {
+      "date": "2025-12-16",
+      "window_days": 60,
+      "drawdown_R": 17.2568242200573
+    },
+    {
+      "date": "2025-12-17",
+      "window_days": 60,
+      "drawdown_R": 17.256824220057297
+    },
+    {
+      "date": "2025-12-18",
+      "window_days": 60,
+      "drawdown_R": 17.256824220057297
+    },
+    {
+      "date": "2025-12-19",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-12-22",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-12-24",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-12-26",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2025-12-31",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2026-01-02",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2026-01-05",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2026-01-06",
+      "window_days": 60,
+      "drawdown_R": 16.638048860976397
+    },
+    {
+      "date": "2026-01-07",
+      "window_days": 60,
+      "drawdown_R": 14.543487989425568
+    },
+    {
+      "date": "2026-01-08",
+      "window_days": 60,
+      "drawdown_R": 12.361669771164534
+    },
+    {
+      "date": "2026-01-09",
+      "window_days": 60,
+      "drawdown_R": 9.292938374551495
+    },
+    {
+      "date": "2026-01-12",
+      "window_days": 60,
+      "drawdown_R": 8.03673925254869
+    },
+    {
+      "date": "2026-01-13",
+      "window_days": 60,
+      "drawdown_R": 8.036739252548692
+    },
+    {
+      "date": "2026-01-14",
+      "window_days": 60,
+      "drawdown_R": 7.020533735250448
+    },
+    {
+      "date": "2026-01-16",
+      "window_days": 60,
+      "drawdown_R": 5.564990222317112
+    },
+    {
+      "date": "2026-01-19",
+      "window_days": 60,
+      "drawdown_R": 5.564990222317115
+    },
+    {
+      "date": "2026-01-20",
+      "window_days": 60,
+      "drawdown_R": 6.5307624160049755
+    },
+    {
+      "date": "2026-01-21",
+      "window_days": 60,
+      "drawdown_R": 6.557242682817648
+    },
+    {
+      "date": "2026-01-22",
+      "window_days": 60,
+      "drawdown_R": 7.5798836367609645
+    },
+    {
+      "date": "2026-01-23",
+      "window_days": 60,
+      "drawdown_R": 7.668147254664376
+    },
+    {
+      "date": "2026-01-26",
+      "window_days": 60,
+      "drawdown_R": 10.73327449454512
+    },
+    {
+      "date": "2026-01-27",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-01-28",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-01-29",
+      "window_days": 60,
+      "drawdown_R": 11.64224276405586
+    },
+    {
+      "date": "2026-01-30",
+      "window_days": 60,
+      "drawdown_R": 11.64224276405586
+    },
+    {
+      "date": "2026-02-02",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-03",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-04",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-05",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-06",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-09",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-10",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-11",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-12",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-17",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-02-18",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-19",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-20",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-24",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-25",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-02-26",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-03-02",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-03-04",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-03-05",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055862
+    },
+    {
+      "date": "2026-03-09",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-03-10",
+      "window_days": 60,
+      "drawdown_R": 11.642242764055863
+    },
+    {
+      "date": "2026-03-12",
+      "window_days": 60,
+      "drawdown_R": 12.845787657981083
+    },
+    {
+      "date": "2026-03-13",
+      "window_days": 60,
+      "drawdown_R": 12.927847543897355
+    },
+    {
+      "date": "2026-03-16",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-03-17",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-03-20",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-03-23",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-03-24",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944987
+    },
+    {
+      "date": "2026-03-25",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-03-26",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-03-27",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944985
+    },
+    {
+      "date": "2026-03-30",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944985
+    },
+    {
+      "date": "2026-04-02",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944985
+    },
+    {
+      "date": "2026-04-06",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-07",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-08",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-09",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944987
+    },
+    {
+      "date": "2026-04-10",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-13",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-14",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944987
+    },
+    {
+      "date": "2026-04-15",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944987
+    },
+    {
+      "date": "2026-04-16",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-17",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944987
+    },
+    {
+      "date": "2026-04-20",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-21",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-22",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-23",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-24",
+      "window_days": 60,
+      "drawdown_R": 13.978502775944989
+    },
+    {
+      "date": "2026-04-28",
+      "window_days": 60,
+      "drawdown_R": 12.948464882577863
+    },
+    {
+      "date": "2026-04-29",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-04-30",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031002
+    },
+    {
+      "date": "2026-05-01",
+      "window_days": 60,
+      "drawdown_R": 12.871557217030999
+    },
+    {
+      "date": "2026-05-04",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-05",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-07",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-12",
+      "window_days": 60,
+      "drawdown_R": 12.871557217030999
+    },
+    {
+      "date": "2026-05-13",
+      "window_days": 60,
+      "drawdown_R": 12.871557217030997
+    },
+    {
+      "date": "2026-05-14",
+      "window_days": 60,
+      "drawdown_R": 12.871557217030999
+    },
+    {
+      "date": "2026-05-15",
+      "window_days": 60,
+      "drawdown_R": 12.871557217030999
+    },
+    {
+      "date": "2026-05-18",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-20",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-21",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-22",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-26",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031
+    },
+    {
+      "date": "2026-05-27",
+      "window_days": 60,
+      "drawdown_R": 12.871557217031002
+    },
+    {
+      "date": "2026-05-28",
+      "window_days": 60,
+      "drawdown_R": 12.793716425586823
+    },
+    {
+      "date": "2026-06-02",
+      "window_days": 60,
+      "drawdown_R": 12.79371642558682
+    },
+    {
+      "date": "2026-06-04",
+      "window_days": 60,
+      "drawdown_R": 12.128241355128953
+    },
+    {
+      "date": "2026-06-08",
+      "window_days": 60,
+      "drawdown_R": 12.128241355128953
+    },
+    {
+      "date": "2026-06-09",
+      "window_days": 60,
+      "drawdown_R": 12.128241355128953
+    },
+    {
+      "date": "2026-06-10",
+      "window_days": 60,
+      "drawdown_R": 11.090572883796732
+    },
+    {
+      "date": "2026-06-11",
+      "window_days": 60,
+      "drawdown_R": 10.065640978544744
+    },
+    {
+      "date": "2026-06-12",
+      "window_days": 60,
+      "drawdown_R": 8.431825959650082
+    },
+    {
+      "date": "2026-06-16",
+      "window_days": 60,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-17",
+      "window_days": 60,
+      "drawdown_R": 8.431825959650082
+    },
+    {
+      "date": "2026-06-18",
+      "window_days": 60,
+      "drawdown_R": 8.431825959650082
+    },
+    {
+      "date": "2026-06-19",
+      "window_days": 60,
+      "drawdown_R": 8.431825959650084
+    },
+    {
+      "date": "2026-06-22",
+      "window_days": 60,
+      "drawdown_R": 9.127154789022516
+    },
+    {
+      "date": "2026-06-23",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936743
+    },
+    {
+      "date": "2026-06-24",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-06-25",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-06-26",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-06-29",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-06-30",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-07-01",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-07-03",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-07-07",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936743
+    },
+    {
+      "date": "2026-07-08",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-07-10",
+      "window_days": 60,
+      "drawdown_R": 11.191642885936746
+    },
+    {
+      "date": "2026-07-13",
+      "window_days": 60,
+      "drawdown_R": 13.520416403671431
+    },
+    {
+      "date": "2026-07-15",
+      "window_days": 60,
+      "drawdown_R": 14.565384945952477
+    },
+    {
+      "date": "2026-07-17",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-20",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-21",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-22",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-23",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-24",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-27",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-28",
+      "window_days": 60,
+      "drawdown_R": 17.645720873413612
+    },
+    {
+      "date": "2026-07-29",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-30",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-07-31",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-08-03",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-08-05",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-08-10",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-08-11",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-08-13",
+      "window_days": 60,
+      "drawdown_R": 17.64572087341361
+    },
+    {
+      "date": "2026-08-14",
+      "window_days": 60,
+      "drawdown_R": 17.645720873413612
+    }
+  ]
+}

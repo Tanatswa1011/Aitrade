@@ -1,0 +1,10 @@
+{
+  "fast_qty": 2,
+  "safe_qty": 1,
+  "max_qty": 2,
+  "reject_qty": 3,
+  "unit_risk_usd": 160.0,
+  "daily_stop_frac": 0.35,
+  "formula": "min(strategy_qty_cap, prop_contract_cap, drawdown_based_qty_cap, daily_governor_qty_cap, state_based_qty_cap)",
+  "not_percent_of_50k": true
+}

@@ -1,0 +1,76 @@
+{
+  "NQ->MFFU_eval": {
+    "dd_frac": 0.1,
+    "P(pass)": 0.7235,
+    "median_days": 55.0,
+    "policy": "FIXED",
+    "note": "research only"
+  },
+  "NQ->FN_eval": {
+    "dd_frac": 0.175,
+    "P(pass)": 0.6537,
+    "median_days": 40.0,
+    "policy": "FIXED",
+    "note": "research only"
+  },
+  "NQ_funded_phase50": {
+    "NQ->MFFU_RAPID_EOD_50K": {
+      "P(first)": 0.922,
+      "P(5)": 0.8783333333333333,
+      "P(10)": 0.8253333333333334,
+      "P(survive_1y)": 0.9983333333333333,
+      "E[payout]": 16274.913643287167,
+      "payout_mode": "PARTIAL_SURPLUS_PAYOUT",
+      "reserve_usd": 1500.0
+    },
+    "NQ->FUNDEDNEXT_FLEX_50K": {
+      "P(first)": 0.824,
+      "P(5)": 0.79,
+      "P(10)": 0.7703333333333333,
+      "P(survive_1y)": 0.9996666666666667,
+      "E[payout]": 15450.561202176868,
+      "payout_mode": "PARTIAL_SURPLUS_PAYOUT",
+      "reserve_usd": 1500.0
+    }
+  },
+  "mffu_price": {
+    "status": "REQUIRES_CONFIRMATION",
+    "confirmed_usd": null,
+    "hypothetical_grid_usd": [
+      60.0,
+      80.0,
+      100.0,
+      125.0,
+      150.0
+    ],
+    "note": "MFFU Rapid EOD 50K purchase/promo price is not a confirmed PROP_RULES_V1 field. Hypothetical cost scenarios only."
+  },
+  "fn_price": {
+    "status": "CONFIRMED",
+    "first_5_purchase_price": 69.99,
+    "purchase_6_plus_price": 79.99,
+    "reset_fee": 77.99,
+    "listed_standard_price": 133.99,
+    "note": "Retries are modeled as new purchases, not resets. Reset exists but is not auto-applied."
+  },
+  "caps": {
+    "MFFU_RAPID_EOD_50K": {
+      "value": 3,
+      "status": "CONFIRMED"
+    },
+    "FUNDEDNEXT_FLEX_50K": {
+      "value": null,
+      "status": "REQUIRES_CONFIRMATION",
+      "hypothetical_caps": [
+        1,
+        3,
+        5
+      ]
+    },
+    "copy_trading": {
+      "MFFU": "REQUIRES_CONFIRMATION",
+      "FUNDEDNEXT": "REQUIRES_CONFIRMATION",
+      "note": "Copy trading is REQUIRES_CONFIRMATION. Accounts are independently executed."
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "AITRADE_OPERATING_POLICY_V1",
+  "phase": 52,
+  "execution_default": "DRY_RUN",
+  "broker_execution": false,
+  "note": "Phase 52 locked FundedNext Flex 50K / NQ contract-qty sizing. Not a percent of $50,000. Broker execution remains off.",
+  "prop_execution_policy": "config/aitrade_prop_execution_policy_v1.json",
+  "flags": {
+    "no_martingale": true,
+    "no_revenge_sizing": true,
+    "no_nominal_balance_risk_sizing": true,
+    "no_prohibited_hedging": true,
+    "no_contract_limit_violation": true,
+    "no_prop_rule_violation": true,
+    "force_flat_before_firm_cutoff": true,
+    "internal_daily_stop_enabled": true,
+    "max_consecutive_losses_enabled": true,
+    "max_trades_per_day_enabled": false,
+    "defensive_mode_enabled": true,
+    "consistency_governor_enabled": true,
+    "payout_state_recalculation": true
+  },
+  "numerics_pending_simulation": {
+    "risk_per_trade": {
+      "mode": "PROP_CONTRACT_QTY",
+      "not_percent_of_nominal_balance": true,
+      "fast_qty_mnq": 2,
+      "safe_qty_mnq": 1,
+      "max_qty_mnq": 2,
+      "stop_points": 80.0,
+      "unit_risk_usd": 160.0,
+      "source": "config/aitrade_prop_execution_policy_v1.json"
+    },
+    "internal_daily_stop": {
+      "mode": "FRACTION_REMAINING_DD_SESSION_OPEN",
+      "fraction": 0.35
+    },
+    "max_consecutive_losses": 5,
+    "max_trades_per_day": null,
+    "defensive_mode_risk_scale": 0.5,
+    "consistency_governor_mode": "ADVISORY",
+    "consistency_governor_block": false
+  }
+}

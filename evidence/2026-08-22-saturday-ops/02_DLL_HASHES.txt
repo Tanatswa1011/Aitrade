@@ -1,0 +1,33 @@
+AITRADE Saturday 2026-08-22 DLL / source hashes (read-only)
+captured_utc=2026-08-22T14:21:49.841023+00:00
+
+[repo_cs]
+path=C:\Users\tanam\OneDrive\Desktop\aitrade\ninjascript\AITRADEReadOnlySnapshot.cs
+size=36147
+mtime_utc=2026-08-22T10:38:02.188985+00:00
+mtime_local=2026-08-22T12:38:02.188985+02:00
+mtime_unix=1787395082.1889853
+sha256=eefa412903784b520fa0feefd5c4230bdc093fd941bb1bc9778aa3483b3af8bc
+
+[nt_cs]
+path=C:\Users\tanam\OneDrive\Documents\NinjaTrader 8\bin\Custom\AddOns\AITRADEReadOnlySnapshot.cs
+size=36147
+mtime_utc=2026-08-22T10:38:02.251798+00:00
+mtime_local=2026-08-22T12:38:02.251798+02:00
+mtime_unix=1787395082.2517984
+sha256=eefa412903784b520fa0feefd5c4230bdc093fd941bb1bc9778aa3483b3af8bc
+
+[dll]
+path=C:\Users\tanam\OneDrive\Documents\NinjaTrader 8\bin\Custom\NinjaTrader.Custom.dll
+size=1306112
+mtime_utc=2026-08-22T12:03:22.050292+00:00
+mtime_local=2026-08-22T14:03:22.050292+02:00
+mtime_unix=1787400202.0502925
+sha256=1cc5f74ec5cd9c48b3e08fb10f3200f2ea048daab7a718f4fb2b5855b771912d
+
+repo_cs_sha256 == nt_cs_sha256: True
+dll_mtime > repo_cs_mtime: True
+dll_mtime > nt_cs_mtime: True
+dll_mtime_unix_unchanged_through_cold_restart=1787400202.0502925
+frozen_nq_hash=935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a
+nt_process={"Id": 15376, "StartTime": "/Date(1787405934557)/", "MainWindowTitle": "Control Center - Accounts"}

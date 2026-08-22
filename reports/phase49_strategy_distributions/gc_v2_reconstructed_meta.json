@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "source": "data/databento/GC/stitched/databento_GC_stitched_5m.jsonl",
+  "method": "run_frozen_v2_on_bars persist=False + 2R path resolve on 5m",
+  "frozen": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "paper_journal_written": false,
+  "n_engine_rows": 631,
+  "n_triggered": 458,
+  "n_resolved_engine": 271,
+  "n_sim_trades": 430,
+  "skipped_untriggered": 173,
+  "skipped_ambiguous": 28,
+  "frozen_config_hash": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+  "bar_count": 71833,
+  "cost_note": "1 tick adverse entry already in fill; minus 1 tick exit + 0.04 commission points"
+}

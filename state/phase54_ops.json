@@ -1,0 +1,44 @@
+{
+  "engine": "STOPPED",
+  "entries_paused": true,
+  "order_execution": "DISABLED",
+  "mode": "DRY_RUN",
+  "PROP_EXECUTION": false,
+  "started_at": "2026-08-21T03:16:30.556766+00:00",
+  "heartbeat_ts": "2026-08-21T03:16:30.593175+00:00",
+  "last_safe_start": {
+    "checks": {
+      "fresh_market_data": true,
+      "fundednext_authenticated": true,
+      "correct_account_id": true,
+      "equity_mll_available": true,
+      "broker_positions_reconciled": true,
+      "prop_rules_loaded": true,
+      "frozen_nq_hash_verified": true,
+      "no_stale_orders": true,
+      "risk_limits_valid": true,
+      "news_gate_valid": true,
+      "execution_permission_checked": true
+    },
+    "display": {
+      "fresh_market_data": "PASS",
+      "fundednext_authenticated": "PASS",
+      "correct_account_id": "PASS",
+      "equity_mll_available": "PASS",
+      "broker_positions_reconciled": "PASS",
+      "prop_rules_loaded": "PASS",
+      "frozen_nq_hash_verified": "PASS",
+      "no_stale_orders": "PASS",
+      "risk_limits_valid": "PASS",
+      "news_gate_valid": "PASS",
+      "execution_permission_checked": "PASS"
+    },
+    "ok_to_run_engine": true,
+    "order_execution": "DISABLED",
+    "execution_permission_value": "DISABLED",
+    "safe_start_result": "ENGINE_MAY_RUN",
+    "market_data_status": "LIVE",
+    "PROP_EXECUTION": false,
+    "pause": true
+  }
+}

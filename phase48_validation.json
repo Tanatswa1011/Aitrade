@@ -1,0 +1,103 @@
+{
+  "phase": 48,
+  "verdict": "PROP_RULE_ENGINE_V1_READY",
+  "execution": "DRY_RUN",
+  "broker_execution": false,
+  "schema": "JSON PROP_RULES_V1",
+  "rules_path": "config/PROP_RULES_V1.json",
+  "primary_profiles": [
+    "MFFU_RAPID_EOD_50K",
+    "FUNDEDNEXT_FLEX_50K"
+  ],
+  "alternative_research_profiles": [
+    "MFFU_RAPID_STANDARD_50K"
+  ],
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen": {
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "requires_confirmation": [
+    "cme_product_limit_pct",
+    "profiles.MFFU_RAPID_EOD_50K.evaluation.inactivity_unit",
+    "profiles.MFFU_RAPID_EOD_50K.evaluation.mll_lock_level",
+    "profiles.MFFU_RAPID_EOD_50K.evaluation.overnight_holding",
+    "profiles.MFFU_RAPID_EOD_50K.evaluation.weekend_holding",
+    "profiles.MFFU_RAPID_EOD_50K.evaluation.mandatory_flat_time",
+    "profiles.MFFU_RAPID_EOD_50K.evaluation.trading_resume_time",
+    "profiles.MFFU_RAPID_EOD_50K.funded.inactivity_unit",
+    "profiles.MFFU_RAPID_EOD_50K.funded.overnight_holding",
+    "profiles.MFFU_RAPID_EOD_50K.funded.weekend_holding",
+    "profiles.MFFU_RAPID_EOD_50K.funded.mandatory_flat_time",
+    "profiles.MFFU_RAPID_EOD_50K.funded.trading_resume_time",
+    "profiles.MFFU_RAPID_EOD_50K.live.tier_1_news_trading",
+    "profiles.MFFU_RAPID_EOD_50K.live.consistency_rule",
+    "profiles.MFFU_RAPID_EOD_50K.live.live_transition_trigger",
+    "profiles.MFFU_RAPID_EOD_50K.general_compliance.supported_markets_stated",
+    "profiles.MFFU_RAPID_EOD_50K.general_compliance.prohibit_trading_within_2_percent_of_CME_price_limit",
+    "profiles.MFFU_RAPID_EOD_50K.general_compliance.automation_allowed",
+    "profiles.MFFU_RAPID_EOD_50K.general_compliance.copy_trading",
+    "profiles.FUNDEDNEXT_FLEX_50K.general_compliance.cme_product_limit_pct",
+    "profiles.FUNDEDNEXT_FLEX_50K.general_compliance.automation_allowed",
+    "profiles.FUNDEDNEXT_FLEX_50K.general_compliance.copy_trading",
+    "profiles.FUNDEDNEXT_FLEX_50K.payout.payout_frequency",
+    "profiles.FUNDEDNEXT_FLEX_50K.payout.minimum_payout",
+    "profiles.FUNDEDNEXT_FLEX_50K.payout.first_payout_required_buffer",
+    "profiles.FUNDEDNEXT_FLEX_50K.payout.subsequent_payout_profit_required",
+    "profiles.MFFU_RAPID_STANDARD_50K.evaluation",
+    "profiles.MFFU_RAPID_STANDARD_50K.funded",
+    "profiles.MFFU_RAPID_STANDARD_50K.live",
+    "profiles.MFFU_RAPID_STANDARD_50K.general_compliance",
+    "profiles.MFFU_RAPID_STANDARD_50K.payout"
+  ],
+  "rejection_codes": [
+    "ALLOW",
+    "BLOCK_NEWS",
+    "BLOCK_CONTRACT_LIMIT",
+    "BLOCK_DRAWDOWN",
+    "BLOCK_DAILY_LOSS",
+    "BLOCK_CONSISTENCY_GOVERNOR",
+    "BLOCK_TRADING_HOURS",
+    "BLOCK_OVERNIGHT",
+    "BLOCK_PRICE_LIMIT_ZONE",
+    "BLOCK_INACTIVITY",
+    "BLOCK_ACCOUNT_LOCKOUT",
+    "BLOCK_UNKNOWN_RULE"
+  ],
+  "account_states": {
+    "evaluation": [
+      "EVAL_NORMAL",
+      "EVAL_DEFENSIVE",
+      "EVAL_TARGET_APPROACH",
+      "EVAL_LOCKOUT",
+      "PASSED"
+    ],
+    "funded": [
+      "FUNDED_BUFFER_BUILD",
+      "FUNDED_NORMAL",
+      "FUNDED_PAYOUT_APPROACH",
+      "FUNDED_DEFENSIVE",
+      "FUNDED_LOCKOUT"
+    ],
+    "status": "SCAFFOLD_READY_NO_RISK_PERCENTS"
+  },
+  "tests": {
+    "ran": 27,
+    "failures": 0,
+    "returncode": 0,
+    "tail": "_at_50100) ... ok\ntest_mffu_funded_mll_trails_eod_only_and_never_down (tests_phase48.MllTests.test_mffu_funded_mll_trails_eod_only_and_never_down) ... ok\ntest_mffu_mll_stops_at_plus_100 (tests_phase48.MllTests.test_mffu_mll_stops_at_plus_100) ... ok\ntest_fundednext_allows_news_challenge_and_funded (tests_phase48.NewsPolicyTests.test_fundednext_allows_news_challenge_and_funded) ... ok\ntest_mffu_eval_allows_t1_news (tests_phase48.NewsPolicyTests.test_mffu_eval_allows_t1_news) ... ok\ntest_mffu_funded_rejects_t1_news (tests_phase48.NewsPolicyTests.test_mffu_funded_rejects_t1_news) ... ok\ntest_alternative_rapid_standard_fails_safe (tests_phase48.UnknownRuleAndPriceLimitTests.test_alternative_rapid_standard_fails_safe) ... ok\ntest_fundednext_price_limit_zone_blocks (tests_phase48.UnknownRuleAndPriceLimitTests.test_fundednext_price_limit_zone_blocks) ... ok\ntest_mffu_price_limit_unstated_fails_safe_when_in_zone (tests_phase48.UnknownRuleAndPriceLimitTests.test_mffu_price_limit_unstated_fails_safe_when_in_zone) ... ok\ntest_risk_manager_does_not_choose_size (tests_phase48.UnknownRuleAndPriceLimitTests.test_risk_manager_does_not_choose_size) ... ok\ntest_rules_document_primary_profiles (tests_phase48.UnknownRuleAndPriceLimitTests.test_rules_document_primary_profiles) ... ok\ntest_unknown_profile_fails_safe (tests_phase48.UnknownRuleAndPriceLimitTests.test_unknown_profile_fails_safe) ... ok\n\n----------------------------------------------------------------------\nRan 27 tests in 0.005s\n\nOK\n"
+  },
+  "operating_policy": "config/aitrade_operating_policy_v1.json",
+  "risk_manager": "SIZE_PENDING_SIMULATION"
+}

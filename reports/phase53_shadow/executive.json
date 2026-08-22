@@ -1,0 +1,16 @@
+{
+  "verdict": "READY_TO_PURCHASE_EVALUATION",
+  "period": "2026-06-30 \u2192 2026-08-14",
+  "n_signals": 117,
+  "n_accepted": 64,
+  "n_rejected": 53,
+  "n_fills": 64,
+  "health": "WATCH",
+  "equity": 50435.79999999985,
+  "remaining_dd": 335.7999999998501,
+  "state": "EVAL_PROTECTED",
+  "target_progress": 0.17431999999994005,
+  "daily_stop_count": 0,
+  "DRY_RUN": true,
+  "orders_transmitted": 0
+}

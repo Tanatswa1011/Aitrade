@@ -1,0 +1,11 @@
+{
+  "min_sample": 20,
+  "rolling_window": 30,
+  "hard": [
+    "E[R]<0",
+    "WR-12pp",
+    "streak 5",
+    "WR collapse 18pp"
+  ],
+  "hysteresis": "FAST does not resume during the evaluation"
+}

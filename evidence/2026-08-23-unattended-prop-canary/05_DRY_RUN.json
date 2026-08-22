@@ -1,0 +1,20 @@
+{
+  "captured_at": "2026-08-22T15:04:00+02:00",
+  "market_note": "CME closed; fixture dry-run only; no OIF write; no real FundedNext order",
+  "PROP_EXECUTION": false,
+  "dry_verdict": "UNATTENDED_DRY_RUN_PASS",
+  "transmitted": false,
+  "second_blocked": true,
+  "account": "FNFTCHTANATSWAPHILMU92044",
+  "qty": 1,
+  "entry_line_prefix": "PLACE;FNFTCHTANATSWAPHILMU92044;MNQ SEP26;BUY;1;MARKET;0;0;DAY;;AITRADE_UNATTEND",
+  "sim101": false,
+  "protection_verdict": "BROKER_PROTECTIVE_ORDER_SURVIVAL_PASS",
+  "protection_mechanism": "OIF_FILL_THEN_OCO_CHILDREN",
+  "python_held_stop": false,
+  "stop_account": "FNFTCHTANATSWAPHILMU92044",
+  "crash_python_open_cancel_stop": false,
+  "crash_desk_open_cancel_stop": false,
+  "crash_telegram_cancel_stop": false,
+  "sim101_watchdog_flatten": null
+}

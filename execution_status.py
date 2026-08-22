@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
@@ -14,6 +15,9 @@ NQ_FROZEN_HASH = "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a121
 
 ALLOWED_MODES = frozenset({"DRY_RUN", "SIM_ONLY"})
 BLOCKED_MODES = frozenset({"PROP_EVALUATION", "FUNDED", "LIVE_PERSONAL"})
+
+# Phase 55A: explicit opt-in for Sim101 ATI submit. Never enables PROP_EXECUTION.
+SIM_ONLY_ENV = "AITRADE_SIM_ONLY_EXECUTION"
 
 
 def utc_now_iso() -> str:
@@ -78,11 +82,34 @@ def is_execution_paused(path: Path = PAUSE_PATH) -> bool:
     return bool(doc.get("paused")) or doc.get("execution_status") == "PAUSED"
 
 
+def sim_only_execution_armed() -> bool:
+    """True only when the operator explicitly opts into SIM_ONLY Sim101 ATI.
+
+    Does not lift PROP_EVALUATION / FUNDED / LIVE_PERSONAL. Does not set PROP_EXECUTION.
+    """
+    return os.environ.get(SIM_ONLY_ENV, "").strip().lower() in ("1", "true", "yes", "on")
+
+
+def assert_sim_only_submit_allowed(*, prop_execution: bool = False) -> None:
+    """Permit actual Sim101 OIF only when SIM_ONLY is armed. Prop remains blocked."""
+    if prop_execution:
+        raise PermissionError("PROP_EXECUTION_FORBIDDEN_PHASE55A")
+    if not sim_only_execution_armed():
+        raise PermissionError("SIM_ONLY_NOT_ARMED")
+
+
 def assert_execution_allowed(*, requested_mode: str, sim_enable: bool = False) -> None:
-    """Fail closed when project is paused or mode is blocked."""
+    """Fail closed when project is paused or mode is blocked.
+
+    Phase 55A: SIM_ONLY + sim_enable is allowed while the project remains paused for
+    PROP_EVALUATION, but only when ``AITRADE_SIM_ONLY_EXECUTION`` is set.
+    """
     mode = (requested_mode or "").upper()
     if mode in BLOCKED_MODES:
         raise PermissionError(f"EXECUTION_MODE_BLOCKED:{mode}")
+    if mode == "SIM_ONLY" and sim_enable:
+        assert_sim_only_submit_allowed()
+        return
     if is_execution_paused():
         if sim_enable or mode not in ALLOWED_MODES:
             raise PermissionError("PROJECT_PAUSED")

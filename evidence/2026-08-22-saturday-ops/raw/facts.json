@@ -1,0 +1,255 @@
+{
+  "captured_utc": "2026-08-22T14:21:49.841023+00:00",
+  "files": {
+    "repo_cs": {
+      "path": "C:\\Users\\tanam\\OneDrive\\Desktop\\aitrade\\ninjascript\\AITRADEReadOnlySnapshot.cs",
+      "exists": true,
+      "size": 36147,
+      "mtime_unix": 1787395082.1889853,
+      "mtime_utc": "2026-08-22T10:38:02.188985+00:00",
+      "mtime_local": "2026-08-22T12:38:02.188985+02:00",
+      "sha256": "eefa412903784b520fa0feefd5c4230bdc093fd941bb1bc9778aa3483b3af8bc"
+    },
+    "nt_cs": {
+      "path": "C:\\Users\\tanam\\OneDrive\\Documents\\NinjaTrader 8\\bin\\Custom\\AddOns\\AITRADEReadOnlySnapshot.cs",
+      "exists": true,
+      "size": 36147,
+      "mtime_unix": 1787395082.2517984,
+      "mtime_utc": "2026-08-22T10:38:02.251798+00:00",
+      "mtime_local": "2026-08-22T12:38:02.251798+02:00",
+      "sha256": "eefa412903784b520fa0feefd5c4230bdc093fd941bb1bc9778aa3483b3af8bc"
+    },
+    "dll": {
+      "path": "C:\\Users\\tanam\\OneDrive\\Documents\\NinjaTrader 8\\bin\\Custom\\NinjaTrader.Custom.dll",
+      "exists": true,
+      "size": 1306112,
+      "mtime_unix": 1787400202.0502925,
+      "mtime_utc": "2026-08-22T12:03:22.050292+00:00",
+      "mtime_local": "2026-08-22T14:03:22.050292+02:00",
+      "sha256": "1cc5f74ec5cd9c48b3e08fb10f3200f2ea048daab7a718f4fb2b5855b771912d"
+    }
+  },
+  "nt_process": {
+    "Id": 15376,
+    "StartTime": "/Date(1787405934557)/",
+    "MainWindowTitle": "Control Center - Accounts"
+  },
+  "frozen_nq_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+  "PROP_EXECUTION_module": false,
+  "sim_only_armed": false,
+  "AITRADE_SIM_ONLY_EXECUTION": null,
+  "qty_cap": 1,
+  "parsed_sim101": {
+    "present": true,
+    "known": true,
+    "account": "Sim101",
+    "instrument": "MNQ 09-26",
+    "quantity": 0,
+    "side": "FLAT",
+    "market_position": "Flat",
+    "average_price": null,
+    "flat": true,
+    "timestamp": "2026-08-22T14:21:45.5077837Z",
+    "source": "NINJATRADER_ACCOUNT_POSITION",
+    "stale": false,
+    "age_sec": 0.2778770923614502,
+    "read_only": true
+  },
+  "recovery_from_sim101": "FLAT_SAFE",
+  "fundednext_must_not_substitute": {
+    "present": true,
+    "known": true,
+    "account": "Sim101",
+    "instrument": "MNQ 09-26",
+    "quantity": 0,
+    "side": "FLAT",
+    "market_position": "Flat",
+    "average_price": null,
+    "flat": true,
+    "timestamp": "2026-08-22T14:21:45.5077837Z",
+    "source": "NINJATRADER_ACCOUNT_POSITION",
+    "stale": false,
+    "age_sec": 0.2778770923614502,
+    "read_only": true,
+    "fundednext_position_ignored": true,
+    "fundednext_top_level_position": {
+      "instrument": "MNQ 09-26",
+      "side": "FLAT",
+      "market_position": "FLAT",
+      "quantity": 0,
+      "average_price": null
+    }
+  },
+  "oif_outgoing": [],
+  "incoming_files": [],
+  "orders_transmitted": 0,
+  "snapshot_error": null,
+  "snapshot": {
+    "engine": "STOPPED",
+    "PROP_EXECUTION": false,
+    "execution_arm": "DISARMED",
+    "fundednext_connection": "CONNECTED",
+    "fundednext_permission": "READ_ONLY",
+    "market_data_status": "DISCONNECTED",
+    "market_data_quality": "UNKNOWN",
+    "market_age_seconds": 131915.86453199387,
+    "sim101": {
+      "present": true,
+      "known": true,
+      "account": "Sim101",
+      "instrument": "MNQ 09-26",
+      "quantity": 0,
+      "side": "FLAT",
+      "market_position": "Flat",
+      "average_price": null,
+      "flat": true,
+      "timestamp": "2026-08-22T14:21:48.5148713Z",
+      "source": "NINJATRADER_ACCOUNT_POSITION",
+      "stale": false,
+      "age_sec": 0.8190960884094238,
+      "read_only": true,
+      "fundednext_position_ignored": true,
+      "fundednext_top_level_position": {
+        "instrument": "MNQ 09-26",
+        "side": "FLAT",
+        "market_position": "FLAT",
+        "quantity": 0,
+        "average_price": null
+      }
+    },
+    "sim101_recovery": "FLAT_SAFE",
+    "checks": {
+      "checks": {
+        "fresh_market_data": false,
+        "fundednext_authenticated": true,
+        "correct_account_id": true,
+        "equity_mll_available": true,
+        "broker_positions_reconciled": true,
+        "prop_rules_loaded": true,
+        "frozen_nq_hash_verified": true,
+        "no_stale_orders": true,
+        "risk_limits_valid": true,
+        "news_gate_valid": true,
+        "execution_permission_checked": true
+      },
+      "display": {
+        "fresh_market_data": "FAIL",
+        "fundednext_authenticated": "PASS",
+        "correct_account_id": "PASS",
+        "equity_mll_available": "PASS",
+        "broker_positions_reconciled": "PASS",
+        "prop_rules_loaded": "PASS",
+        "frozen_nq_hash_verified": "PASS",
+        "no_stale_orders": "PASS",
+        "risk_limits_valid": "PASS",
+        "news_gate_valid": "PASS",
+        "execution_permission_checked": "PASS"
+      },
+      "ok_to_run_engine": false,
+      "order_execution": "DISABLED",
+      "execution_permission_value": "DISABLED",
+      "safe_start_result": "SAFE_START_FAILED",
+      "market_data_status": "DISCONNECTED",
+      "PROP_EXECUTION": false,
+      "pause": true
+    },
+    "decision": {
+      "signal": {
+        "label": "NQ DVP \u00b7 NONE",
+        "direction": "NONE",
+        "detail": "no live DVP signal \u00b7 none",
+        "source": "none",
+        "kind": "NONE"
+      },
+      "last_live_signal": null,
+      "last_shadow_signal": {
+        "direction": "SHORT",
+        "intended_entry": 30049.25,
+        "stop": 30129.25,
+        "target": 29999.25,
+        "trading_date": "2026-08-14",
+        "ts": "2026-08-14T10:45:00-05:00",
+        "accepted": false,
+        "quantity_allowed": 0,
+        "rejection_reason": "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+        "account_state": "EVAL_PROTECTED",
+        "source": "phase53_shadow"
+      },
+      "signal_source": "NONE",
+      "policy": {
+        "label": "NO SIGNAL \u00b7 FAST",
+        "verdict": "NO_SIGNAL",
+        "qty": 0,
+        "lane": "FAST",
+        "code": "NO_SIGNAL",
+        "detail": "idle",
+        "live_recheck": {
+          "verdict": "NO_SIGNAL",
+          "code": "NO_SIGNAL",
+          "allowed_qty": 0,
+          "lane": "FAST",
+          "calendar_status": "OK",
+          "reasons": [
+            "no_signal"
+          ]
+        }
+      },
+      "execution": {
+        "label": "DISARMED",
+        "verdict": "BLOCKED",
+        "detail": "PROP_EXECUTION=false",
+        "arm": "DISARMED"
+      },
+      "heartbeat": {
+        "label": "131916.1s \u00b7 DISCONNECTED",
+        "detail": "MNQ 09-26 \u00b7 NINJATRADER_READ_ONLY",
+        "age_sec": 131916.10796952248,
+        "status": "DISCONNECTED",
+        "source": "NINJATRADER_READ_ONLY",
+        "instrument": "MNQ 09-26",
+        "last_update": "2026-08-21T01:43:13.276000+00:00"
+      }
+    },
+    "last_shadow_signal": {
+      "direction": "SHORT",
+      "intended_entry": 30049.25,
+      "stop": 30129.25,
+      "target": 29999.25,
+      "trading_date": "2026-08-14",
+      "ts": "2026-08-14T10:45:00-05:00",
+      "accepted": false,
+      "quantity_allowed": 0,
+      "rejection_reason": "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "account_state": "EVAL_PROTECTED",
+      "source": "phase53_shadow"
+    },
+    "telemetry_dump": {
+      "timestamp": "2026-08-22T14:21:48.5148713Z",
+      "age_sec": 0.8185687065124512,
+      "alive": true,
+      "nq_bars_1m_status": "WAITING",
+      "nq_bars_1m_count": 0,
+      "last_nq_bar_ts": null
+    },
+    "hashes": {
+      "ok": true,
+      "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+      "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+      "nq_expected": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+      "gc_expected": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+      "nq_match": true,
+      "gc_match": true
+    },
+    "incoming_oif": [],
+    "notifications": {
+      "enabled": true,
+      "configured": true,
+      "delivery_status": "HEALTHY",
+      "last_event_type": "RECOVERY_FLAT_SAFE",
+      "last_success_ts": "2026-08-22T14:19:03.262023+00:00",
+      "last_failure_reason": null,
+      "channel": "TELEGRAM",
+      "backend": "APPRISE"
+    }
+  }
+}

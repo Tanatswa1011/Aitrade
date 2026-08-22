@@ -1,0 +1,6 @@
+{
+  "equation": "daily_stop_threshold = 0.35 * remaining_dd_at_session_open; trigger if session_open_equity - marked_equity >= threshold",
+  "includes_unrealized": true,
+  "flatten_on_trigger": false,
+  "session_reset": "17:00 America/Chicago"
+}

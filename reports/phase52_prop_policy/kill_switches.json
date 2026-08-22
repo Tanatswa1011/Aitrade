@@ -1,0 +1,108 @@
+{
+  "PROP_RULE_DATA_MISSING": {
+    "actions": [
+      "block_new_orders",
+      "pause_account",
+      "operator_review"
+    ],
+    "flatten": false
+  },
+  "ACCOUNT_EQUITY_UNKNOWN": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "pause_account",
+      "operator_review"
+    ],
+    "flatten": true
+  },
+  "DRAW_DOWN_CALCULATION_INVALID": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "pause_account"
+    ],
+    "flatten": true
+  },
+  "POSITION_STATE_MISMATCH": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "pause_account",
+      "operator_review"
+    ],
+    "flatten": true
+  },
+  "ORDER_STATE_MISMATCH": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "pause_strategy",
+      "operator_review"
+    ],
+    "flatten": false
+  },
+  "STRATEGY_HASH_MISMATCH": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "pause_account",
+      "operator_review"
+    ],
+    "flatten": true
+  },
+  "LIVE_DATA_STALE": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "pause_strategy"
+    ],
+    "flatten": false
+  },
+  "BROKER_CONNECTION_UNSTABLE": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "pause_account",
+      "operator_review"
+    ],
+    "flatten": false
+  },
+  "DUPLICATE_ORDER_DETECTED": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries"
+    ],
+    "flatten": false
+  },
+  "MAX_POSITION_EXCEEDED": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries"
+    ],
+    "flatten": true
+  },
+  "NEWS_BLACKOUT_VIOLATION_RISK": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries"
+    ],
+    "flatten": false
+  },
+  "DAILY_STOP_TRIGGERED": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries"
+    ],
+    "flatten": false
+  },
+  "ACCOUNT_BREACH_IMMINENT": {
+    "actions": [
+      "block_new_orders",
+      "cancel_entries",
+      "flatten_positions",
+      "pause_account"
+    ],
+    "flatten": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "status": "ARCHITECTURE_ONLY",
+  "simultaneous_multi_strategy_simulated": false,
+  "reason": "Single-strategy / single-account first. Chronological NQ/ES overlap exists on the 2020\u20132026 stitch, but GC freeze-window sample is not aligned to that span.",
+  "planned_later": [
+    "account_level_risk_budget",
+    "strategy_level_risk_budget",
+    "correlated_exposure",
+    "same_underlying_exposure"
+  ],
+  "not_optimized": true
+}

@@ -6,10 +6,11 @@ import time
 from typing import Any, Optional
 
 import nt_ati as nt
+from execution_instrument import EXEC_INSTRUMENT_NT
 from nq_dvp_freeze import load_frozen_document, load_frozen_strategy_config
 
 EXEC_ACCOUNT = "Sim101"
-EXEC_INSTRUMENT = "MNQ SEP26"
+EXEC_INSTRUMENT = EXEC_INSTRUMENT_NT
 SIGNAL_ROOT = "NQ"
 OWNED_PREFIX = "AITRADE_DVP_"
 

@@ -1,0 +1,14 @@
+{
+  "schema_version": "AITRADE_PHASE53_FN_AUTOMATION_CONFIRMATION_V1",
+  "profile_id": "FUNDEDNEXT_FLEX_50K",
+  "prop_firm": "FUNDEDNEXT",
+  "product": "FLEX_50K",
+  "automation_allowed": true,
+  "source": "operator_external_confirmation",
+  "snapshot_date": "2026-08-20",
+  "scope": "FundedNext Futures automation/bot execution allowed, subject to prohibited-strategy restrictions",
+  "does_not_enable_aitrade_broker_execution": true,
+  "broker_execution": false,
+  "execution_default": "DRY_RUN",
+  "note": "Phase 53 evidence only. Does not purchase an evaluation. Does not transmit orders. Does not mutate Phase 52 locked policy numerics."
+}

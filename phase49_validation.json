@@ -1,0 +1,615 @@
+{
+  "phase": 49,
+  "verdict": "PHASE49_RISK_RESEARCH_READY",
+  "execution_default": "DRY_RUN",
+  "broker_execution": false,
+  "dry_run": true,
+  "n_paths_eval": 10000,
+  "n_paths_funded": 10000,
+  "n_paths_policy_search": 1500,
+  "n_paths_funded_policy_search": 400,
+  "frozen_before": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen_after": {
+    "ok": true,
+    "reasons": [],
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+  },
+  "frozen": {
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+    "paper_journals_empty": true
+  },
+  "data_sources": {
+    "GC": {
+      "source_path": "data/databento/GC/stitched/databento_GC_stitched_5m.jsonl",
+      "method": "run_frozen_v2_on_bars persist=False + 2R path resolve on 5m",
+      "number_of_trades": 430,
+      "date_range": [
+        "2025-08-04",
+        "2026-08-14"
+      ],
+      "missing_warnings": [
+        "gross_pnl USD at account size is UNAVAILABLE \u2014 R and 1-micro point dollars only",
+        "T1 news flags not applied to simulation paths (historical trades are not news-labeled except phase46 news_blackout skips)",
+        "GC sample is the frozen 5m stitch window (~2025-08 to 2026-08), not the 2020\u20132026 v0 continuous used for NQ/ES",
+        "GC realized R uses frozen 2R target vs stop vs session flatten on 5m; not the paper journal"
+      ],
+      "fields": {
+        "entry_time": "available",
+        "exit_time": "available",
+        "gross_pnl": "UNAVAILABLE",
+        "net_pnl": "1_micro_usd_from_points",
+        "pnl_R": "available",
+        "win_loss": "derived_from_r_multiple",
+        "holding_time": "available",
+        "MAE": "available",
+        "MFE": "available",
+        "fees_slippage": "1_TICK_ADVERSE_ENTRY + 1_TICK_EXIT + 0.04pt_commission (family_port GC model)",
+        "session_day_grouping": "trading_date"
+      }
+    },
+    "NQ": {
+      "source_path": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase46_nq_dvp_frozen_proxy.csv",
+      "method": "phase46 frozen-rule DVP replay CSV (not paper journal)",
+      "number_of_trades": 5000,
+      "date_range": [
+        "2020-01-02",
+        "2025-10-21"
+      ],
+      "missing_warnings": [
+        "gross_pnl USD at account size is UNAVAILABLE \u2014 R and 1-micro point dollars only",
+        "T1 news flags not applied to simulation paths (historical trades are not news-labeled except phase46 news_blackout skips)",
+        "NQ: MAE/MFE columns empty in phase46 CSV",
+        "NQ: hold_sec empty in phase46 CSV"
+      ],
+      "fields": {
+        "entry_time": "available",
+        "exit_time": "available",
+        "gross_pnl": "UNAVAILABLE",
+        "net_pnl": "1_micro_usd_from_points",
+        "pnl_R": "available",
+        "win_loss": "derived_from_r_multiple",
+        "holding_time": "UNAVAILABLE",
+        "MAE": "UNAVAILABLE",
+        "MFE": "UNAVAILABLE",
+        "fees_slippage": "phase46: 2*1tick + 0.20pt commission already in points/r_multiple",
+        "session_day_grouping": "trading_date"
+      }
+    },
+    "ES": {
+      "source_path": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase46_es_dvp.csv",
+      "method": "phase46 ES DVP port CSV; locked candidate Phase 47; not frozen",
+      "number_of_trades": 5574,
+      "date_range": [
+        "2020-01-02",
+        "2026-08-14"
+      ],
+      "missing_warnings": [
+        "gross_pnl USD at account size is UNAVAILABLE \u2014 R and 1-micro point dollars only",
+        "T1 news flags not applied to simulation paths (historical trades are not news-labeled except phase46 news_blackout skips)",
+        "ES: MAE/MFE columns empty in phase46 CSV",
+        "ES: hold_sec empty in phase46 CSV",
+        "ES is LOCKED_FORWARD_VALIDATION_CANDIDATE \u2014 not frozen, not in strategy_frozen/"
+      ],
+      "fields": {
+        "entry_time": "available",
+        "exit_time": "available",
+        "gross_pnl": "UNAVAILABLE",
+        "net_pnl": "1_micro_usd_from_points",
+        "pnl_R": "available",
+        "win_loss": "derived_from_r_multiple",
+        "holding_time": "UNAVAILABLE",
+        "MAE": "UNAVAILABLE",
+        "MFE": "UNAVAILABLE",
+        "fees_slippage": "phase46: 2*1tick + 0.08pt commission already in points/r_multiple",
+        "session_day_grouping": "trading_date"
+      }
+    }
+  },
+  "distributions": {
+    "GC": {
+      "book": "GC",
+      "number_of_trades": 430,
+      "date_range": [
+        "2025-08-04",
+        "2026-08-14"
+      ],
+      "n_trading_days": 209,
+      "win_rate": 0.37906976744186044,
+      "average_win_R": 1.7109880167773999,
+      "average_loss_R": -1.008751261584268,
+      "median_win_R": 1.9651063968707778,
+      "median_loss_R": -1.0264851731835194,
+      "expectancy_R": 0.02221967416678278,
+      "profit_factor": 1.0354740512743115,
+      "trades_per_day": 2.0574162679425836,
+      "trades_per_week": 8.026666666666667,
+      "trades_per_month": 34.901093333333336,
+      "max_consecutive_wins": 5,
+      "max_consecutive_losses": 10,
+      "90th_percentile_losing_streak": 5.0,
+      "95th_percentile_losing_streak": 6.0,
+      "max_historical_drawdown_R": 19.485221463586026,
+      "average_daily_R": 0.04571511909912247,
+      "standard_deviation_daily_R": 1.846805018963307,
+      "best_day_R": 6.011760878780307,
+      "worst_day_R": -4.131237186209882,
+      "best_day_as_percent_of_total_profit": 0.021555947920044748,
+      "recovery_factor": 0.49034392088239626,
+      "total_R": 9.554459891716595,
+      "n_wins": 163,
+      "n_losses": 267,
+      "n_scratches": 0
+    },
+    "NQ": {
+      "book": "NQ",
+      "number_of_trades": 5000,
+      "date_range": [
+        "2020-01-02",
+        "2025-10-21"
+      ],
+      "n_trading_days": 1484,
+      "win_rate": 0.663,
+      "average_win_R": 0.5164347662141779,
+      "average_loss_R": -0.8242117952522255,
+      "median_win_R": 0.49124999999999996,
+      "median_loss_R": -1.00875,
+      "expectancy_R": 0.06463687499999997,
+      "profit_factor": 1.232708166916058,
+      "trades_per_day": 3.3692722371967654,
+      "trades_per_week": 16.51722510618216,
+      "trades_per_month": 71.81925436526664,
+      "max_consecutive_wins": 25,
+      "max_consecutive_losses": 14,
+      "90th_percentile_losing_streak": 4.0,
+      "95th_percentile_losing_streak": 5.0,
+      "max_historical_drawdown_R": 28.053124999997067,
+      "average_daily_R": 0.2177792284366576,
+      "standard_deviation_daily_R": 1.5948440569913138,
+      "best_day_R": 2.465,
+      "worst_day_R": -2.0175,
+      "best_day_as_percent_of_total_profit": 0.0014398522180076446,
+      "recovery_factor": 11.520441127326585,
+      "total_R": 323.1843749999998,
+      "n_wins": 3315,
+      "n_losses": 1685,
+      "n_scratches": 0
+    },
+    "ES": {
+      "book": "ES",
+      "number_of_trades": 5574,
+      "date_range": [
+        "2020-01-02",
+        "2026-08-14"
+      ],
+      "n_trading_days": 1674,
+      "win_rate": 0.6498026551847865,
+      "average_win_R": 0.49702420393889196,
+      "average_loss_R": -0.8378204690346084,
+      "median_win_R": 0.4677777777777778,
+      "median_loss_R": -1.0322222222222222,
+      "expectancy_R": 0.029565143722840182,
+      "profit_factor": 1.1007665011417347,
+      "trades_per_day": 3.3297491039426523,
+      "trades_per_week": 16.149834437086092,
+      "trades_per_month": 70.22178725165563,
+      "max_consecutive_wins": 20,
+      "max_consecutive_losses": 15,
+      "90th_percentile_losing_streak": 4.0,
+      "95th_percentile_losing_streak": 5.0,
+      "max_historical_drawdown_R": 49.99055555555591,
+      "average_daily_R": 0.09844451081906283,
+      "standard_deviation_daily_R": 1.5679389071704053,
+      "best_day_R": 2.371111111111111,
+      "worst_day_R": -2.0644444444444443,
+      "best_day_as_percent_of_total_profit": 0.0013171217495129457,
+      "recovery_factor": 3.2965449029260863,
+      "total_R": 164.79611111111117,
+      "n_wins": 3622,
+      "n_losses": 1952,
+      "n_scratches": 0
+    }
+  },
+  "prop_profile_unsuitable": {
+    "GC->MFFU_RAPID_EOD_50K": {
+      "evaluation": null,
+      "funded": "PROP_PROFILE_UNSUITABLE"
+    },
+    "GC->FUNDEDNEXT_FLEX_50K": {
+      "evaluation": null,
+      "funded": "PROP_PROFILE_UNSUITABLE"
+    },
+    "NQ->MFFU_RAPID_EOD_50K": {
+      "evaluation": null,
+      "funded": "PROP_PROFILE_UNSUITABLE"
+    },
+    "NQ->FUNDEDNEXT_FLEX_50K": {
+      "evaluation": null,
+      "funded": "PROP_PROFILE_UNSUITABLE"
+    },
+    "ES->MFFU_RAPID_EOD_50K": {
+      "evaluation": null,
+      "funded": "PROP_PROFILE_UNSUITABLE"
+    },
+    "ES->FUNDEDNEXT_FLEX_50K": {
+      "evaluation": null,
+      "funded": "PROP_PROFILE_UNSUITABLE"
+    }
+  },
+  "research_recommendations": {
+    "GC->MFFU_RAPID_EOD_50K": {
+      "evaluation": {
+        "book": "GC",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "stage": "EVALUATION",
+        "dd_frac": 0.125,
+        "risk_usd": 250.0,
+        "policy": "FIXED",
+        "governor": "none",
+        "mode": "bootstrap",
+        "example_qty_at_median_stop": 4,
+        "example_actual_risk_usd": 219.19958312966628,
+        "median_stop_points": 5.479989578241657,
+        "n_paths": 10000,
+        "P(pass)": 0.2692,
+        "P(breach)": 0.7308,
+        "P(timeout)": 0.0,
+        "median_days_to_pass": 32.0,
+        "p75_days_to_pass": 47.0,
+        "p95_days_to_pass": 75.0,
+        "median_trades_to_pass": 66.0,
+        "median_max_drawdown_before_pass": 1201.1729130868066,
+        "probability_consistency_rule_delays_pass": 0.2722,
+        "average_adjusted_profit_target": 3421.7471172054725,
+        "expected_number_of_attempts": 3.7147102526002973,
+        "expected_evaluation_cost": null,
+        "expected_evaluation_cost_note": "MFFU evaluation purchase price is REQUIRES_CONFIRMATION \u2014 attempts reported, dollar cost not invented",
+        "mean_sized_zero": 0.0
+      },
+      "funded": "PROP_PROFILE_UNSUITABLE",
+      "unsuitable": {
+        "evaluation": null,
+        "funded": "PROP_PROFILE_UNSUITABLE"
+      },
+      "note": "Research only. Not written into aitrade_operating_policy_v1.json.",
+      "funded_research_note": "Executable micro size on the funded grid produces high first-payout then near-certain ruin over 504 trading days. Not a production funded risk. Survive-by-not-trading rows (qty=0) were excluded."
+    },
+    "GC->FUNDEDNEXT_FLEX_50K": {
+      "evaluation": {
+        "book": "GC",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "stage": "EVALUATION",
+        "dd_frac": 0.175,
+        "risk_usd": 262.5,
+        "policy": "FIXED",
+        "governor": "none",
+        "mode": "bootstrap",
+        "example_qty_at_median_stop": 4,
+        "example_actual_risk_usd": 219.19958312966628,
+        "median_stop_points": 5.479989578241657,
+        "n_paths": 10000,
+        "P(pass)": 0.2619,
+        "P(breach)": 0.7381,
+        "P(timeout)": 0.0,
+        "median_days_to_pass": 21.0,
+        "p75_days_to_pass": 30.0,
+        "p95_days_to_pass": 54.0,
+        "median_trades_to_pass": 43.0,
+        "median_max_drawdown_before_pass": 971.2061092229633,
+        "probability_consistency_rule_delays_pass": 0.1301,
+        "average_adjusted_profit_target": 2673.358173916943,
+        "expected_number_of_attempts": 3.818251240931653,
+        "expected_evaluation_cost": 267.2394043528064,
+        "expected_evaluation_cost_note": "FundedNext first_5=69.99 then 79.99; geometric attempts until first pass",
+        "mean_sized_zero": 0.0
+      },
+      "funded": "PROP_PROFILE_UNSUITABLE",
+      "unsuitable": {
+        "evaluation": null,
+        "funded": "PROP_PROFILE_UNSUITABLE"
+      },
+      "note": "Research only. Not written into aitrade_operating_policy_v1.json.",
+      "funded_research_note": "Executable micro size on the funded grid produces high first-payout then near-certain ruin over 504 trading days. Not a production funded risk. Survive-by-not-trading rows (qty=0) were excluded."
+    },
+    "NQ->MFFU_RAPID_EOD_50K": {
+      "evaluation": {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "stage": "EVALUATION",
+        "dd_frac": 0.1,
+        "risk_usd": 200.0,
+        "policy": "FIXED",
+        "governor": "none",
+        "mode": "bootstrap",
+        "example_qty_at_median_stop": 1,
+        "example_actual_risk_usd": 160.0,
+        "median_stop_points": 80.0,
+        "n_paths": 10000,
+        "P(pass)": 0.7235,
+        "P(breach)": 0.2765,
+        "P(timeout)": 0.0,
+        "median_days_to_pass": 55.0,
+        "p75_days_to_pass": 78.0,
+        "p95_days_to_pass": 122.0,
+        "median_trades_to_pass": 185.0,
+        "median_max_drawdown_before_pass": 1108.8000000000002,
+        "probability_consistency_rule_delays_pass": 0.0,
+        "average_adjusted_profit_target": 3000.0,
+        "expected_number_of_attempts": 1.38217000691085,
+        "expected_evaluation_cost": null,
+        "expected_evaluation_cost_note": "MFFU evaluation purchase price is REQUIRES_CONFIRMATION \u2014 attempts reported, dollar cost not invented",
+        "mean_sized_zero": 0.0
+      },
+      "funded": "PROP_PROFILE_UNSUITABLE",
+      "unsuitable": {
+        "evaluation": null,
+        "funded": "PROP_PROFILE_UNSUITABLE"
+      },
+      "note": "Research only. Not written into aitrade_operating_policy_v1.json.",
+      "funded_research_note": "Executable micro size on the funded grid produces high first-payout then near-certain ruin over 504 trading days. Not a production funded risk. Survive-by-not-trading rows (qty=0) were excluded."
+    },
+    "NQ->FUNDEDNEXT_FLEX_50K": {
+      "evaluation": {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "stage": "EVALUATION",
+        "dd_frac": 0.175,
+        "risk_usd": 262.5,
+        "policy": "FIXED",
+        "governor": "none",
+        "mode": "bootstrap",
+        "example_qty_at_median_stop": 1,
+        "example_actual_risk_usd": 160.0,
+        "median_stop_points": 80.0,
+        "n_paths": 10000,
+        "P(pass)": 0.6537,
+        "P(breach)": 0.3463,
+        "P(timeout)": 0.0,
+        "median_days_to_pass": 40.0,
+        "p75_days_to_pass": 57.0,
+        "p95_days_to_pass": 90.0,
+        "median_trades_to_pass": 135.0,
+        "median_max_drawdown_before_pass": 917.7999999999956,
+        "probability_consistency_rule_delays_pass": 0.0,
+        "average_adjusted_profit_target": 2500.0,
+        "expected_number_of_attempts": 1.529753709652746,
+        "expected_evaluation_cost": 107.06746213859569,
+        "expected_evaluation_cost_note": "FundedNext first_5=69.99 then 79.99; geometric attempts until first pass",
+        "mean_sized_zero": 0.0
+      },
+      "funded": "PROP_PROFILE_UNSUITABLE",
+      "unsuitable": {
+        "evaluation": null,
+        "funded": "PROP_PROFILE_UNSUITABLE"
+      },
+      "note": "Research only. Not written into aitrade_operating_policy_v1.json.",
+      "funded_research_note": "Executable micro size on the funded grid produces high first-payout then near-certain ruin over 504 trading days. Not a production funded risk. Survive-by-not-trading rows (qty=0) were excluded."
+    },
+    "ES->MFFU_RAPID_EOD_50K": {
+      "evaluation": {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "stage": "EVALUATION",
+        "dd_frac": 0.05,
+        "risk_usd": 100.0,
+        "policy": "FIXED",
+        "governor": "none",
+        "mode": "bootstrap",
+        "example_qty_at_median_stop": 1,
+        "example_actual_risk_usd": 90.0,
+        "median_stop_points": 18.0,
+        "n_paths": 10000,
+        "P(pass)": 0.47,
+        "P(breach)": 0.3117,
+        "P(timeout)": 0.2183,
+        "median_days_to_pass": 149.0,
+        "p75_days_to_pass": 191.0,
+        "p95_days_to_pass": 238.0,
+        "median_trades_to_pass": 496.0,
+        "median_max_drawdown_before_pass": 1057.6,
+        "probability_consistency_rule_delays_pass": 0.0,
+        "average_adjusted_profit_target": 3000.0,
+        "expected_number_of_attempts": 2.127659574468085,
+        "expected_evaluation_cost": null,
+        "expected_evaluation_cost_note": "MFFU evaluation purchase price is REQUIRES_CONFIRMATION \u2014 attempts reported, dollar cost not invented",
+        "mean_sized_zero": 0.0
+      },
+      "funded": "PROP_PROFILE_UNSUITABLE",
+      "unsuitable": {
+        "evaluation": null,
+        "funded": "PROP_PROFILE_UNSUITABLE"
+      },
+      "note": "Research only. Not written into aitrade_operating_policy_v1.json.",
+      "funded_research_note": "Executable micro size on the funded grid produces high first-payout then near-certain ruin over 504 trading days. Not a production funded risk. Survive-by-not-trading rows (qty=0) were excluded."
+    },
+    "ES->FUNDEDNEXT_FLEX_50K": {
+      "evaluation": {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "stage": "EVALUATION",
+        "dd_frac": 0.075,
+        "risk_usd": 112.5,
+        "policy": "FIXED",
+        "governor": "none",
+        "mode": "bootstrap",
+        "example_qty_at_median_stop": 1,
+        "example_actual_risk_usd": 90.0,
+        "median_stop_points": 18.0,
+        "n_paths": 10000,
+        "P(pass)": 0.5031,
+        "P(breach)": 0.4273,
+        "P(timeout)": 0.0696,
+        "median_days_to_pass": 119.0,
+        "p75_days_to_pass": 164.0,
+        "p95_days_to_pass": 225.0,
+        "median_trades_to_pass": 396.0,
+        "median_max_drawdown_before_pass": 953.4999999999854,
+        "probability_consistency_rule_delays_pass": 0.0,
+        "average_adjusted_profit_target": 2500.0,
+        "expected_number_of_attempts": 1.9876764062810575,
+        "expected_evaluation_cost": 139.1174716756112,
+        "expected_evaluation_cost_note": "FundedNext first_5=69.99 then 79.99; geometric attempts until first pass",
+        "mean_sized_zero": 0.0
+      },
+      "funded": "PROP_PROFILE_UNSUITABLE",
+      "unsuitable": {
+        "evaluation": null,
+        "funded": "PROP_PROFILE_UNSUITABLE"
+      },
+      "note": "Research only. Not written into aitrade_operating_policy_v1.json.",
+      "funded_research_note": "Executable micro size on the funded grid produces high first-payout then near-certain ruin over 504 trading days. Not a production funded risk. Survive-by-not-trading rows (qty=0) were excluded."
+    }
+  },
+  "governor_findings": {
+    "GC->MFFU_RAPID_EOD_50K": {
+      "best_governor": "reduced",
+      "best_P(pass)": 0.25266666666666665,
+      "none_P(pass)": 0.23866666666666667,
+      "best_avg_adjusted_target": 3000.0,
+      "none_avg_adjusted_target": 3159.934039401797,
+      "note": "Governor is simulation-only and does not change strategy signals."
+    },
+    "GC->FUNDEDNEXT_FLEX_50K": {
+      "best_governor": "reduced",
+      "best_P(pass)": 0.17266666666666666,
+      "none_P(pass)": 0.15666666666666668,
+      "best_avg_adjusted_target": 2500.0,
+      "none_avg_adjusted_target": 2500.0,
+      "note": "Governor is simulation-only and does not change strategy signals."
+    },
+    "NQ->MFFU_RAPID_EOD_50K": {
+      "best_governor": "hard",
+      "best_P(pass)": 0.734,
+      "none_P(pass)": 0.7253333333333334,
+      "best_avg_adjusted_target": 3000.0,
+      "none_avg_adjusted_target": 3000.0,
+      "note": "Governor is simulation-only and does not change strategy signals."
+    },
+    "NQ->FUNDEDNEXT_FLEX_50K": {
+      "best_governor": "none",
+      "best_P(pass)": 0.0,
+      "none_P(pass)": 0.0,
+      "best_avg_adjusted_target": 2500.0,
+      "none_avg_adjusted_target": 2500.0,
+      "note": "Governor is simulation-only and does not change strategy signals."
+    },
+    "ES->MFFU_RAPID_EOD_50K": {
+      "best_governor": "hard",
+      "best_P(pass)": 0.452,
+      "none_P(pass)": 0.43733333333333335,
+      "best_avg_adjusted_target": 3000.0,
+      "none_avg_adjusted_target": 3000.0,
+      "note": "Governor is simulation-only and does not change strategy signals."
+    },
+    "ES->FUNDEDNEXT_FLEX_50K": {
+      "best_governor": "hard",
+      "best_P(pass)": 0.506,
+      "none_P(pass)": 0.49933333333333335,
+      "best_avg_adjusted_target": 2500.0,
+      "none_avg_adjusted_target": 2500.0,
+      "note": "Governor is simulation-only and does not change strategy signals."
+    }
+  },
+  "state_policy_findings": {
+    "evaluation": {
+      "GC->MFFU_RAPID_EOD_50K": {
+        "best_policy": "EVAL_TARGET_APPROACH_2R",
+        "best_P(pass)": 0.23333333333333334,
+        "fixed_10pct_P(pass)": 0.2557,
+        "improves_vs_fixed": false
+      },
+      "GC->FUNDEDNEXT_FLEX_50K": {
+        "best_policy": "EVAL_TARGET_APPROACH_2R",
+        "best_P(pass)": 0.18266666666666667,
+        "fixed_10pct_P(pass)": 0.1789,
+        "improves_vs_fixed": true
+      },
+      "NQ->MFFU_RAPID_EOD_50K": {
+        "best_policy": "EVAL_DEFENSIVE_DD25",
+        "best_P(pass)": 0.5366666666666666,
+        "fixed_10pct_P(pass)": 0.7235,
+        "improves_vs_fixed": false
+      },
+      "NQ->FUNDEDNEXT_FLEX_50K": {
+        "best_policy": "EVAL_DEFENSIVE_DD40",
+        "best_P(pass)": 0.0,
+        "fixed_10pct_P(pass)": 0.0,
+        "improves_vs_fixed": false
+      },
+      "ES->MFFU_RAPID_EOD_50K": {
+        "best_policy": "EVAL_LOSS_STREAK_2",
+        "best_P(pass)": 0.618,
+        "fixed_10pct_P(pass)": 0.455,
+        "improves_vs_fixed": true
+      },
+      "ES->FUNDEDNEXT_FLEX_50K": {
+        "best_policy": "EVAL_DEFENSIVE_DD25",
+        "best_P(pass)": 0.39066666666666666,
+        "fixed_10pct_P(pass)": 0.5046,
+        "improves_vs_fixed": true
+      }
+    },
+    "funded": {
+      "GC->MFFU_RAPID_EOD_50K": {
+        "best_policy": "FUNDED_BUFFER_BUILD",
+        "best_survival": 0.7375,
+        "best_expected_payout": 373.0649449825454,
+        "fixed_5pct_survival": 0.0053,
+        "improves_vs_fixed": true
+      },
+      "GC->FUNDEDNEXT_FLEX_50K": {
+        "best_policy": "FUNDED_BUFFER_BUILD",
+        "best_survival": 0.92,
+        "best_expected_payout": 0.0,
+        "fixed_5pct_survival": 0.0004,
+        "improves_vs_fixed": true
+      },
+      "NQ->MFFU_RAPID_EOD_50K": {
+        "best_policy": "FUNDED_BUFFER_BUILD",
+        "best_survival": 1.0,
+        "best_expected_payout": 0.0,
+        "fixed_5pct_survival": 1.0,
+        "improves_vs_fixed": false
+      },
+      "NQ->FUNDEDNEXT_FLEX_50K": {
+        "best_policy": "FUNDED_BUFFER_BUILD",
+        "best_survival": 1.0,
+        "best_expected_payout": 0.0,
+        "fixed_5pct_survival": 1.0,
+        "improves_vs_fixed": false
+      },
+      "ES->MFFU_RAPID_EOD_50K": {
+        "best_policy": "FUNDED_DEFENSIVE_DD40",
+        "best_survival": 1.0,
+        "best_expected_payout": 595.8187874999968,
+        "fixed_5pct_survival": 0.005,
+        "improves_vs_fixed": true
+      },
+      "ES->FUNDEDNEXT_FLEX_50K": {
+        "best_policy": "FUNDED_BUFFER_BUILD",
+        "best_survival": 1.0,
+        "best_expected_payout": 0.0,
+        "fixed_5pct_survival": 1.0,
+        "improves_vs_fixed": false
+      }
+    }
+  },
+  "policy_risk_still_null": true,
+  "operating_policy": "config/aitrade_operating_policy_v1.json",
+  "no_martingale": true,
+  "es_not_frozen": true,
+  "tests": {
+    "ran": 13,
+    "failures": 0,
+    "returncode": 0,
+    "tail": "test_day_clustering_preserved (tests_phase49.DistributionAndSimTests.test_day_clustering_preserved) ... ok\ntest_distribution_fields (tests_phase49.DistributionAndSimTests.test_distribution_fields) ... ok\ntest_eval_breach_on_all_losses (tests_phase49.DistributionAndSimTests.test_eval_breach_on_all_losses) ... ok\ntest_eval_can_pass_on_wins (tests_phase49.DistributionAndSimTests.test_eval_can_pass_on_wins) ... ok\ntest_frozen_hashes_unchanged (tests_phase49.FrozenIsolationTests.test_frozen_hashes_unchanged) ... ok\ntest_paper_journals_empty (tests_phase49.FrozenIsolationTests.test_paper_journals_empty) ... ok\ntest_phase46_sources_exist (tests_phase49.OriginalsUntouchedTests.test_phase46_sources_exist) ... ok\ntest_dry_run_and_null_risk (tests_phase49.PolicyLockTests.test_dry_run_and_null_risk) ... ok\ntest_firm_numbers_from_prop_rules_v1 (tests_phase49.PolicyLockTests.test_firm_numbers_from_prop_rules_v1) ... ok\ntest_martingale_rejected (tests_phase49.SizingAndMartingaleTests.test_martingale_rejected) ... ok\ntest_mes_one_micro_at_90 (tests_phase49.SizingAndMartingaleTests.test_mes_one_micro_at_90) ... ok\ntest_mnq_cannot_size_at_100 (tests_phase49.SizingAndMartingaleTests.test_mnq_cannot_size_at_100) ... ok\ntest_mnq_one_micro_at_160 (tests_phase49.SizingAndMartingaleTests.test_mnq_one_micro_at_160) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.022s\n\nOK\n"
+  },
+  "rules_source": "config/PROP_RULES_V1.json",
+  "firm_numbers_not_duplicated": true
+}

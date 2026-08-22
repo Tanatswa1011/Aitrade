@@ -1,0 +1,101 @@
+{
+  "schema_version": "AITRADE_PROP_EXECUTION_POLICY_V1",
+  "phase": 52,
+  "execution_mode": "DRY_RUN",
+  "broker_execution": false,
+  "account_type": "PROP_EVALUATION",
+  "prop_firm": "FUNDEDNEXT",
+  "product": "FLEX_50K",
+  "profile_id": "FUNDEDNEXT_FLEX_50K",
+  "instrument": "NQ",
+  "micro_symbol": "MNQ",
+  "strategy": "NQ_DRIFT_VWAP_PULLBACK",
+  "strategy_hash": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+  "policy_state": "EVAL_FAST",
+  "position_sizing": {
+    "mode": "PROP_CONTRACT_QTY",
+    "not_percent_of_nominal_balance": true,
+    "fast_qty_mnq": 2,
+    "safe_qty_mnq": 1,
+    "max_qty_mnq": 2,
+    "reject_qty_mnq": 3,
+    "stop_points": 80.0,
+    "unit_risk_usd": 160.0,
+    "never_increase_after_loss": true,
+    "never_increase_to_catch_up": true,
+    "formula": "min(strategy_qty_cap, prop_contract_cap, drawdown_based_qty_cap, daily_governor_qty_cap, state_based_qty_cap)"
+  },
+  "drawdown": {
+    "type": "EOD_TRAILING",
+    "max_loss": 1500,
+    "mll_locks_at": 50100,
+    "mll_space": "EQUITY",
+    "mll_distance": 1500,
+    "source": "config/PROP_RULES_V1.json FUNDEDNEXT_FLEX_50K.evaluation"
+  },
+  "daily_governor": {
+    "name": "AITRADE_REMAINING_DD_FRACTION",
+    "fraction": 0.35,
+    "equation": "daily_stop_threshold = 0.35 * remaining_allowable_drawdown_at_session_open; daily_loss = session_open_equity - marked_equity; trigger if daily_loss >= threshold",
+    "includes_unrealized": true,
+    "includes_fees_in_fills": true,
+    "threshold_frozen_at_session_open": true,
+    "session_reset": "17:00 America/Chicago",
+    "gap_through": "clip fill to threshold, then EVAL_DAILY_STOPPED",
+    "flatten_on_trigger": false,
+    "cancel_entries_on_trigger": true,
+    "block_new_entries": true,
+    "existing_protective_stop_may_remain": true
+  },
+  "near_target": {
+    "rule": "PCT_95",
+    "threshold_usd": 125.0,
+    "threshold_note": "remaining profit <= 5% of $2,500 target",
+    "behavior": "EVAL_NEAR_TARGET qty=1 MNQ",
+    "does_not_alter_signals": true
+  },
+  "degradation_monitor": {
+    "min_sample": 20,
+    "rolling_window": 30,
+    "warning": "E[R] < 0.5*frozen OR WR drop 8pp OR loss streak 4",
+    "hard_demote": "E[R] < 0 OR WR drop 12pp OR loss streak 5 OR WR collapse 18pp",
+    "recovery": "40 subsequent qualifying trades; FAST does not auto-resume during the evaluation"
+  },
+  "news_blackout": {
+    "firm_rule": "ALLOWED",
+    "aitrade_internal": "±5 minutes (nq_post_news_models DEFAULT_BLACKOUT)",
+    "fail_closed_if_calendar_missing": true
+  },
+  "kill_switches": [
+    "PROP_RULE_DATA_MISSING",
+    "ACCOUNT_EQUITY_UNKNOWN",
+    "DRAW_DOWN_CALCULATION_INVALID",
+    "POSITION_STATE_MISMATCH",
+    "ORDER_STATE_MISMATCH",
+    "STRATEGY_HASH_MISMATCH",
+    "LIVE_DATA_STALE",
+    "BROKER_CONNECTION_UNSTABLE",
+    "DUPLICATE_ORDER_DETECTED",
+    "MAX_POSITION_EXCEEDED",
+    "NEWS_BLACKOUT_VIOLATION_RISK",
+    "DAILY_STOP_TRIGGERED",
+    "ACCOUNT_BREACH_IMMINENT"
+  ],
+  "state_transitions": {
+    "initial": "EVAL_FAST",
+    "EVAL_FAST_to_EVAL_PROTECTED": "degradation hard threshold",
+    "EVAL_FAST_to_EVAL_NEAR_TARGET": "remaining_profit <= 320",
+    "EVAL_FAST_to_EVAL_DAILY_STOPPED": "daily governor",
+    "ANY_to_PAUSED": "integrity/kill switch",
+    "ANY_to_EVAL_BREACHED": "equity <= MLL",
+    "ANY_to_EVAL_PASSED": "profit target + consistency"
+  },
+  "requires_confirmation_not_eval_survival": [
+    "automation_allowed",
+    "copy_trading",
+    "cme_product_limit_pct",
+    "funded payout_frequency",
+    "funded first_payout_required_buffer",
+    "funded max_funded_accounts"
+  ]
+}

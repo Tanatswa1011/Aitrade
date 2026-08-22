@@ -1,0 +1,24 @@
+canonical_rule,source,threshold,applies,trigger_event,machine_calculation,enforcement,reset,material_eval_survival,status
+NOMINAL_BALANCE,PROP_RULES_V1.evaluation.nominal_account_size,50000,EVALUATION,account_open,equity_start=50000,informational,n/a,False,CONFIRMED
+PROFIT_TARGET,PROP_RULES_V1.evaluation.profit_target,2500,EVALUATION,eod_and_trade,"equity-50000 >= 2500, then 40% consistency adj",EVAL_PASSED,n/a,True,CONFIRMED
+MAX_LOSS,PROP_RULES_V1.evaluation.max_loss,1500,EVALUATION,equity_vs_mll,equity <= mll,EVAL_BREACHED flatten,n/a,True,CONFIRMED
+EOD_TRAILING_MLL,PROP_RULES_V1.evaluation.drawdown_type/mll_*,EOD_TRAILING lock 50100 distance 1500,EVALUATION,eod_high,trail_eod_mll_equity,update mll never down,locks at 50100,True,CONFIRMED
+FIRM_DAILY_LOSS_LIMIT,PROP_RULES_V1.evaluation.daily_loss_limit,NONE,EVALUATION,n/a,NONE,none (AITRADE internal 35% governor instead),n/a,False,CONFIRMED
+AITRADE_DAILY_GOVERNOR,Phase 49B / phase52_policy.DAILY_STOP_FRAC,0.35,EVALUATION,marked_equity vs session-open remaining DD,daily_loss >= 0.35 * remaining_dd_at_session_open,EVAL_DAILY_STOPPED block new+cancel entries; do not flatten unless firm flat window,17:00 CT session reset,True,CONFIRMED
+CONSISTENCY_40,PROP_RULES_V1.evaluation.consistency_ratio_max,0.4,EVALUATION,eod best day,best_day/total_profit<=0.40 else target=best_day/0.40,"expand target, not auto-fail",pass,True,CONFIRMED
+CONTRACT_CAP,PROP_RULES_V1.evaluation.max_minis/max_micros,3 minis / 30 micros,EVALUATION,order,to_micro_equivalent <= 30; policy max 2 MNQ,BLOCK_CONTRACT / reject 3 MNQ,n/a,True,CONFIRMED
+MIN_TRADING_DAYS,PROP_RULES_V1.evaluation.minimum_trading_days,NONE,EVALUATION,pass_check,NONE,no min-day gate,n/a,False,CONFIRMED
+INACTIVITY_30D,PROP_RULES_V1.evaluation.inactivity_days,30,EVALUATION,calendar,calendar_days_inactive>=30,PAUSED,trade,True,CONFIRMED
+NO_OVERNIGHT,PROP_RULES_V1.evaluation.overnight_holding,PROHIBITED,EVALUATION,15:10 CT,in_fundednext_flat_window,flatten + block entries,17:00 CT,True,CONFIRMED
+NO_WEEKEND,PROP_RULES_V1.evaluation.weekend_holding,PROHIBITED,EVALUATION,Fri 15:10–Sun 17:00 CT,in_fundednext_flat_window,flatten + block,Sun 17:00 CT,True,CONFIRMED
+MANDATORY_FLAT,PROP_RULES_V1.evaluation.mandatory_flat_time,15:10 America/Chicago,EVALUATION,clock,time>=15:10 CT,flatten,17:00 CT,True,CONFIRMED
+FIRM_NEWS_TRADING,PROP_RULES_V1.evaluation.tier_1_news_trading,ALLOWED,EVALUATION,news,ALLOWED by firm,firm does not block; AITRADE still ±5m internal,n/a,False,CONFIRMED
+AITRADE_NEWS_BLACKOUT,nq_post_news_models DEFAULT ±5m + family_port 08:25-08:35,±5 minutes,INTERNAL,tier1 event or missing calendar,in_internal_news_lock,block new + cancel entries; fail closed if calendar missing,event_end+5m,True,CONFIRMED
+CME_PRICE_LIMIT_2PCT,PROP_RULES_V1.general_compliance.prohibit_trading_within_2_percent_of_CME_price_limit,True,EVALUATION,market_state,in_cme_price_limit_zone,BLOCK_PRICE_LIMIT_ZONE,n/a,True,CONFIRMED
+CME_PRODUCT_LIMIT_PCT,PROP_RULES_V1.general_compliance.cme_product_limit_pct,REQUIRES_CONFIRMATION,EVALUATION,limit_pct,unknown exact product limit %,fail closed if in zone already,n/a,False,REQUIRES_CONFIRMATION
+AUTOMATION_ALLOWED,PROP_RULES_V1.general_compliance.automation_allowed,REQUIRES_CONFIRMATION,LIVE_ENABLEMENT,go_live,unconfirmed,DRY_RUN only until confirmed,n/a,False,REQUIRES_CONFIRMATION
+COPY_TRADING,PROP_RULES_V1.general_compliance.copy_trading,REQUIRES_CONFIRMATION,MULTI_ACCOUNT,replication,independent accounts,not used in single-eval policy,n/a,False,REQUIRES_CONFIRMATION
+PAYOUT_FREQUENCY,PROP_RULES_V1.payout.payout_frequency,REQUIRES_CONFIRMATION,FUNDED,payout,unconfirmed,not eval survival,n/a,False,REQUIRES_CONFIRMATION
+FIRST_PAYOUT_BUFFER,PROP_RULES_V1.payout.first_payout_required_buffer,REQUIRES_CONFIRMATION,FUNDED,payout,unconfirmed,not eval survival,n/a,False,REQUIRES_CONFIRMATION
+MAX_FUNDED_ACCOUNTS,PROP_RULES_V1.funded.max_funded_accounts,not set on FN funded,FUNDED,purchase,REQUIRES_CONFIRMATION from Phase 51,not eval survival,n/a,False,REQUIRES_CONFIRMATION
+NO_MARTINGALE,aitrade_operating_policy flags + Phase 49B,True,EVALUATION,size,qty never increases after loss,SIZE_REDUCED / BLOCK,win resets consec,True,CONFIRMED

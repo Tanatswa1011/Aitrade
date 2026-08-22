@@ -1,0 +1,10 @@
+{
+  "verdict": "PROP_EXECUTION_POLICY_LOCKED",
+  "selected": "GOV2_DEMOTE_NEAR",
+  "P(pass)": 0.5593,
+  "P(breach)": 0.0,
+  "median_days": 14.0,
+  "P(pass <=14d)": 0.5220811728946898,
+  "near_rule": "PCT_95",
+  "DRY_RUN": true
+}

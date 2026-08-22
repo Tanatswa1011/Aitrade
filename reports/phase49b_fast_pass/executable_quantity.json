@@ -1,0 +1,624 @@
+{
+  "NQ->MFFU_RAPID_EOD_50K": {
+    "max_executable": 12,
+    "unit_risk_usd": 160.0,
+    "stop_points": 80.0,
+    "note": "OK",
+    "rows": [
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 1,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 160.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 2,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 320.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 3,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 480.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 4,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 640.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 5,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 800.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 6,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 960.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 7,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1120.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 8,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1280.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 9,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1440.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 10,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1600.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 11,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1760.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 12,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1920.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      }
+    ]
+  },
+  "NQ->FUNDEDNEXT_FLEX_50K": {
+    "max_executable": 9,
+    "unit_risk_usd": 160.0,
+    "stop_points": 80.0,
+    "note": "OK",
+    "rows": [
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 1,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 160.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 2,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 320.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 3,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 480.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 4,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 640.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 5,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 800.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 6,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 960.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 7,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1120.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 8,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1280.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "NQ",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 9,
+        "stop_points": 80.0,
+        "raw_stop_risk_usd": 1440.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      }
+    ]
+  },
+  "ES->MFFU_RAPID_EOD_50K": {
+    "max_executable": 22,
+    "unit_risk_usd": 90.0,
+    "stop_points": 18.0,
+    "note": "OK",
+    "rows": [
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 1,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 90.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 2,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 180.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 3,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 270.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 4,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 360.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 5,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 450.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 6,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 540.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 7,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 630.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 8,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 720.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 9,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 810.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 10,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 900.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 11,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 990.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 12,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1080.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 13,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1170.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 14,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1260.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 15,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1350.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 16,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1440.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 17,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1530.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 18,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1620.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 19,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1710.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 20,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1800.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 21,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1890.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "MFFU_RAPID_EOD_50K",
+        "qty_micros": 22,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1980.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      }
+    ]
+  },
+  "ES->FUNDEDNEXT_FLEX_50K": {
+    "max_executable": 16,
+    "unit_risk_usd": 90.0,
+    "stop_points": 18.0,
+    "note": "OK",
+    "rows": [
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 1,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 90.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 2,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 180.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 3,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 270.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 4,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 360.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 5,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 450.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 6,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 540.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 7,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 630.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 8,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 720.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 9,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 810.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 10,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 900.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 11,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 990.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 12,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1080.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 13,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1170.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 14,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1260.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 15,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1350.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      },
+      {
+        "book": "ES",
+        "profile": "FUNDEDNEXT_FLEX_50K",
+        "qty_micros": 16,
+        "stop_points": 18.0,
+        "raw_stop_risk_usd": 1440.0,
+        "fits_initial_dd": true,
+        "fits_contract_cap": true,
+        "status": "OK"
+      }
+    ]
+  }
+}

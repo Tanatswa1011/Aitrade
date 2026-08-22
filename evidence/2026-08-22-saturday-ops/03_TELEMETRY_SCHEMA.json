@@ -1,0 +1,73 @@
+{
+  "schema": "AITRADE_NT_READONLY_V1",
+  "timestamp": "2026-08-22T14:21:45.5077837Z",
+  "read_only": true,
+  "PROP_EXECUTION": false,
+  "orders_transmitted": 0,
+  "sim101_excluded": false,
+  "sim101": {
+    "present": true,
+    "excluded": false,
+    "account": "Sim101",
+    "read_only": true,
+    "position": {
+      "instrument": "MNQ 09-26",
+      "quantity": 0,
+      "side": "FLAT",
+      "average_price": null,
+      "timestamp": "2026-08-22T14:21:45.5077837Z",
+      "source": "NINJATRADER_ACCOUNT_POSITION"
+    }
+  },
+  "nq_bars_1m": [],
+  "nq_bars_1m_count": 0,
+  "nq_bars_1m_status": "WAITING",
+  "diagnostics": {
+    "nq_found": true,
+    "mnq_found": true,
+    "nq_name": "NQ 09-26",
+    "mnq_name": "MNQ 09-26",
+    "nq_1m_bars_request": true,
+    "bars_request": true,
+    "market_data_subscribed": true
+  },
+  "nq": {
+    "instrument": "NQ 09-26",
+    "last": null,
+    "bid": null,
+    "ask": null,
+    "timestamp": null,
+    "last_update": null
+  },
+  "mnq": {
+    "instrument": "MNQ 09-26",
+    "last": null,
+    "bid": null,
+    "ask": null,
+    "timestamp": null,
+    "last_update": null
+  },
+  "account_environment": null,
+  "refresh_samples": [
+    {
+      "i": 0,
+      "timestamp": "2026-08-22T14:21:41.4671599Z",
+      "age_sec": 0.068
+    },
+    {
+      "i": 1,
+      "timestamp": "2026-08-22T14:21:42.4676930Z",
+      "age_sec": 0.131
+    },
+    {
+      "i": 2,
+      "timestamp": "2026-08-22T14:21:43.4812587Z",
+      "age_sec": 0.186
+    },
+    {
+      "i": 3,
+      "timestamp": "2026-08-22T14:21:44.4824857Z",
+      "age_sec": 0.236
+    }
+  ]
+}

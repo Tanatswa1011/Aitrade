@@ -1,0 +1,15 @@
+{
+  "class": "WATCH",
+  "n": 64,
+  "wr": 0.671875,
+  "er": 0.04453124999999999,
+  "avg_win": 0.557703488372093,
+  "avg_loss": -1.00625,
+  "flip_pct": 0.0,
+  "flip_n": 43,
+  "frozen_wr": 0.663,
+  "frozen_er": 0.06463687499999997,
+  "frozen_avg_win": 0.5164347662141779,
+  "frozen_avg_loss": -0.8242117952522255,
+  "monitor_demoted": true
+}

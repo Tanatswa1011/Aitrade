@@ -1,0 +1,98 @@
+{
+  "FUNDEDNEXT_FLEX_50K": {
+    "baseline": {
+      "median_self_funding_day": 107.0,
+      "P(self_funding_by_60d)": 0.0522,
+      "P(self_funding_by_90d)": 0.3036,
+      "P(self_funding_by_180d)": 0.9202,
+      "h90_expected_active_funded": 1.825,
+      "h180_expected_active_funded": 2.6998,
+      "h365_expected_active_funded": 2.9642,
+      "total_evaluation_spend": 329.87553599999995,
+      "external_capital_required": 295.947946,
+      "total_trader_payout": 39939.64404747384,
+      "days_per_new_funded_account": 243.33333333333334,
+      "funded_accounts_created_per_$100_eval_spend": 1.0086427268946798,
+      "classification": "REPLICATION_VIABLE"
+    },
+    "fast_pass": {
+      "median_self_funding_day": 73.0,
+      "P(self_funding_by_60d)": 0.2798,
+      "P(self_funding_by_90d)": 0.7308,
+      "P(self_funding_by_180d)": 0.968,
+      "h90_expected_active_funded": 2.684,
+      "h180_expected_active_funded": 2.9196,
+      "h365_expected_active_funded": 2.95,
+      "total_evaluation_spend": 373.51780399999996,
+      "external_capital_required": 332.79592300000013,
+      "total_trader_payout": 43060.01122070903,
+      "days_per_new_funded_account": 243.33333333333334,
+      "funded_accounts_created_per_$100_eval_spend": 0.9029208947501883,
+      "classification": "REPLICATION_VIABLE"
+    },
+    "delta": {
+      "median_self_funding_day": -34.0,
+      "P(self_funding_by_60d)": 0.2276,
+      "P(self_funding_by_90d)": 0.4272,
+      "P(self_funding_by_180d)": 0.047799999999999954,
+      "h90_expected_active_funded": 0.8590000000000002,
+      "h180_expected_active_funded": 0.21979999999999977,
+      "h365_expected_active_funded": -0.014199999999999768,
+      "total_evaluation_spend": 43.642268,
+      "external_capital_required": 36.84797700000013,
+      "total_trader_payout": 3120.367173235187,
+      "days_per_new_funded_account": 0.0,
+      "funded_accounts_created_per_$100_eval_spend": -0.10572183214449149,
+      "classification": null
+    },
+    "improved": true
+  },
+  "MFFU_RAPID_EOD_50K": {
+    "baseline": {
+      "median_self_funding_day": 124.0,
+      "P(self_funding_by_60d)": 0.0188,
+      "P(self_funding_by_90d)": 0.1758,
+      "P(self_funding_by_180d)": 0.8662,
+      "h90_expected_active_funded": 1.3072,
+      "h180_expected_active_funded": 2.4458,
+      "h365_expected_active_funded": 2.9246,
+      "total_evaluation_spend": 419.36,
+      "external_capital_required": 376.15999999999997,
+      "total_trader_payout": 41097.35513357824,
+      "days_per_new_funded_account": 243.33333333333334,
+      "funded_accounts_created_per_$100_eval_spend": 0.7709238888888889,
+      "classification": "REPLICATION_VIABLE"
+    },
+    "fast_pass": {
+      "median_self_funding_day": 81.0,
+      "P(self_funding_by_60d)": 0.2086,
+      "P(self_funding_by_90d)": 0.6226,
+      "P(self_funding_by_180d)": 0.97,
+      "h90_expected_active_funded": 2.4708,
+      "h180_expected_active_funded": 2.8496,
+      "h365_expected_active_funded": 2.951,
+      "total_evaluation_spend": 501.04,
+      "external_capital_required": 428.36098200000004,
+      "total_trader_payout": 45128.47532905738,
+      "days_per_new_funded_account": 243.33333333333334,
+      "funded_accounts_created_per_$100_eval_spend": 0.6571267582417583,
+      "classification": "REPLICATION_VIABLE"
+    },
+    "delta": {
+      "median_self_funding_day": -43.0,
+      "P(self_funding_by_60d)": 0.1898,
+      "P(self_funding_by_90d)": 0.44680000000000003,
+      "P(self_funding_by_180d)": 0.1038,
+      "h90_expected_active_funded": 1.1636000000000002,
+      "h180_expected_active_funded": 0.40379999999999994,
+      "h365_expected_active_funded": 0.0264000000000002,
+      "total_evaluation_spend": 81.68,
+      "external_capital_required": 52.20098200000007,
+      "total_trader_payout": 4031.1201954791395,
+      "days_per_new_funded_account": 0.0,
+      "funded_accounts_created_per_$100_eval_spend": -0.1137971306471306,
+      "classification": null
+    },
+    "improved": true
+  }
+}

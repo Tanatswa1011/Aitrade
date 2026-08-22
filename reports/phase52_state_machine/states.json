@@ -1,0 +1,24 @@
+{
+  "states": [
+    "EVAL_SAFE",
+    "EVAL_FAST",
+    "EVAL_PROTECTED",
+    "EVAL_NEAR_TARGET",
+    "EVAL_DAILY_STOPPED",
+    "EVAL_BREACHED",
+    "EVAL_PASSED",
+    "FUNDED_SAFE",
+    "FUNDED_PROTECTED",
+    "PAUSED"
+  ],
+  "initial": "EVAL_FAST",
+  "transitions": {
+    "EVAL_FAST\u2192EVAL_PROTECTED": "degradation hard threshold",
+    "EVAL_FAST\u2192EVAL_NEAR_TARGET": "remaining_profit <= rule PCT_95",
+    "EVAL_FAST\u2192EVAL_DAILY_STOPPED": "daily_loss >= 0.35 * remaining_dd_open",
+    "ANY\u2192PAUSED": "integrity/kill switch",
+    "ANY\u2192EVAL_BREACHED": "equity <= MLL",
+    "ANY\u2192EVAL_PASSED": "profit target + 40% consistency expansion",
+    "EVAL_DAILY_STOPPED\u2192EVAL_FAST|PROTECTED": "17:00 CT session reset"
+  }
+}

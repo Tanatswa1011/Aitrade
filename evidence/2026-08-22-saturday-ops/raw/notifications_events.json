@@ -1,0 +1,112 @@
+[
+  {
+    "ts": "2026-08-22T13:22:22.012806+00:00",
+    "event_id": "6a067c084eaf4864",
+    "event_type": "TEST",
+    "severity": "INFO",
+    "destination": "APPRISE/TELEGRAM",
+    "success": false,
+    "delivered": false,
+    "failure_reason": "apprise_returned_false",
+    "process": "notification_service"
+  },
+  {
+    "ts": "2026-08-22T13:27:28.120749+00:00",
+    "event_id": "3ed760469383472b",
+    "event_type": "TEST",
+    "severity": "INFO",
+    "destination": "APPRISE/TELEGRAM",
+    "success": false,
+    "delivered": false,
+    "failure_reason": "apprise_returned_false",
+    "process": "notification_service"
+  },
+  {
+    "ts": "2026-08-22T13:28:02.110650+00:00",
+    "event_id": "997770edb53740a7",
+    "event_type": "TEST",
+    "severity": "INFO",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "notification_service"
+  },
+  {
+    "ts": "2026-08-22T13:37:36.954509+00:00",
+    "event_id": "0043ab541ef94192",
+    "event_type": "ENGINE_STOP",
+    "severity": "INFO",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "trading_engine"
+  },
+  {
+    "ts": "2026-08-22T13:38:39.090409+00:00",
+    "event_id": "c76e0f46038148bb",
+    "event_type": "NINJATRADER_DISCONNECTED",
+    "severity": "CRITICAL",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "ninjatrader"
+  },
+  {
+    "ts": "2026-08-22T13:38:39.736580+00:00",
+    "event_id": "5e799c98f48e4dcb",
+    "event_type": "MARKET_DATA_STALE",
+    "severity": "WARNING",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "trading_engine"
+  },
+  {
+    "ts": "2026-08-22T13:38:40.298635+00:00",
+    "event_id": "7ac651fcf3c046c1",
+    "event_type": "SAFE_START_FAILED",
+    "severity": "WARNING",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "trading_engine"
+  },
+  {
+    "ts": "2026-08-22T14:01:56.208071+00:00",
+    "event_id": "ba30c18c530444e5",
+    "event_type": "NINJATRADER_RECONNECTED",
+    "severity": "INFO",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "ninjatrader"
+  },
+  {
+    "ts": "2026-08-22T14:19:02.683867+00:00",
+    "event_id": "5637b4b60a314ef6",
+    "event_type": "RECOVERY_UNSAFE",
+    "severity": "WARNING",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "trading_engine"
+  },
+  {
+    "ts": "2026-08-22T14:19:03.262437+00:00",
+    "event_id": "190706aa18df44c0",
+    "event_type": "RECOVERY_FLAT_SAFE",
+    "severity": "INFO",
+    "destination": "APPRISE/TELEGRAM",
+    "success": true,
+    "delivered": true,
+    "failure_reason": null,
+    "process": "trading_engine"
+  }
+]

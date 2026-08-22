@@ -1,0 +1,245 @@
+{
+  "ok": true,
+  "days": [
+    {
+      "trading_date": "2026-06-30",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-01",
+      "replay_n": 3,
+      "extract_n": 3,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-02",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-03",
+      "replay_n": 0,
+      "extract_n": 0,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-05",
+      "replay_n": 0,
+      "extract_n": 0,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-06",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-07",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-08",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-09",
+      "replay_n": 3,
+      "extract_n": 3,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-10",
+      "replay_n": 3,
+      "extract_n": 3,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-12",
+      "replay_n": 0,
+      "extract_n": 0,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-13",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-14",
+      "replay_n": 3,
+      "extract_n": 3,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-15",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-16",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-17",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-19",
+      "replay_n": 0,
+      "extract_n": 0,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-20",
+      "replay_n": 2,
+      "extract_n": 2,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-21",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-22",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-23",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-24",
+      "replay_n": 2,
+      "extract_n": 2,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-26",
+      "replay_n": 0,
+      "extract_n": 0,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-27",
+      "replay_n": 3,
+      "extract_n": 3,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-28",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-29",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-30",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-07-31",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-02",
+      "replay_n": 0,
+      "extract_n": 0,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-03",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-04",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-05",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-06",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-07",
+      "replay_n": 3,
+      "extract_n": 3,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-09",
+      "replay_n": 0,
+      "extract_n": 0,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-10",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-11",
+      "replay_n": 2,
+      "extract_n": 2,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-12",
+      "replay_n": 4,
+      "extract_n": 4,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-13",
+      "replay_n": 2,
+      "extract_n": 2,
+      "keys_match": true
+    },
+    {
+      "trading_date": "2026-08-14",
+      "replay_n": 3,
+      "extract_n": 3,
+      "keys_match": true
+    }
+  ]
+}

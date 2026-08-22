@@ -1,0 +1,668 @@
+{
+  "phase": 53,
+  "snap_before": {
+    "frozen": {
+      "ok": true,
+      "reasons": [],
+      "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+      "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+    },
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+    "gc_file_sha": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq_file_sha": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541",
+    "gc_file_sha_expected": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq_file_sha_expected": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541",
+    "policy_sha256": "9f89341eec2a12178e61546cf98a7381f0087666bb18d94be90d435c3807efa0",
+    "policy_fields_match_phase52_lock": true,
+    "execution_default": "DRY_RUN",
+    "broker_execution": false,
+    "blocked_live_modes": [
+      "FUNDED",
+      "LIVE_PERSONAL",
+      "PROP_EVALUATION"
+    ],
+    "automation_confirmation": {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/config/aitrade_phase53_fn_automation_confirmation.json",
+      "automation_allowed": true,
+      "snapshot_date": "2026-08-20",
+      "source": "operator_external_confirmation",
+      "broker_execution": false
+    },
+    "journals": [
+      {
+        "path": "journal/phase26_gc_vwap_v2_paper/paper_trades.jsonl",
+        "exists": true,
+        "bytes": 0
+      },
+      {
+        "path": "journal/phase30_nq_dvp_paper/paper_trades.jsonl",
+        "exists": true,
+        "bytes": 0
+      },
+      {
+        "path": "journal/phase47_es_dvp_paper/paper_trades.jsonl",
+        "exists": true,
+        "bytes": 0
+      },
+      {
+        "path": "journal/phase31_nq_dvp_sim/executions.jsonl",
+        "exists": true,
+        "bytes": 0
+      }
+    ],
+    "live_eval_configured": false,
+    "es_frozen_exists": false
+  },
+  "snap_after": {
+    "frozen": {
+      "ok": true,
+      "reasons": [],
+      "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+      "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a"
+    },
+    "gc": "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43",
+    "nq": "935e3a616351b09dbfa8d2d0e2b5d6850be803fb385ec5e5f8e3593856a1212a",
+    "gc_file_sha": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq_file_sha": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541",
+    "gc_file_sha_expected": "12615d19ef3deed36b7929c161ef7c377975cd2317c0ae6d06f1949bd327046f",
+    "nq_file_sha_expected": "34927fba0f268e56cf166cf8939bdfec6aa031510f7cee9acfab3909dd36b541",
+    "policy_sha256": "9f89341eec2a12178e61546cf98a7381f0087666bb18d94be90d435c3807efa0",
+    "policy_fields_match_phase52_lock": true,
+    "execution_default": "DRY_RUN",
+    "broker_execution": false,
+    "blocked_live_modes": [
+      "FUNDED",
+      "LIVE_PERSONAL",
+      "PROP_EVALUATION"
+    ],
+    "automation_confirmation": {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/config/aitrade_phase53_fn_automation_confirmation.json",
+      "automation_allowed": true,
+      "snapshot_date": "2026-08-20",
+      "source": "operator_external_confirmation",
+      "broker_execution": false
+    },
+    "journals": [
+      {
+        "path": "journal/phase26_gc_vwap_v2_paper/paper_trades.jsonl",
+        "exists": true,
+        "bytes": 0
+      },
+      {
+        "path": "journal/phase30_nq_dvp_paper/paper_trades.jsonl",
+        "exists": true,
+        "bytes": 0
+      },
+      {
+        "path": "journal/phase47_es_dvp_paper/paper_trades.jsonl",
+        "exists": true,
+        "bytes": 0
+      },
+      {
+        "path": "journal/phase31_nq_dvp_sim/executions.jsonl",
+        "exists": true,
+        "bytes": 0
+      }
+    ],
+    "live_eval_configured": false,
+    "es_frozen_exists": false
+  },
+  "freeze_fail": null,
+  "policy_fail": null,
+  "prior_before": [
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase52_validation.json",
+      "exists": true,
+      "sha256": "b1faa48bfca91f3adc94dec5f9efd2551a6b0b41572509d1b224383d624164a5",
+      "bytes": 41227
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase52_pareto/selection.json",
+      "exists": true,
+      "sha256": "1422aa7835eaf28b8a3825495f32e9211b51ba8d191a8dd0e70f7e29ae7608df",
+      "bytes": 7393
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase49_eval_simulation/eval_matrix.json",
+      "exists": true,
+      "sha256": "cc568f9a6b1a2d66df2145c43e8b989a93f8044f8436a439ce8fdd068c9e2539",
+      "bytes": 41410
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase51_validation.json",
+      "exists": true,
+      "sha256": "ad91ce324942af08af147f2ca1b78ca2cd4bc5ebc2af0d1d69ab8152373c27e9",
+      "bytes": 29252
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase50_validation.json",
+      "exists": true,
+      "sha256": "61a50d8d96a9a506ccaab1ab33cce8d6a8429c31531fba289770bbad7a0abb20",
+      "bytes": 57275
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase49_validation.json",
+      "exists": true,
+      "sha256": "1025380bc30dea7d76003cca49f13b68a506fa510ae611168c434bf462ab4070",
+      "bytes": 25459
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase49b_validation.json",
+      "exists": true,
+      "sha256": "5e07a34c3dc1b30bcbf481106610b0ffec236c1a0283b2c9d7c235799f33e22d",
+      "bytes": 11954
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/config/aitrade_prop_execution_policy_v1.json",
+      "exists": true,
+      "sha256": "9f89341eec2a12178e61546cf98a7381f0087666bb18d94be90d435c3807efa0",
+      "bytes": 3683
+    }
+  ],
+  "prior_after": [
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase52_validation.json",
+      "exists": true,
+      "sha256": "b1faa48bfca91f3adc94dec5f9efd2551a6b0b41572509d1b224383d624164a5",
+      "bytes": 41227
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase52_pareto/selection.json",
+      "exists": true,
+      "sha256": "1422aa7835eaf28b8a3825495f32e9211b51ba8d191a8dd0e70f7e29ae7608df",
+      "bytes": 7393
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/reports/phase49_eval_simulation/eval_matrix.json",
+      "exists": true,
+      "sha256": "cc568f9a6b1a2d66df2145c43e8b989a93f8044f8436a439ce8fdd068c9e2539",
+      "bytes": 41410
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase51_validation.json",
+      "exists": true,
+      "sha256": "ad91ce324942af08af147f2ca1b78ca2cd4bc5ebc2af0d1d69ab8152373c27e9",
+      "bytes": 29252
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase50_validation.json",
+      "exists": true,
+      "sha256": "61a50d8d96a9a506ccaab1ab33cce8d6a8429c31531fba289770bbad7a0abb20",
+      "bytes": 57275
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase49_validation.json",
+      "exists": true,
+      "sha256": "1025380bc30dea7d76003cca49f13b68a506fa510ae611168c434bf462ab4070",
+      "bytes": 25459
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/phase49b_validation.json",
+      "exists": true,
+      "sha256": "5e07a34c3dc1b30bcbf481106610b0ffec236c1a0283b2c9d7c235799f33e22d",
+      "bytes": 11954
+    },
+    {
+      "path": "C:/Users/tanam/OneDrive/Desktop/aitrade/config/aitrade_prop_execution_policy_v1.json",
+      "exists": true,
+      "sha256": "9f89341eec2a12178e61546cf98a7381f0087666bb18d94be90d435c3807efa0",
+      "bytes": 3683
+    }
+  ],
+  "prior_ok": true,
+  "data_ok": true,
+  "data_source": "databento:GLBX.MDP3:NQ_stitched",
+  "data_integrity": {
+    "duplicate_count": 0,
+    "ohlc_invalid_count": 0,
+    "sorted": true,
+    "gap_count": 59,
+    "ok": true
+  },
+  "period": "2026-06-30 \u2192 2026-08-14",
+  "n_signals": 117,
+  "n_accepted": 64,
+  "n_rejected": 53,
+  "n_fills": 64,
+  "health": {
+    "class": "WATCH",
+    "n": 64,
+    "wr": 0.671875,
+    "er": 0.04453124999999999,
+    "avg_win": 0.557703488372093,
+    "avg_loss": -1.00625,
+    "flip_pct": 0.0,
+    "flip_n": 43,
+    "frozen_wr": 0.663,
+    "frozen_er": 0.06463687499999997,
+    "frozen_avg_win": 0.5164347662141779,
+    "frozen_avg_loss": -0.8242117952522255,
+    "monitor_demoted": true
+  },
+  "replay": {
+    "starting_equity": 50000.0,
+    "ending_equity": 50435.79999999985,
+    "pnl": 435.8000000000013,
+    "target_progress": 0.17431999999994005,
+    "max_dd": 1542.6000000000859,
+    "lowest_remaining_dd": 335.7999999998501,
+    "daily_stop_count": 0,
+    "demote_count": 1,
+    "near_count": 0,
+    "accepted": 64,
+    "rejected": 53,
+    "fills": 64,
+    "breach_attempts_prevented": 0,
+    "state": "EVAL_PROTECTED",
+    "stall": false,
+    "passed": false,
+    "breached": false,
+    "orders_transmitted": 0,
+    "mean_entry_slip_ticks": 1.0,
+    "mean_exit_slip_ticks": 1.0,
+    "mean_realized_R": 0.04453124999999999,
+    "no_session_weekdays": [],
+    "kill_log": [
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY",
+      "BLOCK_INSUFFICIENT_RISK_CAPACITY"
+    ]
+  },
+  "tz": {
+    "ok": true,
+    "session_resets_at_1700_ct": true,
+    "rows": [
+      {
+        "input": "2026-08-12T16:59:00-05:00",
+        "ny": "2026-08-12T17:59:00-04:00",
+        "utc": "2026-08-12T21:59:00+00:00",
+        "session_id": "2026-08-11",
+        "session_ids_agree": true,
+        "fn_flat": true
+      },
+      {
+        "input": "2026-08-12T17:00:00-05:00",
+        "ny": "2026-08-12T18:00:00-04:00",
+        "utc": "2026-08-12T22:00:00+00:00",
+        "session_id": "2026-08-12",
+        "session_ids_agree": true,
+        "fn_flat": false
+      },
+      {
+        "input": "2026-08-12T15:10:00-05:00",
+        "ny": "2026-08-12T16:10:00-04:00",
+        "utc": "2026-08-12T20:10:00+00:00",
+        "session_id": "2026-08-11",
+        "session_ids_agree": true,
+        "fn_flat": true
+      },
+      {
+        "input": "2026-08-12T15:09:00-05:00",
+        "ny": "2026-08-12T16:09:00-04:00",
+        "utc": "2026-08-12T20:09:00+00:00",
+        "session_id": "2026-08-11",
+        "session_ids_agree": true,
+        "fn_flat": false
+      },
+      {
+        "input": "2026-08-12T15:55:00-04:00",
+        "ny": "2026-08-12T15:55:00-04:00",
+        "utc": "2026-08-12T19:55:00+00:00",
+        "session_id": "2026-08-11",
+        "session_ids_agree": true,
+        "fn_flat": false
+      },
+      {
+        "input": "2026-08-15T12:00:00-05:00",
+        "ny": "2026-08-15T13:00:00-04:00",
+        "utc": "2026-08-15T17:00:00+00:00",
+        "session_id": "2026-08-14",
+        "session_ids_agree": true,
+        "fn_flat": true
+      },
+      {
+        "input": "2026-08-16T16:59:00-05:00",
+        "ny": "2026-08-16T17:59:00-04:00",
+        "utc": "2026-08-16T21:59:00+00:00",
+        "session_id": "2026-08-15",
+        "session_ids_agree": true,
+        "fn_flat": true
+      },
+      {
+        "input": "2026-08-16T17:00:00-05:00",
+        "ny": "2026-08-16T18:00:00-04:00",
+        "utc": "2026-08-16T22:00:00+00:00",
+        "session_id": "2026-08-16",
+        "session_ids_agree": true,
+        "fn_flat": false
+      },
+      {
+        "input": "2026-03-08T17:00:00-05:00",
+        "ny": "2026-03-08T18:00:00-04:00",
+        "utc": "2026-03-08T22:00:00+00:00",
+        "session_id": "2026-03-08",
+        "session_ids_agree": true,
+        "fn_flat": false
+      },
+      {
+        "input": "2026-11-01T17:00:00-06:00",
+        "ny": "2026-11-01T18:00:00-05:00",
+        "utc": "2026-11-01T23:00:00+00:00",
+        "session_id": "2026-11-01",
+        "session_ids_agree": true,
+        "fn_flat": false
+      }
+    ]
+  },
+  "news": {
+    "ok": true,
+    "event": "2026-08-12",
+    "event_ts": "2026-08-12T08:30:00-04:00",
+    "blackout": {
+      "start": "2026-08-12T08:25:00-04:00",
+      "end": "2026-08-12T08:35:00-04:00"
+    },
+    "rows": [
+      {
+        "case": "1s_before",
+        "when": "2026-08-12T08:24:59-04:00",
+        "expected_allow": true,
+        "accepted": true,
+        "reason": null,
+        "pass": true
+      },
+      {
+        "case": "inside",
+        "when": "2026-08-12T08:30:00-04:00",
+        "expected_allow": false,
+        "accepted": false,
+        "reason": "NEWS_BLACKOUT_VIOLATION_RISK",
+        "pass": true
+      },
+      {
+        "case": "immediately_after_clock",
+        "when": "2026-08-12T08:36:00-04:00",
+        "expected_allow": true,
+        "accepted": true,
+        "reason": null,
+        "pass": true
+      },
+      {
+        "case": "clock_0825",
+        "when": "2026-08-12T08:25:00-04:00",
+        "expected_allow": false,
+        "accepted": false,
+        "reason": "NEWS_BLACKOUT_VIOLATION_RISK",
+        "pass": true
+      }
+    ],
+    "prevented": [
+      {
+        "case": "inside",
+        "when": "2026-08-12T08:30:00-04:00",
+        "expected_allow": false,
+        "accepted": false,
+        "reason": "NEWS_BLACKOUT_VIOLATION_RISK",
+        "pass": true
+      },
+      {
+        "case": "clock_0825",
+        "when": "2026-08-12T08:25:00-04:00",
+        "expected_allow": false,
+        "accepted": false,
+        "reason": "NEWS_BLACKOUT_VIOLATION_RISK",
+        "pass": true
+      }
+    ],
+    "missing_fail_closed": "NEWS_BLACKOUT_VIOLATION_RISK",
+    "stale_fail_closed": "NEWS_BLACKOUT_VIOLATION_RISK",
+    "fail_close_ok": true,
+    "calendar_path": "C:/Users/tanam/OneDrive/Desktop/aitrade/data/macro/bls_events.jsonl",
+    "calendar_exists": true
+  },
+  "news_prevented_during_shadow": [],
+  "intent_ok": true,
+  "failinj": {
+    "ok": true,
+    "rows": [
+      {
+        "case": "stale_quote",
+        "expected": [
+          "LIVE_DATA_STALE"
+        ],
+        "got": "LIVE_DATA_STALE",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "missing_candle",
+        "expected": [
+          "LIVE_DATA_STALE"
+        ],
+        "got": "LIVE_DATA_STALE",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "duplicate_candle",
+        "expected": [
+          "LIVE_DATA_STALE"
+        ],
+        "got": "LIVE_DATA_STALE",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "ooo_timestamp",
+        "expected": [
+          "LIVE_DATA_STALE"
+        ],
+        "got": "LIVE_DATA_STALE",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "calendar_missing",
+        "expected": [
+          "NEWS_BLACKOUT_VIOLATION_RISK"
+        ],
+        "got": "NEWS_BLACKOUT_VIOLATION_RISK",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "equity_unavailable",
+        "expected": [
+          "ACCOUNT_EQUITY_UNKNOWN"
+        ],
+        "got": "ACCOUNT_EQUITY_UNKNOWN",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "wrong_hash",
+        "expected": [
+          "STRATEGY_HASH_MISMATCH"
+        ],
+        "got": "STRATEGY_HASH_MISMATCH",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "wrong_strategy_id",
+        "expected": [
+          "STRATEGY_HASH_MISMATCH"
+        ],
+        "got": "STRATEGY_HASH_MISMATCH",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "corrupt_signal",
+        "expected": [
+          "SIGNAL_PAYLOAD_CORRUPT"
+        ],
+        "got": "SIGNAL_PAYLOAD_CORRUPT",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "delayed_ack",
+        "expected": [
+          "ORDER_STATE_MISMATCH"
+        ],
+        "got": "ORDER_STATE_MISMATCH",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "order_rejected",
+        "expected": [
+          "BROKER_CONNECTION_UNSTABLE"
+        ],
+        "got": "BROKER_CONNECTION_UNSTABLE",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "unexpected_open",
+        "expected": [
+          "POSITION_STATE_MISMATCH"
+        ],
+        "got": "POSITION_STATE_MISMATCH",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "position_missing",
+        "expected": [
+          "POSITION_STATE_MISMATCH"
+        ],
+        "got": "POSITION_STATE_MISMATCH",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "impossible_mll",
+        "expected": [
+          "DRAW_DOWN_CALCULATION_INVALID"
+        ],
+        "got": "DRAW_DOWN_CALCULATION_INVALID",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "balance_jump",
+        "expected": [
+          "ACCOUNT_EQUITY_UNKNOWN"
+        ],
+        "got": "ACCOUNT_EQUITY_UNKNOWN",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "pnl_mismatch",
+        "expected": [
+          "DRAW_DOWN_CALCULATION_INVALID"
+        ],
+        "got": "DRAW_DOWN_CALCULATION_INVALID",
+        "pass": true,
+        "transmitted": 0
+      },
+      {
+        "case": "qty_3mnq",
+        "expected": [
+          "BLOCK_QTY_3MNQ_REJECTED",
+          "MAX_POSITION_EXCEEDED"
+        ],
+        "got": "MAX_POSITION_EXCEEDED",
+        "pass": true,
+        "transmitted": 0
+      }
+    ]
+  },
+  "repro_ok": true,
+  "orders_transmitted": 0,
+  "checklist": {
+    "frozen_hashes_verified": "PASS",
+    "phase52_policy_verified": "PASS",
+    "fundednext_automation_rule_source_stored": "PASS",
+    "fundednext_rule_snapshot_date_stored": "PASS",
+    "nq_data_feed_functioning": "PASS",
+    "economic_calendar_functioning": "PASS",
+    "timezone_handling_verified": "PASS",
+    "news_locks_verified": "PASS",
+    "position_sizing_verified": "PASS",
+    "duplicate_order_prevention_verified": "PASS",
+    "daily_governor_verified": "PASS",
+    "remaining_dd_calculation_verified": "PASS",
+    "fast_to_protected_verified": "PASS",
+    "near_target_logic_verified": "PASS",
+    "kill_switches_verified": "PASS",
+    "shadow_fills_reasonable": "PASS",
+    "strategy_distribution_health_acceptable": "PASS",
+    "no_destructive_winner_loser_shift": "PASS",
+    "no_real_orders_transmitted": "PASS",
+    "signal_reproduction_unmutated": "PASS"
+  },
+  "tests": {
+    "ok": true,
+    "returncode": 0,
+    "stdout_tail": "",
+    "stderr_tail": "_stale (tests_phase53.IntentSafetyTests.test_stale) ... ok\ntest_unknown_equity (tests_phase53.IntentSafetyTests.test_unknown_equity) ... ok\ntest_valid_2mnq_fast (tests_phase53.IntentSafetyTests.test_valid_2mnq_fast) ... ok\ntest_wrong_hash (tests_phase53.IntentSafetyTests.test_wrong_hash) ... ok\ntest_1s_before_lock_allow (tests_phase53.NewsCalendarTests.test_1s_before_lock_allow) ... ok\ntest_after_blackout_allow (tests_phase53.NewsCalendarTests.test_after_blackout_allow) ... ok\ntest_event_datetime_ny (tests_phase53.NewsCalendarTests.test_event_datetime_ny) ... ok\ntest_inside_blackout_reject (tests_phase53.NewsCalendarTests.test_inside_blackout_reject) ... ok\ntest_rejected_keeps_frozen_prices (tests_phase53.SignalNotMutatedTests.test_rejected_keeps_frozen_prices) ... ok\ntest_1700_ct_resets_session (tests_phase53.TimezoneSessionTests.test_1700_ct_resets_session) ... ok\ntest_daily_stop_then_reset_allows (tests_phase53.TimezoneSessionTests.test_daily_stop_then_reset_allows) ... ok\ntest_flat_1510_ct (tests_phase53.TimezoneSessionTests.test_flat_1510_ct) ... ok\ntest_ny_utc_chicago_agree (tests_phase53.TimezoneSessionTests.test_ny_utc_chicago_agree) ... ok\ntest_open_position_not_required_at_reset_dvp_flat_before_fn (tests_phase53.TimezoneSessionTests.test_open_position_not_required_at_reset_dvp_flat_before_fn) ... ok\ntest_weekend (tests_phase53.TimezoneSessionTests.test_weekend) ... ok\n\n----------------------------------------------------------------------\nRan 54 tests in 0.206s\n\nOK\n"
+  },
+  "journal": "C:/Users/tanam/OneDrive/Desktop/aitrade/journal/phase53_fn_flex_shadow/audit.jsonl",
+  "verdict": "READY_TO_PURCHASE_EVALUATION",
+  "blockers": []
+}
