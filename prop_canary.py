@@ -86,9 +86,19 @@ def canary_flag_enabled() -> bool:
 
 
 def _state_path() -> Path:
-    override = os.environ.get(ENV_STATE)
-    if override:
-        return Path(override)
+    from test_workspace import mutable_path, test_mode, test_root
+    if test_mode():
+        if not os.environ.get("AITRADE_TEST_ROOT"):
+            raise RuntimeError("authoritative_test_root_required")
+        root = test_root()
+        override = os.environ.get(ENV_STATE)
+        if override:
+            path = Path(override).resolve()
+            if path != root and root not in path.parents:
+                raise RuntimeError(f"test_path_escaped_workspace:{path}")
+            return path
+        return mutable_path("state", "prop_canary.json")
+    # Production ignores arbitrary environment path overrides.
     return DEFAULT_STATE_PATH
 
 

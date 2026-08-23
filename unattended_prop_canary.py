@@ -44,6 +44,12 @@ from prop_canary_nt_exec import (
     validate_canary_oif_line,
 )
 from unattended_watchdog import WatchdogObservation, crash_surface, observe as watchdog_observe
+from broker_acknowledgements import (
+    ExpectedLifecycle,
+    ProtectionLifecycle,
+    PROTECTED_CONFIRMED,
+    EXPECTED_SOURCE,
+)
 
 ROOT = Path(__file__).resolve().parent
 ENV_FLAG = "AITRADE_UNATTENDED_PROP_CANARY"
@@ -91,9 +97,19 @@ def unattended_flag_enabled() -> bool:
 
 
 def _state_path() -> Path:
-    override = os.environ.get(ENV_STATE)
-    if override:
-        return Path(override)
+    from test_workspace import mutable_path, test_mode, test_root
+    if test_mode():
+        if not os.environ.get("AITRADE_TEST_ROOT"):
+            raise RuntimeError("authoritative_test_root_required")
+        root = test_root()
+        override = os.environ.get(ENV_STATE)
+        if override:
+            path = Path(override).resolve()
+            if path != root and root not in path.parents:
+                raise RuntimeError(f"test_path_escaped_workspace:{path}")
+            return path
+        return mutable_path("state", "unattended_prop_canary.json")
+    # Production ignores arbitrary environment path overrides.
     return DEFAULT_STATE_PATH
 
 
@@ -372,8 +388,9 @@ class UnattendedContext:
     engine_heartbeat_age_sec: float = 1.0
     fill_qty: int = 1
     entry_fill_price: float = 24800.0
-    stop_ack: bool = True
-    target_ack: bool = True
+    entry_ack: Optional[dict[str, Any]] = None
+    stop_ack: Any = None
+    target_ack: Any = None
     protection_timeout: bool = False
     now: Optional[datetime] = None
     trading_day: Optional[str] = None
@@ -640,25 +657,90 @@ def _block(reason: str, *, persist_lock: bool = True) -> dict[str, Any]:
     return {"ok": False, "state": UNATTENDED_BLOCKED, "reason": reason, "submitted": False, "PROP_EXECUTION": False}
 
 
+def _expected_lifecycle(plan: dict[str, Any]) -> ExpectedLifecycle:
+    return ExpectedLifecycle(
+        account_id=CANARY_NT_ACCOUNT,
+        instrument=EXEC_INSTRUMENT_NT,
+        contract_month="09-26",
+        entry_action=str(plan["action"]),
+        protective_action=str(plan["exit_action"]),
+        quantity=CANARY_QTY,
+        entry_order_id=str(plan["entry_order_id"]),
+        oco_id=str(plan["oco_id"]),
+        correlation_id=str(plan["trade_id"]),
+    )
+
+
+def structured_fixture_acknowledgements(
+    plan: dict[str, Any], *, fill_qty: int = CANARY_QTY, now: Optional[datetime] = None
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Synthetic broker evidence for isolated dry runs; never a live acknowledgement."""
+    ts = (now or _utc_now()).astimezone(timezone.utc).isoformat()
+    base = {
+        "account_id": CANARY_NT_ACCOUNT,
+        "instrument": EXEC_INSTRUMENT_NT,
+        "contract_month": "09-26",
+        "quantity": CANARY_QTY,
+        "correlation_id": str(plan["trade_id"]),
+        "broker_event_timestamp": ts,
+        "local_receipt_timestamp": ts,
+        "source": EXPECTED_SOURCE,
+    }
+    entry = {
+        **base, "ack_type": "ENTRY_FILL", "action": str(plan["action"]),
+        "filled_quantity": fill_qty, "broker_order_id": str(plan["entry_order_id"]),
+        "parent_entry_id": str(plan["entry_order_id"]), "oco_id": None,
+        "order_state": "FILLED" if fill_qty == CANARY_QTY else "PARTFILLED",
+    }
+    stop = {
+        **base, "ack_type": "STOP_ACKNOWLEDGED", "action": str(plan["exit_action"]),
+        "quantity": fill_qty, "filled_quantity": 0,
+        "broker_order_id": str(plan["stop_order_id"]),
+        "parent_entry_id": str(plan["entry_order_id"]), "oco_id": str(plan["oco_id"]),
+        "order_state": "WORKING",
+    }
+    target = {
+        **base, "ack_type": "TARGET_ACKNOWLEDGED", "action": str(plan["exit_action"]),
+        "quantity": fill_qty, "filled_quantity": 0,
+        "broker_order_id": str(plan["target_order_id"]),
+        "parent_entry_id": str(plan["entry_order_id"]), "oco_id": str(plan["oco_id"]),
+        "order_state": "WORKING",
+    }
+    return entry, stop, target
+
+
 def confirm_protection(ctx: UnattendedContext, plan: dict[str, Any], fill: float) -> dict[str, Any]:
-    if ctx.protection_timeout or not ctx.stop_ack:
-        _notify("UNATTENDED_PROTECTION_FAILURE", "PROTECTION_FAILURE_CRITICAL", critical=True)
-        mem = _ensure_mem()
-        mem["critical"] = True
-        return {"ok": False, "verdict": "PROTECTION_FAILURE_CRITICAL", "timeout": True}
+    lifecycle = ProtectionLifecycle(_expected_lifecycle(plan))
+    now = ctx.now or _utc_now()
+    entry_result = lifecycle.apply(ctx.entry_ack, now=now)
+    if not entry_result.get("ok") or ctx.protection_timeout:
+        _notify("UNATTENDED_PROTECTION_FAILURE", "ENTRY_ACK_INVALID", critical=True)
+        _ensure_mem()["critical"] = True
+        return {"ok": False, "verdict": "PROTECTION_FAILURE_CRITICAL", "state": lifecycle.state, "errors": lifecycle.errors}
     kids = child_oifs_from_fill(plan, fill)
     validate_canary_oif_line(kids["stop_line"])
     if ctx.fill_qty != CANARY_QTY:
         return {"ok": False, "verdict": "PROTECTION_FAILURE_CRITICAL", "reason": "QTY_MISMATCH"}
+    stop_result = lifecycle.apply(ctx.stop_ack, now=now)
+    target_result = lifecycle.apply(ctx.target_ack, now=now)
+    if not stop_result.get("ok") or not target_result.get("ok") or lifecycle.state != PROTECTED_CONFIRMED:
+        _notify("UNATTENDED_PROTECTION_FAILURE", "STRUCTURED_PROTECTION_UNCONFIRMED", critical=True)
+        _ensure_mem()["critical"] = True
+        return {
+            "ok": False, "verdict": "PROTECTION_FAILURE_CRITICAL",
+            "state": lifecycle.state, "protected": lifecycle.protected,
+            "errors": lifecycle.errors, "escalation_required": lifecycle.escalation_required,
+        }
     mem = _ensure_mem()
-    mem["stop_confirmed"] = True
-    if not ctx.target_ack:
-        _notify("UNATTENDED_PROTECTION_FAILURE", "TARGET_NOT_CONFIRMED", critical=True)
-        return {"ok": False, "verdict": "PROTECTION_FAILURE_CRITICAL", "reason": "TARGET_FAILURE"}
-    mem["target_confirmed"] = True
+    mem["stop_confirmed"] = lifecycle.stop_valid
+    mem["target_confirmed"] = lifecycle.target_valid
     _notify("UNATTENDED_STOP_CONFIRMED", f"STOPMARKET working · {kids['stop_price']}")
     _notify("UNATTENDED_TARGET_CONFIRMED", f"LIMIT working · {kids['target_price']}")
-    return {"ok": True, "children": kids, "verdict": "PROTECTION_CONFIRMED"}
+    return {
+        "ok": True, "children": kids, "verdict": "PROTECTION_CONFIRMED",
+        "state": lifecycle.state, "protected": lifecycle.protected,
+        "acknowledgements": {"entry": ctx.entry_ack, "stop": ctx.stop_ack, "target": ctx.target_ack},
+    }
 
 
 def attempt_entry(
@@ -875,6 +957,13 @@ def unattended_dry_run(ctx: UnattendedContext) -> dict[str, Any]:
         now=now,
         canary=replace(ctx.canary, signal=genuine_signal(ts=sig_ts, signal_id="unattended-dry")),
     )
+    fixture_plan = _build_payload(
+        ctx2.canary, direction="LONG", trade_id="AITRADE_UNATTENDED_unattended-dry"
+    )["plan"]
+    entry_ack, stop_ack, target_ack = structured_fixture_acknowledgements(
+        fixture_plan, fill_qty=ctx2.fill_qty, now=now
+    )
+    ctx2 = replace(ctx2, entry_ack=entry_ack, stop_ack=stop_ack, target_ack=target_ack)
     out = attempt_entry(ctx2, transmit=False)
     second = attempt_entry(ctx2, transmit=False)
     survival = broker_protection_survival()

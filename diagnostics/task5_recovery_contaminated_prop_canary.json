@@ -1,0 +1,11 @@
+{
+  "schema": "AITRADE_PROP_CANARY_V1",
+  "PROP_EXECUTION": false,
+  "general_prop_execution": false,
+  "one_shot_consumed": false,
+  "was_in_flight": false,
+  "last_persisted_mode": "PROP_CANARY_BLOCKED",
+  "last_result": "EMERGENCY_FLATTEN",
+  "last_error": "EMERGENCY_FLATTEN",
+  "updated_at": "2026-08-23T18:05:29.534803+00:00"
+}

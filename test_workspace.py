@@ -12,6 +12,7 @@ import tempfile
 from pathlib import Path
 
 _ROOT: Path | None = None
+_ROOTS: set[Path] = set()
 
 
 def test_mode() -> bool:
@@ -22,12 +23,12 @@ def test_root() -> Path:
     global _ROOT
     if not test_mode():
         raise RuntimeError("test_workspace_requested_outside_test_mode")
-    if _ROOT is None:
-        configured = os.environ.get("AITRADE_TEST_ROOT")
-        _ROOT = Path(configured).resolve() if configured else Path(
-            tempfile.mkdtemp(prefix="aitrade_test_")
-        ).resolve()
+    configured = os.environ.get("AITRADE_TEST_ROOT")
+    configured_root = Path(configured).resolve() if configured else None
+    if _ROOT is None or (configured_root is not None and configured_root != _ROOT):
+        _ROOT = configured_root or Path(tempfile.mkdtemp(prefix="aitrade_test_")).resolve()
         _ROOT.mkdir(parents=True, exist_ok=True)
+        _ROOTS.add(_ROOT)
         os.environ["AITRADE_TEST_ROOT"] = str(_ROOT)
     return _ROOT
 
@@ -45,8 +46,9 @@ def production_or_test(production: Path, *test_parts: str) -> Path:
 
 
 def _cleanup() -> None:
-    if _ROOT is not None and not os.environ.get("AITRADE_TEST_ROOT_PRESERVE"):
-        shutil.rmtree(_ROOT, ignore_errors=True)
+    if not os.environ.get("AITRADE_TEST_ROOT_PRESERVE"):
+        for root in tuple(_ROOTS):
+            shutil.rmtree(root, ignore_errors=True)
 
 
 atexit.register(_cleanup)

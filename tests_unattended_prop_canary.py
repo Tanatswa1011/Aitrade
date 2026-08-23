@@ -59,7 +59,12 @@ def _ctx(**over):
 
 class UnattendedPropCanaryTests(unittest.TestCase):
     def setUp(self):
-        os.environ[ENV_STATE] = str(Path(tempfile.mkdtemp(prefix="unatt_")) / "u.json")
+        self._td = Path(tempfile.mkdtemp(prefix="unatt_"))
+        self._old_test = os.environ.get("AITRADE_PHASE54_TEST")
+        self._old_root = os.environ.get("AITRADE_TEST_ROOT")
+        os.environ["AITRADE_PHASE54_TEST"] = "1"
+        os.environ["AITRADE_TEST_ROOT"] = str(self._td)
+        os.environ[ENV_STATE] = str(self._td / "u.json")
         os.environ.pop(ENV_FLAG, None)
         reset_for_tests(clear_persist=True)
 
@@ -67,6 +72,10 @@ class UnattendedPropCanaryTests(unittest.TestCase):
         os.environ.pop(ENV_FLAG, None)
         os.environ.pop(ENV_STATE, None)
         reset_for_tests(clear_persist=True)
+        if self._old_test is None: os.environ.pop("AITRADE_PHASE54_TEST", None)
+        else: os.environ["AITRADE_PHASE54_TEST"] = self._old_test
+        if self._old_root is None: os.environ.pop("AITRADE_TEST_ROOT", None)
+        else: os.environ["AITRADE_TEST_ROOT"] = self._old_root
 
     def _ready(self, **over):
         _flag(True)
