@@ -283,6 +283,7 @@ class CanaryContext:
     position_side: str = "FLAT"
     position_qty: int = 0
     working_orders: int = 0
+    order_state_errors: tuple[str, ...] = ()
     recon_status: str = "UNKNOWN"
     policy_verdict: str = "BLOCK"
     calendar_status: str = "OK"
@@ -504,6 +505,7 @@ def evaluate_account_gates(ctx: CanaryContext) -> dict[str, Any]:
         errors.append("OPEN_POSITION_BLOCKED")
     if int(ctx.working_orders or 0) > 0:
         errors.append("WORKING_ORDER_BLOCKED")
+    errors.extend(str(e) for e in ctx.order_state_errors if str(e))
     if ctx.recon_status != PROP_FLAT_SAFE:
         errors.append("UNSAFE_RECONCILIATION")
     if str(ctx.policy_verdict or "").upper() not in {"ALLOW", "APPROVED"}:
@@ -1033,10 +1035,12 @@ def context_from_ops_snapshot(snap: dict[str, Any]) -> CanaryContext:
     login = str(fn.get("platform_login") or match.get("platform_login") or acct.get("platform_login") or "")
     aid = fn.get("fundednext_account_id") or match.get("account_id") or acct.get("fundednext_account_id")
     working = 0
-    try:
-        working = 1 if not bool((snap.get("checks") or {}).get("checks", {}).get("no_stale_orders", True)) else 0
-    except Exception:
-        working = 0
+    order_gate = snap.get("order_state_gate") if isinstance(snap.get("order_state_gate"), dict) else {"ok": False, "errors": ["ORDER_STATE_MISSING"]}
+    order_errors = tuple(str(error) for error in (order_gate.get("errors") or ()) if str(error))
+    if order_gate.get("ok") is not True and not order_errors:
+        order_errors = ("ORDER_STATE_MISSING",)
+    order_doc = snap.get("orders") if isinstance(snap.get("orders"), dict) else {}
+    working = int(order_doc.get("active_count") or 0)
     age = mcp.get("age_sec")
     if age is None:
         age = acct.get("age_sec")
@@ -1060,6 +1064,7 @@ def context_from_ops_snapshot(snap: dict[str, Any]) -> CanaryContext:
         position_side=str(pos.get("side") or "FLAT"),
         position_qty=qty,
         working_orders=working,
+        order_state_errors=order_errors,
         recon_status=recon,
         policy_verdict=str(policy),
         calendar_status=str(dec.get("calendar_status") or "OK"),

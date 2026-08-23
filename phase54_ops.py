@@ -1801,6 +1801,15 @@ def snapshot() -> dict[str, Any]:
 
     sim_recovery = recovery_from_sim101(sim101, expected_flat=True, aittrade_orders=0)
     rt_dump = _nt().runtime_snapshot() or {}
+    from order_state import evaluate_order_snapshot
+    order_doc = rt_dump.get("orders") if isinstance(rt_dump.get("orders"), dict) else None
+    order_gate = evaluate_order_snapshot(
+        order_doc,
+        expected_account=_expected_fn_name(),
+        expected_contract=str(((rt_dump.get("contracts") or {}).get("mnq") or "")),
+        position_flat=bool(recon.get("reconciled")) and int(recon.get("quantity") or recon.get("broker_qty") or 0) == 0,
+        local_oif_count=len(_nt().incoming_oif_files()),
+    )
     dump_mtime = rt_dump.get("_mtime")
     try:
         dump_age = max(0.0, time.time() - float(dump_mtime)) if dump_mtime is not None else None
@@ -1852,6 +1861,8 @@ def snapshot() -> dict[str, Any]:
         "fundednext_account_state": BrokerAdapter.fundednext_account_state(),
         "connection": conn,
         "position": recon,
+        "orders": order_doc,
+        "order_state_gate": order_gate,
         "risk": {
             **risk,
             "today_pnl": acct.get("today_pnl") if acct.get("today_pnl") is not None else risk.get("today_pnl"),

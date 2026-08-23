@@ -3,6 +3,7 @@
 #region Using declarations
 using System;
 using System.Globalization;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -150,6 +151,135 @@ namespace NinjaTrader.NinjaScript.AddOns
 			if (IsSim(name))
 				return false;
 			return name.StartsWith("FN", StringComparison.OrdinalIgnoreCase) || name.StartsWith("FUNDEDNEXT", StringComparison.OrdinalIgnoreCase);
+		}
+
+		private static bool IsTerminalOrderState(OrderState state)
+		{
+			return state == OrderState.Cancelled || state == OrderState.Filled || state == OrderState.Rejected;
+		}
+
+		private static bool IsKnownActiveOrderState(OrderState state)
+		{
+			return state == OrderState.Accepted || state == OrderState.Initialized || state == OrderState.PartFilled
+				|| state == OrderState.CancelSubmitted || state == OrderState.ChangeSubmitted || state == OrderState.Submitted
+				|| state == OrderState.TriggerPending || state == OrderState.Working || state == OrderState.CancelPending
+				|| state == OrderState.ChangePending || state == OrderState.Suspended || state == OrderState.AcceptedByRisk;
+		}
+
+		private static bool IsRecognizedAITRADEOrder(Order order)
+		{
+			string name = order != null ? order.Name : null;
+			string from = order != null ? order.FromEntrySignal : null;
+			return (!string.IsNullOrEmpty(name) && name.StartsWith("AITRADE_", StringComparison.Ordinal))
+				|| (!string.IsNullOrEmpty(from) && from.StartsWith("AITRADE_", StringComparison.Ordinal));
+		}
+
+		private static bool IsProtectiveOrder(Order order)
+		{
+			if (order == null)
+				return false;
+			string name = order.Name ?? "";
+			return order.OrderState == OrderState.PartFilled || order.IsStopMarket || order.IsStopLimit
+				|| name.IndexOf("stop", StringComparison.OrdinalIgnoreCase) >= 0
+				|| name.IndexOf("target", StringComparison.OrdinalIgnoreCase) >= 0;
+		}
+
+		private static void AppendOrders(StringBuilder sb, Account account, bool connected, DateTime utcNow, string expectedContract, bool positionFlat)
+		{
+			var observed = new List<Order>();
+			bool collectionAvailable = account != null && account.Orders != null;
+			if (collectionAvailable)
+			{
+				lock (account.Orders)
+				{
+					foreach (Order order in account.Orders)
+						if (order != null)
+							observed.Add(order);
+				}
+			}
+			var active = new List<Order>();
+			var ocoCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+			int pending = 0, partial = 0, unknown = 0, orphan = 0;
+			for (int i = 0; i < observed.Count; i++)
+			{
+				Order order = observed[i];
+				if (IsTerminalOrderState(order.OrderState))
+					continue;
+				active.Add(order);
+				if (!IsKnownActiveOrderState(order.OrderState))
+					unknown++;
+				if (order.OrderState == OrderState.PartFilled && order.Filled < order.Quantity)
+					partial++;
+				if (order.OrderState != OrderState.Working && order.OrderState != OrderState.PartFilled)
+					pending++;
+				if (!string.IsNullOrEmpty(order.Oco))
+					ocoCounts[order.Oco] = ocoCounts.ContainsKey(order.Oco) ? ocoCounts[order.Oco] + 1 : 1;
+			}
+			for (int i = 0; i < active.Count; i++)
+			{
+				Order order = active[i];
+				string acct = order.Account != null ? order.Account.Name : null;
+				string instr = order.Instrument != null ? order.Instrument.FullName : null;
+				bool ocoMissing = !string.IsNullOrEmpty(order.Oco) && (!ocoCounts.ContainsKey(order.Oco) || ocoCounts[order.Oco] < 2);
+				bool potential = !IsRecognizedAITRADEOrder(order) || (positionFlat && IsProtectiveOrder(order))
+					|| (positionFlat && !string.IsNullOrEmpty(order.Oco)) || ocoMissing
+					|| acct != (account != null ? account.Name : null) || instr != expectedContract
+					|| (order.OrderState == OrderState.PartFilled && order.Filled < order.Quantity);
+				if (potential)
+					orphan++;
+			}
+			sb.Append("\"orders\":{");
+			sb.Append("\"timestamp\":").Append(JsonStr(utcNow.ToString("o"))).Append(",");
+			sb.Append("\"source_heartbeat\":").Append(JsonStr(utcNow.ToString("o"))).Append(",");
+			sb.Append("\"source\":\"NINJATRADER_ACCOUNT_ORDERS\",");
+			sb.Append("\"connection_status\":").Append(JsonStr(connected ? "CONNECTED" : "DISCONNECTED")).Append(",");
+			sb.Append("\"account_id\":").Append(JsonStr(account != null ? account.Name : null)).Append(",");
+			sb.Append("\"available\":").Append(JsonBool(account != null && connected && collectionAvailable)).Append(",");
+			sb.Append("\"collection_available\":").Append(JsonBool(collectionAvailable)).Append(",");
+			sb.Append("\"fresh\":").Append(JsonBool(account != null && connected && collectionAvailable)).Append(",");
+			sb.Append("\"total_observed\":").Append(observed.Count).Append(",");
+			sb.Append("\"active_count\":").Append(active.Count).Append(",");
+			sb.Append("\"pending_count\":").Append(pending).Append(",");
+			sb.Append("\"partial_active_count\":").Append(partial).Append(",");
+			sb.Append("\"orphan_candidate_count\":").Append(orphan).Append(",");
+			sb.Append("\"unknown_count\":").Append(unknown).Append(",");
+			sb.Append("\"active_orders\":[");
+			for (int i = 0; i < active.Count; i++)
+			{
+				Order order = active[i];
+				if (i > 0) sb.Append(",");
+				string acct = order.Account != null ? order.Account.Name : null;
+				string instr = order.Instrument != null ? order.Instrument.FullName : null;
+				int remaining = Math.Max(0, order.Quantity - order.Filled);
+				bool recognized = IsRecognizedAITRADEOrder(order);
+				bool protective = IsProtectiveOrder(order);
+				bool ocoMissing = !string.IsNullOrEmpty(order.Oco) && (!ocoCounts.ContainsKey(order.Oco) || ocoCounts[order.Oco] < 2);
+				bool potential = !recognized || (positionFlat && protective) || (positionFlat && !string.IsNullOrEmpty(order.Oco))
+					|| ocoMissing || acct != (account != null ? account.Name : null) || instr != expectedContract
+					|| (order.OrderState == OrderState.PartFilled && remaining > 0);
+				sb.Append("{");
+				sb.Append("\"correlation_id\":").Append(JsonStr("NT-" + order.Id.ToString(CultureInfo.InvariantCulture))).Append(",");
+				sb.Append("\"account_id\":").Append(JsonStr(acct)).Append(",");
+				sb.Append("\"instrument\":").Append(JsonStr(instr)).Append(",");
+				sb.Append("\"contract_month\":").Append(JsonStr(instr)).Append(",");
+				sb.Append("\"action\":").Append(JsonStr(order.OrderAction.ToString())).Append(",");
+				sb.Append("\"order_type\":").Append(JsonStr(order.OrderType.ToString())).Append(",");
+				sb.Append("\"quantity\":").Append(order.Quantity).Append(",");
+				sb.Append("\"filled_quantity\":").Append(order.Filled).Append(",");
+				sb.Append("\"remaining_quantity\":").Append(remaining).Append(",");
+				sb.Append("\"limit_price\":").Append(JsonNum(order.IsLimit || order.IsStopLimit ? (double?)order.LimitPrice : null)).Append(",");
+				sb.Append("\"stop_price\":").Append(JsonNum(order.IsStopMarket || order.IsStopLimit ? (double?)order.StopPrice : null)).Append(",");
+				sb.Append("\"state\":").Append(JsonStr(order.OrderState.ToString())).Append(",");
+				sb.Append("\"oco_id\":").Append(JsonStr(string.IsNullOrEmpty(order.Oco) ? null : order.Oco)).Append(",");
+				sb.Append("\"parent_correlation\":").Append(JsonStr(string.IsNullOrEmpty(order.FromEntrySignal) ? null : order.FromEntrySignal)).Append(",");
+				sb.Append("\"created_at\":").Append(JsonStr(order.Time.ToUniversalTime().ToString("o"))).Append(",");
+				sb.Append("\"updated_at\":").Append(JsonStr(utcNow.ToString("o"))).Append(",");
+				sb.Append("\"recognized\":").Append(JsonBool(recognized)).Append(",");
+				sb.Append("\"protective\":").Append(JsonBool(protective)).Append(",");
+				sb.Append("\"potential_orphan\":").Append(JsonBool(potential));
+				sb.Append("}");
+			}
+			sb.Append("]},");
 		}
 
 		private static DateTime ThirdFriday(int year, int month)
@@ -974,6 +1104,7 @@ namespace NinjaTrader.NinjaScript.AddOns
 				sb.Append("\"quantity\":").Append(posQty).Append(",");
 				sb.Append("\"average_price\":").Append(JsonNum(posAvg));
 				sb.Append("},");
+				AppendOrders(sb, fn, fnConnected, utcNow, posInstr, posQty == 0 && posSide == "FLAT");
 				sb.Append("\"diagnostics\":{");
 				sb.Append("\"mnq_found\":").Append(JsonBool(mnq != null)).Append(",");
 				sb.Append("\"nq_found\":").Append(JsonBool(nq != null)).Append(",");
