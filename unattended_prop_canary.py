@@ -855,11 +855,28 @@ def attempt_entry(
         return {"ok": False, "submitted": False, "error_code": "NOT_WAITING_DVP", "state": mem["state"], "PROP_EXECUTION": False}
     if not in_session(ctx.now):
         return {"ok": False, "submitted": False, "error_code": "OUTSIDE_SESSION", "state": mem["state"], "PROP_EXECUTION": False}
+    try:
+        from phase55d_session_authorization import session_entry_start_utc, session_valid_until_utc
+        now_utc = (ctx.now or _utc_now()).astimezone(timezone.utc)
+        if now_utc < session_entry_start_utc():
+            return {"ok": False, "submitted": False, "error_code": "BEFORE_SESSION_ENTRY_START", "state": mem["state"], "PROP_EXECUTION": False}
+        if now_utc >= session_valid_until_utc():
+            return {"ok": False, "submitted": False, "error_code": "SESSION_PERMISSION_EXPIRED", "state": mem["state"], "PROP_EXECUTION": False}
+    except Exception:
+        return {"ok": False, "submitted": False, "error_code": "SESSION_WINDOW_UNAVAILABLE", "state": mem["state"], "PROP_EXECUTION": False}
     sig_eval = evaluate_signal(ctx.canary, require_newer_than_arm=False)
     floor = mem.get("readiness_at")
     from prop_canary import _parse_ts
 
     ts = _parse_ts((ctx.canary.signal or {}).get("ts"))
+    try:
+        from phase55d_session_authorization import session_entry_start_utc, session_valid_until_utc
+        start = session_entry_start_utc()
+        end = session_valid_until_utc()
+        if ts is None or ts < start or ts >= end:
+            sig_eval = {"ok": False, "errors": list(sig_eval.get("errors") or []) + ["DVP_OUTSIDE_AUTHORIZED_SESSION_WINDOW"]}
+    except Exception:
+        return {"ok": False, "submitted": False, "error_code": "SESSION_WINDOW_UNAVAILABLE", "state": mem["state"], "PROP_EXECUTION": False}
     if floor is not None:
         floor_ts = floor if isinstance(floor, datetime) else _parse_ts(floor)
         if ts is None or (floor_ts and ts <= floor_ts):
@@ -951,21 +968,26 @@ def tick(
     if ctx.now is not None:
         mem["clock"] = ctx.now
     try:
-        from phase55d_session_authorization import status as authorization_status
-        if authorization_status().get("status") == "PENDING":
+        from phase55d_session_authorization import expire_unclaimed, expire_session, runtime_permission_active, status as authorization_status
+        expire_unclaimed(now=ctx.now)
+        auth_status = authorization_status().get("status")
+        if auth_status == "PENDING":
             return process_pending_session_authorization(ctx)
-    except Exception as exc:
-        return {"state": UNATTENDED_BLOCKED, "reason": "AUTHORIZATION_CONTROL_FAILURE", "error": str(exc)[:160], "PROP_EXECUTION": False}
-    from test_workspace import test_mode
-    if not test_mode():
-        try:
-            from phase55d_session_authorization import runtime_permission_active, status as authorization_status
-            auth_status = authorization_status().get("status")
-            if auth_status == "CONSUMED" and not runtime_permission_active(now=ctx.now):
+        if auth_status == "CONSUMED" and not runtime_permission_active(now=ctx.now):
+            expire_session(now=ctx.now)
+            persist = _load_persist()
+            if persist.get("entry_attempt_used"):
                 _notify("AUTHORIZATION_EXPIRED", "Automatic disarm", critical=True)
                 return disable("AUTHORIZATION_EXPIRED")
-        except Exception:
-            return _block("AUTHORIZATION_CONTROL_FAILURE")
+            _save_persist(locked_for_day=True, lock_reason="SESSION_PERMISSION_EXPIRED", entry_attempt_used=False)
+            mem["no_trade"] = True
+            mem["complete"] = True
+            mem["enabled"] = False
+            _notify("AUTHORIZATION_EXPIRED", "Session permission expired · automatic disarm", critical=True)
+            _set_state(UNATTENDED_COMPLETE_NO_TRADE, reason="SESSION_PERMISSION_EXPIRED", notify="UNATTENDED_COMPLETE_NO_TRADE", body="SESSION_PERMISSION_EXPIRED")
+            return {"state": UNATTENDED_COMPLETE_NO_TRADE, "PROP_EXECUTION": False}
+    except Exception as exc:
+        return {"state": UNATTENDED_BLOCKED, "reason": "AUTHORIZATION_CONTROL_FAILURE", "error": str(exc)[:160], "PROP_EXECUTION": False}
     if not unattended_flag_enabled():
         mem["state"] = UNATTENDED_DISABLED
         return {"state": UNATTENDED_DISABLED, "PROP_EXECUTION": False}
@@ -1015,7 +1037,7 @@ def tick(
 
     # All current gates remain leases, not permanent facts. Any stale or failed
     # evidence while waiting consumes this authorization and disarms the day.
-    if mem.get("state") == UNATTENDED_WAITING_DVP:
+    if mem.get("state") in {UNATTENDED_WAITING_SESSION, UNATTENDED_WAITING_DVP, UNATTENDED_WAITING_LIVE_DATA}:
         continuous = ordered_monday_gates(ctx, include_manual_latch=True)
         if not all(g["ok"] for g in continuous):
             return _block(next(g["gate"] for g in continuous if not g["ok"]))
@@ -1041,6 +1063,9 @@ def tick(
             _set_state(UNATTENDED_COMPLETE_NO_TRADE, reason="NO_VALID_DVP_EVENT", notify="UNATTENDED_COMPLETE_NO_TRADE", body="NO_VALID_DVP_EVENT")
             return {"state": UNATTENDED_COMPLETE_NO_TRADE, "PROP_EXECUTION": False}
         if in_session(ctx.now) and live["ok"]:
+            gates = ordered_monday_gates(ctx, include_manual_latch=True)
+            if not all(g["ok"] for g in gates):
+                return _block(next(g["gate"] for g in gates if not g["ok"]))
             _set_state(UNATTENDED_WAITING_DVP, notify="UNATTENDED_WAITING_DVP", body="Session open")
         return {"state": mem["state"], "PROP_EXECUTION": False}
 

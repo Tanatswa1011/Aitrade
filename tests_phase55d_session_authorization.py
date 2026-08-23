@@ -1,11 +1,13 @@
 """Fixture-only tests for the Monday session authorization boundary."""
 from __future__ import annotations
 
+import json
 import os
 import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 import phase55d_session_authorization as auth
 from prop_canary import _save_persist as save_canary_persist, manual_revalidation_required
@@ -129,6 +131,81 @@ class Phase55DSessionAuthorizationTests(unittest.TestCase):
         out = tick(passing_unattended(now=MON))
         self.assertNotEqual(out["state"], UNATTENDED_WAITING_DVP)
         self.assertFalse(out["PROP_EXECUTION"])
+
+    def test_issued_at_comes_from_issuance_clock_not_wall_clock_or_payload(self):
+        until = (MON.astimezone(timezone.utc) + timedelta(minutes=20)).isoformat()
+        wall = datetime(1999, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
+        real_now = auth._now
+
+        def fake_now(now=None):
+            if now is None:
+                return wall
+            return real_now(now)
+
+        with patch.object(auth, "_now", fake_now):
+            payload = auth.expected_payload(valid_until=until)
+            wall_issued = payload["issued_at"]
+            self.assertEqual(auth._parse_utc(wall_issued), wall)
+            ancient = dict(payload)
+            ancient["issued_at"] = "2020-01-01T00:00:00+00:00"
+            result = auth.issue_request(ancient, now=MON, authorization_id="A" * 32)
+            self.assertTrue(result["ok"], result)
+            bound = json.loads((self.td / "auth.json").read_text(encoding="utf-8"))["payload"]
+            issued = auth._parse_utc(bound["issued_at"])
+            claim = auth._parse_utc(bound["claim_valid_until"])
+            self.assertEqual(issued, MON.astimezone(timezone.utc))
+            self.assertNotEqual(bound["issued_at"], "2020-01-01T00:00:00+00:00")
+            self.assertNotEqual(bound["issued_at"], wall_issued)
+            self.assertEqual(result["issued_at"], bound["issued_at"])
+            self.assertEqual((claim - issued).total_seconds(), 20 * 60)
+            self.assertLessEqual((claim - issued).total_seconds(), 45 * 60)
+            self.assertGreater(claim, issued)
+            self.assertFalse(result["PROP_EXECUTION"])
+            (self.td / "auth.json").unlink()
+            far_future = dict(payload)
+            far_future["issued_at"] = "2099-01-01T00:00:00+00:00"
+            second = auth.issue_request(far_future, now=MON, authorization_id="B" * 32)
+            self.assertTrue(second["ok"], second)
+            bound2 = json.loads((self.td / "auth.json").read_text(encoding="utf-8"))["payload"]
+            self.assertEqual(bound2["issued_at"], bound["issued_at"])
+            self.assertEqual(
+                (auth._parse_utc(bound2["claim_valid_until"]) - auth._parse_utc(bound2["issued_at"])).total_seconds(),
+                20 * 60,
+            )
+
+    def test_naive_and_malformed_claim_timestamps_rejected(self):
+        naive = self.payload()
+        naive["claim_valid_until"] = "2026-08-24T18:55:00"
+        naive["valid_until"] = naive["claim_valid_until"]
+        self.assertIn("AUTH_EXPIRY_MALFORMED", auth.validate_payload(naive, now=MON))
+        self.assertIn("AUTH_EXPIRY_MALFORMED", auth.issue_request(naive, now=MON, authorization_id="C" * 32)["errors"])
+        naive_now = datetime(2026, 8, 24, 14, 45)
+        self.assertEqual(auth.issue_request(self.payload(), now=naive_now, authorization_id="D" * 32)["errors"], ["AUTH_TIMESTAMP_NAIVE"])
+        malformed = self.payload()
+        malformed["claim_valid_until"] = "not-a-timestamp"
+        malformed["valid_until"] = malformed["claim_valid_until"]
+        self.assertIn("AUTH_EXPIRY_MALFORMED", auth.validate_payload(malformed, now=MON))
+        future = self.payload()
+        future["issued_at"] = (MON.astimezone(timezone.utc) + timedelta(hours=1)).isoformat()
+        self.assertIn("AUTH_ISSUED_AT_FUTURE", auth.validate_payload(future, now=MON))
+        inconsistent = self.payload()
+        inconsistent["issued_at"] = (MON.astimezone(timezone.utc) + timedelta(minutes=30)).isoformat()
+        self.assertTrue(
+            {"AUTH_EXPIRED", "AUTH_ISSUED_AT_FUTURE"} & set(auth.validate_payload(inconsistent, now=MON))
+        )
+
+    def test_consumed_permission_uses_session_deadline_not_claim_lease(self):
+        self.assertTrue(self.issue()["ok"])
+        out = process_pending_session_authorization(passing_unattended(now=MON))
+        self.assertTrue(out["ok"], out)
+        after_claim = MON + timedelta(minutes=30)
+        self.assertGreater(after_claim, MON + timedelta(minutes=20))
+        self.assertLess(after_claim, datetime(2026, 8, 24, 15, 30, tzinfo=NY))
+        self.assertTrue(auth.runtime_permission_active(now=after_claim))
+        self.assertGreater(
+            auth._parse_utc(auth.status(now=after_claim)["session_valid_until"]),
+            after_claim.astimezone(timezone.utc),
+        )
 
 
 if __name__ == "__main__":
