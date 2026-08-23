@@ -41,12 +41,15 @@ from nq_dvp_nt_exec import (
     submit_dvp_bracket,
 )
 import nt_ati as nt
+from test_workspace import production_or_test
 
 NY = ZoneInfo("America/New_York")
 PHASE26_HASH = "0695d7a881b6247033426bceb077b6895b96405b826c21f32a109a02f44b2d43"
 PHASE26_FROZEN = Path("strategy_frozen") / "gc_vwap_v2_phase26.json"
 
-JOURNAL_DIR = Path("journal") / "phase31_nq_dvp_sim"
+JOURNAL_DIR = production_or_test(
+    Path("journal") / "phase31_nq_dvp_sim", "journal", "phase31_nq_dvp_sim"
+)
 LIVE_EVENTS = JOURNAL_DIR / "live_events.jsonl"
 EXECUTIONS = JOURNAL_DIR / "executions.jsonl"
 STATE_PATH = JOURNAL_DIR / "runner_state.json"

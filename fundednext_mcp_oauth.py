@@ -23,9 +23,11 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from typing import Any, Callable, Optional
 from urllib.parse import parse_qs, urlparse
+from test_workspace import production_or_test, test_mode, test_root
 
 ROOT = Path(__file__).resolve().parent
-OAUTH_PATH = ROOT / "state" / "fundednext_mcp_oauth.json"
+PRODUCTION_OAUTH_PATH = ROOT / "state" / "fundednext_mcp_oauth.json"
+OAUTH_PATH = production_or_test(PRODUCTION_OAUTH_PATH, "state", "fundednext_mcp_oauth.json")
 PROP_EXECUTION = False
 
 PROTECTED_RESOURCE_URL = "https://mcp.fundednext.com/.well-known/oauth-protected-resource"
@@ -336,24 +338,51 @@ def session_from_token_response(
     return out
 
 
+def _current_windows_sid() -> str:
+    """Return the SID on the current process token, never an ambient username."""
+    if os.name != "nt":
+        return ""
+    import subprocess
+
+    proc = subprocess.run(
+        ["whoami", "/user", "/fo", "csv", "/nh"],
+        check=False, capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        return ""
+    fields = [field.strip().strip('"') for field in proc.stdout.strip().split(",")]
+    return fields[-1] if fields and fields[-1].startswith("S-") else ""
+
+
 def _restrict_windows_acl(path: Path) -> None:
-    user = os.environ.get("USERNAME") or ""
-    if not user:
-        return
+    sid = _current_windows_sid()
+    if not sid:
+        raise OAuthError("secure_oauth_persistence_failed:process_sid_unavailable")
     try:
         import subprocess
 
-        subprocess.run(
-            ["icacls", str(path), "/inheritance:r", "/grant:r", "%s:(R,W)" % user],
+        proc = subprocess.run(
+            # Modify is the minimum practical Windows file right for atomic
+            # refresh: os.replace needs delete/replace permission on the old file.
+            ["icacls", str(path), "/inheritance:r", "/grant:r", "*%s:(M)" % sid],
             check=False,
             capture_output=True,
             text=True,
         )
-    except Exception:
-        pass
+        if proc.returncode != 0:
+            raise OAuthError("secure_oauth_persistence_failed:acl_apply")
+    except OAuthError:
+        raise
+    except Exception as exc:
+        raise OAuthError("secure_oauth_persistence_failed:acl_exception") from exc
 
 
 def save_oauth_session(doc: dict[str, Any], path: Path = OAUTH_PATH) -> Path:
+    if test_mode():
+        root = test_root()
+        resolved = path.resolve()
+        if resolved == PRODUCTION_OAUTH_PATH.resolve() or root not in resolved.parents:
+            raise OAuthError("test_oauth_path_outside_isolated_workspace")
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(doc, indent=2)
     tmp = path.with_name(path.name + ".tmp")
@@ -365,6 +394,11 @@ def save_oauth_session(doc: dict[str, Any], path: Path = OAUTH_PATH) -> Path:
         pass
     if os.name == "nt":
         _restrict_windows_acl(path)
+        try:
+            with path.open("rb"):
+                pass
+        except OSError as exc:
+            raise OAuthError("secure_oauth_persistence_failed:reopen") from exc
     bump_auth_generation()
     return path
 

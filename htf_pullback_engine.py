@@ -284,15 +284,15 @@ def trend_age_at(series: Sequence[HtfBar], as_of_ts: int, n_intervals: int, thre
     return age
 
 
-_HTF_CACHE: dict[tuple[int, int, float, int], HtfState] = {}
+_HTF_CACHE: dict[tuple[int, int, float, int], tuple[Sequence[HtfBar], HtfState]] = {}
 
 
 def htf_state(series: Sequence[HtfBar], as_of_ts: int, n_intervals: int, thresh: float = THRESH) -> HtfState:
     i = last_completed_index(series, as_of_ts)
     key = (id(series), n_intervals, float(thresh), i)
     hit = _HTF_CACHE.get(key)
-    if hit is not None:
-        return hit
+    if hit is not None and hit[0] is series:
+        return hit[1]
     ret = None if i < n_intervals else (
         None if series[i - n_intervals].close == 0 else series[i].close / series[i - n_intervals].close - 1.0
     )
@@ -323,7 +323,11 @@ def htf_state(series: Sequence[HtfBar], as_of_ts: int, n_intervals: int, thresh:
         ema20_rising=rising,
         structure="INSUFFICIENT" if i < 0 else _structure_at(series, i),
     )
-    _HTF_CACHE[key] = st
+    # Retaining the owner prevents Python from recycling its id while cached and
+    # makes an identity collision fail closed instead of returning foreign state.
+    if len(_HTF_CACHE) >= 4096:
+        _HTF_CACHE.clear()
+    _HTF_CACHE[key] = (series, st)
     return st
 
 

@@ -37,10 +37,11 @@ from nt_readonly import NTReadOnly
 from fundednext_mcp import FundedNextMCPReadOnlyAdapter
 from fundednext_mcp_oauth import auth_generation, oauth_session_metadata
 from tradovate_readonly import TradovateReadOnlyAccountAdapter  # deprecated for FN money; kept unused by Phase 54E
+from test_workspace import production_or_test
 
 ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config" / "aitrade_phase54_ops.json"
-STATE_PATH = ROOT / "state" / "phase54_ops.json"
+STATE_PATH = production_or_test(ROOT / "state" / "phase54_ops.json", "state", "phase54_ops.json")
 _LIVE_DVP_CACHE: dict[str, Any] = {}
 
 
@@ -64,12 +65,11 @@ def live_dvp_status(*, force: bool = False) -> Optional[dict[str, Any]]:
 
 
 def _journal_dir() -> Path:
+    if os.environ.get("AITRADE_PHASE54_TEST") == "1":
+        return production_or_test(ROOT / "journal" / "phase54_ops", "journal", "phase54_ops_test")
     override = os.environ.get("AITRADE_PHASE54_JOURNAL")
     if override:
         return Path(override)
-    if os.environ.get("AITRADE_PHASE54_TEST") == "1":
-        import tempfile
-        return Path(tempfile.mkdtemp(prefix="phase54_ops_test_"))
     return ROOT / "journal" / "phase54_ops"
 
 
@@ -80,7 +80,10 @@ SIGNALS_LOG = JOURNAL_DIR / "signals.jsonl"
 SOAK_PATH = JOURNAL_DIR / "soak.json"
 HEALTH_PATH = ROOT / "reports" / "phase53_distribution_health" / "health.json"
 AUDIT_PATH = ROOT / "reports" / "phase53_shadow" / "audit.jsonl"
-AUDIT_PATH_LIVE = ROOT / "journal" / "phase53_fn_flex_shadow" / "audit.jsonl"
+AUDIT_PATH_LIVE = production_or_test(
+    ROOT / "journal" / "phase53_fn_flex_shadow" / "audit.jsonl",
+    "journal", "phase53_fn_flex_shadow", "audit.jsonl",
+)
 PROP_POLICY_PATH = ROOT / "config" / "aitrade_prop_execution_policy_v1.json"
 
 UTC = timezone.utc

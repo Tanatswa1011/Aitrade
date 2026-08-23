@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
@@ -261,6 +262,19 @@ def build_frozen_document(*, freeze_timestamp: Optional[str] = None) -> dict[str
 
 
 def write_frozen_files(doc: Optional[dict[str, Any]] = None) -> dict[str, Any]:
+    if os.environ.get("AITRADE_PHASE54_TEST") == "1":
+        existing = load_frozen_document()
+        if doc is not None and doc.get("frozen_config_hash") != existing.get("frozen_config_hash"):
+            raise RuntimeError("TEST_FROZEN_REGEN_REJECTED:config_hash_mismatch")
+        return {
+            "ok": True,
+            "test_write_rejected": True,
+            "frozen_json": str(FROZEN_JSON).replace("\\", "/"),
+            "frozen_md": str(FROZEN_MD).replace("\\", "/"),
+            "frozen_config_hash": existing["frozen_config_hash"],
+            "engine_config_hash": existing["engine_config_hash"],
+            "source_match": existing["source_frozen_semantic_match"],
+        }
     FROZEN_DIR.mkdir(parents=True, exist_ok=True)
     doc = doc or build_frozen_document()
     FROZEN_JSON.write_text(json.dumps(doc, indent=2, default=str), encoding="utf-8")

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import unittest
+from dataclasses import replace
 from pathlib import Path
 
 from models import Bar
@@ -16,6 +17,8 @@ from htf_pullback_engine import (
     last_completed_index,
     simulate_setup,
     trend_side,
+    htf_state,
+    _HTF_CACHE,
 )
 
 ROOT = Path(__file__).resolve().parent
@@ -51,6 +54,17 @@ class FrozenIsolationTests(unittest.TestCase):
 
 
 class LeakAndEntryTests(unittest.TestCase):
+    def test_htf_cache_rejects_foreign_owner_at_same_identity_key(self):
+        bullish = [_hb(f"{h:02d}:00", 100.0 + h) for h in range(4, 10)]
+        foreign = list(bullish)
+        as_of = local_ts(TD, "10:00")
+        expected = htf_state(bullish, as_of, 4)
+        idx = last_completed_index(bullish, as_of)
+        key = (id(bullish), 4, 0.002, idx)
+        _HTF_CACHE[key] = (foreign, replace(expected, side="NEUTRAL"))
+        self.assertEqual(htf_state(bullish, as_of, 4).side, expected.side)
+        self.assertIs(_HTF_CACHE[key][0], bullish)
+
     def test_unfinished_1h_bar_excluded(self):
         series = [
             _hb("04:00", 100),

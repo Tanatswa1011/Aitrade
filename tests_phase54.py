@@ -13,12 +13,14 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from unittest import mock
+from uuid import uuid4
 
 os.environ["AITRADE_PHASE54_TEST"] = "1"
 os.environ.setdefault(
     "AITRADE_PHASE54_JOURNAL",
     str(Path(tempfile.mkdtemp(prefix="phase54f_test_journal_"))),
 )
+from test_workspace import mutable_path
 
 from execution_status import BLOCKED_MODES
 from nq_microstructure_models import FROZEN_GC_HASH, FROZEN_NQ_HASH
@@ -1409,8 +1411,9 @@ class Phase54E1OAuthTests(unittest.TestCase):
             save_oauth_session,
             session_from_token_response,
         )
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "fundednext_mcp_oauth.json"
+        path = mutable_path("oauth_fixtures", uuid4().hex, "fundednext_mcp_oauth.json")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with self.subTest(path=path.name):
             session = session_from_token_response(
                 {"access_token": "tok_a1", "refresh_token": "tok_r1", "expires_in": 3600, "token_type": "Bearer", "scope": "mcp:read"},
                 client_id="cid-1",
@@ -1454,8 +1457,9 @@ class Phase54E1OAuthTests(unittest.TestCase):
 
     def test_env_credentials_precede_file(self):
         from fundednext_mcp_oauth import resolve_access_token, save_oauth_session
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "oauth.json"
+        path = mutable_path("oauth_fixtures", uuid4().hex, "oauth.json")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with self.subTest(path=path.name):
             save_oauth_session({"access_token": "tok_file", "refresh_token": "tok_r", "expires_at": time.time() + 3600, "scope": "mcp:read", "token_type": "Bearer"}, path)
             with mock.patch.dict(os.environ, {"FUNDEDNEXT_MCP_ACCESS_TOKEN": "tok_env"}, clear=False):
                 self.assertEqual(resolve_access_token(path=path), "tok_env")
@@ -1991,8 +1995,9 @@ class Phase54F2EvidenceTests(unittest.TestCase):
 
     def test_oauth_session_present_metadata_has_no_tokens(self):
         from fundednext_mcp_oauth import oauth_session_metadata, save_oauth_session
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "fundednext_mcp_oauth.json"
+        path = mutable_path("oauth_fixtures", uuid4().hex, "fundednext_mcp_oauth.json")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with self.subTest(path=path.name):
             save_oauth_session(
                 {
                     "access_token": "tok_secret",

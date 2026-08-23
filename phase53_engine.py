@@ -35,11 +35,14 @@ from phase52_policy import (
     remaining_drawdown,
     session_daily_stop_threshold,
 )
+from test_workspace import production_or_test
 
 ROOT = Path(__file__).resolve().parent
 PROP_POLICY_PATH = ROOT / "config" / "aitrade_prop_execution_policy_v1.json"
 AUTOMATION_CONFIRM_PATH = ROOT / "config" / "aitrade_phase53_fn_automation_confirmation.json"
-JOURNAL_DIR = ROOT / "journal" / "phase53_fn_flex_shadow"
+JOURNAL_DIR = production_or_test(
+    ROOT / "journal" / "phase53_fn_flex_shadow", "journal", "phase53_fn_flex_shadow"
+)
 AUDIT_PATH = JOURNAL_DIR / "audit.jsonl"
 
 UTC = timezone.utc
