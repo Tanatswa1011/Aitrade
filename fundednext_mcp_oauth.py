@@ -23,7 +23,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from typing import Any, Callable, Optional
 from urllib.parse import parse_qs, urlparse
-from test_workspace import production_or_test, test_mode, test_root
+from test_workspace import mutable_path, production_or_test, test_mode, test_root
 
 ROOT = Path(__file__).resolve().parent
 PRODUCTION_OAUTH_PATH = ROOT / "state" / "fundednext_mcp_oauth.json"
@@ -377,7 +377,20 @@ def _restrict_windows_acl(path: Path) -> None:
         raise OAuthError("secure_oauth_persistence_failed:acl_exception") from exc
 
 
-def save_oauth_session(doc: dict[str, Any], path: Path = OAUTH_PATH) -> Path:
+def _resolve_oauth_path(path: Optional[Path] = None) -> Path:
+    """Resolve at use time so import order can never retain production in tests."""
+    if test_mode():
+        root = test_root()
+        resolved = (path or mutable_path("state", "fundednext_mcp_oauth.json")).resolve()
+        if resolved == PRODUCTION_OAUTH_PATH.resolve() or (resolved != root and root not in resolved.parents):
+            raise OAuthError("test_oauth_path_outside_isolated_workspace")
+        return resolved
+    # Production ignores test-root and test-path environment overrides.
+    return Path(path).resolve() if path is not None else PRODUCTION_OAUTH_PATH
+
+
+def save_oauth_session(doc: dict[str, Any], path: Optional[Path] = None) -> Path:
+    path = _resolve_oauth_path(path)
     if test_mode():
         root = test_root()
         resolved = path.resolve()
@@ -403,7 +416,8 @@ def save_oauth_session(doc: dict[str, Any], path: Path = OAUTH_PATH) -> Path:
     return path
 
 
-def load_oauth_session(path: Path = OAUTH_PATH) -> dict[str, Any]:
+def load_oauth_session(path: Optional[Path] = None) -> dict[str, Any]:
+    path = _resolve_oauth_path(path)
     if not path.exists():
         return {}
     try:
@@ -413,7 +427,7 @@ def load_oauth_session(path: Path = OAUTH_PATH) -> dict[str, Any]:
         return {}
 
 
-def oauth_session_metadata(path: Path = OAUTH_PATH) -> dict[str, Any]:
+def oauth_session_metadata(path: Optional[Path] = None) -> dict[str, Any]:
     """Public session facts only. Never includes tokens."""
     doc = load_oauth_session(path)
     present = bool(doc) and not doc.get("invalid") and bool(str(doc.get("access_token") or doc.get("refresh_token") or "").strip())
@@ -426,7 +440,8 @@ def oauth_session_metadata(path: Path = OAUTH_PATH) -> dict[str, Any]:
     }
 
 
-def invalidate_oauth_session(path: Path = OAUTH_PATH) -> None:
+def invalidate_oauth_session(path: Optional[Path] = None) -> None:
+    path = _resolve_oauth_path(path)
     doc = load_oauth_session(path)
     if not doc:
         bump_auth_generation()
@@ -449,13 +464,14 @@ def _env_credentials() -> dict[str, str]:
 
 def resolve_access_token(
     *,
-    path: Path = OAUTH_PATH,
+    path: Optional[Path] = None,
     now: Optional[float] = None,
     http_form: Optional[Callable[..., dict[str, Any]]] = None,
     metadata: Optional[dict[str, Any]] = None,
     force_refresh: bool = False,
 ) -> Optional[str]:
     """Env credentials first, then local session file, else None."""
+    path = _resolve_oauth_path(path)
     clock = time.time() if now is None else now
     env = _env_credentials()
     if env["access_token"] and not force_refresh:
@@ -579,8 +595,9 @@ def login_interactive(
     open_browser: Optional[Callable[[str], Any]] = webbrowser.open,
     http_json: Optional[Callable[..., dict[str, Any]]] = None,
     http_form: Optional[Callable[..., dict[str, Any]]] = None,
-    path: Path = OAUTH_PATH,
+    path: Optional[Path] = None,
 ) -> dict[str, Any]:
+    path = _resolve_oauth_path(path)
     meta = metadata or fetch_oauth_metadata()
     server, redirect_uri = bind_localhost_callback()
     try:

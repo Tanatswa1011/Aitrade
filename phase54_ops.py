@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -41,7 +42,7 @@ from test_workspace import production_or_test
 
 ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config" / "aitrade_phase54_ops.json"
-STATE_PATH = production_or_test(ROOT / "state" / "phase54_ops.json", "state", "phase54_ops.json")
+STATE_PATH = ROOT / "state" / "phase54_ops.json"
 _LIVE_DVP_CACHE: dict[str, Any] = {}
 
 
@@ -65,11 +66,6 @@ def live_dvp_status(*, force: bool = False) -> Optional[dict[str, Any]]:
 
 
 def _journal_dir() -> Path:
-    if os.environ.get("AITRADE_PHASE54_TEST") == "1":
-        return production_or_test(ROOT / "journal" / "phase54_ops", "journal", "phase54_ops_test")
-    override = os.environ.get("AITRADE_PHASE54_JOURNAL")
-    if override:
-        return Path(override)
     return ROOT / "journal" / "phase54_ops"
 
 
@@ -80,10 +76,26 @@ SIGNALS_LOG = JOURNAL_DIR / "signals.jsonl"
 SOAK_PATH = JOURNAL_DIR / "soak.json"
 HEALTH_PATH = ROOT / "reports" / "phase53_distribution_health" / "health.json"
 AUDIT_PATH = ROOT / "reports" / "phase53_shadow" / "audit.jsonl"
-AUDIT_PATH_LIVE = production_or_test(
-    ROOT / "journal" / "phase53_fn_flex_shadow" / "audit.jsonl",
-    "journal", "phase53_fn_flex_shadow", "audit.jsonl",
-)
+AUDIT_PATH_LIVE = ROOT / "journal" / "phase53_fn_flex_shadow" / "audit.jsonl"
+
+
+def _runtime_mutable_path(path: Path, *, relative: tuple[str, ...], create_parent: bool = False) -> Path:
+    """Resolve one I/O path without mutating globals or overriding injections."""
+    from test_workspace import mutable_path, test_mode
+    supplied = Path(path)
+    canonical = ROOT.joinpath(*relative)
+    if test_mode():
+        # A non-canonical path is explicit dependency injection (e.g. a test
+        # patch) and remains authoritative. Canonical defaults enter one root.
+        resolved = mutable_path(*relative) if supplied.resolve() == canonical.resolve() else supplied.resolve()
+        if resolved == canonical.resolve():
+            raise RuntimeError("test_path_resolved_to_production")
+    else:
+        # Production cannot be redirected by test environment variables.
+        resolved = canonical
+    if create_parent:
+        resolved.parent.mkdir(parents=True, exist_ok=True)
+    return resolved
 PROP_POLICY_PATH = ROOT / "config" / "aitrade_prop_execution_policy_v1.json"
 
 UTC = timezone.utc
@@ -215,14 +227,20 @@ def load_config() -> dict[str, Any]:
 
 
 def _read_json(path: Path, default: Any = None) -> Any:
+    if Path(path).name == "phase54_ops.json":
+        path = _runtime_mutable_path(path, relative=("state", "phase54_ops.json"))
     if not path.exists():
         return default
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 def _write_json(path: Path, obj: Any) -> None:
+    if Path(path).name == "phase54_ops.json":
+        path = _runtime_mutable_path(path, relative=("state", "phase54_ops.json"), create_parent=True)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, default=str), encoding="utf-8")
+    tmp = path.with_name(f"{path.name}.{os.getpid()}.{threading.get_ident()}.tmp")
+    tmp.write_text(json.dumps(obj, indent=2, default=str), encoding="utf-8")
+    os.replace(tmp, path)
 
 
 _JOURNAL_SECRET_KEYS = frozenset({
@@ -242,14 +260,17 @@ def _journal_safe(extra: dict[str, Any]) -> dict[str, Any]:
 
 
 def append_event(level: str, message: str, **extra: Any) -> dict[str, Any]:
-    JOURNAL_DIR.mkdir(parents=True, exist_ok=True)
+    path = _runtime_mutable_path(EVENTS_LOG, relative=("journal", "phase54_ops", "events.jsonl"), create_parent=True)
     row = {"ts": _iso(), "level": level, "message": message, **_journal_safe(extra)}
-    with EVENTS_LOG.open("a", encoding="utf-8") as fh:
+    with path.open("a", encoding="utf-8") as fh:
         fh.write(json.dumps(row, default=str) + "\n")
     return row
 
 
 def _tail_jsonl(path: Path, n: int = 40) -> list[dict[str, Any]]:
+    name = Path(path).name
+    if name in {"events.jsonl", "telemetry.jsonl", "signals.jsonl", "notifications.jsonl"}:
+        path = _runtime_mutable_path(path, relative=("journal", "phase54_ops", name))
     if not path.exists() or path.stat().st_size == 0:
         return []
     lines = path.read_text(encoding="utf-8").splitlines()
@@ -382,11 +403,11 @@ def _default_soak() -> dict[str, Any]:
 
 
 def soak_metrics() -> dict[str, Any]:
-    JOURNAL_DIR.mkdir(parents=True, exist_ok=True)
+    soak_path = _runtime_mutable_path(SOAK_PATH, relative=("journal", "phase54_ops", "soak.json"), create_parent=True)
     doc = None
     raw_text = None
-    if SOAK_PATH.exists():
-        raw_text = SOAK_PATH.read_text(encoding="utf-8")
+    if soak_path.exists():
+        raw_text = soak_path.read_text(encoding="utf-8")
         try:
             parsed = json.loads(raw_text)
             doc = parsed if isinstance(parsed, dict) else None
@@ -400,7 +421,7 @@ def soak_metrics() -> dict[str, Any]:
                 closed = JOURNAL_DIR / ("soak_closed_%s.json" % datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ"))
                 closed.write_text(raw_text, encoding="utf-8")
             doc = _default_soak()
-            _write_json(SOAK_PATH, doc)
+            _write_json(soak_path, doc)
             started = float(doc.get("started_epoch") or time.time())
             doc["uptime_sec"] = max(0.0, time.time() - started)
             doc["PROP_EXECUTION"] = False
@@ -416,7 +437,7 @@ def soak_metrics() -> dict[str, Any]:
             _write_json(closed, archived)
         doc = _default_soak()
         if os.environ.get("AITRADE_PHASE54_TEST") != "1":
-            _write_json(SOAK_PATH, doc)
+            _write_json(soak_path, doc)
     elif not isinstance(doc, dict):
         doc = _default_soak()
     started = float(doc.get("started_epoch") or time.time())
@@ -427,7 +448,7 @@ def soak_metrics() -> dict[str, Any]:
 
 
 def update_soak(snap: dict[str, Any], *, exception: bool = False) -> dict[str, Any]:
-    JOURNAL_DIR.mkdir(parents=True, exist_ok=True)
+    soak_path = _runtime_mutable_path(SOAK_PATH, relative=("journal", "phase54_ops", "soak.json"), create_parent=True)
     doc = soak_metrics()
     if exception:
         doc["exceptions"] = int(doc.get("exceptions") or 0) + 1
@@ -504,7 +525,7 @@ def update_soak(snap: dict[str, Any], *, exception: bool = False) -> dict[str, A
     doc["uptime_sec"] = max(0.0, time.time() - started)
     doc["PROP_EXECUTION"] = False
     doc["order_execution"] = "DISABLED"
-    _write_json(SOAK_PATH, doc)
+    _write_json(soak_path, doc)
     return doc
 
 
@@ -917,6 +938,7 @@ class EngineSupervisor:
     @staticmethod
     def _default_state() -> dict[str, Any]:
         return {
+            "schema": "AITRADE_PHASE54_OPS_STATE_V1",
             "engine": "STOPPED",
             "entries_paused": True,
             "order_execution": "DISABLED",
@@ -926,6 +948,12 @@ class EngineSupervisor:
             "heartbeat_ts": None,
             "last_safe_start": None,
             "demoted": False,
+            "authorization_id": None,
+            "canary_in_flight": False,
+            "broker_protection_confirmed": False,
+            "flat_confirmed": False,
+            "manual_revalidation_required": True,
+            "auto_start": False,
         }
 
     @staticmethod
@@ -1173,7 +1201,6 @@ def last_live_signal() -> Optional[dict[str, Any]]:
 
 
 def journal_blocked_live_signal(sig: dict[str, Any], policy: dict[str, Any]) -> None:
-    JOURNAL_DIR.mkdir(parents=True, exist_ok=True)
     row = {
         "ts": _iso(),
         "direction": sig.get("direction"),
@@ -1194,7 +1221,8 @@ def journal_blocked_live_signal(sig: dict[str, Any], policy: dict[str, Any]) -> 
     if last:
         last_key = f"{last.get('direction')}|{last.get('intended_entry')}|{last.get('trading_date')}|{last.get('policy_code')}"
     if key != last_key:
-        with SIGNALS_LOG.open("a", encoding="utf-8") as fh:
+        signals_path = _runtime_mutable_path(SIGNALS_LOG, relative=("journal", "phase54_ops", "signals.jsonl"), create_parent=True)
+        with signals_path.open("a", encoding="utf-8") as fh:
             fh.write(json.dumps(row, default=str) + "\n")
         append_event(
             "BLOCK",
@@ -1465,7 +1493,7 @@ def record_telemetry() -> None:
     acct = BrokerAdapter.account_snapshot()
     if acct.get("equity") is None or acct.get("equity_source") != "FUNDEDNEXT_MCP":
         return
-    JOURNAL_DIR.mkdir(parents=True, exist_ok=True)
+    telemetry_path = _runtime_mutable_path(TELEMETRY_PATH, relative=("journal", "phase54_ops", "telemetry.jsonl"), create_parent=True)
     row = {
         "ts": _iso(),
         "timestamp": _iso(),
@@ -1479,7 +1507,7 @@ def record_telemetry() -> None:
         "source": "FUNDEDNEXT_MCP",
         "unrealized": acct.get("unrealized_pnl"),
     }
-    last = _last_jsonl_obj(TELEMETRY_PATH)
+    last = _last_jsonl_obj(telemetry_path)
     if last and last.get("source") == "FUNDEDNEXT_MCP" and abs(float(last.get("equity") or 0) - acct["equity"]) < 1e-9 and last.get("pnl") == row["pnl"]:
         ts = str(last.get("ts") or last.get("timestamp") or "")
         if ts:
@@ -1488,7 +1516,7 @@ def record_telemetry() -> None:
                     return
             except ValueError:
                 pass
-    with TELEMETRY_PATH.open("a", encoding="utf-8") as fh:
+    with telemetry_path.open("a", encoding="utf-8") as fh:
         fh.write(json.dumps(row) + "\n")
 
 
@@ -1892,6 +1920,7 @@ def snapshot() -> dict[str, Any]:
             "nq_bars_1m_status": rt_dump.get("nq_bars_1m_status"),
             "nq_bars_1m_count": rt_dump.get("nq_bars_1m_count") if rt_dump.get("nq_bars_1m_count") is not None else len(nq_bars),
             "last_nq_bar_ts": last_nq_bar_ts,
+            "nq_bars_1m": nq_bars,
         },
         "live_dvp": live_dvp,
         "live_strategy_status": (live_dvp or {}).get("strategy_status") if isinstance(live_dvp, dict) else None,

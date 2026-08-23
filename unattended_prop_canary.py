@@ -93,7 +93,13 @@ def _truthy_env(name: str) -> bool:
 
 
 def unattended_flag_enabled() -> bool:
-    return _truthy_env(ENV_FLAG)
+    if _truthy_env(ENV_FLAG):
+        return True
+    try:
+        from phase55d_session_authorization import runtime_permission_active, status as authorization_status
+        return authorization_status().get("status") == "PENDING" or runtime_permission_active(now=_clock())
+    except Exception:
+        return False
 
 
 def _state_path() -> Path:
@@ -271,6 +277,11 @@ def reset_for_tests(*, clear_persist: bool = True) -> None:
 
 def simulate_process_restart() -> None:
     global _MEM
+    try:
+        from phase55d_session_authorization import invalidate_on_restart
+        invalidate_on_restart(now=_clock())
+    except Exception:
+        pass
     persist = _load_persist()
     persist["restart_block"] = True
     persist["was_enabled"] = bool(persist.get("was_enabled") or persist.get("operator_enabled_day"))
@@ -369,6 +380,14 @@ class UnattendedContext:
     bars_fresh: bool = True
     agg_5m_advancing: bool = True
     agg_15m_advancing: bool = True
+    market_provenance: str = LIVE_PROVENANCE
+    independent_5m_match: bool = True
+    independent_15m_match: bool = True
+    native_orders_fresh: bool = True
+    pending_orders: int = 0
+    partial_orders: int = 0
+    orphan_orders: int = 0
+    unknown_orders: int = 0
     market_quality: str = "LIVE"
     delayed_feed: bool = False
     eod_feed: bool = False
@@ -599,6 +618,16 @@ def broker_protection_survival() -> dict[str, Any]:
 def enable(ctx: UnattendedContext) -> dict[str, Any]:
     """Operator activation for the current trading day. Not an order."""
     mem = _ensure_mem()
+    from test_workspace import test_mode
+    if not test_mode():
+        try:
+            from phase55d_session_authorization import runtime_permission_active
+            authorized = runtime_permission_active(now=ctx.now)
+        except Exception:
+            authorized = False
+        if not authorized:
+            _set_state(UNATTENDED_DISABLED, reason="SESSION_AUTHORIZATION_REQUIRED")
+            return {"ok": False, "state": UNATTENDED_DISABLED, "errors": ["SESSION_AUTHORIZATION_REQUIRED"], "PROP_EXECUTION": False}
     if not unattended_flag_enabled():
         _set_state(UNATTENDED_DISABLED, reason="UNATTENDED_FLAG_DISABLED")
         return {"ok": False, "state": UNATTENDED_DISABLED, "errors": ["UNATTENDED_FLAG_DISABLED"], "PROP_EXECUTION": False}
@@ -743,6 +772,76 @@ def confirm_protection(ctx: UnattendedContext, plan: dict[str, Any], fill: float
     }
 
 
+def ordered_monday_gates(ctx: UnattendedContext, *, include_manual_latch: bool = True) -> list[dict[str, Any]]:
+    """The authorization contract's ordered, current-evidence safety gates."""
+    c = ctx.canary
+    live = evaluate_automated_phase_55b(ctx)
+    identity = evaluate_identity(c)
+    qty = evaluate_qty_instrument(c)
+    persist = _load_persist()
+    from prop_canary import manual_revalidation_required
+    checks = [
+        ("01_NINJATRADER_CONNECTED", c.nt_connected and ctx.nt_process_available),
+        ("02_GENUINE_MOVING_NQ_09_26", c.market_live and not c.market_stale and c.nq_1m_advancing and ctx.nq_1m_count > ctx.nq_1m_count_prev),
+        ("03_PHASE54_LIVE_PROVENANCE", ctx.market_provenance == LIVE_PROVENANCE),
+        ("04_FRESH_COMPLETED_1M_BARS", ctx.bars_fresh and ctx.timestamps_monotonic and not ctx.duplicate_bar_ids),
+        ("05_INDEPENDENT_5M_MATCH", c.agg_5m_healthy and ctx.agg_5m_advancing and ctx.independent_5m_match),
+        ("06_INDEPENDENT_15M_MATCH", c.agg_15m_healthy and ctx.agg_15m_advancing and ctx.independent_15m_match),
+        ("07_FUNDEDNEXT_PKCE_VALID", c.connected and c.trade_enabled),
+        ("08_FUNDEDNEXT_RISK_FRESH", c.account_age_sec is not None and float(c.account_age_sec) <= 60 and c.balance is not None and c.equity is not None and c.mll is not None),
+        ("09_ACCOUNT_EXACT", identity.get("ok") and c.requested_account == CANARY_NT_ACCOUNT),
+        ("10_ACCOUNT_ACTIVE", str(c.account_status).upper() == "ACTIVE"),
+        ("11_NATIVE_ACCOUNT_ORDERS_FRESH", ctx.native_orders_fresh and not c.order_state_errors),
+        ("12_POSITION_KNOWN_FLAT_ZERO", c.position_known and str(c.position_side).upper() == "FLAT" and int(c.position_qty or 0) == 0),
+        ("13_ALL_ORDER_COUNTS_ZERO", int(c.working_orders or 0) == 0 and ctx.pending_orders == 0 and ctx.partial_orders == 0 and ctx.orphan_orders == 0 and ctx.unknown_orders == 0 and not ctx.orphan_protective),
+        ("14_CONTRACT_MAPPING", qty.get("ok") and c.requested_signal_instrument == SIGNAL_INSTRUMENT and c.requested_exec_instrument == EXEC_INSTRUMENT_NT),
+        ("15_SIM101_EXCLUDED", not c.sim_only_armed and c.requested_account != SIM101_ACCOUNT),
+        ("16_QUANTITY_EXACTLY_ONE_MNQ", c.requested_qty == CANARY_QTY == 1),
+        ("17_ONE_SHOT_UNUSED", not persist.get("entry_attempt_used") and not persist.get("locked_for_day")),
+        ("18_PHASE_55B_0_CURRENT", c.phase_55b_0_pass and live.get("ok")),
+        ("19_MANUAL_REVALIDATION_RESOLVED", (not persist.get("restart_block") and not manual_revalidation_required()) if include_manual_latch else True),
+    ]
+    return [{"gate": name, "ok": bool(ok)} for name, ok in checks]
+
+
+def process_pending_session_authorization(ctx: UnattendedContext) -> dict[str, Any]:
+    """Claim a local request, run ordered gates, and consume it exactly once."""
+    from phase55d_session_authorization import claim_for_runtime, mark_consumed
+
+    claim = claim_for_runtime(now=ctx.now)
+    if not claim.get("ok"):
+        return claim
+    _notify("AUTHORIZATION_ACCEPTED", f"authorization_id={claim.get('authorization_id')} account={CANARY_NT_ACCOUNT} instrument={EXEC_INSTRUMENT_DISPLAY} qty=1")
+    _notify("UNATTENDED_PREFLIGHT_STARTED", f"authorization_id={claim.get('authorization_id')}")
+    gates = ordered_monday_gates(ctx, include_manual_latch=False)
+    if not all(g["ok"] for g in gates[:18]):
+        mark_consumed(gates, now=ctx.now)
+        _notify("AUTHORIZATION_REJECTED", next(g["gate"] for g in gates if not g["ok"]), critical=True)
+        return {"ok": False, "error": next(g["gate"] for g in gates if not g["ok"]), "gates": gates}
+    # Documented recovery: only a freshly authenticated authorization plus all
+    # preceding authoritative gates may resolve the retained restart latch.
+    persist = _load_persist()
+    if persist.get("restart_block"):
+        _save_persist(restart_block=False, was_enabled=False, last_state=UNATTENDED_DISABLED,
+                      manual_revalidation_at=_iso(ctx.now),
+                      manual_revalidation_authorization_id=claim.get("authorization_id"))
+    from prop_canary import manual_revalidation_required, resolve_manual_revalidation
+    if manual_revalidation_required():
+        resolve_manual_revalidation(
+            authorization_id=str(claim.get("authorization_id") or ""),
+            evidence={
+                "account_exact": gates[8]["ok"], "position_flat": gates[11]["ok"],
+                "orders_fresh": gates[10]["ok"], "all_order_counts_zero": gates[12]["ok"],
+            },
+        )
+    gates = ordered_monday_gates(ctx, include_manual_latch=True)
+    consumed = mark_consumed(gates, now=ctx.now)
+    if not consumed.get("ok"):
+        _notify("AUTHORIZATION_REJECTED", str(consumed.get("error") or "PREFLIGHT_BLOCKED"), critical=True)
+        return {**consumed, "gates": gates}
+    return {**enable(ctx), "authorization_id": claim.get("authorization_id"), "gates": gates}
+
+
 def attempt_entry(
     ctx: UnattendedContext,
     *,
@@ -776,13 +875,13 @@ def attempt_entry(
     _set_state(UNATTENDED_ENTRY_PENDING)
     tx = transmitter or drop_canary_oif_lines
     # Crossing the broker boundary burns the day latch even if the attempt fails.
+    burn_daily_latch("ENTRY_ATTEMPT")
     try:
         result = tx([payload["entry_line"]], transmit=transmit)
     except Exception as exc:
-        burn_daily_latch("OIF_EXCEPTION")
+        _save_persist(lock_reason="OIF_EXCEPTION", entry_attempt_used=True, locked_for_day=True)
         _notify("UNATTENDED_ORDER_REJECTED", str(exc), critical=True)
         return {**_block("OIF_WRITE_EXCEPTION"), "error_code": "OIF_WRITE_EXCEPTION"}
-    burn_daily_latch("ENTRY_ATTEMPT")
     submitted = bool(result.get("submitted") or result.get("transmitted"))
     rejected = (not result.get("ok", True)) or str(result.get("status") or "").upper() in {"REJECTED", "ORDER_REJECTED"}
     if transmit:
@@ -851,6 +950,22 @@ def tick(
     mem = _ensure_mem()
     if ctx.now is not None:
         mem["clock"] = ctx.now
+    try:
+        from phase55d_session_authorization import status as authorization_status
+        if authorization_status().get("status") == "PENDING":
+            return process_pending_session_authorization(ctx)
+    except Exception as exc:
+        return {"state": UNATTENDED_BLOCKED, "reason": "AUTHORIZATION_CONTROL_FAILURE", "error": str(exc)[:160], "PROP_EXECUTION": False}
+    from test_workspace import test_mode
+    if not test_mode():
+        try:
+            from phase55d_session_authorization import runtime_permission_active, status as authorization_status
+            auth_status = authorization_status().get("status")
+            if auth_status == "CONSUMED" and not runtime_permission_active(now=ctx.now):
+                _notify("AUTHORIZATION_EXPIRED", "Automatic disarm", critical=True)
+                return disable("AUTHORIZATION_EXPIRED")
+        except Exception:
+            return _block("AUTHORIZATION_CONTROL_FAILURE")
     if not unattended_flag_enabled():
         mem["state"] = UNATTENDED_DISABLED
         return {"state": UNATTENDED_DISABLED, "PROP_EXECUTION": False}
@@ -897,6 +1012,13 @@ def tick(
     if ctx.canary.nt_connected is False and mem.get("position_open"):
         _notify("UNATTENDED_BLOCKED", "NT disconnect while OPEN · monitoring only · no second trade")
         return {"state": UNATTENDED_POSITION_OPEN, "note": "reconnect is recon only", "PROP_EXECUTION": False}
+
+    # All current gates remain leases, not permanent facts. Any stale or failed
+    # evidence while waiting consumes this authorization and disarms the day.
+    if mem.get("state") == UNATTENDED_WAITING_DVP:
+        continuous = ordered_monday_gates(ctx, include_manual_latch=True)
+        if not all(g["ok"] for g in continuous):
+            return _block(next(g["gate"] for g in continuous if not g["ok"]))
 
     live = evaluate_automated_phase_55b(ctx)
     state = mem.get("state")
@@ -1041,12 +1163,34 @@ def context_from_ops_snapshot(snap: dict[str, Any]) -> UnattendedContext:
     live = snap.get("live_dvp") if isinstance(snap.get("live_dvp"), dict) else {}
     ntf = snap.get("notifications") if isinstance(snap.get("notifications"), dict) else {}
     mdq = str(snap.get("market_data_quality") or "").upper()
+    order_doc = snap.get("orders") if isinstance(snap.get("orders"), dict) else {}
+    order_gate = snap.get("order_state_gate") if isinstance(snap.get("order_state_gate"), dict) else {}
+    bars_rows = dump.get("nq_bars_1m") if isinstance(dump.get("nq_bars_1m"), list) else []
+    match_5m = match_15m = False
+    try:
+        from nq_dvp_live_feed import load_nt_1m_bars
+        from nq_databento import aggregate_1m_to_ny
+        raw_bars = load_nt_1m_bars({"nq_bars_1m": bars_rows})
+        def _matches(minutes: int, expected: Any) -> bool:
+            agg = aggregate_1m_to_ny(raw_bars, minutes)
+            if not agg or not isinstance(expected, dict):
+                return False
+            got = agg[-1]
+            return int(got.time) == int(expected.get("time") or 0) and all(
+                abs(float(getattr(got, key)) - float(expected.get(key))) <= 1e-9
+                for key in ("open", "high", "low", "close", "volume")
+            )
+        match_5m = _matches(5, live.get("last_finalized_5m"))
+        match_15m = _matches(15, live.get("last_finalized_15m"))
+    except Exception:
+        match_5m = match_15m = False
     return UnattendedContext(
         canary=c,
         nt_process_available=bool((dump.get("alive") if dump else False) or c.nt_connected),
         addon_schema=str((snap.get("market") or {}).get("schema") or dump.get("schema") or ADDON_SCHEMA),
         telemetry_age_sec=float(dump.get("age_sec") or 999.0),
         python_desk_healthy=True,
+        nq_bars=bars_rows,
         nq_bars_1m_status=str(dump.get("nq_bars_1m_status") or "WAITING"),
         nq_1m_count=int(dump.get("nq_bars_1m_count") or 0),
         nq_1m_count_prev=0,
@@ -1055,6 +1199,14 @@ def context_from_ops_snapshot(snap: dict[str, Any]) -> UnattendedContext:
         bars_fresh=bool(dump.get("last_nq_bar_ts")) and c.market_live,
         agg_5m_advancing=bool(live.get("agg_5m_healthy") or c.agg_5m_healthy),
         agg_15m_advancing=bool(live.get("agg_15m_healthy") or c.agg_15m_healthy),
+        market_provenance=LIVE_PROVENANCE if str(live.get("pipeline") or "").startswith("LIVE_DVP_") and live.get("bar_source") == "NINJATRADER_BARSREQUEST_1M" else "UNKNOWN",
+        independent_5m_match=match_5m,
+        independent_15m_match=match_15m,
+        native_orders_fresh=order_gate.get("ok") is True,
+        pending_orders=int(order_doc.get("pending_count") or 0),
+        partial_orders=int(order_doc.get("partial_active_count") or 0),
+        orphan_orders=int(order_doc.get("orphan_candidate_count") or 0),
+        unknown_orders=int(order_doc.get("unknown_count") or 0),
         apprise_configured=bool(ntf.get("configured")),
         last_notify_ok=str(ntf.get("delivery_status") or "").upper() in {"HEALTHY", "READY", "OK", "LIVE"},
         engine_state=str(snap.get("engine") or "STOPPED"),

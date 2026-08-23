@@ -17,6 +17,10 @@ from uuid import uuid4
 
 os.environ["AITRADE_PHASE54_TEST"] = "1"
 os.environ.setdefault(
+    "AITRADE_TEST_ROOT",
+    str(Path(tempfile.mkdtemp(prefix="phase54_authoritative_root_"))),
+)
+os.environ.setdefault(
     "AITRADE_PHASE54_JOURNAL",
     str(Path(tempfile.mkdtemp(prefix="phase54f_test_journal_"))),
 )
@@ -1742,10 +1746,12 @@ class Phase54FMarketDataTests(unittest.TestCase):
             self.assertEqual(recon["expected"]["side"], "FLAT")
 
     def test_no_synthetic_journal_contamination(self):
-        from phase54_ops import JOURNAL_DIR, EVENTS_LOG, TELEMETRY_PATH
+        from phase54_ops import JOURNAL_DIR, EVENTS_LOG, TELEMETRY_PATH, _runtime_mutable_path
         self.assertTrue(os.environ.get("AITRADE_PHASE54_TEST") == "1")
-        self.assertNotEqual(JOURNAL_DIR, Path("journal") / "phase54_ops")
-        self.assertTrue(str(JOURNAL_DIR).find("phase54f_test_journal_") >= 0 or str(JOURNAL_DIR).find("phase54_ops_test") >= 0)
+        resolved = _runtime_mutable_path(EVENTS_LOG, relative=("journal", "phase54_ops", "events.jsonl"))
+        root = Path(os.environ["AITRADE_TEST_ROOT"]).resolve()
+        self.assertTrue(root in resolved.resolve().parents)
+        self.assertNotEqual(resolved.resolve(), (Path("journal") / "phase54_ops" / "events.jsonl").resolve())
         soak = soak_metrics()
         self.assertTrue(soak.get("test"))
         self.assertFalse(soak.get("pnl_fabricated"))

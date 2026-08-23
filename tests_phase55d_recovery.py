@@ -55,10 +55,17 @@ class TestIsolationRecoveryTests(unittest.TestCase):
         paths = (
             nq_dvp_live_runner.JOURNAL_DIR,
             phase53_engine.JOURNAL_DIR,
-            phase54_ops.JOURNAL_DIR,
-            phase54_ops.STATE_PATH,
-            phase54_ops.AUDIT_PATH_LIVE,
-            fundednext_mcp_oauth.OAUTH_PATH,
+            phase54_ops._runtime_mutable_path(
+                phase54_ops.EVENTS_LOG, relative=("journal", "phase54_ops", "events.jsonl")
+            ),
+            phase54_ops._runtime_mutable_path(
+                phase54_ops.STATE_PATH, relative=("state", "phase54_ops.json")
+            ),
+            phase54_ops._runtime_mutable_path(
+                phase54_ops.AUDIT_PATH_LIVE,
+                relative=("journal", "phase53_fn_flex_shadow", "audit.jsonl"),
+            ),
+            fundednext_mcp_oauth._resolve_oauth_path(),
         )
         for path in paths:
             resolved = path.resolve()
@@ -93,8 +100,14 @@ class TestIsolationRecoveryTests(unittest.TestCase):
         nq_dvp_live_runner.ensure_dirs()
         phase53_engine.AUDIT_PATH.parent.mkdir(parents=True, exist_ok=True)
         phase53_engine.AUDIT_PATH.write_text("synthetic-test-only\n", encoding="utf-8")
-        phase54_ops.STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        phase54_ops.STATE_PATH.write_text("{}", encoding="utf-8")
+        state_path = phase54_ops._runtime_mutable_path(
+            phase54_ops.STATE_PATH,
+            relative=("state", "phase54_ops.json"),
+            create_parent=True,
+        )
+        phase54_ops._write_json(state_path, {})
+        self.assertIn(test_root(), state_path.resolve().parents)
+        self.assertNotEqual(state_path.resolve(), (ROOT / "state" / "phase54_ops.json").resolve())
         self.assertEqual({str(path): _tree_hash(path) for path in PROTECTED}, before)
 
 

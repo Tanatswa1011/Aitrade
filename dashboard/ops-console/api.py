@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import sys
+import threading
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -32,6 +34,41 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+_RUNTIME_STOP = threading.Event()
+_RUNTIME_THREAD: threading.Thread | None = None
+
+
+def _runtime_supervisor_loop() -> None:
+    """Keep the fail-closed engine progressing without a browser being open."""
+    while not _RUNTIME_STOP.wait(1.0):
+        try:
+            EngineSupervisor.status()
+        except Exception as exc:
+            append_event("ERROR", "Background runtime supervisor failure", error=str(exc)[:240])
+
+
+@app.on_event("startup")
+def start_runtime_supervisor() -> None:
+    global _RUNTIME_THREAD
+    if _RUNTIME_THREAD is not None and _RUNTIME_THREAD.is_alive():
+        return
+    from phase55d_session_authorization import invalidate_on_restart
+    invalidate_on_restart()
+    _RUNTIME_STOP.clear()
+    _RUNTIME_THREAD = threading.Thread(target=_runtime_supervisor_loop, name="phase55d-runtime", daemon=True)
+    _RUNTIME_THREAD.start()
+
+
+@app.on_event("shutdown")
+def stop_runtime_supervisor() -> None:
+    global _RUNTIME_THREAD
+    _RUNTIME_STOP.set()
+    if _RUNTIME_THREAD is not None:
+        _RUNTIME_THREAD.join(timeout=3.0)
+        if _RUNTIME_THREAD.is_alive():
+            raise RuntimeError("runtime_supervisor_failed_to_stop")
+        _RUNTIME_THREAD = None
 
 
 class ModeBody(BaseModel):

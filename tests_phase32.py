@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+
+os.environ["AITRADE_PHASE54_TEST"] = "1"
+os.environ.setdefault("AITRADE_TEST_ROOT", tempfile.mkdtemp(prefix="phase32_authoritative_root_"))
 
 from account_risk import AccountRiskLimits, RiskCheckContext, run_account_risk_checks
 from execution_status import (

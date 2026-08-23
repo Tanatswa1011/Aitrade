@@ -209,6 +209,29 @@ def canary_is_armed() -> bool:
     return bool(_ensure_mem().get("armed_at"))
 
 
+def manual_revalidation_required() -> bool:
+    """A prior serious/uncertain outcome remains a hard operator latch."""
+    doc = _load_persist()
+    return bool(doc.get("was_in_flight") or doc.get("last_error") or str(doc.get("last_persisted_mode")) == PROP_CANARY_BLOCKED)
+
+
+def resolve_manual_revalidation(*, authorization_id: str, evidence: dict[str, Any]) -> dict[str, Any]:
+    """Audited recovery; caller must first prove current flat/order-safe evidence."""
+    required = ("account_exact", "position_flat", "orders_fresh", "all_order_counts_zero")
+    if not authorization_id or not all(evidence.get(key) is True for key in required):
+        raise PermissionError("MANUAL_REVALIDATION_EVIDENCE_REQUIRED")
+    prior = _load_persist()
+    return _save_persist(
+        last_persisted_mode=PROP_CANARY_DISARMED,
+        last_result="MANUAL_REVALIDATION_RESOLVED",
+        last_error=None,
+        was_in_flight=False,
+        manual_revalidation_authorization_id=authorization_id,
+        manual_revalidation_at=_iso(),
+        manual_revalidation_prior_error=prior.get("last_error"),
+    )
+
+
 def simulate_process_restart() -> None:
     """Drop in-memory ARM. Do not restore ARMED. In-flight persist becomes BLOCKED."""
     global _MEM
